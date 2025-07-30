@@ -1,0 +1,1495 @@
+
+<!DOCTYPE html>
+<html class="wide wow-animation smoothscroll scrollTo" lang="en">
+  <head>
+    <!-- Site Title-->
+    <title>Shop - Gustavo Trujillo Art</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <!-- RESPONSIVE VIEWPORT - OPTIMIZADO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="New Orleans art, prints, paintings, Gustavo Trujillo, responsive design">
+    <meta name="description" content="Shop original artwork prints by Gustavo Trujillo. Beautiful New Orleans scenes available in various sizes with responsive design for all devices.">
+    <meta name="date" content="Jul 28">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Dancing+Script:700%7CLato:300,300italic,400,700,900">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+      /* ============================================== 
+         RESPONSIVE DESIGN - MOBILE FIRST APPROACH 
+         ============================================== */
+         
+      /* RESPONSIVE CART SIDEBAR */
+      .cart-sidebar {
+        position: fixed;
+        top: 0;
+        right: -100vw;
+        width: 100vw;
+        max-width: 400px;
+        height: 100vh;
+        background-color: #111;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+        z-index: 1001;
+        overflow-y: auto;
+        transition: right 0.3s ease;
+        padding-top: 60px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .cart-sidebar.open {
+        right: 0;
+      }
+      
+      /* RESPONSIVE CART OVERLAY */
+      .cart-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+        display: none;
+      }
+      
+      .cart-overlay.active {
+        display: block;
+      }
+      
+      /* RESPONSIVE CART ICON */
+      .cart-icon {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+        cursor: pointer;
+        background: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        border: 2px solid #414e48;
+      }
+      
+      /* ============================================== 
+         RESPONSIVE PRODUCT CARDS 
+         ============================================== */
+         
+      /* PRODUCT CARDS - MOBILE FIRST */
+      .product-card {
+        position: relative;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+      }
+      
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      }
+      
+      .product-card .card-img-top {
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      
+      .product-card:hover .card-img-top {
+        transform: scale(1.05);
+      }
+      
+      .product-card .card-body {
+        padding: 20px;
+      }
+      
+      .product-card .card-title {
+        font-size: 1.2rem !important;
+        font-weight: 700;
+        margin-bottom: 10px;
+        line-height: 1.3;
+        color: #333;
+      }
+      
+      .product-card .card-text {
+        font-size: 1.05rem !important;
+        margin-bottom: 8px;
+      }
+      
+      .product-card .btn {
+        font-size: 1.1rem !important;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      
+      .product-card .btn:hover {
+        transform: translateY(-2px);
+      }
+      
+      /* ============================================== 
+         BUBBLE HIGHLIGHT ANIMATION 
+         ============================================== */
+         
+      @keyframes bubbleHighlight {
+        0% {
+          transform: scale(1);
+        }
+        15% {
+          transform: scale(1.08) rotate(1deg);
+        }
+        30% {
+          transform: scale(1.15) rotate(-1deg);
+        }
+        45% {
+          transform: scale(1.12) rotate(1deg);
+        }
+        60% {
+          transform: scale(1.18) rotate(-0.5deg);
+        }
+        75% {
+          transform: scale(1.05) rotate(0.5deg);
+        }
+        90% {
+          transform: scale(1.02) rotate(0deg);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      
+      @keyframes pulseGlow {
+        0% {
+          box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.8);
+        }
+        25% {
+          box-shadow: 0 0 0 10px rgba(25, 135, 84, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 0 25px rgba(25, 135, 84, 0.1);
+        }
+        75% {
+          box-shadow: 0 0 0 15px rgba(25, 135, 84, 0.2);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(25, 135, 84, 0);
+        }
+      }
+      
+      .card.bubble-highlight {
+        animation: bubbleHighlight 1.8s ease-in-out;
+        border: 3px solid #198754 !important;
+        box-shadow: 0 8px 25px rgba(25, 135, 84, 0.4) !important;
+        z-index: 10;
+        position: relative;
+      }
+      
+      .card.bubble-highlight::before {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+        border-radius: 15px;
+        background: transparent;
+        animation: pulseGlow 2s infinite;
+        z-index: -1;
+      }
+      
+      /* ============================================== 
+         RESPONSIVE MODAL SYSTEM 
+         ============================================== */
+         
+      /* MODAL BASE - MOBILE FIRST */
+      #productModal {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 99999 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        outline: 0 !important;
+        display: none !important;
+        background: rgba(0, 0, 0, 0.7) !important;
+        padding: 10px !important;
+      }
+      
+      #productModal.show {
+        display: block !important;
+      }
+      
+      /* MODAL DIALOG - RESPONSIVE */
+      #productModal .modal-dialog {
+        position: relative !important;
+        width: 100% !important;
+        margin: 10px auto !important;
+        pointer-events: none !important;
+        max-width: none !important;
+      }
+      
+      /* MODAL CONTENT - RESPONSIVE */
+      #productModal .modal-content {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        pointer-events: auto !important;
+        background-color: #ffffff !important;
+        border: none !important;
+        border-radius: 15px !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+        overflow: hidden;
+      }
+      
+      /* MODAL HEADER - RESPONSIVE */
+      #productModal .modal-header {
+        padding: 20px 25px !important;
+        border-bottom: 1px solid #dee2e6 !important;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
+      }
+      
+      /* MODAL BODY - RESPONSIVE */
+      #productModal .modal-body {
+        padding: 25px !important;
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+      }
+      
+      /* MODAL FOOTER - RESPONSIVE */
+      #productModal .modal-footer {
+        padding: 20px 25px !important;
+        border-top: 1px solid #dee2e6 !important;
+        background: #f8f9fa !important;
+        justify-content: center !important;
+      }
+      
+      /* MODAL TITLE - RESPONSIVE */
+      #productModal .modal-title {
+        font-size: 1.5rem !important;
+        font-weight: 700;
+        color: #333;
+      }
+      
+      /* MODAL CONTENT STYLES */
+      #productModal .product-image-area {
+        width: 100%;
+        height: auto;
+        max-height: 350px;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      
+      #productModal .product-title {
+        font-size: 1.6rem !important;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 20px;
+      }
+      
+      #productModal .accordion-button {
+        font-size: 1.2rem !important;
+        font-weight: 600;
+        padding: 15px 20px;
+      }
+      
+      #productModal .accordion-body {
+        font-size: 1.1rem !important;
+        line-height: 1.6;
+        padding: 20px;
+      }
+      
+      #productModal .price-section h4 {
+        font-size: 1.9rem !important;
+        font-weight: 800;
+        color: #198754;
+      }
+      
+      #productModal .dimensions {
+        font-size: 1.2rem !important;
+        color: #666;
+        margin-bottom: 20px;
+      }
+      
+      #productModal .btn-lg {
+        font-size: 1.2rem !important;
+        padding: 15px 30px;
+        border-radius: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      #productModal .related-products {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 12px;
+        padding: 20px;
+      }
+      
+      #productModal .related-products h6 {
+        font-size: 1rem !important;
+        font-weight: 700;
+        color: #495057;
+        margin-bottom: 15px;
+      }
+      
+      #productModal .related-products a {
+        font-size: 0.95rem !important;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        display: block;
+      }
+      
+      #productModal .related-products a:hover {
+        color: #198754 !important;
+        text-decoration: none !important;
+        padding-left: 10px;
+      }
+      
+      /* ============================================== 
+         RESPONSIVE BREAKPOINTS 
+         ============================================== */
+         
+      /* Tablets (768px y más) */
+      @media (min-width: 768px) {
+        .cart-sidebar {
+          width: 400px;
+          right: -400px;
+        }
+        
+        .cart-icon {
+          top: 15px;
+          right: 15px;
+          padding: 15px 20px;
+        }
+        
+        .product-card .card-img-top {
+          height: 220px;
+        }
+        
+        .product-card .card-title {
+          font-size: 1.2rem !important;
+        }
+        
+        #productModal {
+          padding: 20px !important;
+        }
+        
+        #productModal .modal-dialog {
+          max-width: 900px !important;
+        }
+        
+        #productModal .modal-body {
+          max-height: calc(100vh - 180px);
+        }
+        
+        #productModal .modal-footer {
+          justify-content: flex-end !important;
+        }
+        
+        #productModal .product-image-area {
+          max-height: 450px;
+        }
+      }
+      
+      /* Desktop (992px y más) */
+      @media (min-width: 992px) {
+        .cart-icon {
+          top: 20px;
+          right: 20px;
+        }
+        
+        .product-card .card-img-top {
+          height: 240px;
+        }
+        
+        .product-card .card-title {
+          font-size: 1.15rem !important;
+        }
+        
+        #productModal .modal-dialog {
+          max-width: 1100px !important;
+        }
+        
+        #productModal .modal-title {
+          font-size: 1.6rem !important;
+        }
+        
+        #productModal .product-title {
+          font-size: 1.7rem !important;
+        }
+      }
+      
+      /* ============================================== 
+         MOBILE SPECIFIC IMPROVEMENTS 
+         ============================================== */
+         
+      /* Mobile Only - Bigger text and buttons */
+      @media (max-width: 576px) {
+        .product-card .card-title {
+          font-size: 1.3rem !important;
+          font-weight: 800;
+        }
+        
+        .product-card .card-text {
+          font-size: 1.1rem !important;
+        }
+        
+        .product-card .btn {
+          font-size: 1.2rem !important;
+          padding: 15px 20px;
+          font-weight: 700;
+        }
+        
+        #productModal .modal-body {
+          padding: 20px !important;
+        }
+        
+        #productModal .modal-title {
+          font-size: 1.5rem !important;
+        }
+        
+        #productModal .product-title {
+          font-size: 1.6rem !important;
+        }
+        
+        #productModal .accordion-button {
+          font-size: 1.2rem !important;
+        }
+        
+        #productModal .accordion-body {
+          font-size: 1.1rem !important;
+        }
+        
+        #productModal .btn-lg {
+          font-size: 1.3rem !important;
+          padding: 18px 25px;
+        }
+        
+        /* Sort dropdown bigger on mobile */
+        .form-select {
+          font-size: 1.2rem !important;
+          padding: 12px 16px;
+        }
+        
+        /* Title bigger on mobile */
+        .responsive-title {
+          font-size: 2.2rem !important;
+          font-weight: 800;
+        }
+        
+        .responsive-subtitle {
+          font-size: 1.2rem !important;
+        }
+      }
+      
+      /* ============================================== 
+         GENERAL IMPROVEMENTS 
+         ============================================== */
+         
+      /* Modal backdrop */
+      .modal-backdrop.show {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 99998 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background-color: rgba(0, 0, 0, 0.7) !important;
+      }
+      
+      /* Prevent body scroll when modal is open */
+      body.modal-open {
+        overflow: hidden !important;
+      }
+      
+      /* Close button improvements */
+      #productModal .btn-close {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 1.5rem !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: all 0.3s ease;
+      }
+      
+      #productModal .btn-close:hover {
+        background: rgba(0,0,0,0.1) !important;
+        transform: scale(1.1);
+      }
+      
+      /* Cart sidebar improvements */
+      .cart-sidebar h3 {
+        font-size: 1.4rem !important;
+      }
+      
+      .cart-sidebar .fw-bold {
+        font-size: 1.2rem !important;
+      }
+      
+      /* Ensure all elements are properly sized */
+      .card-text.text-success {
+        font-size: 1.2rem !important;
+        font-weight: 700;
+      }
+    </style>
+    
+    <style>
+      /* ==============================================
+         RESPONSIVE DESIGN - MOBILE FIRST APPROACH 
+         ============================================== */
+      
+      /* RESPONSIVE CART SIDEBAR */
+      .cart-sidebar {
+        position: fixed;
+        top: 0;
+        right: -100vw; /* Cambiado para móviles */
+        width: 100vw; /* Full width en móviles */
+        max-width: 400px; /* Máximo en desktop */
+        height: 100vh;
+        background-color: #111;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+        z-index: 1001;
+        overflow-y: auto;
+        transition: right 0.3s ease;
+        padding-top: 60px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .cart-sidebar.open {
+        right: 0;
+      }
+      
+      /* RESPONSIVE CART OVERLAY */
+      .cart-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+        display: none;
+      }
+      
+      .cart-overlay.active {
+        display: block;
+      }
+      
+      /* RESPONSIVE CART ICON */
+      .cart-icon {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+        cursor: pointer;
+        background: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        border: 2px solid #414e48;
+      }
+      
+      /* Responsive para tablets */
+      @media (min-width: 768px) {
+        .cart-sidebar {
+          width: 400px;
+          right: -400px;
+        }
+        
+        .cart-icon {
+          top: 15px;
+          right: 15px;
+          padding: 15px 20px;
+        }
+      }
+      
+      /* Desktop */
+      @media (min-width: 992px) {
+        .cart-icon {
+          top: 20px;
+          right: 20px;
+        }
+      }
+      
+      /* ==============================================
+         RESPONSIVE MODAL SYSTEM 
+         ============================================== */
+      
+      /* MODAL BASE - MOBILE FIRST */
+      #productModal {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 99999 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        outline: 0 !important;
+        display: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        transition: none !important;
+        background: rgba(0, 0, 0, 0.6) !important;
+        border: none !important;
+        padding: 10px !important; /* Padding para móviles */
+      }
+      
+      #productModal.show {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      /* MODAL DIALOG - RESPONSIVE */
+      #productModal .modal-dialog {
+        position: relative !important;
+        width: 100% !important;
+        margin: 0 !important; /* Sin margin en móviles */
+        pointer-events: none !important;
+        max-width: none !important; /* Sin límite en móviles */
+        z-index: 99999 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      
+      /* MODAL CONTENT - RESPONSIVE */
+      #productModal .modal-content {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        height: calc(100vh - 20px) !important; /* Altura completa en móviles */
+        pointer-events: auto !important;
+        background-color: #ffffff !important;
+        background-clip: padding-box !important;
+        border: none !important; /* Sin borde en móviles */
+        border-radius: 8px !important;
+        outline: 0 !important;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        transition: none !important;
+        overflow-y: auto !important;
+      }
+      
+      /* MODAL HEADER - RESPONSIVE */
+      #productModal .modal-header {
+        display: flex !important;
+        flex-shrink: 0 !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 12px 15px !important;
+        border-bottom: 1px solid #dee2e6 !important;
+        border-top-left-radius: 6px !important;
+        border-top-right-radius: 6px !important;
+        background: #f8f9fa !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 1000 !important;
+      }
+      
+      /* MODAL BODY - RESPONSIVE */
+      #productModal .modal-body {
+        position: relative !important;
+        flex: 1 1 auto !important;
+        padding: 15px !important;
+        background: #ffffff !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        overflow-y: auto !important;
+      }
+      
+      /* MODAL FOOTER - RESPONSIVE */
+      #productModal .modal-footer {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        flex-shrink: 0 !important;
+        align-items: center !important;
+        justify-content: center !important; /* Centrado en móviles */
+        padding: 12px 15px !important;
+        border-top: 1px solid #dee2e6 !important;
+        border-bottom-right-radius: 6px !important;
+        border-bottom-left-radius: 6px !important;
+        background: #f8f9fa !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: sticky !important;
+        bottom: 0 !important;
+        z-index: 1000 !important;
+      }
+      
+      /* MODAL TITLE - RESPONSIVE */
+      #productModal .modal-title {
+        margin-bottom: 0 !important;
+        line-height: 1.4 !important;
+        font-size: 1.2rem !important; /* Más pequeño en móviles */
+        font-weight: 600 !important;
+        color: #000 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      /* CLOSE BUTTON - RESPONSIVE */
+      #productModal .btn-close {
+        padding: 0.5rem !important;
+        margin: 0 !important;
+        background: transparent !important;
+        border: 0 !important;
+        border-radius: 0.25rem !important;
+        opacity: 1 !important;
+        font-size: 1.2rem !important;
+        cursor: pointer !important;
+        visibility: visible !important;
+        width: 40px !important;
+        height: 40px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      
+      #productModal .btn-close:hover {
+        opacity: 0.75 !important;
+        background: rgba(0,0,0,0.1) !important;
+      }
+      
+      /* RESPONSIVE BREAKPOINTS PARA MODAL */
+      
+      /* Tablets (768px y más) */
+      @media (min-width: 768px) {
+        #productModal {
+          padding: 20px !important;
+        }
+        
+        #productModal .modal-dialog {
+          margin: 20px auto !important;
+          max-width: 700px !important;
+        }
+        
+        #productModal .modal-content {
+          height: auto !important;
+          max-height: calc(100vh - 40px) !important;
+        }
+        
+        #productModal .modal-header {
+          padding: 15px 20px !important;
+        }
+        
+        #productModal .modal-body {
+          padding: 20px !important;
+        }
+        
+        #productModal .modal-footer {
+          padding: 15px 20px !important;
+          justify-content: flex-end !important;
+        }
+        
+        #productModal .modal-title {
+          font-size: 1.4rem !important;
+        }
+      }
+      
+      /* Desktop (992px y más) */
+      @media (min-width: 992px) {
+        #productModal .modal-dialog {
+          max-width: 1000px !important;
+        }
+        
+        #productModal .modal-title {
+          font-size: 1.5rem !important;
+        }
+      }
+      
+      /* Large Desktop (1200px y más) */
+      @media (min-width: 1200px) {
+        #productModal .modal-dialog {
+          max-width: 1140px !important;
+        }
+      }
+      
+      /* ==============================================
+         RESPONSIVE GENERAL STYLES 
+         ============================================== */
+      
+      /* Anular cualquier estilo del template que pueda interferir */
+      body.modal-open {
+        overflow: hidden !important;
+      }
+      
+      /* Asegurar que todos los elementos del modal sean visibles */
+      #productModal * {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      
+      /* RESPONSIVE BACKDROP */
+      .modal-backdrop.show {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 99998 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background-color: rgba(0, 0, 0, 0.6) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      /* ==============================================
+         RESPONSIVE PRODUCT CARDS 
+         ============================================== */
+      
+      /* MOBILE FIRST - Product Cards */
+      .product-card {
+        margin-bottom: 20px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      
+      .product-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      }
+      
+      .product-card .card-img-top {
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .product-card .card-body {
+        padding: 15px;
+      }
+      
+      .product-card .card-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        line-height: 1.3;
+        color: #333;
+      }
+      
+      .product-card .card-text {
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+      }
+      
+      .product-card .btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-weight: 500;
+      }
+      
+      /* Tablets */
+      @media (min-width: 768px) {
+        .product-card .card-img-top {
+          height: 220px;
+        }
+        
+        .product-card .card-body {
+          padding: 18px;
+        }
+        
+        .product-card .card-title {
+          font-size: 1.1rem;
+        }
+        
+        .product-card .card-text {
+          font-size: 0.9rem;
+        }
+        
+        .product-card .btn {
+          font-size: 0.95rem;
+          padding: 10px 16px;
+        }
+      }
+      
+      /* Desktop */
+      @media (min-width: 992px) {
+        .product-card .card-img-top {
+          height: 240px;
+        }
+        
+        .product-card .card-body {
+          padding: 20px;
+        }
+        
+        .product-card .card-title {
+          font-size: 1.15rem;
+        }
+        
+        .product-card .btn {
+          font-size: 1rem;
+          padding: 12px 20px;
+        }
+      }
+      
+      /* ==============================================
+         RESPONSIVE MODAL CONTENT 
+         ============================================== */
+      
+      /* PRODUCT IMAGE EN MODAL - RESPONSIVE */
+      #productModal .product-image-area {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+      
+      /* PRODUCT INFO EN MODAL - RESPONSIVE */
+      #productModal .product-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 15px;
+        line-height: 1.3;
+      }
+      
+      #productModal .accordion {
+        margin-bottom: 20px;
+      }
+      
+      #productModal .accordion-button {
+        font-size: 0.95rem;
+        font-weight: 500;
+        padding: 12px 15px;
+      }
+      
+      #productModal .accordion-body {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        padding: 15px;
+      }
+      
+      /* PRICE SECTION - RESPONSIVE */
+      #productModal .price-section h4 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #198754;
+      }
+      
+      #productModal .dimensions {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 15px;
+      }
+      
+      /* BUTTONS - RESPONSIVE */
+      #productModal .btn-lg {
+        font-size: 1rem;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+      }
+      
+      /* RELATED PRODUCTS - RESPONSIVE */
+      #productModal .related-products {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 15px;
+      }
+      
+      #productModal .related-products h6 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #555;
+      }
+      
+      #productModal .related-products a {
+        font-size: 0.85rem;
+        padding: 6px 0;
+        border-bottom: 1px solid #eee;
+        transition: color 0.2s ease;
+      }
+      
+      #productModal .related-products a:hover {
+        color: #198754 !important;
+        text-decoration: underline !important;
+      }
+      
+      /* TABLETS Y DESKTOP - MODAL CONTENT */
+      @media (min-width: 768px) {
+        #productModal .product-image-area {
+          max-height: 400px;
+        }
+        
+        #productModal .product-title {
+          font-size: 1.5rem;
+        }
+        
+        #productModal .accordion-button {
+          font-size: 1rem;
+          padding: 15px 20px;
+        }
+        
+        #productModal .accordion-body {
+          font-size: 0.95rem;
+          padding: 20px;
+        }
+        
+        #productModal .price-section h4 {
+          font-size: 1.6rem;
+        }
+        
+        #productModal .dimensions {
+          font-size: 1rem;
+        }
+        
+        #productModal .btn-lg {
+          font-size: 1.1rem;
+          padding: 15px 30px;
+        }
+        
+        #productModal .related-products {
+          padding: 20px;
+        }
+        
+        #productModal .related-products h6 {
+          font-size: 1rem;
+        }
+        
+        #productModal .related-products a {
+          font-size: 0.9rem;
+          padding: 8px 0;
+        }
+      }
+      
+      /* ==============================================
+         RESPONSIVE NAVBAR & HEADER 
+         ============================================== */
+      
+      /* RESPONSIVE FIXES PARA EL HEADER */
+      .rd-navbar-brand img {
+        max-width: 100%;
+        height: auto;
+      }
+      
+      /* Mobile header adjustments */
+      @media (max-width: 767px) {
+        .rd-navbar-brand img {
+          max-width: 200px;
+        }
+        
+        .rd-navbar-top-block .cell-lg-3 p {
+          font-size: 0.85rem;
+        }
+      }
+      
+      /* ==============================================
+         RESPONSIVE UTILITIES 
+         ============================================== */
+      
+      /* RESPONSIVE TEXT SIZES */
+      .responsive-title {
+        font-size: 1.5rem;
+      }
+      
+      .responsive-subtitle {
+        font-size: 1rem;
+      }
+      
+      @media (min-width: 768px) {
+        .responsive-title {
+          font-size: 2rem;
+        }
+        
+        .responsive-subtitle {
+          font-size: 1.2rem;
+        }
+      }
+      
+      @media (min-width: 992px) {
+        .responsive-title {
+          font-size: 2.5rem;
+        }
+        
+        .responsive-subtitle {
+          font-size: 1.3rem;
+        }
+      }
+      
+      /* RESPONSIVE SPACING */
+      .responsive-padding {
+        padding: 15px;
+      }
+      
+      .responsive-margin {
+        margin: 15px 0;
+      }
+      
+      @media (min-width: 768px) {
+        .responsive-padding {
+          padding: 25px;
+        }
+        
+        .responsive-margin {
+          margin: 25px 0;
+        }
+      }
+      
+      @media (min-width: 992px) {
+        .responsive-padding {
+          padding: 35px;
+        }
+        
+        .responsive-margin {
+          margin: 35px 0;
+        }
+      }
+      
+      /* RESPONSIVE GRID FIXES */
+      @media (max-width: 575px) {
+        .container-fluid {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+        
+        .row {
+          margin-left: -5px;
+          margin-right: -5px;
+        }
+        
+        .row > * {
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+    </style>
+
+		<!--[if lt IE 10]>
+    <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <script src="js/html5shiv.min.js"></script>
+		<![endif]-->
+  </head>
+  <body>
+    <!-- Page-->
+    <div class="page text-center">
+      <!-- Page Header-->
+      <header class="page-head">
+        <!-- RD Navbar Transparent-->
+        <div class="rd-navbar-wrap">
+          <nav class="rd-navbar rd-navbar-logo-center rd-navbar-light" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" data-lg-stick-up-offset="110px" data-lg-auto-height="true" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
+            <div class="rd-navbar-inner">
+              <div class="container">
+                <div class="rd-navbar-top-block range range-lg-center range-lg-middle">
+                  <div class="cell-lg-3">
+                    <p class="veil reveal-lg-block">Cell: 504-606-7084</p>
+                  </div>
+                  <div class="cell-lg-6 text-center">
+                    <!--Navbar Brand-->
+                    <div class="rd-navbar-brand"><a href="/index.html"><img width='432' height='63' src='../images/logo-dark.png' alt=''/></a></div>
+                  </div>
+                  <div class="cell-lg-3">
+                    <p class="veil reveal-lg-block"><a class="text-primary" href="mailto:gustavo54@att.net">gustavo54@att.net</a></p>
+                  </div>
+                </div>
+                
+                <!-- Cart Icon - RESPONSIVE -->
+                <div class="cart-icon d-flex align-items-center" onclick="toggleCart()">
+                  <i class="fas fa-shopping-cart text-success fs-5"></i>
+                  <span class="fw-bold text-dark ms-2 d-none d-sm-inline">Shop Cart</span>
+                  <span class="badge bg-danger rounded-pill ms-2">0</span>
+                </div>
+
+                <!-- Cart Sidebar -->
+                <div class="cart-overlay" onclick="closeCart()"></div>
+                <div class="cart-sidebar bg-dark text-white d-flex flex-column" id="cartSidebar">
+                  <div class="d-flex justify-content-between align-items-center p-3 border-bottom border-secondary">
+                    <h3 class="m-0 text-white">Your Cart</h3>
+                    <button class="btn-close btn-close-white" onclick="closeCart()" aria-label="Close"></button>
+                  </div>
+                  <div class="flex-grow-1 p-3 overflow-auto" id="cartItems">
+                    <!-- Cart items will be displayed here -->
+                  </div>
+                  <div class="p-3 border-top border-secondary" id="cartTotal">
+                    <!-- Cart total will be displayed here -->
+                  </div>
+                </div>
+                <!-- RD Navbar Panel-->
+                <div class="rd-navbar-panel">
+                  <!-- RD Navbar Toggle-->
+                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar, .rd-navbar-nav-wrap"><span></span></button>
+                  <!-- RD Navbar Top Panel Toggle-->
+                  <button class="rd-navbar-search-toggle" data-rd-navbar-toggle=".rd-navbar, .form-search-wrap"><span></span></button>
+                </div>
+              </div>
+              <div class="rd-navbar-menu-wrap">
+                <div class="container">
+                  <div class="rd-navbar-nav-wrap">
+                    <div class="rd-navbar-mobile-scroll">
+                      <!--Navbar Brand Mobile-->
+                      <div class="rd-navbar-mobile-brand"><a href="/index.html"><img width='221' height='32' src='../images/logo-dark.png' alt=''/></a></div>
+                      <!-- RD Navbar Nav-->
+                      <ul class="rd-navbar-nav">
+                        <li><a href="/index.html"><span>Home</span></a>
+                        </li>
+                        <li><a href="/about-us.html"><span>About</span></a>
+                        </li>
+                        <li><a href="/gallery.html"><span>Gallery</span></a>
+                        </li>
+                        <li class="active"><a href="/shop.html"><span>Shop Prints</span></a>
+                        </li>
+                        <li><a href="/contacts.html"><span>Contact Gustavo</span></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- Modern Breadcrumbs-->
+      <section>
+        <div class="parallax-container breadcrumb-modern bg-gray-darkest context-dark" data-parallax-img="../images/background-1-1920x651.jpg">
+          <div class="parallax-content">
+            <div class="bg-overlay-gray-darkest">
+              <div class="shell section-34 section-sm-50 section-md-110">
+                <div class="text-extra-big font-accent veil reveal-md-block"><span class="big">&nbsp</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Page Content - RESPONSIVE -->
+      <main class="page-content section-top-98 section-sm-124">
+        <div class="container-fluid responsive-padding">
+          <div class="row justify-content-center">
+            <div class="col-12 col-lg-10 col-xl-12">
+              <h1 class="text-center responsive-title mb-4">Shop Prints</h1>
+              <div class="text-center responsive-margin">
+                <p class="responsive-subtitle mb-0">Original artwork prints by Gustavo Trujillo available in various sizes. Each print captures the vibrant colors and unique charm of New Orleans.</p>
+              </div>
+              
+              <!-- Filter Controls - RESPONSIVE -->
+              <div class="text-center my-4">
+                <div class="d-inline-block">
+                  <label for="sortSelect" class="fw-bold me-2 d-block d-sm-inline">Sort by:</label>
+                  <select id="sortSelect" class="form-select d-inline-block w-auto mt-2 mt-sm-0" data-no-select2="true">
+                    <option value="name-asc">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                    <option value="price-asc">Price (Low to High)</option>
+                    <option value="price-desc">Price (High to Low)</option>
+                  </select>
+                </div>
+              </div>
+              
+              <!-- Shop Grid View - RESPONSIVE BOOTSTRAP GRID -->
+              <div class="mt-4">
+                <div class="row g-3 g-md-4" id="productsContainer">
+                  <!-- Products will be dynamically rendered here -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      
+      <!-- Product Modal - RESPONSIVE -->
+      <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="productModalLabel">Product Details</h4>
+              <button type="button" class="btn-close" aria-label="Close" onclick="closeProductModal()"></button>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <div class="row">
+                  <!-- Product Details Section - RESPONSIVE -->
+                  <div class="col-12 col-lg-9 mb-4 mb-lg-0">
+                    <div class="product product-single">
+                      <div class="row">
+                        <!-- Product Image - RESPONSIVE -->
+                        <div class="col-12 col-md-6 mb-4 mb-md-0">
+                          <div class="text-center">
+                            <img id="modalProductImage" src="" alt="" class="img-fluid product-image-area">
+                          </div>
+                        </div>
+                        <!-- Product Info - RESPONSIVE -->
+                        <div class="col-12 col-md-6">
+                          <h3 id="modalProductName" class="product-title"></h3>
+                          
+                          <!-- Bootstrap Accordion - RESPONSIVE -->
+                          <div class="accordion mb-4" id="productAccordion">
+                            <div class="accordion-item">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription" aria-expanded="true" aria-controls="collapseDescription">
+                                  Description
+                                </button>
+                              </h2>
+                              <div id="collapseDescription" class="accordion-collapse collapse show" data-bs-parent="#productAccordion">
+                                <div class="accordion-body" id="modalProductDescription">
+                                  <!-- Product description will be inserted here -->
+                                </div>
+                              </div>
+                            </div>
+                            <div class="accordion-item">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseShipping" aria-expanded="false" aria-controls="collapseShipping">
+                                  Shipping Options
+                                </button>
+                              </h2>
+                              <div id="collapseShipping" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
+                                <div class="accordion-body">
+                                  Our prints are shipped through US Standard Mail or UPS with careful packaging to ensure your artwork arrives in perfect condition.
+                                </div>
+                              </div>
+                            </div>
+                            <div class="accordion-item">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDelivery" aria-expanded="false" aria-controls="collapseDelivery">
+                                  Delivery & Returns
+                                </button>
+                              </h2>
+                              <div id="collapseDelivery" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
+                                <div class="accordion-body">
+                                  Your order will be shipped in a timely manner and handled with the utmost care. If there is any problem with the quality of your purchase, please do not hesitate to contact us.
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <!-- Product Price and Purchase Options - RESPONSIVE -->
+                          <div class="price-section">
+                            <div class="mb-3">
+                              <h4 id="modalProductPrice" class="text-success fw-bold mb-2"></h4>
+                              <p class="dimensions"><strong>Dimensions:</strong> <span id="modalProductDimensions"></span></p>
+                            </div>
+                            
+                            <div class="d-grid gap-2">
+                              <button class="btn btn-success btn-lg" id="modalAddToCart">
+                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Sidebar with related products - RESPONSIVE -->
+                  <div class="col-12 col-lg-3">
+                    <aside class="related-products">
+                      <h6 class="text-uppercase mb-3">Related Prints:</h6>
+                      <hr class="mb-3">
+                      <div id="relatedProducts" class="d-flex flex-column gap-1">
+                        <!-- Related products will be inserted here -->
+                      </div>
+                    </aside>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" onclick="closeProductModal()">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Page Footers-->
+      <!-- Footer variant 4-->
+      <footer class="section-relative section-34 page-footer bg-gray-base context-dark">
+        <div class="shell">
+          <div class="range range-sm-center text-lg-left">
+            <div class="cell-sm-12">
+              <div class="range range-xs-center">
+                <div class="cell-xs-12 cell-md-8 cell-md-push-2 text-md-right">
+                  <div>
+                    <ul class="list-inline list-inline-dashed p text-darker list-inline-md list-inline-dashed-wide">
+                      <li><a href="/about-us.html">About Gustavo</a></li>
+                      <li><a href="/gallery.html">Gallery</a></li>
+                      <li><a href="/shop.html">Shop Prints</a></li>
+                      <li><a href="/contacts.html">Contact Gustavo</a></li>
+                    </ul>
+                  </div>
+                  <ul class="list-inline list-inline-white offset-top-10 text-darker text-white">
+                    <li><a class="fa fa-facebook" href="https://www.facebook.com/gustavo.trujillo.artist"></a></li>
+                    <li><a class="fa fa-pinterest" href="https://www.pinterest.com/gustavotrujilloneworleansfinea/"></a></li>
+                  </ul>
+                </div>
+                <div class="cell-xs-12 cell-md-4 cell-md-push-1 offset-top-34 offset-md-top-0">
+                  <!-- Footer brand-->
+                  <div class="footer-brand"><a href="/index.html"><img width='221' height='32' style='margin-left: -6px;' src='../images/logo-light.png' alt=''/></a></div>
+                  <p class="small text-darker offset-top-4 text-white">&copy; <span id="copyright-year"></span> Gustavo Trujillo
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- PhotoSwipe Gallery-->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="pswp__bg"></div>
+      <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+          <div class="pswp__top-bar">
+            <div class="pswp__counter"></div>
+            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+            <button class="pswp__button pswp__button--share" title="Share"></button>
+            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+            <div class="pswp__preloader">
+              <div class="pswp__preloader__icn">
+                <div class="pswp__preloader__cut">
+                  <div class="pswp__preloader__donut"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+            <div class="pswp__share-tooltip"></div>
+          </div>
+          <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+          <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+          <div class="pswp__caption">
+            <div class="pswp__caption__center"></div>
+          </div>
+        </div>
+      </div>
+    </div>

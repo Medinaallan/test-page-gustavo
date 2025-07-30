@@ -1,0 +1,1818 @@
+﻿
+<!DOCTYPE html>
+<html class="wide wow-animation smoothscroll scrollTo" lang="en">
+  <head>
+    <!-- Site Title-->
+    <title>Gallery</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="keywords" content="Intense web design multipurpose template">
+    <meta name="date" content="Apr 26">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Dancing+Script:700%7CLato:300,300italic,400,700,900">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+    <!-- Bootstrap CSS para responsive design -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+		<!--[if lt IE 10]>
+    <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <script src="js/html5shiv.min.js"></script>
+		<![endif]-->
+    <style>
+      /* En tu archivo CSS personalizado o en una etiqueta <style> */
+
+      /* Asegúrate de que la figcaption sea siempre visible */
+      .thumbnail-josip figcaption {
+          opacity: 1 !important; /* !important fuerza la regla */
+          visibility: visible !important;
+          transform: none !important; /* Si hay transformaciones que lo oculten */
+          transition: none !important; /* Elimina la transición de ocultamiento */
+      }
+
+      /* Asegúrate de que el h6 sea siempre visible si tiene alguna regla de ocultamiento */
+      .thumbnail-josip-title {
+          opacity: 1 !important;
+          visibility: visible !important;
+          /* Cualquier otra propiedad de ocultamiento que pueda tener */
+      }
+
+      /* Asegúrate de que el párrafo sea siempre visible */
+      .thumbnail-josip p.veil { /* Para ser más específico si la clase 'veil' lo oculta */
+          display: block !important; /* O 'unset', o 'initial' dependiendo de cómo se oculta */
+          opacity: 1 !important;
+          visibility: visible !important;
+      }
+
+      /* Si hay una regla para el hover que lo oculta, la sobrescribes para que no haga nada */
+      .thumbnail-josip:hover figcaption {
+          /* No hagas nada, o asegúrate de que siga visible */
+          opacity: 1 !important;
+          visibility: visible !important;
+      }
+
+      /* Si el .offset-top-14 también se oculta con hover */
+      .thumbnail-josip .offset-top-14 {
+          opacity: 1 !important;
+          visibility: visible !important;
+      }
+
+      /* Asegura que figcaption tenga posición relativa para que los elementos absolutos dentro se posicionen correctamente */
+      .thumbnail-josip figcaption {
+          position: relative; /* Importante para el posicionamiento de los botones */
+          display: flex; /* Permite controlar la distribución de los hijos */
+          flex-direction: column; /* Organiza los elementos en columna */
+          justify-content: space-between; /* Distribuye el espacio entre los hijos */
+          height: 100%; /* Asegura que ocupe toda la altura disponible */
+          padding: 15px; /* Ajusta el padding si es necesario */
+          box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+      }
+
+      /* Contenedor para los botones */
+      .product-actions {
+          display: flex; /* Para que los botones estén en línea */
+          justify-content: flex-end; /* Alinea los botones a la derecha */
+          gap: 10px; /* Espacio entre los botones */
+          margin-top: auto; /* Empuja este div hacia abajo si el contenido de arriba es variable */
+          padding-top: 10px; /* Pequeño espacio superior para separar del texto */
+          border-top: 1px solid rgba(255, 255, 255, 0.1); /* Separador visual */
+      }
+
+      /* Estilos generales para los botones (si es necesario) */
+      .product-actions .btn {
+          /* Aquí puedes añadir estilos comunes si quieres que se vean igual */
+          min-width: 90px; /* Asegura un ancho mínimo para ambos botones */
+          text-align: center;
+      }
+
+      /* Asegúrate de que el bloque de información del producto ocupe el espacio disponible */
+      .product-info {
+          flex-grow: 1; /* Permite que la información del producto ocupe el espacio restante */
+          text-align: left; /* Alinea el texto a la izquierda si thumbnail-josip figcaption es text-center */
+      }
+
+      /* Las reglas existentes para forzar la visibilidad del texto deberían seguir siendo válidas */
+      .thumbnail-josip figcaption,
+      .thumbnail-josip-title,
+      .thumbnail-josip p.veil {
+          opacity: 1 !important;
+          visibility: visible !important;
+          transform: none !important;
+          transition: none !important;
+      }
+
+      .thumbnail-josip:hover figcaption {
+          opacity: 1 !important;
+          visibility: visible !important;
+      }
+
+      /* Estilos del Modal de Detalle de Producto */
+      .modal {
+          display: none; /* Oculto por defecto */
+          position: fixed; /* Permanece en su lugar */
+          z-index: 1001; /* Z-index más alto que el carrito */
+          left: 0;
+          top: 0;
+          width: 100%; /* Ancho completo */
+          height: 100%; /* Altura completa */
+          overflow: auto; /* Habilita el scroll si es necesario */
+          background-color: rgba(0,0,0,0.7); /* Fondo oscuro con transparencia */
+          justify-content: center;
+          align-items: center;
+      }
+
+      .modal-content {
+          background-color: #fefefe;
+          margin: auto; /* Centrar el contenido */
+          padding: 30px;
+          border: 1px solid #888;
+          width: 80%; /* Ancho del contenido del modal */
+          max-width: 700px;
+          position: relative;
+          text-align: center;
+          border-radius: 8px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+          color: #333;
+      }
+
+      .modal-content img {
+          max-width: 100%;
+          height: auto;
+          margin-bottom: 20px;
+          border-radius: 5px;
+      }
+
+      .modal-content h3 {
+          margin-top: 0;
+          font-size: 24px;
+          color: #000;
+      }
+
+      .modal-content p {
+          font-size: 16px;
+          margin-bottom: 10px;
+      }
+
+      .close-button {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+          position: absolute;
+          top: 10px;
+          right: 20px;
+          cursor: pointer;
+      }
+
+      .close-button:hover,
+      .close-button:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+      }
+
+      #modalAddToCartButton {
+          margin-top: 20px;
+          padding: 10px 20px;
+          font-size: 18px;
+          cursor: pointer;
+      }
+
+      /* Estilos para la navegación de categorías - Global (móvil y desktop) */
+      .category-navigation {
+          padding: 0;
+          background: transparent;
+          border-radius: 0;
+          margin-bottom: 30px;
+      }
+
+      .category-tabs {
+          display: flex;
+          gap: 0;
+          justify-content: center;
+          flex-wrap: wrap;
+          padding: 0;
+          background: rgba(0, 0, 0, 0.8);
+          border-radius: 8px;
+          overflow: hidden;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .category-tab {
+          background: transparent;
+          border: none;
+          border-right: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 15px 20px;
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 400;
+          font-size: 11px;
+          text-align: center;
+          transition: all 0.3s ease;
+          min-width: 0;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 3px;
+          cursor: pointer;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+      }
+
+      .category-tab:last-child {
+          border-right: none;
+      }
+
+      .category-tab:hover {
+          background: rgba(255, 255, 255, 0.05);
+          color: rgba(255, 255, 255, 0.9);
+      }
+
+      .category-tab.active {
+          background: rgba(255, 255, 255, 0.1);
+          color: #ffffff;
+          position: relative;
+      }
+
+      .category-tab.active::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, #d4af37, #f4d03f);
+      }
+
+      .category-tab i {
+          font-size: 14px;
+          margin-bottom: 2px;
+          opacity: 0.8;
+      }
+
+      .category-tab.active i {
+          opacity: 1;
+          color: #d4af37;
+      }
+
+      .category-tab span {
+          font-size: 10px;
+          font-weight: 600;
+          line-height: 1.1;
+      }
+
+      .category-tab small {
+          font-size: 8px;
+          opacity: 0.6;
+          font-weight: 300;
+          line-height: 1.0;
+      }
+
+      .category-tab.active small {
+          opacity: 0.8;
+      }
+
+      /* Ajustes para desktop */
+      @media (min-width: 768px) {
+          .category-tabs {
+              max-width: 500px;
+              margin: 0 auto;
+          }
+          
+          .category-tab {
+              padding: 18px 25px;
+              font-size: 12px;
+          }
+          
+          .category-tab i {
+              font-size: 16px;
+          }
+          
+          .category-tab span {
+              font-size: 11px;
+          }
+          
+          .category-tab small {
+              font-size: 9px;
+          }
+      }
+
+      /* Responsive para móviles muy pequeños */
+      @media (max-width: 480px) {
+          .category-tabs {
+              flex-direction: column;
+          }
+          
+          .category-tab {
+              border-right: none;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+              padding: 18px 20px;
+          }
+          
+          .category-tab:last-child {
+              border-bottom: none;
+          }
+          
+          .category-tab span {
+              font-size: 11px;
+          }
+          
+          .category-tab small {
+              font-size: 9px;
+          }
+
+          .category-tab.active::after {
+              top: 0;
+              bottom: auto;
+              height: 100%;
+              width: 3px;
+              right: auto;
+              background: linear-gradient(180deg, #d4af37, #f4d03f);
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Page-->
+    <div class="page text-center">
+      <!-- Page Header-->
+      <header class="page-head">
+        <!-- RD Navbar Transparent-->
+        <div class="rd-navbar-wrap">
+          <nav class="rd-navbar rd-navbar-logo-center rd-navbar-light" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" data-lg-stick-up-offset="110px" data-lg-auto-height="true" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
+            <div class="rd-navbar-inner">
+              <div class="container">
+                <div class="rd-navbar-top-block range range-lg-center range-lg-middle">
+                  <div class="cell-lg-3">
+                    <p class="veil reveal-lg-block">Cell: 504-606-7084</p>
+                  </div>
+                  <div class="cell-lg-6 text-center">
+                    <!--Navbar Brand-->
+                    <div class="rd-navbar-brand"><a href="/index.html"><img width='432' height='63' src='../images/logo-dark.png' alt=''/></a></div>
+                  </div>
+                  <div class="cell-lg-3">
+                    <p class="veil reveal-lg-block"><a class="text-primary" href="mailto:gustavo54@att.net">gustavo54@att.net</a></p>
+                  </div>
+                </div>
+                <!-- RD Navbar Panel-->
+                <div class="rd-navbar-panel">
+                  <!-- RD Navbar Toggle-->
+                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar, .rd-navbar-nav-wrap"><span></span></button>
+                  <!-- RD Navbar Top Panel Toggle-->
+                  <button class="rd-navbar-search-toggle" data-rd-navbar-toggle=".rd-navbar, .form-search-wrap"><span></span></button>
+                </div>
+              </div>
+              <div class="rd-navbar-menu-wrap">
+                <div class="container">
+                  <div class="rd-navbar-nav-wrap">
+                    <div class="rd-navbar-mobile-scroll">
+                      <!--Navbar Brand Mobile-->
+                      <div class="rd-navbar-mobile-brand"><a href="/index.html"><img width='221' height='32' src='../images/logo-dark.png' alt=''/></a></div>
+                      <!-- RD Navbar Nav-->
+                      <ul class="rd-navbar-nav">
+                        <li><a href="/index.html"><span>Home</span></a>
+                        </li>
+                        <li><a href="/about-us.html"><span>About</span></a>
+                        </li>
+                        <li class="active"><a href="/gallery.html"><span>Gallery</span></a>
+                        </li>
+                        <li><a href="/shop.html"><span>Shop Prints</span></a>
+                        </li>
+                        <li><a href="/contacts.html"><span>Contact Gustavo</span></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- Modern Breadcrumbs-->
+      <section>
+        <div class="parallax-container breadcrumb-modern bg-gray-darkest context-dark" data-parallax-img="../images/background-2-1920x651.jpg">
+          <div class="parallax-content">
+            <div class="bg-overlay-gray-darkest">
+              <div class="shell section-34 section-sm-50 section-md-110">
+                <div class="text-extra-big font-accent veil reveal-md-block"><span class="big">&nbsp</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Page Contents-->
+      <main class="page-content" style="background: #020000;">
+        <!-- Oil Paintings wide 3 columns-->
+         <section class="section-98 section-sm-110">
+            <div class="shell shell-wide">
+                <div class="offset-top-50">
+                    <div class="isotope-wrap">
+                      <div class="row">
+                          <div class="col-lg-12">
+                              <!-- Navegación de categorías global (móvil y desktop) -->
+                              <div class="category-navigation mb-4">
+                                <div class="category-tabs">
+                                  <button class="category-tab active" data-isotope-filter="Page 1" data-isotope-group="gallery">
+                                    <i class="fas fa-paint-brush"></i>
+                                    <span>Oil Paintings</span>
+                                    <small>Stretch Canvas</small>
+                                  </button>
+                                  <button class="category-tab" data-isotope-filter="Page 2" data-isotope-group="gallery">
+                                    <i class="fas fa-palette"></i>
+                                    <span>Acrylic Paintings</span>
+                                    <small>Canvas</small>
+                                  </button>
+                                </div>
+                              </div>
+                              
+                              <!-- Filtros originales ocultados -->
+                              <div class="isotope-filters isotope-filters-horizontal" style="display: none;">
+                                  <ul class="list-inline list-inline-sm">
+                                    <li class="section-relative">
+                                      <button class="isotope-filters-toggle btn btn-sm btn-default" data-custom-toggle="isotope-1" data-custom-toggle-disable-on-blur="true">Filter<span class="caret"></span></button>
+                                      <ul class="list-sm-inline isotope-filters-list" id="isotope-1">
+                                          <li><a class="text-bold active" data-isotope-filter="Page 1" data-isotope-group="gallery" href="#"><h3><br>Oil Paintings on Stretch Canvas</h3></a></li>
+                                          <li><a class="text-bold" data-isotope-filter="Page 2" data-isotope-group="gallery" href="#"><h3>Acrylic Paintings on Canvas</h3></a></li>
+                                      </ul>
+                                    </li>
+                                  </ul>
+                              </div>
+                          </div>                          
+                          <!-- Isotope Content-->
+                          <div class="col-lg-12 offset-top-34">
+                            <div class="isotope" data-isotope-layout="fitRows" data-isotope-group="gallery">
+                              <div class="row" data-photo-swipe-gallery="gallery">
+                                  <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip">
+                                            <a data-photo-swipe-item="" data-size="910x700" href="../images/portfolio/portfolio-01-910x700.jpg">
+                                                <img width="570" height="420" src="../images/portfolio/portfolio-01-570x420.jpg" alt="">
+                                            </a>
+                                            <figcaption>
+                                                <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Crescent City Rooftops</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 24" x 30"</p>
+                                                    <p class="product-price">$150.00</p>
+                                                </div>
+
+                                                <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Crescent City Rooftops"
+                                                      data-dimensions="24&quot; x 30&quot;"
+                                                      data-image="../images/portfolio/portfolio-01-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+
+                                                    <a class="btn btn-xs btn-success" href="/shop.html?product=crescent-city-rooftops">Shop This</a>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x672" href="../images/portfolio/portfolio-02-500x672.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-02-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Nouvelle Bleu</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 24" x 36"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+                                              
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Nouvelle Bleu"
+                                                      data-dimensions="24&quot; x 30&quot;"
+                                                      data-image="../images/portfolio/portfolio-02-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=nouvelle-bleu">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="736x500" href="../images/portfolio/portfolio-03-736x500.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-03-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Jazzy Balaconies</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 24" x 36"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Jazzy Balaconies"
+                                                      data-dimensions="24&quot; x 30&quot;"
+                                                      data-image="../images/portfolio/portfolio-03-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=jazzy-balconies">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x671" href="../images/portfolio/portfolio-04-500x671.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-04-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Orleans Street</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Two Sizes: 24" x 30" & 18" x 24"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Orleans Street"
+                                                      data-dimensions="24&quot; x 30&quot; & 18&quot; x 24&quot;"
+                                                      data-image="../images/portfolio/portfolio-04-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=orleans-street">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x668" href="../images/portfolio/portfolio-26-500x663.JPG">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-26-570x420.JPG" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Pirate's Alley</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Two Sizes: 24" x 30" & 18" x 24"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Pirate's Alley"
+                                                      data-dimensions="24&quot; x 30&quot; & 18&quot; x 24&quot;"
+                                                      data-image="../images/portfolio/portfolio-26-570x420.JPG"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=pirates-alley">Shop This</a>
+                                              </div>                                              
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="638x500" href="../images/portfolio/portfolio-06-638x500.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-06-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Cafe Du Monde</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">18" x 24"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Cafe Du Monde"
+                                                      data-dimensions="18&quot; x 24&quot;"
+                                                      data-image="../images/portfolio/portfolio-06-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=cafe-du-monde">Shop This</a>
+                                              </div>                                               
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x663" href="../images/portfolio/portfolio-07-500x663.PNG">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-07-570x420.PNG" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Blue Moon Cafe</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 18" x 24"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Blue Moon Cafe"
+                                                      data-dimensions="18&quot; x 24&quot;"
+                                                      data-image="../images/portfolio/portfolio-07-570x420.PNG"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=blue-moon-cafe">Shop This</a>
+                                              </div>                                              
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x663" href="../images/portfolio/portfolio-20-500x663.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-20-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Buggy</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 18" x 24"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Buggy"
+                                                      data-dimensions="18&quot; x 24&quot;"
+                                                      data-image="../images/portfolio/portfolio-20-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=buggy">Shop This</a>
+                                              </div> 
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x663" href="../images/portfolio/portfolio-21-500x663.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-21-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">General Jackson</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 18" x 24"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="General Jackson"
+                                                      data-dimensions="18&quot; x 24&quot;"
+                                                      data-image="../images/portfolio/portfolio-21-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=general-jackson">Shop This</a>
+                                              </div>                                             
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x663" href="../images/portfolio/portfolio-22-500x663.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-22-570x420.jpg" alt=""></a>
+                                            <figcaption>
+
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">katies House</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 18" x 24"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="katies House"
+                                                      data-dimensions="18&quot; x 24&quot;"
+                                                      data-image="../images/portfolio/portfolio-22-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=katies-house">Shop This</a>
+                                              </div>                                               
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="1011x700" href="../images/portfolio/portfolio-08-1011x700.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-08-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Royal Street Balconies</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 24" x 36"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Royal Street Balconies"
+                                                      data-dimensions="24&quot; x 36&quot;"
+                                                      data-image="../images/portfolio/portfolio-08-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=royal-street-balconies">Shop This</a>
+                                              </div>   
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x741" href="../images/portfolio/portfolio-09-500x741.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-09-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Desire Streetcar</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 24" x 36"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Desire Streetcar"
+                                                      data-dimensions="24&quot; x 36&quot;"
+                                                      data-image="../images/portfolio/portfolio-09-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=desire-streetcar">Shop This</a>
+                                              </div> 
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x998" href="../images/portfolio/portfolio-10-500x998.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-10-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Porte Blue</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 15" x 30"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Porte Blue"
+                                                      data-dimensions="15&quot; x 30&quot;"
+                                                      data-image="../images/portfolio/portfolio-10-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=porte-blue">Shop This</a>
+                                              </div> 
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x974" href="../images/portfolio/portfolio-11-500x974.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-11-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Maison Rouge</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 15" x 30"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Maison Rouge"
+                                                      data-dimensions="15&quot; x 30&quot;"
+                                                      data-image="../images/portfolio/portfolio-11-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=maison-rouge">Shop This</a>
+                                              </div> 
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="461x963" href="../images/portfolio/portfolio-12-461x963.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-12-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Red House</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 15" x 30"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Red House"
+                                                      data-dimensions="15&quot; x 30&quot;"
+                                                      data-image="../images/portfolio/portfolio-12-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=red-house">Shop This</a>
+                                              </div>                                   
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x663" href="../images/portfolio/portfolio-13-500x663.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-13-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">St. Louis Cathedral in Full Color</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Two Sizes: 24" x 30" & 18" x 24"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="St. Louis Cathedral in Full Color"
+                                                      data-dimensions="24&quot; x 30&quot; & 18&quot; x 24&quot;"
+                                                      data-image="../images/portfolio/portfolio-13-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=st-louis-cathedral-full-color">Shop This</a>
+                                              </div> 
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x634" href="../images/portfolio/portfolio-14-500x634.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-14-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Curve Appeal</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 18" x 24"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Curve Appeal"
+                                                      data-dimensions="18&quot; x 24&quot;"
+                                                      data-image="../images/portfolio/portfolio-14-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=curve-appeal">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="622x500" href="../images/portfolio/portfolio-27-500x663.JPG">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-27-570x420.JPG" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Quartet</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 24" x 36"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Quartet"
+                                                      data-dimensions="24&quot; x 36&quot;"
+                                                      data-image="../images/portfolio/portfolio-27-570x420.JPG"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=quartet">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x989" href="../images/portfolio/portfolio-16-500x989.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-16-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Canary</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 15" x 30"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Canary"
+                                                      data-dimensions="15&quot; x 30&quot;"
+                                                      data-image="../images/portfolio/portfolio-16-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=canary">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="1066x700" href="../images/portfolio/portfolio-17-1066x700.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-17-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Vieux Carré Balconies</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 15" x 30"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Vieux Carré Balconies"
+                                                      data-dimensions="24&quot; x 36&quot;"
+                                                      data-image="../images/portfolio/portfolio-17-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=vieux-carre-balconies">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x1002" href="../images/portfolio/portfolio-18-500x1002.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-18-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Edifice Bleu</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 15" x 30"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Edifice Bleu"
+                                                      data-dimensions="15&quot; x 30&quot;"
+                                                      data-image="../images/portfolio/portfolio-18-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=edifice-bleu">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="642x500" href="../images/portfolio/portfolio-19-642x500.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-19-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Lafittes Blacksmith House Blue Hue</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Two Sizes: 24" x 30" & 18" x 24"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Lafittes Blacksmith House Blue Hue"
+                                                      data-dimensions="24&quot; x 30&quot; & 18&quot; x 24&quot;"
+                                                      data-image="../images/portfolio/portfolio-19-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=lafittes-blacksmith-blue">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="642x500" href="../images/portfolio/portfolio-23-500x663.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-23-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Lafitte_s Blacksmith Shop</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Two Sizes: 24" x 30" & 18" x 24"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Lafitte_s Blacksmith Shop"
+                                                      data-dimensions="24&quot; x 30&quot; & 18&quot; x 24&quot;"
+                                                      data-image="../images/portfolio/portfolio-23-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=lafittes-blacksmith-shop">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="642x500" href="../images/portfolio/portfolio-24-500x663.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-24-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Mardi Gras</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Size: 24" x 36"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Mardi Gras"
+                                                      data-dimensions="24&quot; x 36&quot;"
+                                                      data-image="../images/portfolio/portfolio-24-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=mardi-gras">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="642x500" href="../images/portfolio/portfolio-25-500x663.JPG">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-25-570x420.JPG" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Maya's House</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Size: 24" x 30"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Maya's House"
+                                                      data-dimensions="24&quot; x 30&quot;"
+                                                      data-image="../images/portfolio/portfolio-25-570x420.JPG"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=mayas-house">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x663"href="../images/portfolio/portfolio-28-500x663.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-28-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Red & Yellow Houses</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Size: 24" x 36"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Red & Yellow Houses"
+                                                      data-dimensions="24&quot; x 36&quot;"
+                                                      data-image="../images/portfolio/portfolio-28-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=red-yellow-houses">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x663" href="../images/portfolio/portfolio-29-500x663.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-29-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Shades of Blue</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Two Sizes: 24" x 30" & 18" x 24"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Shades of Blue"
+                                                      data-dimensions="24&quot; x 30&quot; & 18&quot; x 24&quot;"
+                                                      data-image="../images/portfolio/portfolio-29-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=mayas-house">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x663" href="../images/portfolio/portfolio-30-500x663.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-30-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">St. Louis Cathedral Lite Sky</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Two Sizes: 24" x 30" & 18" x 24"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="St. Louis Cathedral Lite Sky"
+                                                      data-dimensions="24&quot; x 30&quot; & 18&quot; x 24&quot;"
+                                                      data-image="../images/portfolio/portfolio-30-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=st-louis-lite-sky">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x663" href="../images/portfolio/portfolio-31-500x663.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-31-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">St. Louis in Full Color</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Two Sizes: 24" x 30" & 18" x 24"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="St. Louis in Full Color"
+                                                      data-dimensions="24&quot; x 30&quot; & 18&quot; x 24&quot;"
+                                                      data-image="../images/portfolio/portfolio-31-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=st-louis-full-color">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <!-- <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x663" href="../images/portfolio/portfolio-31-500x663.jpg"><img width="570" height="420" src="../images/portfolio/portfolio-31-570x420.jpg" alt=""></a>
+                                            <figcaption><a class="btn btn-xs btn-primary offset-top-10 pull-right" data-photo-swipe-item="" data-size="500x663" href="../images/portfolio/portfolio-31-500x663.jpg">detail</a>
+                                              <div class="offset-top-14 offset-md-top-0">
+                                                <h6 class="thumbnail-josip-title">St. Louis in Full Color</h6>
+                                              </div>
+                                              <p class="veil reveal-md-block offset-top-0">Two Sizes: 24" x 30" & 18" x 24"</p>
+                                            </figcaption>
+                                          </figure>
+                                </div> -->
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x663" href="../images/portfolio/portfolio-32-500x663.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-32-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Tree House 1</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Size: 24" x 30"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Tree House 1"
+                                                      data-dimensions="24&quot; x 30&quot;"
+                                                      data-image="../images/portfolio/portfolio-32-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=tree-house-1">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x663" href="../images/portfolio/portfolio-33-500x663.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-33-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Tree House 2</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Size: 24" x 30"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Tree House 2"
+                                                      data-dimensions="24&quot; x 30&quot;"
+                                                      data-image="../images/portfolio/portfolio-33-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=tree-house-2">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="642x500" href="../images/portfolio/portfolio-34-500x663.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-34-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Yellow Shotgun</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Size: 24" x 30"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Yellow Shotgun"
+                                                      data-dimensions="24&quot; x 30&quot;"
+                                                      data-image="../images/portfolio/portfolio-34-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=yellow-shotgun">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+
+                                <!-- AQUI ACRILICOS -->
+                                  <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x693" href="../images/portfolio/portfolio-01a-500x693.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-01a-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Autummn Trees</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Two Sizes: 27" x 37" & 54" x 56"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Autummn Trees"
+                                                      data-dimensions="27&quot; x 37&quot; & 54&quot; x 56&quot;"
+                                                      data-image="../images/portfolio/portfolio-01a-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=autumn-trees">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x686" href="../images/portfolio/portfolio-02a-500x686.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-02a-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Julia Street</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Julia Street"
+                                                      data-dimensions="27&quot; x 37&quot;"
+                                                      data-image="../images/portfolio/portfolio-02a-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=julia-street">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x682" href="../images/portfolio/portfolio-03a-500x682.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-03a-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Plantation Stroll</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Plantation Stroll"
+                                                      data-dimensions="27&quot; x 37&quot;"
+                                                      data-image="../images/portfolio/portfolio-03a-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=plantation-stroll">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x687" href="../images/portfolio/portfolio-04a-500x687.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-04a-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Bourbon Street</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Bourbon Street"
+                                                      data-dimensions="27&quot; x 37&quot;"
+                                                      data-image="../images/portfolio/portfolio-04a-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=bourbon-street">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x667" href="../images/portfolio/portfolio-05a-500x667.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-05a-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Esplanade Street</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Esplanade Street"
+                                                      data-dimensions="27&quot; x 37&quot;"
+                                                      data-image="../images/portfolio/portfolio-05a-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=esplanade-street">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x681" href="../images/portfolio/portfolio-06a-500x681.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-06a-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Madison Street</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Madison Street"
+                                                      data-dimensions="27&quot; x 37&quot;"
+                                                      data-image="../images/portfolio/portfolio-06a-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=madison-street">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="712x500" href="../images/portfolio/portfolio-07a-712x500.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-07a-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">French Quarter</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="French Quarter"
+                                                      data-dimensions="27&quot; x 37&quot;"
+                                                      data-image="../images/portfolio/portfolio-07a-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=french-quarter">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="612x500" href="../images/portfolio/portfolio-08a-612x500.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-08a-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Orleans</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Orleans"
+                                                      data-dimensions="27&quot; x 37&quot;"
+                                                      data-image="../images/portfolio/portfolio-08a-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=orleans">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x667" href="../images/portfolio/portfolio-09a-500x667.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-09a-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Jackson Square</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Jackson Square"
+                                                      data-dimensions="27&quot; x 37&quot;"
+                                                      data-image="../images/portfolio/portfolio-09a-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=jackson-square">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x748" href="../images/portfolio/portfolio-10a-500x748.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-10a-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">St. Louis Cathedral</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="St. Louis Cathedral"
+                                                      data-dimensions="27&quot; x 37&quot;"
+                                                      data-image="../images/portfolio/portfolio-10a-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=st-louis-cathedral">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="703x500" href="../images/portfolio/portfolio-11a-703x500.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-11a-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Side Walk Stroll</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Side Walk Stroll"
+                                                      data-dimensions="27&quot; x 37&quot;"
+                                                      data-image="../images/portfolio/portfolio-11a-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=side-walk-stroll">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="703x500" href="../images/portfolio/portfolio-35a-703x500.JPG">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-35a-570x420.JPG" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Blue Showers</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Blue Showers"
+                                                      data-dimensions="27&quot; x 37&quot;"
+                                                      data-image="../images/portfolio/portfolio-35a-570x420.JPG"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=blue-showers">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="703x500" href="../images/portfolio/portfolio-36a-703x500.JPG">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-36a-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Elisa's House</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Elisa's House"
+                                                      data-dimensions="27&quot; x 37&quot;"
+                                                      data-image="../images/portfolio/portfolio-36a-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=elisas-house">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="703x500" href="../images/portfolio/portfolio-37a-703x500.jpg">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-37a-570x420.jpg" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Rainy Day</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Rainy Day"
+                                                      data-dimensions="27&quot; x 37&quot;"
+                                                      data-image="../images/portfolio/portfolio-37a-570x420.jpg"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=rainy-day">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
+                                          <!-- Thumbnail Josip-->
+                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="703x500" href="../images/portfolio/portfolio-38a-703x500.JPG">
+                                            <img width="570" height="420" src="../images/portfolio/portfolio-38a-570x420.JPG" alt=""></a>
+                                            <figcaption>
+                                              <div class="product-info">
+                                                    <h6 class="thumbnail-josip-title product-name">Woods</h6>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$150.00</p>
+                                              </div>
+
+                                              <div class="product-actions">
+                                                    <a class="btn btn-xs btn-primary detail-button"
+                                                      data-name="Woods"
+                                                      data-dimensions="27&quot; x 37&quot;"
+                                                      data-image="../images/portfolio/portfolio-38a-570x420.JPG"
+                                                      data-price="150.00">detail</a>
+                                              
+                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=woods">Shop This</a>
+                                              </div>
+                                            </figcaption>
+                                          </figure>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </section>
+        <!-- <section class="section-98 section-sm-110">
+                          <h1><br>Oil Paintings on Stretch Canvas</h1>
+          <div class="shell shell-wide">
+            <div class="offset-top-50">
+                      <div class="isotope-wrap">
+                        <div class="row">                          
+                          <div class="col-lg-12">
+                            <div class="isotope-filters isotope-filters-horizontal">
+                              <ul class="list-inline list-inline-sm">
+                                <li class="section-relative">
+                                  <button class="isotope-filters-toggle btn btn-sm btn-default" data-custom-toggle="isotope-1" data-custom-toggle-disable-on-blur="true">Filter<span class="caret"></span></button>
+                                  <ul class="list-sm-inline isotope-filters-list" id="isotope-1">
+                                    <li><a class="text-bold active" data-isotope-filter="Page 1" data-isotope-group="gallery" href="#">Page 1</a></li>
+                                    <li><a class="text-bold" data-isotope-filter="Page 2" data-isotope-group="gallery" href="#">Page 2</a></li>
+                                    <li><a class="text-bold" data-isotope-filter="Page 3" data-isotope-group="gallery" href="#">Page 3</a></li>
+                                    <li><a class="text-bold" data-isotope-filter="Page 4" data-isotope-group="gallery" href="#">Page 4</a></li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>                          
+                          <div class="col-lg-12 offset-top-34">
+                            <div class="isotope" data-isotope-layout="fitRows" data-isotope-group="gallery">
+                              <div class="row" data-photo-swipe-gallery="gallery">
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+            </div>
+          </div>      
+        <section class="section-98 section-sm-110">
+                          <h1>Acrylic Paintings on Canvas</h1>
+          <div class="shell shell-wide">
+            <div class="offset-top-50">
+                      <div class="isotope-wrap">
+                        <div class="row">                          
+                          <div class="col-lg-12 offset-top-34">
+                            <div class="isotope" data-isotope-layout="fitRows" data-isotope-group="gallery">
+                              <div class="row" data-photo-swipe-gallery="gallery">
+                               
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+            </div>
+          </div>
+        </section> -->
+      </main>
+      
+        <!-- Page Footers-->
+      <!-- Footer variant 4-->
+      <footer class="section-relative section-34 page-footer bg-gray-base context-dark">
+        <div class="shell">
+          <div class="range range-sm-center text-lg-left">
+            <div class="cell-sm-12">
+              <div class="range range-xs-center">
+                <div class="cell-xs-12 cell-md-8 cell-md-push-2 text-md-right">
+                  <div>
+                    <ul class="list-inline list-inline-dashed p text-darker list-inline-md list-inline-dashed-wide">
+                      <li><a href="/about-us.html">About Gustavo</a></li>
+                      <li><a href="/gallery.html">Gallery</a></li>
+                      <li><a href="/shop.html">Shop Prints</a></li>
+                      <li><a href="/contacts.html">Contact Gustavo</a></li>
+                    </ul>
+                  </div>
+                  <ul class="list-inline list-inline-white offset-top-10 text-darker text-white">
+                    <li><a class="fa fa-facebook" href="https://www.facebook.com/gustavo.trujillo.artist"></a></li>
+                    <li><a class="fa fa-pinterest" href="https://www.pinterest.com/gustavotrujilloneworleansfinea/"></a></li>
+                  </ul>
+                </div>
+                <div class="cell-xs-12 cell-md-4 cell-md-push-1 offset-top-34 offset-md-top-0">
+                  <!-- Footer brand-->
+                  <div class="footer-brand"><a href="/index.html"><img width='221' height='32' style='margin-left: -6px;' src='../images/logo-light.png' alt=''/></a></div>
+                  <p class="small text-darker offset-top-4 text-white">&copy; <span id="copyright-year"></span> Gustavo Trujillo
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- PhotoSwipe Gallery-->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="pswp__bg"></div>
+      <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+          <div class="pswp__top-bar">
+            <div class="pswp__counter"></div>
+            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+            <button class="pswp__button pswp__button--share" title="Share"></button>
+            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+            <div class="pswp__preloader">
+              <div class="pswp__preloader__icn">
+                <div class="pswp__preloader__cut">
+                  <div class="pswp__preloader__donut"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+            <div class="pswp__share-tooltip"></div>
+          </div>
+          <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+          <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+          <div class="pswp__caption">
+            <div class="pswp__caption__center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Java script-->
+    <script src="/js/core.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          // Modal de detalle de producto
+          const productDetailModal = document.getElementById('productDetailModal');
+          const closeDetailModalBtn = productDetailModal.querySelector('.close-button');
+          const modalImage = document.getElementById('modalImage');
+          const modalProductName = document.getElementById('modalProductName');
+          const modalProductDimensions = document.getElementById('modalProductDimensions');
+          const modalProductPrice = document.getElementById('modalProductPrice');
+
+          // --- Funcionalidad del Modal de Detalle ---
+
+          function showProductDetailModal(product) {
+              modalImage.src = product.image;
+              modalProductName.textContent = product.name;
+              modalProductDimensions.textContent = `Dimensions: ${product.dimensions}`;
+              modalProductPrice.textContent = `$${parseFloat(product.price).toFixed(2)}`;
+
+              productDetailModal.style.display = 'flex'; // Usar flex para centrar
+          }
+
+          function hideProductDetailModal() {
+              productDetailModal.style.display = 'none';
+          }
+
+          // Abrir modal de detalle
+          document.querySelectorAll('.detail-button').forEach(button => {
+              button.addEventListener('click', function(e) {
+                  e.preventDefault(); // Previene la acción por defecto del PhotoSwipe
+                  const product = {
+                      name: this.dataset.name,
+                      dimensions: this.dataset.dimensions,
+                      image: this.dataset.image,
+                      price: this.dataset.price
+                  };
+                  showProductDetailModal(product);
+              });
+          });
+
+          // Cerrar modal de detalle
+          closeDetailModalBtn.addEventListener('click', hideProductDetailModal);
+
+          // Cerrar modal al hacer clic fuera del contenido
+          window.addEventListener('click', function(event) {
+              if (event.target == productDetailModal) {
+                  hideProductDetailModal();
+              }
+          });
+
+          // --- Funcionalidad de los Botones de Categoría para Móvil ---
+          
+          // Manejar clics en los botones de categoría personalizados
+          document.querySelectorAll('.category-tab').forEach(button => {
+              button.addEventListener('click', function(e) {
+                  e.preventDefault();
+                  
+                  // Remover clase active de todos los botones
+                  document.querySelectorAll('.category-tab').forEach(tab => {
+                      tab.classList.remove('active');
+                  });
+                  
+                  // Agregar clase active al botón clickeado
+                  this.classList.add('active');
+                  
+                  // Obtener el filtro y grupo
+                  const filter = this.getAttribute('data-isotope-filter');
+                  const group = this.getAttribute('data-isotope-group');
+                  
+                  // Encontrar el isotope container y aplicar el filtro
+                  const isoContainer = document.querySelector('.isotope[data-isotope-group="' + group + '"]');
+                  if (isoContainer && window.jQuery) {
+                      // Usar jQuery isotope si está disponible
+                      jQuery(isoContainer).isotope({
+                          filter: '[data-filter*="' + filter + '"]'
+                      });
+                  }
+                  
+                  // También actualizar los filtros originales para mantener sincronización
+                  const originalFilters = document.querySelectorAll('[data-isotope-filter="' + filter + '"][data-isotope-group="' + group + '"]');
+                  originalFilters.forEach(originalFilter => {
+                      // Remover active de otros filtros
+                      const parentList = originalFilter.closest('.isotope-filters-list');
+                      if (parentList) {
+                          parentList.querySelectorAll('.active').forEach(activeFilter => {
+                              activeFilter.classList.remove('active');
+                          });
+                          originalFilter.classList.add('active');
+                      }
+                  });
+              });
+          });
+      });
+      </script>
+
+      <div id="productDetailModal" class="modal">
+        <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <img id="modalImage" src="" alt="Product Image">
+          <h3 id="modalProductName"></h3>
+          <p id="modalProductDimensions"></p>
+          <p id="modalProductPrice"></p>
+        </div>
+      </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

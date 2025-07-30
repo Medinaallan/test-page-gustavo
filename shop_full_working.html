@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+  <head>
+    <title>Shop - Gustavo Trujillo Gallery</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0 maximum-scale=1.0 user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Dancing+Script:700%7CLato:300,300italic,400,700,900">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+      .product-grid { margin-top: 2rem; }
+      .card-img-top { transition: transform 0.3s ease; }
+      .card:hover .card-img-top { transform: scale(1.05); }
+      .cart-badge { 
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: #dc3545;
+        color: white;
+        border-radius: 50%;
+        padding: 2px 8px;
+        font-size: 12px;
+        min-width: 20px;
+        text-align: center;
+      }
+      
+      .option-card {
+        border: 2px solid #444;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .option-card:hover {
+        border-color: #ffc107;
+        background: rgba(255, 193, 7, 0.1);
+      }
+      
+      .option-card.selected {
+        border-color: #ffc107;
+        background: rgba(255, 193, 7, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="section page-header">
+      <div class="rd-navbar-wrap">
+        <nav class="rd-navbar rd-navbar-modern context-dark bg-danger" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="106px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+          <div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle=".rd-navbar-collapse"><span></span></div>
+          <div class="rd-navbar-aside-outer">
+            <div class="rd-navbar-aside">
+              <ul class="rd-navbar-contacts-2">
+                <li>
+                  <div class="unit unit-spacing-xs">
+                    <div class="unit-left"><span class="icon mdi mdi-phone"></span></div>
+                    <div class="unit-body"><a class="link-white" href="tel:#">+1 (504) 123-4567</a></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="unit unit-spacing-xs">
+                    <div class="unit-left"><span class="icon mdi mdi-map-marker"></span></div>
+                    <div class="unit-body"><a class="link-white" href="#">New Orleans, LA</a></div>
+                  </div>
+                </li>
+              </ul>
+              <ul class="list-share-2">
+                <li><a class="icon mdi mdi-facebook" href="#"></a></li>
+                <li><a class="icon mdi mdi-twitter" href="#"></a></li>
+                <li><a class="icon mdi mdi-instagram" href="#"></a></li>
+                <li><a class="icon mdi mdi-google-plus" href="#"></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="rd-navbar-main-outer">
+            <div class="rd-navbar-main">
+              <div class="rd-navbar-panel">
+                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                <div class="rd-navbar-brand">
+                  <a class="brand" href="index.html">
+                    <img class="brand-logo-light" src="images/logo-light.png" alt="" width="129" height="20"/>
+                    <img class="brand-logo-dark" src="images/logo-dark.png" alt="" width="129" height="20"/>
+                  </a>
+                </div>
+              </div>
+              <div class="rd-navbar-nav-wrap">
+                <ul class="rd-navbar-nav">
+                  <li class="rd-nav-item"><a class="rd-nav-link" href="index.html">Home</a></li>
+                  <li class="rd-nav-item"><a class="rd-nav-link" href="about-us.html">About</a></li>
+                  <li class="rd-nav-item"><a class="rd-nav-link" href="gallery.html">Gallery</a></li>
+                  <li class="rd-nav-item active"><a class="rd-nav-link" href="shop.html">Shop</a></li>
+                  <li class="rd-nav-item"><a class="rd-nav-link" href="contacts.html">Contacts</a></li>
+                  <li class="rd-nav-item">
+                    <a class="rd-nav-link" href="#" onclick="showCartOverlay()" style="position: relative;">
+                      <i class="fas fa-shopping-cart"></i>
+                      <span id="cartCount" class="cart-badge">0</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="breadcrumbs-custom-inset">
+      <div class="breadcrumbs-custom context-dark bg-overlay-60">
+        <div class="container">
+          <h2 class="breadcrumbs-custom-title">Shop</h2>
+          <ul class="breadcrumbs-custom-path">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Shop</li>
+          </ul>
+        </div>
+        <div class="box-position" style="background-image: url(images/background-2-1920x651.jpg);"></div>
+      </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section class="section section-sm section-first bg-default">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-lg-12">
+            <h3>Original Art Prints</h3>
+            <p class="text-opacity-70">Discover beautiful New Orleans scenes and original artwork</p>
+          </div>
+        </div>
+        
+        <!-- Product Grid -->
+        <div class="row product-grid" id="productGrid">
+          <!-- Products will be populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="section footer-corporate context-dark">
+      <div class="footer-corporate-inset">
+        <div class="container">
+          <div class="row row-40 justify-content-lg-between">
+            <div class="col-sm-6 col-md-12 col-lg-3 col-xl-4">
+              <div class="oh-desktop">
+                <div class="wow slideInRight" data-wow-delay="0s">
+                  <h6 class="text-spacing-100 text-uppercase">Contact Info</h6>
+                  <ul class="footer-contacts d-inline-block d-sm-block">
+                    <li>
+                      <div class="unit">
+                        <div class="unit-left"><span class="icon fa fa-phone"></span></div>
+                        <div class="unit-body"><a class="link-phone" href="tel:#">+1 (504) 123-4567</a></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="unit">
+                        <div class="unit-left"><span class="icon fa fa-envelope"></span></div>
+                        <div class="unit-body"><a class="link-aemail" href="mailto:#">info@example.com</a></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="unit">
+                        <div class="unit-left"><span class="icon fa fa-location-arrow"></span></div>
+                        <div class="unit-body"><a class="link-location" href="#">New Orleans, LA 70112</a></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-5 col-lg-3 col-xl-4">
+              <div class="oh-desktop">
+                <div class="wow slideInDown" data-wow-delay="0s">
+                  <h6 class="text-spacing-100 text-uppercase">Popular links</h6>
+                  <ul class="footer-list d-inline-block d-sm-block">
+                    <li><a href="about-us.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-11 col-md-7 col-lg-5 col-xl-4">
+              <div class="oh-desktop">
+                <div class="wow slideInLeft" data-wow-delay="0s">
+                  <h6 class="text-spacing-100 text-uppercase">Newsletter</h6>
+                  <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="subscribe" method="post" action="bat/rd-mailform.php">
+                    <div class="form-wrap">
+                      <input class="form-input" id="subscribe-form-2-email" type="email" name="email" data-constraints="@Email @Required"/>
+                      <label class="form-label" for="subscribe-form-2-email">Enter your e-mail</label>
+                    </div>
+                    <div class="form-button">
+                      <button class="button button-primary button-winona" type="submit">Subscribe</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-corporate-bottom-panel">
+        <div class="container">
+          <div class="row justfy-content-xl-space-between row-10 align-items-md-center2">
+            <div class="col-sm-6 col-md-4 text-sm-right text-md-center">
+              <div>
+                <ul class="list-inline list-inline-sm footer-social-list-2">
+                  <li><a class="icon fa fa-facebook" href="#"></a></li>
+                  <li><a class="icon fa fa-twitter" href="#"></a></li>
+                  <li><a class="icon fa fa-google-plus" href="#"></a></li>
+                  <li><a class="icon fa fa-instagram" href="#"></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 order-sm-first">
+              <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>Gustavo Trujillo</span><span>.&nbsp;</span><span>All Rights Reserved.</span><span>&nbsp;</span><a href="privacy-policy.html">Privacy Policy</a></p>
+            </div>
+            <div class="col-sm-6 col-md-4 text-md-right">
+              <p class="rights"><a href="#">Terms of Use</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/core.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Cart System with Options Selector -->
+    <script>
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let selectedOption = null;
+      let currentProduct = null;
+      
+      // Products with Paper Print and Canvas options
+      const products = [
+        {
+          id: 1,
+          name: 'Autumn Trees',
+          image: 'images/autumn-trees-364x500.png',
+          description: 'Beautiful autumn scene with vibrant fall colors',
+          options: [
+            { material: 'Paper Print', size: '8" x 10"', price: 25 },
+            { material: 'Paper Print', size: '11" x 14"', price: 35 },
+            { material: 'Paper Print', size: '16" x 20"', price: 45 },
+            { material: 'Canvas', size: '8" x 10"', price: 65 },
+            { material: 'Canvas', size: '11" x 14"', price: 85 },
+            { material: 'Canvas', size: '16" x 20"', price: 120 }
+          ]
+        },
+        {
+          id: 2,
+          name: 'Bourbon Street',
+          image: 'images/bourbon-street-364x500.png',
+          description: 'Iconic New Orleans street scene',
+          options: [
+            { material: 'Paper Print', size: '8" x 10"', price: 25 },
+            { material: 'Paper Print', size: '11" x 14"', price: 35 },
+            { material: 'Paper Print', size: '16" x 20"', price: 45 },
+            { material: 'Canvas', size: '8" x 10"', price: 65 },
+            { material: 'Canvas', size: '11" x 14"', price: 85 },
+            { material: 'Canvas', size: '16" x 20"', price: 120 }
+          ]
+        },
+        {
+          id: 3,
+          name: 'Jackson Square',
+          image: 'images/jackson-square-364x500.png',
+          description: 'Historic Jackson Square in New Orleans',
+          options: [
+            { material: 'Paper Print', size: '8" x 10"', price: 25 },
+            { material: 'Paper Print', size: '11" x 14"', price: 35 },
+            { material: 'Paper Print', size: '16" x 20"', price: 45 },
+            { material: 'Canvas', size: '8" x 10"', price: 65 },
+            { material: 'Canvas', size: '11" x 14"', price: 85 },
+            { material: 'Canvas', size: '16" x 20"', price: 120 }
+          ]
+        },
+        {
+          id: 4,
+          name: 'Julia Street',
+          image: 'images/julia-street-364x500.png',
+          description: 'Charming Julia Street artwork',
+          options: [
+            { material: 'Paper Print', size: '8" x 10"', price: 25 },
+            { material: 'Paper Print', size: '11" x 14"', price: 35 },
+            { material: 'Paper Print', size: '16" x 20"', price: 45 },
+            { material: 'Canvas', size: '8" x 10"', price: 65 },
+            { material: 'Canvas', size: '11" x 14"', price: 85 },
+            { material: 'Canvas', size: '16" x 20"', price: 120 }
+          ]
+        },
+        {
+          id: 5,
+          name: 'LaFitte Cool Shades',
+          image: 'images/lafitte-cool-shades-364x500.png',
+          description: 'Cool character from LaFitte area',
+          options: [
+            { material: 'Paper Print', size: '8" x 10"', price: 25 },
+            { material: 'Paper Print', size: '11" x 14"', price: 35 },
+            { material: 'Paper Print', size: '16" x 20"', price: 45 },
+            { material: 'Canvas', size: '8" x 10"', price: 65 },
+            { material: 'Canvas', size: '11" x 14"', price: 85 },
+            { material: 'Canvas', size: '16" x 20"', price: 120 }
+          ]
+        },
+        {
+          id: 6,
+          name: 'Madison Street',
+          image: 'images/madison-street-364x500.png',
+          description: 'Madison Street scene',
+          options: [
+            { material: 'Paper Print', size: '8" x 10"', price: 25 },
+            { material: 'Paper Print', size: '11" x 14"', price: 35 },
+            { material: 'Paper Print', size: '16" x 20"', price: 45 },
+            { material: 'Canvas', size: '8" x 10"', price: 65 },
+            { material: 'Canvas', size: '11" x 14"', price: 85 },
+            { material: 'Canvas', size: '16" x 20"', price: 120 }
+          ]
+        },
+        {
+          id: 7,
+          name: 'Pirates Alley',
+          image: 'images/pirates-alley-373x500.png',
+          description: 'Mysterious Pirates Alley',
+          options: [
+            { material: 'Paper Print', size: '8" x 10"', price: 25 },
+            { material: 'Paper Print', size: '11" x 14"', price: 35 },
+            { material: 'Paper Print', size: '16" x 20"', price: 45 },
+            { material: 'Canvas', size: '8" x 10"', price: 65 },
+            { material: 'Canvas', size: '11" x 14"', price: 85 },
+            { material: 'Canvas', size: '16" x 20"', price: 120 }
+          ]
+        },
+        {
+          id: 8,
+          name: 'Plantation Stroll',
+          image: 'images/plantation-stroll-364x500.png',
+          description: 'Peaceful plantation walkway',
+          options: [
+            { material: 'Paper Print', size: '8" x 10"', price: 25 },
+            { material: 'Paper Print', size: '11" x 14"', price: 35 },
+            { material: 'Paper Print', size: '16" x 20"', price: 45 },
+            { material: 'Canvas', size: '8" x 10"', price: 65 },
+            { material: 'Canvas', size: '11" x 14"', price: 85 },
+            { material: 'Canvas', size: '16" x 20"', price: 120 }
+          ]
+        },
+        {
+          id: 9,
+          name: 'Vieux Carre Balconies',
+          image: 'images/vieux-carre-364x500.png',
+          description: 'Classic French Quarter balconies',
+          options: [
+            { material: 'Paper Print', size: '8" x 10"', price: 25 },
+            { material: 'Paper Print', size: '11" x 14"', price: 35 },
+            { material: 'Paper Print', size: '16" x 20"', price: 45 },
+            { material: 'Canvas', size: '8" x 10"', price: 65 },
+            { material: 'Canvas', size: '11" x 14"', price: 85 },
+            { material: 'Canvas', size: '16" x 20"', price: 120 }
+          ]
+        }
+      ];
+      
+      // Show product options overlay
+      function showProductOptions(productId) {
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+        
+        currentProduct = product;
+        selectedOption = null;
+        
+        const overlay = document.createElement('div');
+        overlay.id = 'optionsOverlay';
+        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99999;display:flex;align-items:center;justify-content:center';
+        
+        const panel = document.createElement('div');
+        panel.style.cssText = 'background:#222;color:white;border-radius:10px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;padding:0';
+        
+        let html = '<div style="padding:20px;border-bottom:1px solid #444;display:flex;justify-content:space-between;align-items:center">';
+        html += '<h3 style="margin:0;color:#ffc107">🎨 Choose Size & Material</h3>';
+        html += '<button onclick="closeOptionsOverlay()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer">&times;</button>';
+        html += '</div>';
+        
+        html += '<div style="padding:20px">';
+        html += '<div style="display:flex;align-items:center;margin-bottom:20px">';
+        html += '<img src="' + product.image + '" style="width:80px;height:80px;object-fit:cover;border-radius:8px;margin-right:15px">';
+        html += '<div><h4 style="margin:0 0 5px 0">' + product.name + '</h4>';
+        html += '<p style="margin:0;color:#ccc;font-size:14px">' + product.description + '</p></div>';
+        html += '</div>';
+        
+        html += '<h5 style="color:#ffc107;margin-bottom:15px">📐 Select Size & Material:</h5>';
+        html += '<div id="optionsList">';
+        
+        product.options.forEach((option, index) => {
+          html += '<div class="option-card" onclick="selectOption(' + index + ')" id="option-' + index + '">';
+          html += '<div><div style="font-weight:bold;margin-bottom:3px">' + option.material + '</div>';
+          html += '<div style="color:#ccc;font-size:14px">' + option.size + '</div></div>';
+          html += '<div style="color:#ffc107;font-weight:bold;font-size:18px">$' + option.price + '.00</div>';
+          html += '</div>';
+        });
+        
+        html += '</div>';
+        html += '<div style="background:#1e5799;padding:15px;border-radius:5px;margin:20px 0">ℹ️ Paper prints are high-quality reproductions. Canvas prints are stretched and ready to hang.</div>';
+        html += '<div style="text-align:center">';
+        html += '<button onclick="closeOptionsOverlay()" style="background:#6c757d;color:white;border:none;padding:12px 25px;border-radius:5px;margin-right:15px;cursor:pointer">❌ Cancel</button>';
+        html += '<button onclick="addSelectedOptionToCart()" style="background:#28a745;color:white;border:none;padding:12px 25px;border-radius:5px;cursor:pointer;font-weight:bold" id="addToCartBtn" disabled>🛒 Add to Cart</button>';
+        html += '</div>';
+        html += '</div>';
+        
+        panel.innerHTML = html;
+        overlay.appendChild(panel);
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+      }
+      
+      // Select an option
+      function selectOption(optionIndex) {
+        document.querySelectorAll('.option-card').forEach(card => {
+          card.classList.remove('selected');
+        });
+        
+        const selectedCard = document.getElementById('option-' + optionIndex);
+        selectedCard.classList.add('selected');
+        
+        selectedOption = currentProduct.options[optionIndex];
+        document.getElementById('addToCartBtn').disabled = false;
+        document.getElementById('addToCartBtn').style.opacity = '1';
+      }
+      
+      // Add selected option to cart
+      function addSelectedOptionToCart() {
+        if (!selectedOption || !currentProduct) return;
+        
+        const cartItem = {
+          name: currentProduct.name,
+          price: selectedOption.price,
+          dimensions: selectedOption.size,
+          material: selectedOption.material,
+          image: currentProduct.image,
+          quantity: 1
+        };
+        
+        const existing = cart.find(item => 
+          item.name === cartItem.name && 
+          item.dimensions === cartItem.dimensions && 
+          item.material === cartItem.material
+        );
+        
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          cart.push(cartItem);
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        closeOptionsOverlay();
+        showMessage(cartItem.name + ' (' + cartItem.material + ' - ' + cartItem.dimensions + ') added to cart!');
+      }
+      
+      // Close options overlay
+      function closeOptionsOverlay() {
+        const overlay = document.getElementById('optionsOverlay');
+        if (overlay) {
+          overlay.remove();
+          document.body.style.overflow = '';
+        }
+        currentProduct = null;
+        selectedOption = null;
+      }
+      
+      function removeItem(name, dimensions, material) {
+        cart = cart.filter(item => !(item.name === name && item.dimensions === dimensions && item.material === material));
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        updateCartDisplay();
+        showMessage(name + ' removed from cart');
+      }
+      
+      function clearCart() {
+        if (confirm('Clear all items from cart?')) {
+          cart = [];
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          updateCartDisplay();
+          showMessage('Cart cleared');
+        }
+      }
+      
+      function updateCartCount() {
+        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const badge = document.getElementById('cartCount');
+        if (badge) badge.textContent = count;
+      }
+      
+      function showMessage(text) {
+        const msg = document.createElement('div');
+        msg.textContent = text;
+        msg.style.cssText = 'position:fixed;top:80px;right:10px;background:#28a745;color:white;padding:10px 20px;border-radius:5px;z-index:99999;max-width:300px';
+        document.body.appendChild(msg);
+        setTimeout(() => msg.remove(), 3000);
+      }
+      
+      function showCartOverlay() {
+        const overlay = document.createElement('div');
+        overlay.id = 'cartOverlay';
+        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99999;display:flex;align-items:center;justify-content:center';
+        
+        const panel = document.createElement('div');
+        panel.style.cssText = 'background:#222;color:white;border-radius:10px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto';
+        
+        let html = '<div style="padding:20px;border-bottom:1px solid #444;display:flex;justify-content:space-between">';
+        html += '<h3 style="margin:0;color:#ffc107">🛒 Shopping Cart</h3>';
+        html += '<button onclick="closeCartOverlay()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer">&times;</button>';
+        html += '</div>';
+        html += '<div id="cartItems" style="padding:20px;min-height:200px"></div>';
+        html += '<div style="padding:20px;border-top:1px solid #444;text-align:center">';
+        html += '<button onclick="clearCart()" style="background:#6c757d;color:white;border:none;padding:10px 20px;border-radius:5px;margin-right:10px;cursor:pointer">🗑️ Clear</button>';
+        html += '<button onclick="checkout()" style="background:#ffc107;color:#000;border:none;padding:10px 20px;border-radius:5px;font-weight:bold;cursor:pointer">💳 Checkout</button>';
+        html += '</div>';
+        
+        panel.innerHTML = html;
+        overlay.appendChild(panel);
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+        
+        updateCartDisplay();
+      }
+      
+      function closeCartOverlay() {
+        const overlay = document.getElementById('cartOverlay');
+        if (overlay) {
+          overlay.remove();
+          document.body.style.overflow = '';
+        }
+      }
+      
+      function updateCartDisplay() {
+        const container = document.getElementById('cartItems');
+        if (!container) return;
+        
+        if (cart.length === 0) {
+          container.innerHTML = '<div style="text-align:center;color:#ccc;font-style:italic">🛒 Your cart is empty<br><small>Add some beautiful artwork!</small></div>';
+          return;
+        }
+        
+        let html = '';
+        cart.forEach(item => {
+          html += '<div style="display:flex;align-items:center;padding:15px 0;border-bottom:1px solid #444">';
+          html += '<img src="' + item.image + '" style="width:60px;height:60px;object-fit:cover;border-radius:4px;margin-right:15px">';
+          html += '<div style="flex:1">';
+          html += '<h6 style="margin:0 0 5px 0;color:white">' + item.name + '</h6>';
+          html += '<small style="color:#ccc">' + item.material + ' - ' + item.dimensions + '</small>';
+          html += '</div>';
+          html += '<div style="text-align:center;margin:0 15px">';
+          html += '<span style="background:#6c757d;color:white;padding:3px 8px;border-radius:12px;font-size:12px">Qty: ' + item.quantity + '</span>';
+          html += '</div>';
+          html += '<div style="text-align:right;min-width:80px">';
+          html += '<strong style="color:#ffc107">$' + (item.price * item.quantity).toFixed(2) + '</strong>';
+          html += '</div>';
+          html += '<button onclick="removeItem(\'' + item.name + '\', \'' + item.dimensions + '\', \'' + item.material + '\')" style="background:#dc3545;color:white;border:none;padding:5px 8px;border-radius:3px;cursor:pointer;font-size:12px;margin-left:10px">Remove</button>';
+          html += '</div>';
+        });
+        
+        container.innerHTML = html;
+      }
+      
+      function checkout() {
+        if (cart.length === 0) {
+          alert('Cart is empty!');
+          return;
+        }
+        
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const shipping = 5.00;
+        const total = subtotal + shipping;
+        
+        let summary = 'ORDER SUMMARY:\\n\\n';
+        cart.forEach(item => {
+          summary += '• ' + item.name + ' (' + item.material + ' - ' + item.dimensions + ') (Qty: ' + item.quantity + ') - $' + (item.price * item.quantity).toFixed(2) + '\\n';
+        });
+        summary += '\\nSubtotal: $' + subtotal.toFixed(2);
+        summary += '\\nShipping: $' + shipping.toFixed(2);
+        summary += '\\nTOTAL: $' + total.toFixed(2);
+        summary += '\\n\\nProceed to PayPal?';
+        
+        if (confirm(summary)) {
+          proceedToPayPal(total);
+        }
+      }
+      
+      function proceedToPayPal(total) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'https://www.paypal.com/cgi-bin/webscr';
+        form.target = '_blank';
+        
+        const itemsDescription = cart.map(function(item) {
+          return item.name + ' (' + item.material + ' - ' + item.dimensions + ') x' + item.quantity;
+        }).join(', ');
+        
+        const fields = [
+          { name: 'cmd', value: '_xclick' },
+          { name: 'business', value: 'gustavotrujillo@outlook.com' },
+          { name: 'item_name', value: 'Gustavo Trujillo Art Prints - ' + itemsDescription },
+          { name: 'amount', value: total.toFixed(2) },
+          { name: 'currency_code', value: 'USD' },
+          { name: 'return', value: window.location.href },
+          { name: 'cancel_return', value: window.location.href }
+        ];
+        
+        fields.forEach(field => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = field.name;
+          input.value = field.value;
+          form.appendChild(input);
+        });
+        
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+        
+        setTimeout(() => {
+          cart = [];
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          closeCartOverlay();
+          showMessage('🎉 Order sent to PayPal! Cart cleared.');
+        }, 1000);
+      }
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        updateCartCount();
+        
+        const grid = document.getElementById('productGrid');
+        if (grid) {
+          products.forEach(product => {
+            const lowestPrice = Math.min.apply(Math, product.options.map(opt => opt.price));
+            const highestPrice = Math.max.apply(Math, product.options.map(opt => opt.price));
+            const priceDisplay = lowestPrice === highestPrice ? '$' + lowestPrice : '$' + lowestPrice + ' - $' + highestPrice;
+            
+            const html = 
+              '<div class="col-lg-4 col-md-6 mb-4">' +
+                '<div class="card bg-dark text-white border-secondary h-100">' +
+                  '<img src="' + product.image + '" class="card-img-top" alt="' + product.name + '" style="height:300px;object-fit:cover">' +
+                  '<div class="card-body d-flex flex-column">' +
+                    '<h5 class="card-title">' + product.name + '</h5>' +
+                    '<p class="card-text">' + product.description + '</p>' +
+                    '<div class="mt-auto">' +
+                      '<div class="d-flex justify-content-between align-items-center mb-3">' +
+                        '<span class="h5 text-warning mb-0">' + priceDisplay + '</span>' +
+                        '<small class="text-muted">Multiple sizes</small>' +
+                      '</div>' +
+                      '<button class="btn btn-warning w-100" onclick="showProductOptions(' + product.id + ')">🎨 Choose Options</button>' +
+                    '</div>' +
+                  '</div>' +
+                '</div>' +
+              '</div>';
+            grid.innerHTML += html;
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,662 @@
+
+<!DOCTYPE html>
+<html class="wide wow-animation smoothscroll scrollTo" lang="en">
+  <head>
+    <!-- Site Title-->
+    <title>Contacts</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="keywords" content="Intense web design multipurpose template">
+    <meta name="date" content="Apr 26">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Dancing+Script:700%7CLato:300,300italic,400,700,900">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+      /* Estilos personalizados para el formulario de contacto */
+      .contact-form {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .contact-form::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #007bff, #28a745, #ffc107, #dc3545);
+      }
+      
+      .form-floating {
+        margin-bottom: 35px;
+      }
+      
+      .form-floating > .form-control {
+        border: 2px solid #e9ecef;
+        border-radius: 15px;
+        padding: 18px 20px;
+        font-size: 18px;
+        min-height: 60px;
+        transition: all 0.3s ease;
+        background-color: #fff;
+        line-height: 1.4;
+      }
+      
+      .form-floating > .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.3rem rgba(0,123,255,0.25);
+        background-color: #fff;
+        transform: translateY(-1px);
+      }
+      
+      .form-floating > label {
+        color: #6c757d;
+        font-weight: 600;
+        font-size: 16px;
+        padding-left: 20px;
+        padding-top: 20px;
+      }
+      
+      .form-floating > .form-control:focus ~ label {
+        color: #007bff;
+        font-weight: 700;
+      }
+      
+      /* Estilos específicos para textarea */
+      .form-floating textarea.form-control {
+        min-height: 120px;
+        resize: vertical;
+        padding-top: 25px;
+        line-height: 1.6;
+      }
+      
+      /* Placeholder mejorado */
+      .form-floating > .form-control::placeholder {
+        color: #adb5bd;
+        font-size: 16px;
+        opacity: 0.8;
+      }
+
+      
+      .btn-submit {
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+        border: none;
+        border-radius: 15px;
+        padding: 18px 45px;
+        font-size: 20px;
+        font-weight: 700;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+      }
+      
+      .btn-submit:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(0,123,255,0.4);
+        background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+        color: white;
+      }
+      
+      .btn-submit:active {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+      }
+      
+      .btn-submit:focus {
+        box-shadow: 0 0 0 0.3rem rgba(0,123,255,0.5);
+        color: white;
+      }
+      
+      .contact-info {
+        background: linear-gradient(135deg, #343a40 0%, #495057 100%);
+        border-radius: 20px;
+        padding: 40px;
+        color: white;
+        height: 100%;
+      }
+      
+      .contact-info h3 {
+        color: #28a745;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+      
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        padding: 15px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+      }
+      
+      .contact-item:hover {
+        background: rgba(255,255,255,0.2);
+        transform: translateX(5px);
+      }
+      
+      .contact-item i {
+        font-size: 24px;
+        color: #28a745;
+        margin-right: 15px;
+        width: 40px;
+        text-align: center;
+      }
+      
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 30px;
+      }
+      
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background: #28a745;
+        color: white;
+        border-radius: 50%;
+        font-size: 20px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+      
+      .social-links a:hover {
+        background: #20c997;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(40,167,69,0.4);
+      }
+      
+      .form-title {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      
+      .form-title h2 {
+        color: #343a40;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      
+      .form-title p {
+        color: #6c757d;
+        font-size: 16px;
+      }
+      
+      /* Animaciones */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .contact-form, .contact-info {
+        animation: fadeInUp 0.8s ease;
+      }
+      
+      /* Responsive */
+      @media (max-width: 768px) {
+        .contact-form, .contact-info {
+          padding: 30px 20px;
+          margin-bottom: 30px;
+          border-radius: 15px;
+        }
+        
+        .form-floating {
+          margin-bottom: 40px;
+        }
+        
+        .form-floating > .form-control {
+          font-size: 20px;
+          min-height: 65px;
+          padding: 20px 18px;
+          border-radius: 12px;
+        }
+        
+        .form-floating > label {
+          font-size: 17px;
+          font-weight: 600;
+          padding-left: 18px;
+          padding-top: 22px;
+        }
+        
+        .form-floating textarea.form-control {
+          min-height: 140px;
+          padding-top: 28px;
+        }
+        
+        .btn-submit {
+          width: 100%;
+          padding: 20px;
+          font-size: 20px;
+          font-weight: 700;
+          border-radius: 12px;
+        }
+        
+        .form-title h2 {
+          font-size: 2.2rem;
+        }
+        
+        .form-title p {
+          font-size: 18px;
+        }
+      }
+      
+      /* Extra responsive para móviles muy pequeños */
+      @media (max-width: 480px) {
+        .contact-form {
+          padding: 25px 15px;
+        }
+        
+        .form-floating > .form-control {
+          font-size: 18px;
+          padding: 18px 15px;
+        }
+        
+        .form-floating > label {
+          font-size: 16px;
+          padding-left: 15px;
+        }
+        
+        .btn-submit {
+          padding: 18px;
+          font-size: 18px;
+        }
+      }
+      
+      /* Estilos específicos para dispositivos táctiles */
+      .touch-device .form-floating > .form-control {
+        -webkit-appearance: none;
+        appearance: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      .touch-device .btn-submit {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      
+      /* Mejoras de accesibilidad */
+      .form-floating > .form-control:focus {
+        outline: none;
+      }
+      
+      .form-floating > .form-control:invalid {
+        border-color: #dc3545;
+        box-shadow: 0 0 0 0.2rem rgba(220,53,69,0.25);
+      }
+      
+      .form-floating > .form-control:valid {
+        border-color: #28a745;
+      }
+      
+      /* Animación suave para transitions */
+      * {
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+    </style>
+
+		<!--[if lt IE 10]>
+    <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <script src="js/html5shiv.min.js"></script>
+		<![endif]-->
+  </head>
+  <body>
+    <!-- Page-->
+    <div class="page text-center">
+      <!-- Page Header-->
+      <header class="page-head">
+        <!-- RD Navbar Transparent-->
+        <div class="rd-navbar-wrap">
+          <nav class="rd-navbar rd-navbar-logo-center rd-navbar-light" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" data-lg-stick-up-offset="110px" data-lg-auto-height="true" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
+            <div class="rd-navbar-inner">
+              <div class="container">
+                <div class="rd-navbar-top-block range range-lg-center range-lg-middle">
+                  <div class="cell-lg-3">
+                    <p class="veil reveal-lg-block">Cell: 504-606-7084</p>
+                  </div>
+                  <div class="cell-lg-6 text-center">
+                    <!--Navbar Brand-->
+                    <div class="rd-navbar-brand"><a href="/index.html"><img width='432' height='63' src='../images/logo-dark.png' alt=''/></a></div>
+                  </div>
+                  <div class="cell-lg-3">
+                    <p class="veil reveal-lg-block"><a class="text-primary" href="mailto:gustavo54@att.net">gustavo54@att.net</a></p>
+                  </div>
+                </div>
+                <!-- RD Navbar Panel-->
+                <div class="rd-navbar-panel">
+                  <!-- RD Navbar Toggle-->
+                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar, .rd-navbar-nav-wrap"><span></span></button>
+                  <!-- RD Navbar Top Panel Toggle-->
+                  <button class="rd-navbar-search-toggle" data-rd-navbar-toggle=".rd-navbar, .form-search-wrap"><span></span></button>
+                </div>
+              </div>
+              <div class="rd-navbar-menu-wrap">
+                <div class="container">
+                  <div class="rd-navbar-nav-wrap">
+                    <div class="rd-navbar-mobile-scroll">
+                      <!--Navbar Brand Mobile-->
+                      <div class="rd-navbar-mobile-brand"><a href="/index.html"><img width='221' height='32' src='../images/logo-dark.png' alt=''/></a></div>
+                      <!-- RD Navbar Nav-->
+                      <ul class="rd-navbar-nav">
+                        <li><a href="/index.html"><span>Home</span></a>
+                        </li>
+                        <li><a href="/about-us.html"><span>About</span></a>
+                        </li>
+                        <li><a href="/gallery.html"><span>Gallery</span></a>
+                        </li>
+                        <li><a href="/shop.html"><span>Shop Prints</span></a>
+                        </li>
+                        <li class="active"><a href="/contacts.html"><span>Contact Gustavo</span></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </nav>
+        </div>
+      </header>
+      <!-- Modern Breadcrumbs-->
+      <section>
+        <div class="parallax-container breadcrumb-modern bg-gray-darkest context-dark" data-parallax-img="../images/background-1-1920x651.jpg">
+          <div class="parallax-content">
+            <div class="bg-overlay-gray-darkest">
+              <div class="shell section-34 section-sm-50 section-md-110">
+                <div class="text-extra-big font-accent veil reveal-md-block"><span class="big">&nbsp</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Page Content-->
+      <main class="page-content">
+        <section class="section-top-98 section-sm-top-110">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <div class="row">
+                  <!-- Formulario de Contacto -->
+                  <div class="col-lg-8 mb-5">
+                    <div class="contact-form">
+                      <div class="form-title">
+                        <h2><i class="fas fa-envelope me-3"></i>Contact Gustavo</h2>
+                        <p>Send us a message and we'll get back to you as soon as possible!</p>
+                      </div>
+                      
+                      <!-- Mantenemos el formulario original con funcionalidad intacta -->
+                      <form method="POST" action="/cgi-sys/formmail.pl" enctype="x-www-form-encoded">
+                        <input type="hidden" name="recipient" value="gustavo54@att.net">
+                        <input type="hidden" name="subject" value="Contact Gustavo">
+                        <input type="hidden" name="required" value="name,email,phone,message">
+                        <input type="hidden" name="sort" value="order:name,email,phone,message,place">
+                        
+        
+        <div class="row" style="margin-bottom: 15px;">
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="name" name="name">
+              <label for="name"><i class="fas fa-user me-2"></i>Full Name</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="tel" class="form-control" id="phone" name="phone">
+              <label for="phone"><i class="fas fa-phone me-2"></i>Phone Number</label>
+            </div>
+          </div>
+        </div>                        <div class="form-floating">
+                          <input type="email" class="form-control" id="email" name="email">
+                          <label for="email"><i class="fas fa-envelope me-2"></i>Email Address</label>
+                        </div>
+                        
+                        <div class="form-floating">
+                          <textarea class="form-control" id="message" name="message"></textarea>
+                          <label for="message"><i class="fas fa-comment me-2"></i>Your Message</label>
+                        </div>
+                        
+                        <div class="text-center">
+                          <button type="submit" name="subscribe" value="Place" class="btn btn-submit">
+                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  
+                  <!-- Información de Contacto -->
+                  <div class="col-lg-4">
+                    <div class="contact-info">
+                      <h3><i class="fas fa-info-circle me-2"></i>Get in Touch</h3>
+                      <p class="mb-4">Feel free to reach out through any of the following methods:</p>
+                      
+                      <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                          <strong>Phone</strong><br>
+                          <a href="tel:504-606-7084" class="text-white text-decoration-none">504-606-7084</a>
+                        </div>
+                      </div>
+                      
+                      <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                          <strong>Email</strong><br>
+                          <a href="mailto:gustavo54@att.net" class="text-white text-decoration-none">gustavo54@att.net</a>
+                        </div>
+                      </div>
+                      
+                      <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                          <strong>Location</strong><br>
+                          Jackson Square<br>
+                          French Quarter, New Orleans
+                        </div>
+                      </div>
+                      
+                      <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                          <strong>Available</strong><br>
+                          24/7 via Email<br>
+                          Quick Response Guaranteed
+                        </div>
+                      </div>
+                      
+                      <div class="social-links">
+                        <a href="https://www.facebook.com/gustavo.trujillo.1884?lst=667196149%3A100000717780760%3A1522117164" target="_blank">
+                          <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" target="_blank">
+                          <i class="fab fa-pinterest-p"></i>
+                        </a>
+                        <a href="#" target="_blank">
+                          <i class="fab fa-instagram"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <!-- Page Footers-->
+      <!-- Footer variant 4-->
+      <footer class="section-relative section-34 page-footer bg-gray-base context-dark">
+        <div class="shell">
+          <div class="range range-sm-center text-lg-left">
+            <div class="cell-sm-12">
+              <div class="range range-xs-center">
+                <div class="cell-xs-12 cell-md-8 cell-md-push-2 text-md-right">
+                  <div>
+                    <ul class="list-inline list-inline-dashed p text-darker list-inline-md list-inline-dashed-wide">
+                      <li><a href="/about-us.html">About Gustavo</a></li>
+                      <li><a href="/gallery.html">Gallery</a></li>
+                      <li><a href="/shop.html">Shop Prints</a></li>
+                      <li><a href="/contacts.html">Contact Gustavo</a></li>
+                    </ul>
+                  </div>
+                  <ul class="list-inline list-inline-white offset-top-10 text-darker text-white">
+                    <li><a class="fa fa-facebook" href="https://www.facebook.com/gustavo.trujillo.artist"></a></li>
+                    <li><a class="fa fa-pinterest" href="https://www.pinterest.com/gustavotrujilloneworleansfinea/"></a></li>
+                  </ul>
+                </div>
+                <div class="cell-xs-12 cell-md-4 cell-md-push-1 offset-top-34 offset-md-top-0">
+                  <!-- Footer brand-->
+                  <div class="footer-brand"><a href="/index.html"><img width='221' height='32' style='margin-left: -6px;' src='../images/logo-light.png' alt=''/></a></div>
+                  <p class="small text-darker offset-top-4 text-white">&copy; <span id="copyright-year"></span> Gustavo Trujillo
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- PhotoSwipe Gallery-->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="pswp__bg"></div>
+      <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+          <div class="pswp__top-bar">
+            <div class="pswp__counter"></div>
+            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+            <button class="pswp__button pswp__button--share" title="Share"></button>
+            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+            <div class="pswp__preloader">
+              <div class="pswp__preloader__icn">
+                <div class="pswp__preloader__cut">
+                  <div class="pswp__preloader__donut"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+            <div class="pswp__share-tooltip"></div>
+          </div>
+          <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+          <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+          <div class="pswp__caption">
+            <div class="pswp__caption__center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Java script-->
+    <script src="/js/core.min.js"></script>
+    <script src="/js/script.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+      // Agregar efectos de interacción adicionales
+      document.addEventListener('DOMContentLoaded', function() {
+        // Efecto de hover en los campos del formulario
+        const formControls = document.querySelectorAll('.form-control');
+        formControls.forEach(control => {
+          control.addEventListener('focus', function() {
+            this.parentElement.style.transform = 'translateY(-3px)';
+            this.parentElement.style.boxShadow = '0 8px 25px rgba(0,123,255,0.15)';
+          });
+          
+          control.addEventListener('blur', function() {
+            this.parentElement.style.transform = 'translateY(0)';
+            this.parentElement.style.boxShadow = 'none';
+          });
+        });
+        
+        // Validación visual en tiempo real con mejores colores
+        const requiredFields = document.querySelectorAll('input[required], textarea[required]');
+        requiredFields.forEach(field => {
+          field.addEventListener('input', function() {
+            if (this.value.trim() !== '') {
+              this.style.borderColor = '#28a745';
+              this.style.borderWidth = '2px';
+              this.style.boxShadow = '0 0 0 0.2rem rgba(40,167,69,0.25)';
+            } else {
+              this.style.borderColor = '#e9ecef';
+              this.style.borderWidth = '2px';
+              this.style.boxShadow = 'none';
+            }
+          });
+          
+          // Mejorar experiencia en móvil
+          field.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(1.02)';
+          });
+          
+          field.addEventListener('touchend', function() {
+            this.style.transform = 'scale(1)';
+          });
+        });
+        
+        // Efecto de loading en el botón de envío mejorado
+        const submitBtn = document.querySelector('.btn-submit');
+        const form = document.querySelector('form');
+        
+        // Mejorar experiencia táctil del botón
+        submitBtn.addEventListener('touchstart', function() {
+          this.style.transform = 'translateY(-1px) scale(0.98)';
+        });
+        
+        submitBtn.addEventListener('touchend', function() {
+          this.style.transform = 'translateY(-3px) scale(1)';
+        });
+        
+        form.addEventListener('submit', function(e) {
+          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending Message...';
+          submitBtn.disabled = true;
+          submitBtn.style.background = 'linear-gradient(135deg, #6c757d 0%, #495057 100%)';
+          
+          // Simular tiempo de envío para mejor UX
+          setTimeout(() => {
+            // Aquí normalmente se procesaría el formulario
+            // Por ahora solo restauramos el botón después de un momento
+          }, 2000);
+        });
+        
+        // Mejorar accesibilidad en móvil
+        if ('ontouchstart' in window) {
+          document.body.classList.add('touch-device');
+        }
+      });
+    </script>
+  </body>
+</html>
