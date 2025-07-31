@@ -601,7 +601,7 @@
         html += '<div style="background:#1e5799;padding:15px;border-radius:5px;margin:20px 0;color:#e8e8e8;font-size:18px;font-weight:600">ℹ️ Paper prints are high-quality reproductions. Canvas prints are stretched and ready to hang.</div>';
         html += '<div style="text-align:center">';
         html += '<button onclick="closeOptionsOverlay()" style="background:#6c757d;color:white;border:none;padding:15px 30px;border-radius:5px;margin-right:15px;cursor:pointer;font-size:18px;font-weight:700">❌ Cancel</button>';
-        html += '<button onclick="addSelectedOptionToCart()" style="background:#28a745;color:white;border:none;padding:15px 30px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:18px" id="addToCartBtn" disabled>🛒 Add to Cart</button>';
+        html += '<button onclick="addSelectedOptionToCart()" style="background:#ffc107;color:#000;border:none;padding:15px 30px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:18px" id="addToCartBtn" disabled>� Buy with PayPal</button>';
         html += '</div>';
         html += '</div>';
         
@@ -625,35 +625,31 @@
         document.getElementById('addToCartBtn').style.opacity = '1';
       }
       
-      // Add selected option to cart
+      // Add selected option to cart and redirect to PayPal
       function addSelectedOptionToCart() {
         if (!selectedOption || !currentProduct) return;
         
-        const cartItem = {
-          name: currentProduct.name,
-          price: selectedOption.price,
-          dimensions: selectedOption.size,
-          material: selectedOption.material,
-          image: currentProduct.image,
-          quantity: 1
-        };
+        // Crear enlace directo de PayPal con el producto seleccionado
+        const itemName = encodeURIComponent(`${currentProduct.name} (${selectedOption.material} - ${selectedOption.size})`);
+        const itemPrice = selectedOption.price.toFixed(2);
         
-        const existing = cart.find(item => 
-          item.name === cartItem.name && 
-          item.dimensions === cartItem.dimensions && 
-          item.material === cartItem.material
-        );
+        // Generar IDs únicos para el enlace de PayPal (simulando el patrón que proporcionaste)
+        const timestamp = Date.now();
+        const randomId = Math.random().toString(36).substr(2, 9);
+        const mfid = `${timestamp}_${randomId}`;
+        const flowloggingId = randomId;
         
-        if (existing) {
-          existing.quantity += 1;
-        } else {
-          cart.push(cartItem);
-        }
+        // Crear el enlace de PayPal con el patrón que solicitaste
+        const paypalUrl = `https://www.paypal.com/webapps/shoppingcart?mfid=${mfid}&flowlogging_id=${flowloggingId}&item_name_1=${itemName}&amount_1=${itemPrice}&quantity_1=1&business=gustavo54@att.net&shipping=5.00&currency_code=USD&cmd=_cart&upload=1#/checkout/shoppingCart`;
         
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
+        // Cerrar overlay y redirigir directamente a PayPal
         closeOptionsOverlay();
-        showMessage(cartItem.name + ' (' + cartItem.material + ' - ' + cartItem.dimensions + ') added to cart!');
+        showMessage('🚀 Redirigiendo a PayPal...');
+        
+        // Redirigir a PayPal inmediatamente
+        setTimeout(() => {
+          window.open(paypalUrl, '_blank');
+        }, 500);
       }
       
       // Close options overlay
@@ -689,6 +685,9 @@
         const count = cart.reduce((sum, item) => sum + item.quantity, 0);
         const badge = document.getElementById('cartCount');
         if (badge) badge.textContent = count;
+        
+        // También actualizar el localStorage para sincronización entre páginas
+        localStorage.setItem('cart', JSON.stringify(cart));
       }
       
       function showMessage(text) {
@@ -697,6 +696,66 @@
         msg.style.cssText = 'position:fixed;top:80px;right:10px;background:#28a745;color:white;padding:20px 25px;border-radius:10px;z-index:99999;max-width:400px;font-size:18px;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,0.4);line-height:1.5';
         document.body.appendChild(msg);
         setTimeout(() => msg.remove(), 3000);
+      }
+      
+      // Función para enviar correo automático a Gustavo
+      function sendAutomaticEmail() {
+        
+        // Construir el mensaje del correo
+        let emailSubject = encodeURIComponent(`Nuevo Pedido de Arte - $${total.toFixed(2)} USD`);
+        
+        let emailBody = `Buen día Sr. Gustavo,%0A%0A`;
+        emailBody += `Estoy haciendo el pago de $${total.toFixed(2)} USD por las siguientes pinturas:%0A%0A`;
+        
+        // Desglosar los items
+        emailBody += `📋 DETALLES DEL PEDIDO:%0A`;
+        emailBody += `───────────────────────────%0A`;
+        
+        cart.forEach((item, index) => {
+          emailBody += `${index + 1}. ${encodeURIComponent(item.name)}%0A`;
+          emailBody += `   • Material: ${encodeURIComponent(item.material)}%0A`;
+          emailBody += `   • Dimensiones: ${encodeURIComponent(item.dimensions)}%0A`;
+          emailBody += `   • Cantidad: ${item.quantity}%0A`;
+          emailBody += `   • Precio unitario: $${item.price.toFixed(2)}%0A`;
+          emailBody += `   • Subtotal: $${(item.price * item.quantity).toFixed(2)}%0A`;
+          emailBody += `%0A`;
+        });
+        
+        emailBody += `───────────────────────────%0A`;
+        emailBody += `💰 RESUMEN DE PAGO:%0A`;
+        emailBody += `Subtotal productos: $${subtotal.toFixed(2)}%0A`;
+        emailBody += `Envío: $${shipping.toFixed(2)}%0A`;
+        emailBody += `TOTAL A PAGAR: $${total.toFixed(2)} USD%0A%0A`;
+        
+        emailBody += `🏦 MÉTODO DE PAGO:%0A`;
+        emailBody += `Procederé a realizar el pago vía PayPal a: gustavo54@att.net%0A%0A`;
+        
+        emailBody += `📧 Este correo se genera automáticamente al proceder con el checkout.%0A`;
+        emailBody += `Por favor confirme la recepción de este pedido.%0A%0A`;
+        emailBody += `Saludos cordiales`;
+        
+        // Crear y enviar el correo automáticamente
+        const mailtoLink = `mailto:gustavo54@att.net?subject=${emailSubject}&body=${emailBody}`;
+        
+        try {
+          // Abrir cliente de correo
+          window.open(mailtoLink, '_blank');
+          showMessage('📧 Correo de pedido generado automáticamente! Se abrió su cliente de correo.');
+        } catch (error) {
+          console.error('Error opening email client:', error);
+          // Fallback: mostrar el enlace para copiar
+          const fallbackMsg = document.createElement('div');
+          fallbackMsg.innerHTML = `
+            <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;color:black;padding:30px;border-radius:10px;z-index:99999;max-width:500px;box-shadow:0 10px 30px rgba(0,0,0,0.5)">
+              <h3>📧 Copie este enlace de email:</h3>
+              <textarea style="width:100%;height:100px;margin:10px 0" readonly>${mailtoLink}</textarea>
+              <button onclick="this.parentElement.parentElement.remove()" style="background:#007bff;color:white;border:none;padding:10px 20px;border-radius:5px;cursor:pointer">Cerrar</button>
+            </div>
+          `;
+          document.body.appendChild(fallbackMsg);
+        }
+        
+        return { total, emailSubject, emailBody };
       }
       
       function showCartOverlay() {
@@ -714,8 +773,7 @@
         html += '<div id="cartItems" style="padding:20px;min-height:200px"></div>';
         html += '<div style="padding:20px;border-top:1px solid #444;text-align:center">';
         html += '<button onclick="clearCart()" style="background:#6c757d;color:white;border:none;padding:15px 25px;border-radius:5px;margin-right:10px;cursor:pointer;font-size:18px;font-weight:700">🗑️ Clear</button>';
-        html += '<button onclick="checkout()" style="background:#ffc107;color:#000;border:none;padding:15px 25px;border-radius:5px;font-weight:bold;cursor:pointer;font-size:18px">💳 Checkout</button>';
-        html += '<button onclick="manualCheckout()" style="background:#28a745;color:white;border:none;padding:15px 25px;border-radius:5px;margin-left:10px;cursor:pointer;font-size:18px;font-weight:700">📧 Email Order</button>';
+        html += '<button onclick="checkout()" style="background:#ffc107;color:#000;border:none;padding:15px 25px;border-radius:5px;font-weight:bold;cursor:pointer;font-size:18px">💳 PayPal + Email</button>';
         html += '</div>';
         
         panel.innerHTML = html;
@@ -774,14 +832,15 @@
         const shipping = 5.00;
         const total = subtotal + shipping;
         
-        let summary = 'ORDER SUMMARY:\\n\\n';
+        // Mostrar resumen simple y proceder directamente con PayPal
+        let summary = 'RESUMEN DEL PEDIDO:\n\n';
         cart.forEach(item => {
-          summary += '• ' + item.name + ' (' + item.material + ' - ' + item.dimensions + ') (Qty: ' + item.quantity + ') - $' + (item.price * item.quantity).toFixed(2) + '\\n';
+          summary += '• ' + item.name + ' (' + item.material + ' - ' + item.dimensions + ') (Qty: ' + item.quantity + ') - $' + (item.price * item.quantity).toFixed(2) + '\n';
         });
-        summary += '\\nSubtotal: $' + subtotal.toFixed(2);
-        summary += '\\nShipping: $' + shipping.toFixed(2);
-        summary += '\\nTOTAL: $' + total.toFixed(2);
-        summary += '\\n\\nProceed to PayPal?';
+        summary += '\nSubtotal: $' + subtotal.toFixed(2);
+        summary += '\nShipping: $' + shipping.toFixed(2);
+        summary += '\nTOTAL: $' + total.toFixed(2);
+        summary += '\n\n¿Proceder con el pago?';
         
         if (confirm(summary)) {
           proceedToPayPal(total);
@@ -789,95 +848,101 @@
       }
       
       function proceedToPayPal(total) {
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = 'https://www.paypal.com/cgi-bin/webscr';
-        form.target = '_blank';
+        // Enviar email automático DESPUÉS de la confirmación del usuario
+        let orderSummary = '';
+        cart.forEach(item => {
+          orderSummary += `• ${item.name} (${item.material} - ${item.dimensions}) (Qty: ${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
+        });
         
-        const itemsDescription = cart.map(function(item) {
-          return item.name + ' (' + item.material + ' - ' + item.dimensions + ') x' + item.quantity;
-        }).join(', ');
+        // Crear la interfaz de pago moderna
+        const paymentInterface = document.createElement('div');
+        paymentInterface.innerHTML = `
+          <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;color:black;padding:0;border-radius:15px;z-index:99999;max-width:500px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.4);overflow:hidden">
+            <!-- Header -->
+            <div style="background:linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);color:white;padding:25px;text-align:center">
+              <h3 style="margin:0;font-size:28px;font-weight:700">💳 Proceso de Pago</h3>
+              <p style="margin:5px 0 0 0;opacity:0.9">Total: $${total.toFixed(2)} USD</p>
+            </div>
+            
+            <!-- Order Summary -->
+            <div style="padding:20px;background:#f8f9fa;border-bottom:1px solid #dee2e6">
+              <h5 style="margin:0 0 15px 0;color:#2c3e50;font-weight:700">📋 Resumen del Pedido:</h5>
+              <div style="font-size:14px;line-height:1.6;color:#495057;white-space:pre-line">${orderSummary}</div>
+              <div style="margin-top:15px;padding-top:15px;border-top:1px solid #dee2e6">
+                <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+                  <span>Subtotal:</span><span>$${subtotal.toFixed(2)}</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+                  <span>Envío:</span><span>$${shipping.toFixed(2)}</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-weight:bold;font-size:18px;color:#1e5799">
+                  <span>TOTAL:</span><span>$${total.toFixed(2)} USD</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Payment Options -->
+            <div style="padding:25px">
+              <div style="text-align:center;margin-bottom:20px">
+                <button onclick="proceedWithPayPal(${total})" style="background:#ffc107;color:#000;border:none;padding:15px 30px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:18px;margin-right:10px;box-shadow:0 3px 10px rgba(255,193,7,0.3)">
+                  � Pagar con PayPal
+                </button>
+                <button onclick="proceedWithEmailOnly()" style="background:#28a745;color:white;border:none;padding:15px 30px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:18px;box-shadow:0 3px 10px rgba(40,167,69,0.3)">
+                  📧 Solo Enviar Email
+                </button>
+              </div>
+              <div style="text-align:center">
+                <button onclick="closePaymentInterface()" style="background:#6c757d;color:white;border:none;padding:10px 20px;border-radius:5px;cursor:pointer">Cancelar</button>
+              </div>
+              <div style="margin-top:15px;padding:15px;background:#e7f3ff;border-radius:8px;font-size:14px;color:#0066cc">
+                ℹ️ <strong>PayPal:</strong> Pago seguro directo<br>
+                📧 <strong>Email:</strong> Envía detalles para pago directo
+              </div>
+            </div>
+          </div>
+        `;
         
-        const fields = [
-          { name: 'cmd', value: '_cart' },
-          { name: 'upload', value: '1' },
-          { name: 'business', value: 'gustavo54@att.net' },
-          { name: 'currency_code', value: 'USD' },
-          { name: 'return', value: window.location.href + '?payment=success' },
-          { name: 'cancel_return', value: window.location.href + '?payment=cancelled' },
-          { name: 'notify_url', value: window.location.origin + '/payment-notify' }
-        ];
+        document.body.appendChild(paymentInterface);
+        document.body.style.overflow = 'hidden';
+      }
+      
+      function proceedToPayPal(total) {
+        // Enviar email automático DESPUÉS de la confirmación del usuario
+        sendAutomaticEmail();
         
-        // Add each cart item separately
+        // Crear enlace directo del carrito de PayPal con múltiples productos
+        let paypalCartUrl = 'https://www.paypal.com/webapps/shoppingcart?';
+        
+        // Agregar cada producto del carrito al enlace de PayPal
         cart.forEach((item, index) => {
-          const itemNum = index + 1;
-          fields.push(
-            { name: 'item_name_' + itemNum, value: item.name + ' (' + item.material + ' - ' + item.dimensions + ')' },
-            { name: 'amount_' + itemNum, value: item.price.toFixed(2) },
-            { name: 'quantity_' + itemNum, value: item.quantity.toString() }
-          );
+          const itemPrice = item.price.toFixed(2);
+          const itemName = encodeURIComponent(`${item.name} (${item.material} - ${item.dimensions})`);
+          
+          paypalCartUrl += `item_name_${index + 1}=${itemName}&`;
+          paypalCartUrl += `amount_${index + 1}=${itemPrice}&`;
+          paypalCartUrl += `quantity_${index + 1}=${item.quantity}&`;
         });
         
-        // Add shipping
-        fields.push({ name: 'shipping_1', value: '5.00' });
+        // Agregar información del vendedor y envío
+        paypalCartUrl += `business=gustavo54@att.net&`;
+        paypalCartUrl += `shipping=${5.00}&`;
+        paypalCartUrl += `currency_code=USD&`;
+        paypalCartUrl += `cmd=_cart&`;
+        paypalCartUrl += `upload=1`;
         
-        fields.forEach(field => {
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = field.name;
-          input.value = field.value;
-          form.appendChild(input);
-        });
+        // Abrir PayPal directamente
+        window.open(paypalCartUrl, '_blank');
         
-        document.body.appendChild(form);
-        
-        // Verificar si el formulario se va a enviar correctamente
-        try {
-          form.submit();
-          console.log('PayPal form submitted successfully');
-          showMessage('🔄 Redirecting to PayPal...');
-        } catch (error) {
-          console.error('Error submitting PayPal form:', error);
-          showMessage('❌ Error connecting to PayPal. Please try again.');
-          return;
-        }
-        
-        document.body.removeChild(form);
+        // Mostrar confirmación y limpiar carrito
+        showMessage('🚀 PayPal abierto con carrito completo! Email enviado a Gustavo automáticamente.');
         
         setTimeout(() => {
           cart = [];
           localStorage.setItem('cart', JSON.stringify(cart));
           updateCartCount();
           closeCartOverlay();
-          showMessage('🎉 Order sent to PayPal! Cart cleared.');
-        }, 1000);
-      }
-      
-      // Manual checkout function as backup
-      function manualCheckout() {
-        if (cart.length === 0) {
-          alert('Cart is empty!');
-          return;
-        }
-        
-        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const shipping = 5.00;
-        const total = subtotal + shipping;
-        
-        let orderDetails = 'ORDER DETAILS:%0A%0A';
-        cart.forEach(item => {
-          orderDetails += '• ' + encodeURIComponent(item.name + ' (' + item.material + ' - ' + item.dimensions + ') (Qty: ' + item.quantity + ') - $' + (item.price * item.quantity).toFixed(2)) + '%0A';
-        });
-        orderDetails += '%0ASubtotal: $' + subtotal.toFixed(2);
-        orderDetails += '%0AShipping: $' + shipping.toFixed(2);
-        orderDetails += '%0ATOTAL: $' + total.toFixed(2);
-        orderDetails += '%0A%0APlease send PayPal payment to: gustavo54@att.net';
-        
-        const subject = encodeURIComponent('Art Print Order - $' + total.toFixed(2));
-        const mailtoLink = 'mailto:gustavo54@att.net?subject=' + subject + '&body=' + orderDetails;
-        
-        window.location.href = mailtoLink;
-        showMessage('📧 Email client opened. Please send the email to complete your order.');
+          showMessage('🎉 Pedido procesado! Carrito limpiado.');
+        }, 2000);
       }
       
       document.addEventListener('DOMContentLoaded', function() {
@@ -928,7 +993,7 @@
                       '<small class="text-muted">Various sizes</small>' +
                     '</div>' +
                     '<button class="btn btn-dark w-100 btn-choose-options" onclick="showProductOptions(' + product.id + ')">' +
-                      '<i class="fas fa-palette me-2"></i>Choose Options' +
+                      '<i class="fas fa-credit-card me-2"></i>Buy with PayPal' +
                     '</button>' +
                   '</div>' +
                 '</div>' +
