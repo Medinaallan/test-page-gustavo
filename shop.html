@@ -123,17 +123,153 @@
       
       /* BOTONES MAS GRANDES PARA SHOP Y GALLERY */
       .btn-choose-options {
-        padding: 15px 25px !important;
-        font-size: 16px !important;
+        padding: 18px 30px !important;
+        font-size: 18px !important;
         font-weight: bold !important;
         border-radius: 8px !important;
         transition: all 0.3s ease !important;
-        min-height: 50px !important;
+        min-height: 60px !important;
       }
       
       .btn-choose-options:hover {
         transform: translateY(-2px) !important;
         box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+      }
+      
+      /* TEXT LEGIBILITY IMPROVEMENTS - SHOP PAGE */
+      /* Main page content text */
+      .page-content h1,
+      .responsive-title {
+        color: #2c3e50 !important;
+        font-size: 3.5rem !important;
+        font-weight: 700 !important;
+        font-style: italic !important;
+        font-family: 'Dancing Script', cursive !important;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2) !important;
+        margin-bottom: 1.5rem !important;
+      }
+      
+      .responsive-subtitle,
+      .page-content p {
+        color: #2c3e50 !important;
+        font-size: 1.4rem !important;
+        font-weight: 600 !important;
+        line-height: 1.7 !important;
+        font-style: italic !important;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1) !important;
+        margin-bottom: 1rem !important;
+      }
+      
+      /* Product card text improvements */
+      .product-card .card-title {
+        color: #2c3e50 !important;
+        font-size: 1.5rem !important;
+        font-weight: 700 !important;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1) !important;
+        margin-bottom: 0.8rem !important;
+      }
+      
+      .product-card .card-text {
+        color: #2c3e50 !important;
+        font-size: 1.2rem !important;
+        font-weight: 600 !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1rem !important;
+      }
+      
+      .product-card .h6 {
+        color: #e67e22 !important;
+        font-size: 1.4rem !important;
+        font-weight: 700 !important;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1) !important;
+      }
+      
+      .product-card .text-muted {
+        color: #2c3e50 !important;
+        font-size: 1.1rem !important;
+        font-weight: 600 !important;
+      }
+      
+      /* Footer text improvements */
+      .page-footer p,
+      .page-footer .small {
+        color: #ecf0f1 !important;
+        font-size: 1.2rem !important;
+        font-weight: 600 !important;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.4) !important;
+      }
+      
+      .page-footer .list-inline a {
+        color: #ecf0f1 !important;
+        font-size: 1.2rem !important;
+        font-weight: 600 !important;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.4) !important;
+        text-decoration: none !important;
+      }
+      
+      .page-footer .list-inline a:hover {
+        color: #ffc107 !important;
+        text-decoration: underline !important;
+      }
+      
+      /* Navigation and header text */
+      .rd-navbar p {
+        color: #2c3e50 !important;
+        font-size: 1.2rem !important;
+        font-weight: 700 !important;
+      }
+      
+      .rd-navbar a {
+        color: #2c3e50 !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        font-size: 1.1rem !important;
+      }
+      
+      /* Cart text improvements */
+      .cart-icon .text-dark {
+        color: #2c3e50 !important;
+        font-weight: 700 !important;
+        font-size: 1.2rem !important;
+      }
+      
+      /* Responsive text sizing for mobile */
+      @media (max-width: 768px) {
+        .responsive-title {
+          font-size: 2.8rem !important;
+        }
+        
+        .responsive-subtitle,
+        .page-content p {
+          font-size: 1.2rem !important;
+        }
+        
+        .product-card .card-title {
+          font-size: 1.3rem !important;
+        }
+        
+        .product-card .card-text {
+          font-size: 1.1rem !important;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .responsive-title {
+          font-size: 2.4rem !important;
+        }
+        
+        .responsive-subtitle,
+        .page-content p {
+          font-size: 1.1rem !important;
+        }
+        
+        .product-card .card-title {
+          font-size: 1.2rem !important;
+        }
+        
+        .product-card .card-text {
+          font-size: 1rem !important;
+        }
       }
     </style>
     
@@ -284,30 +420,8 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Disqus Comments-->
-    <div id="disqus_thread"></div>
-    <script>
-    
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-    /*
-    var disqus_config = function () {
-    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://gustavo-trujillo.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    
-    <!-- Disqus Script (outside the body)-->
-    <script id="dsq-count-scr" src="//gustavo-trujillo.disqus.com/count.js" async></script>
+    <!-- Note: Disqus comments system removed from shop page as it's not appropriate for e-commerce -->
+    <!-- Comments should only be on blog posts or articles, not product pages -->
     
     <!-- Cart System with Options Selector -->
     <script>
@@ -461,33 +575,33 @@
         panel.style.cssText = 'background:#222;color:white;border-radius:10px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;padding:0';
         
         let html = '<div style="padding:20px;border-bottom:1px solid #444;display:flex;justify-content:space-between;align-items:center">';
-        html += '<h3 style="margin:0;color:#ffc107">🎨 Choose Size & Material</h3>';
+        html += '<h3 style="margin:0;color:#ffc107;font-size:28px;font-weight:700">🎨 Choose Size & Material</h3>';
         html += '<button onclick="closeOptionsOverlay()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer">&times;</button>';
         html += '</div>';
         
         html += '<div style="padding:20px">';
         html += '<div style="display:flex;align-items:center;margin-bottom:20px">';
         html += '<img src="' + product.image + '" style="width:80px;height:80px;object-fit:cover;border-radius:8px;margin-right:15px">';
-        html += '<div><h4 style="margin:0 0 5px 0">' + product.name + '</h4>';
-        html += '<p style="margin:0;color:#ccc;font-size:14px">' + product.description + '</p></div>';
+        html += '<div><h4 style="margin:0 0 5px 0;font-size:22px;font-weight:700">' + product.name + '</h4>';
+        html += '<p style="margin:0;color:#e8e8e8;font-size:18px;font-weight:600;line-height:1.5">' + product.description + '</p></div>';
         html += '</div>';
         
-        html += '<h5 style="color:#ffc107;margin-bottom:15px">📐 Select Size & Material:</h5>';
+        html += '<h5 style="color:#ffc107;margin-bottom:15px;font-size:22px;font-weight:700">📐 Select Size & Material:</h5>';
         html += '<div id="optionsList">';
         
         product.options.forEach((option, index) => {
           html += '<div class="option-card" onclick="selectOption(' + index + ')" id="option-' + index + '">';
-          html += '<div><div style="font-weight:bold;margin-bottom:3px">' + option.material + '</div>';
-          html += '<div style="color:#ccc;font-size:14px">' + option.size + '</div></div>';
-          html += '<div style="color:#ffc107;font-weight:bold;font-size:18px">$' + option.price + '.00</div>';
+          html += '<div><div style="font-weight:bold;margin-bottom:3px;font-size:18px">' + option.material + '</div>';
+          html += '<div style="color:#e8e8e8;font-size:18px;font-weight:600">' + option.size + '</div></div>';
+          html += '<div style="color:#ffc107;font-weight:bold;font-size:24px">$' + option.price + '.00</div>';
           html += '</div>';
         });
         
         html += '</div>';
-        html += '<div style="background:#1e5799;padding:15px;border-radius:5px;margin:20px 0">ℹ️ Paper prints are high-quality reproductions. Canvas prints are stretched and ready to hang.</div>';
+        html += '<div style="background:#1e5799;padding:15px;border-radius:5px;margin:20px 0;color:#e8e8e8;font-size:18px;font-weight:600">ℹ️ Paper prints are high-quality reproductions. Canvas prints are stretched and ready to hang.</div>';
         html += '<div style="text-align:center">';
-        html += '<button onclick="closeOptionsOverlay()" style="background:#6c757d;color:white;border:none;padding:12px 25px;border-radius:5px;margin-right:15px;cursor:pointer">❌ Cancel</button>';
-        html += '<button onclick="addSelectedOptionToCart()" style="background:#28a745;color:white;border:none;padding:12px 25px;border-radius:5px;cursor:pointer;font-weight:bold" id="addToCartBtn" disabled>🛒 Add to Cart</button>';
+        html += '<button onclick="closeOptionsOverlay()" style="background:#6c757d;color:white;border:none;padding:15px 30px;border-radius:5px;margin-right:15px;cursor:pointer;font-size:18px;font-weight:700">❌ Cancel</button>';
+        html += '<button onclick="addSelectedOptionToCart()" style="background:#28a745;color:white;border:none;padding:15px 30px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:18px" id="addToCartBtn" disabled>🛒 Add to Cart</button>';
         html += '</div>';
         html += '</div>';
         
@@ -580,7 +694,7 @@
       function showMessage(text) {
         const msg = document.createElement('div');
         msg.textContent = text;
-        msg.style.cssText = 'position:fixed;top:80px;right:10px;background:#28a745;color:white;padding:10px 20px;border-radius:5px;z-index:99999;max-width:300px';
+        msg.style.cssText = 'position:fixed;top:80px;right:10px;background:#28a745;color:white;padding:20px 25px;border-radius:10px;z-index:99999;max-width:400px;font-size:18px;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,0.4);line-height:1.5';
         document.body.appendChild(msg);
         setTimeout(() => msg.remove(), 3000);
       }
@@ -594,13 +708,14 @@
         panel.style.cssText = 'background:#222;color:white;border-radius:10px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto';
         
         let html = '<div style="padding:20px;border-bottom:1px solid #444;display:flex;justify-content:space-between">';
-        html += '<h3 style="margin:0;color:#ffc107">🛒 Shopping Cart</h3>';
+        html += '<h3 style="margin:0;color:#ffc107;font-size:28px;font-weight:700">🛒 Shopping Cart</h3>';
         html += '<button onclick="closeCartOverlay()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer">&times;</button>';
         html += '</div>';
         html += '<div id="cartItems" style="padding:20px;min-height:200px"></div>';
         html += '<div style="padding:20px;border-top:1px solid #444;text-align:center">';
-        html += '<button onclick="clearCart()" style="background:#6c757d;color:white;border:none;padding:10px 20px;border-radius:5px;margin-right:10px;cursor:pointer">🗑️ Clear</button>';
-        html += '<button onclick="checkout()" style="background:#ffc107;color:#000;border:none;padding:10px 20px;border-radius:5px;font-weight:bold;cursor:pointer">💳 Checkout</button>';
+        html += '<button onclick="clearCart()" style="background:#6c757d;color:white;border:none;padding:15px 25px;border-radius:5px;margin-right:10px;cursor:pointer;font-size:18px;font-weight:700">🗑️ Clear</button>';
+        html += '<button onclick="checkout()" style="background:#ffc107;color:#000;border:none;padding:15px 25px;border-radius:5px;font-weight:bold;cursor:pointer;font-size:18px">💳 Checkout</button>';
+        html += '<button onclick="manualCheckout()" style="background:#28a745;color:white;border:none;padding:15px 25px;border-radius:5px;margin-left:10px;cursor:pointer;font-size:18px;font-weight:700">📧 Email Order</button>';
         html += '</div>';
         
         panel.innerHTML = html;
@@ -624,7 +739,7 @@
         if (!container) return;
         
         if (cart.length === 0) {
-          container.innerHTML = '<div style="text-align:center;color:#ccc;font-style:italic">🛒 Your cart is empty<br><small>Add some beautiful artwork!</small></div>';
+          container.innerHTML = '<div style="text-align:center;color:#e8e8e8;font-style:italic;font-size:22px;font-weight:600">🛒 Your cart is empty<br><small style="font-size:18px;color:#d0d0d0">Add some beautiful artwork!</small></div>';
           return;
         }
         
@@ -633,16 +748,16 @@
           html += '<div style="display:flex;align-items:center;padding:15px 0;border-bottom:1px solid #444">';
           html += '<img src="' + item.image + '" style="width:60px;height:60px;object-fit:cover;border-radius:4px;margin-right:15px">';
           html += '<div style="flex:1">';
-          html += '<h6 style="margin:0 0 5px 0;color:white">' + item.name + '</h6>';
-          html += '<small style="color:#ccc">' + item.material + ' - ' + item.dimensions + '</small>';
+          html += '<h6 style="margin:0 0 5px 0;color:white;font-size:20px;font-weight:700">' + item.name + '</h6>';
+          html += '<small style="color:#e8e8e8;font-size:18px;font-weight:600">' + item.material + ' - ' + item.dimensions + '</small>';
           html += '</div>';
           html += '<div style="text-align:center;margin:0 15px">';
-          html += '<span style="background:#6c757d;color:white;padding:3px 8px;border-radius:12px;font-size:12px">Qty: ' + item.quantity + '</span>';
+          html += '<span style="background:#6c757d;color:white;padding:4px 10px;border-radius:12px;font-size:16px;font-weight:700">Qty: ' + item.quantity + '</span>';
           html += '</div>';
           html += '<div style="text-align:right;min-width:80px">';
-          html += '<strong style="color:#ffc107">$' + (item.price * item.quantity).toFixed(2) + '</strong>';
+          html += '<strong style="color:#ffc107;font-size:20px;font-weight:700">$' + (item.price * item.quantity).toFixed(2) + '</strong>';
           html += '</div>';
-          html += '<button onclick="removeItem(\'' + item.name + '\', \'' + item.dimensions + '\', \'' + item.material + '\')" style="background:#dc3545;color:white;border:none;padding:5px 8px;border-radius:3px;cursor:pointer;font-size:12px;margin-left:10px">Remove</button>';
+          html += '<button onclick="removeItem(\'' + item.name + '\', \'' + item.dimensions + '\', \'' + item.material + '\')" style="background:#dc3545;color:white;border:none;padding:6px 10px;border-radius:3px;cursor:pointer;font-size:16px;font-weight:700;margin-left:10px">Remove</button>';
           html += '</div>';
         });
         
@@ -684,14 +799,27 @@
         }).join(', ');
         
         const fields = [
-          { name: 'cmd', value: '_xclick' },
-          { name: 'business', value: 'gustavotrujillo@outlook.com' },
-          { name: 'item_name', value: 'Gustavo Trujillo Art Prints - ' + itemsDescription },
-          { name: 'amount', value: total.toFixed(2) },
+          { name: 'cmd', value: '_cart' },
+          { name: 'upload', value: '1' },
+          { name: 'business', value: 'gustavo54@att.net' },
           { name: 'currency_code', value: 'USD' },
-          { name: 'return', value: window.location.href },
-          { name: 'cancel_return', value: window.location.href }
+          { name: 'return', value: window.location.href + '?payment=success' },
+          { name: 'cancel_return', value: window.location.href + '?payment=cancelled' },
+          { name: 'notify_url', value: window.location.origin + '/payment-notify' }
         ];
+        
+        // Add each cart item separately
+        cart.forEach((item, index) => {
+          const itemNum = index + 1;
+          fields.push(
+            { name: 'item_name_' + itemNum, value: item.name + ' (' + item.material + ' - ' + item.dimensions + ')' },
+            { name: 'amount_' + itemNum, value: item.price.toFixed(2) },
+            { name: 'quantity_' + itemNum, value: item.quantity.toString() }
+          );
+        });
+        
+        // Add shipping
+        fields.push({ name: 'shipping_1', value: '5.00' });
         
         fields.forEach(field => {
           const input = document.createElement('input');
@@ -702,7 +830,18 @@
         });
         
         document.body.appendChild(form);
-        form.submit();
+        
+        // Verificar si el formulario se va a enviar correctamente
+        try {
+          form.submit();
+          console.log('PayPal form submitted successfully');
+          showMessage('🔄 Redirecting to PayPal...');
+        } catch (error) {
+          console.error('Error submitting PayPal form:', error);
+          showMessage('❌ Error connecting to PayPal. Please try again.');
+          return;
+        }
+        
         document.body.removeChild(form);
         
         setTimeout(() => {
@@ -714,7 +853,48 @@
         }, 1000);
       }
       
+      // Manual checkout function as backup
+      function manualCheckout() {
+        if (cart.length === 0) {
+          alert('Cart is empty!');
+          return;
+        }
+        
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const shipping = 5.00;
+        const total = subtotal + shipping;
+        
+        let orderDetails = 'ORDER DETAILS:%0A%0A';
+        cart.forEach(item => {
+          orderDetails += '• ' + encodeURIComponent(item.name + ' (' + item.material + ' - ' + item.dimensions + ') (Qty: ' + item.quantity + ') - $' + (item.price * item.quantity).toFixed(2)) + '%0A';
+        });
+        orderDetails += '%0ASubtotal: $' + subtotal.toFixed(2);
+        orderDetails += '%0AShipping: $' + shipping.toFixed(2);
+        orderDetails += '%0ATOTAL: $' + total.toFixed(2);
+        orderDetails += '%0A%0APlease send PayPal payment to: gustavo54@att.net';
+        
+        const subject = encodeURIComponent('Art Print Order - $' + total.toFixed(2));
+        const mailtoLink = 'mailto:gustavo54@att.net?subject=' + subject + '&body=' + orderDetails;
+        
+        window.location.href = mailtoLink;
+        showMessage('📧 Email client opened. Please send the email to complete your order.');
+      }
+      
       document.addEventListener('DOMContentLoaded', function() {
+        // Check for payment status in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const paymentStatus = urlParams.get('payment');
+        
+        if (paymentStatus === 'success') {
+          showMessage('🎉 Payment successful! Thank you for your purchase!');
+          // Clear cart after successful payment
+          cart = [];
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+        } else if (paymentStatus === 'cancelled') {
+          showMessage('❌ Payment was cancelled. Your items are still in your cart.');
+        }
+        
         // Update copyright year
         const currentYear = new Date().getFullYear();
         const copyrightElement = document.getElementById('copyright-year');

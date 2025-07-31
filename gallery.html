@@ -38,14 +38,32 @@
       .thumbnail-josip-title {
           opacity: 1 !important;
           visibility: visible !important;
-          /* Cualquier otra propiedad de ocultamiento que pueda tener */
+          color: #ffffff !important; /* Texto blanco para el título */
+          font-size: 16px !important; /* Tamaño más grande */
+          font-weight: 600 !important; /* Más negrita */
+          margin-bottom: 8px !important;
       }
 
-      /* Asegúrate de que el párrafo sea siempre visible */
-      .thumbnail-josip p.veil { /* Para ser más específico si la clase 'veil' lo oculta */
-          display: block !important; /* O 'unset', o 'initial' dependiendo de cómo se oculta */
+      /* Mejorar la visibilidad del texto de dimensiones y precios */
+      .thumbnail-josip p.veil,
+      .thumbnail-josip .product-dimensions,
+      .thumbnail-josip .product-price {
+          display: block !important;
           opacity: 1 !important;
           visibility: visible !important;
+          color: #e0e0e0 !important; /* Gris claro en lugar de oscuro */
+          font-size: 14px !important; /* Tamaño más grande */
+          font-weight: 400 !important;
+          margin: 4px 0 !important;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important; /* Sombra para mejor legibilidad */
+      }
+
+      /* Estilo especial para precios - más prominente */
+      .thumbnail-josip .product-price {
+          color: #ffd700 !important; /* Dorado para precios */
+          font-size: 15px !important;
+          font-weight: 600 !important;
+          text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9) !important;
       }
 
       /* Si hay una regla para el hover que lo oculta, la sobrescribes para que no haga nada */
@@ -68,31 +86,51 @@
           flex-direction: column; /* Organiza los elementos en columna */
           justify-content: space-between; /* Distribuye el espacio entre los hijos */
           height: 100%; /* Asegura que ocupe toda la altura disponible */
-          padding: 15px; /* Ajusta el padding si es necesario */
+          padding: 20px 15px 15px 15px; /* Más padding superior para mejor espaciado */
           box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+          background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7)) !important; /* Gradiente para mejor legibilidad */
+          backdrop-filter: blur(2px) !important; /* Efecto de difuminado para mejor contraste */
       }
 
       /* Contenedor para los botones */
       .product-actions {
           display: flex; /* Para que los botones estén en línea */
           justify-content: flex-end; /* Alinea los botones a la derecha */
-          gap: 10px; /* Espacio entre los botones */
+          gap: 8px; /* Espacio entre los botones */
           margin-top: auto; /* Empuja este div hacia abajo si el contenido de arriba es variable */
-          padding-top: 10px; /* Pequeño espacio superior para separar del texto */
-          border-top: 1px solid rgba(255, 255, 255, 0.1); /* Separador visual */
+          padding-top: 12px; /* Espacio superior para separar del texto */
+          border-top: 1px solid rgba(255, 255, 255, 0.2); /* Separador visual más visible */
       }
 
-      /* Estilos generales para los botones (si es necesario) */
+      /* Estilos mejorados para los botones */
       .product-actions .btn {
-          /* Aquí puedes añadir estilos comunes si quieres que se vean igual */
-          min-width: 90px; /* Asegura un ancho mínimo para ambos botones */
+          min-width: 85px; /* Asegura un ancho mínimo para ambos botones */
           text-align: center;
+          font-size: 12px !important; /* Texto más grande en botones */
+          font-weight: 600 !important; /* Más negrita */
+          padding: 8px 12px !important; /* Más padding */
+          border-radius: 6px !important; /* Bordes más redondeados */
+          text-transform: uppercase !important; /* Mayúsculas */
+          letter-spacing: 0.5px !important; /* Espaciado entre letras */
+          transition: all 0.3s ease !important; /* Transición suave */
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important; /* Sombra */
+      }
+
+      /* Hover effects para botones */
+      .product-actions .btn:hover {
+          transform: translateY(-1px) !important; /* Efecto de elevación */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4) !important; /* Sombra más pronunciada */
       }
 
       /* Asegúrate de que el bloque de información del producto ocupe el espacio disponible */
       .product-info {
           flex-grow: 1; /* Permite que la información del producto ocupe el espacio restante */
           text-align: left; /* Alinea el texto a la izquierda si thumbnail-josip figcaption es text-center */
+          margin-bottom: 10px; /* Espacio entre la info y los botones */
+          background: rgba(0, 0, 0, 0.3) !important; /* Fondo semi-transparente adicional */
+          padding: 12px !important; /* Padding interno */
+          border-radius: 8px !important; /* Bordes redondeados */
+          border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Borde sutil */
       }
 
       /* Las reglas existentes para forzar la visibilidad del texto deberían seguir siendo válidas */
@@ -155,6 +193,18 @@
       .modal-content p {
           font-size: 16px;
           margin-bottom: 10px;
+      }
+
+      /* Estilo especial para precios duales */
+      #modalProductPrice strong {
+          color: #d4af37;
+          font-size: 18px;
+          display: block;
+          margin: 10px 0;
+          padding: 10px;
+          background: rgba(212, 175, 55, 0.1);
+          border-radius: 5px;
+          border-left: 3px solid #d4af37;
       }
 
       .close-button {
@@ -299,6 +349,46 @@
           .category-tab small {
               font-size: 9px;
           }
+
+          /* Ajustes para desktop en la galería */
+          .thumbnail-josip figcaption {
+              padding: 25px 20px 20px 20px; /* Más espacio en desktop */
+          }
+
+          .thumbnail-josip-title {
+              font-size: 17px !important;
+              margin-bottom: 10px !important;
+          }
+
+          .thumbnail-josip .product-dimensions,
+          .thumbnail-josip .product-price {
+              font-size: 14px !important;
+          }
+
+          .thumbnail-josip .product-price {
+              font-size: 15px !important;
+          }
+      }
+
+      /* Ajustes específicos para tablets */
+      @media (min-width: 481px) and (max-width: 767px) {
+          .thumbnail-josip-title {
+              font-size: 17px !important;
+          }
+
+          .thumbnail-josip .product-dimensions,
+          .thumbnail-josip .product-price {
+              font-size: 14px !important;
+          }
+
+          .thumbnail-josip .product-price {
+              font-size: 15px !important;
+          }
+
+          .product-actions .btn {
+              font-size: 12px !important;
+              padding: 9px 13px !important;
+          }
       }
 
       /* Responsive para móviles muy pequeños */
@@ -333,8 +423,236 @@
               right: auto;
               background: linear-gradient(180deg, #d4af37, #f4d03f);
           }
+
+          /* Mejoras específicas para móvil en la galería */
+          .thumbnail-josip-title {
+              font-size: 18px !important; /* Aún más grande en móvil */
+          }
+
+          .thumbnail-josip .product-dimensions,
+          .thumbnail-josip .product-price {
+              font-size: 15px !important; /* Más grande en móvil */
+          }
+
+          .thumbnail-josip .product-price {
+              font-size: 16px !important; /* Precios aún más grandes en móvil */
+          }
+
+          .product-info {
+              padding: 15px !important; /* Más padding en móvil */
+          }
+
+          .product-actions .btn {
+              font-size: 13px !important; /* Botones más grandes en móvil */
+              padding: 10px 14px !important;
+              min-width: 95px !important;
+          }
+      }
+      
+      /* CART ICON STYLES */
+      .cart-icon {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+        cursor: pointer;
+        background: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        border: 2px solid #414e48;
+        transition: all 0.3s ease;
+      }
+      
+      .cart-icon:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      }
+      
+      .cart-icon .text-dark {
+        color: #2c3e50 !important;
+        font-weight: 700 !important;
+        font-size: 1rem !important;
+      }
+      
+      /* DUAL PRICE OVERLAY STYLES */
+      .option-card:hover {
+        border-color: #ffc107 !important;
+        background: rgba(255, 193, 7, 0.1) !important;
       }
     </style>
+    
+    <!-- Cart System Script -->
+    <script>
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let selectedOption = null;
+      let currentProduct = null;
+      
+      // Función para mostrar overlay de opciones para productos con precios duales
+      function showDualPriceOptions(productName, dimensions, image, price1, price2, priceText) {
+        currentProduct = {
+          name: productName,
+          image: image,
+          options: [
+            { material: 'Oil Painting', size: '24" x 30"', price: parseFloat(price1) },
+            { material: 'Oil Painting', size: '18" x 24"', price: parseFloat(price2) }
+          ]
+        };
+        selectedOption = null;
+        
+        const overlay = document.createElement('div');
+        overlay.id = 'dualPriceOverlay';
+        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99999;display:flex;align-items:center;justify-content:center';
+        
+        const panel = document.createElement('div');
+        panel.style.cssText = 'background:#222;color:white;border-radius:10px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;padding:0';
+        
+        let html = '<div style="padding:20px;border-bottom:1px solid #444;display:flex;justify-content:space-between;align-items:center">';
+        html += '<h3 style="margin:0;color:#ffc107;font-size:24px;font-weight:700">🎨 Choose Size</h3>';
+        html += '<button onclick="closeDualPriceOverlay()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer">&times;</button>';
+        html += '</div>';
+        
+        html += '<div style="padding:20px">';
+        html += '<div style="display:flex;align-items:center;margin-bottom:20px">';
+        html += '<img src="' + image + '" style="width:80px;height:80px;object-fit:cover;border-radius:8px;margin-right:15px">';
+        html += '<div><h4 style="margin:0 0 5px 0;font-size:20px;font-weight:700">' + productName + '</h4>';
+        html += '<p style="margin:0;color:#e8e8e8;font-size:16px;font-weight:500;line-height:1.5">Oil painting on canvas</p></div>';
+        html += '</div>';
+        
+        html += '<h5 style="color:#ffc107;margin-bottom:15px;font-size:18px;font-weight:700">📐 Select Size:</h5>';
+        html += '<div id="optionsList">';
+        
+        currentProduct.options.forEach((option, index) => {
+          html += '<div class="option-card" onclick="selectDualOption(' + index + ')" id="dual-option-' + index + '" style="border:2px solid #444;border-radius:8px;padding:15px;margin-bottom:10px;cursor:pointer;transition:all 0.3s ease;display:flex;justify-content:space-between;align-items:center">';
+          html += '<div><div style="font-weight:bold;margin-bottom:3px;font-size:16px">' + option.size + '</div>';
+          html += '<div style="color:#e8e8e8;font-size:14px;font-weight:500">Oil on Canvas</div></div>';
+          html += '<div style="color:#ffc107;font-weight:bold;font-size:20px">$' + option.price.toFixed(2) + '</div>';
+          html += '</div>';
+        });
+        
+        html += '</div>';
+        html += '<div style="text-align:center;margin-top:20px">';
+        html += '<button onclick="closeDualPriceOverlay()" style="background:#6c757d;color:white;border:none;padding:12px 25px;border-radius:5px;margin-right:15px;cursor:pointer;font-size:16px;font-weight:600">❌ Cancel</button>';
+        html += '<button onclick="addDualOptionToCart()" style="background:#28a745;color:white;border:none;padding:12px 25px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:16px" id="addDualToCartBtn" disabled>🛒 Add to Cart</button>';
+        html += '</div>';
+        html += '</div>';
+        
+        panel.innerHTML = html;
+        overlay.appendChild(panel);
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+      }
+      
+      // Seleccionar opción dual
+      function selectDualOption(optionIndex) {
+        document.querySelectorAll('#dualPriceOverlay .option-card').forEach(card => {
+          card.style.borderColor = '#444';
+          card.style.background = 'transparent';
+        });
+        
+        const selectedCard = document.getElementById('dual-option-' + optionIndex);
+        selectedCard.style.borderColor = '#ffc107';
+        selectedCard.style.background = 'rgba(255, 193, 7, 0.1)';
+        
+        selectedOption = currentProduct.options[optionIndex];
+        document.getElementById('addDualToCartBtn').disabled = false;
+        document.getElementById('addDualToCartBtn').style.opacity = '1';
+      }
+      
+      // Agregar opción dual al carrito
+      function addDualOptionToCart() {
+        if (!selectedOption || !currentProduct) return;
+        
+        const cartItem = {
+          name: currentProduct.name,
+          price: selectedOption.price,
+          dimensions: selectedOption.size,
+          material: selectedOption.material,
+          image: currentProduct.image,
+          quantity: 1
+        };
+        
+        const existing = cart.find(item => 
+          item.name === cartItem.name && 
+          item.dimensions === cartItem.dimensions && 
+          item.material === cartItem.material
+        );
+        
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          cart.push(cartItem);
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        closeDualPriceOverlay();
+        showMessage(cartItem.name + ' (' + cartItem.dimensions + ') added to cart!');
+      }
+      
+      // Cerrar overlay dual
+      function closeDualPriceOverlay() {
+        const overlay = document.getElementById('dualPriceOverlay');
+        if (overlay) {
+          overlay.remove();
+          document.body.style.overflow = '';
+        }
+        currentProduct = null;
+        selectedOption = null;
+      }
+      
+      // Agregar producto simple al carrito
+      function addToCart(productName, dimensions, image, price) {
+        const cartItem = {
+          name: productName,
+          price: parseFloat(price),
+          dimensions: dimensions,
+          material: 'Oil Painting',
+          image: image,
+          quantity: 1
+        };
+        
+        const existing = cart.find(item => 
+          item.name === cartItem.name && 
+          item.dimensions === cartItem.dimensions && 
+          item.material === cartItem.material
+        );
+        
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          cart.push(cartItem);
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        showMessage(cartItem.name + ' (' + cartItem.dimensions + ') added to cart!');
+      }
+      
+      // Mostrar mensaje
+      function showMessage(text) {
+        const msg = document.createElement('div');
+        msg.textContent = text;
+        msg.style.cssText = 'position:fixed;top:80px;right:10px;background:#28a745;color:white;padding:15px 20px;border-radius:8px;z-index:99999;max-width:350px;font-size:16px;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.3);line-height:1.4';
+        document.body.appendChild(msg);
+        setTimeout(() => msg.remove(), 3000);
+      }
+      
+      // Actualizar contador del carrito
+      function updateCartCount() {
+        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const badge = document.getElementById('cartCount');
+        if (badge) badge.textContent = count;
+      }
+      
+      // Ir a la página de shop
+      function goToShop() {
+        window.location.href = '/shop.html';
+      }
+      
+      // Inicializar carrito al cargar la página
+      document.addEventListener('DOMContentLoaded', function() {
+        updateCartCount();
+      });
+    </script>
   </head>
   <body>
     <!-- Page-->
@@ -357,6 +675,13 @@
                   <div class="cell-lg-3">
                     <p class="veil reveal-lg-block"><a class="text-primary" href="mailto:gustavo54@att.net">gustavo54@att.net</a></p>
                   </div>
+                </div>
+                
+                <!-- Cart Icon - RESPONSIVE -->
+                <div class="cart-icon d-flex align-items-center" onclick="goToShop()">
+                  <i class="fas fa-shopping-cart text-success fs-5"></i>
+                  <span class="fw-bold text-dark ms-2 d-none d-sm-inline">View Cart</span>
+                  <span class="badge bg-danger rounded-pill ms-2" id="cartCount">0</span>
                 </div>
                 <!-- RD Navbar Panel-->
                 <div class="rd-navbar-panel">
@@ -467,7 +792,9 @@
                                                       data-image="../images/portfolio/portfolio-01-570x420.jpg"
                                                       data-price="34.00">detail</a>
 
-                                                    <a class="btn btn-xs btn-success" href="/shop.html?product=crescent-city-rooftops">Shop This</a>
+                                                    <button class="btn btn-xs btn-success" onclick="addToCart('Crescent City Rooftops', '24&quot; x 30&quot;', '../images/portfolio/portfolio-01-570x420.jpg', '34.00')">
+                                                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                    </button>
                                                 </div>
                                             </figcaption>
                                         </figure>
@@ -490,7 +817,9 @@
                                                       data-image="../images/portfolio/portfolio-02-570x420.jpg"
                                                       data-price="36.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=nouvelle-bleu">Shop This</a>
+                                                    <button class="btn btn-xs btn-success" onclick="addToCart('Nouvelle Bleu', '24&quot; x 36&quot;', '../images/portfolio/portfolio-02-570x420.jpg', '36.00')">
+                                                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                    </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -514,7 +843,9 @@
                                                       data-image="../images/portfolio/portfolio-03-570x420.jpg"
                                                       data-price="36.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=jazzy-balconies">Shop This</a>
+                                                    <button class="btn btn-xs btn-success" onclick="addToCart('Jazzy Balaconies', '24&quot; x 36&quot;', '../images/portfolio/portfolio-03-570x420.jpg', '36.00')">
+                                                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                    </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -535,9 +866,13 @@
                                                       data-name="Orleans Street"
                                                       data-dimensions="24&quot; x 30&quot; & 18&quot; x 24&quot;"
                                                       data-image="../images/portfolio/portfolio-04-570x420.jpg"
-                                                      data-price="34.00">detail</a>
+                                                      data-price="34.00"
+                                                      data-dual-price="true"
+                                                      data-price-text="Size 1: $34.00 | Size 2: $28.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=orleans-street">Shop This</a>
+                                                    <button class="btn btn-xs btn-success" onclick="showDualPriceOptions('Orleans Street', '24&quot; x 30&quot; & 18&quot; x 24&quot;', '../images/portfolio/portfolio-04-570x420.jpg', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')">
+                                                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                    </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -558,9 +893,13 @@
                                                       data-name="Pirate's Alley"
                                                       data-dimensions="24&quot; x 30&quot; & 18&quot; x 24&quot;"
                                                       data-image="../images/portfolio/portfolio-26-570x420.JPG"
-                                                      data-price="34.00">detail</a>
+                                                      data-price="34.00"
+                                                      data-dual-price="true"
+                                                      data-price-text="Size 1: $34.00 | Size 2: $28.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=pirates-alley">Shop This</a>
+                                                    <button class="btn btn-xs btn-success" onclick="showDualPriceOptions('Pirate\'s Alley', '24&quot; x 30&quot; & 18&quot; x 24&quot;', '../images/portfolio/portfolio-26-570x420.JPG', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')">
+                                                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                    </button>
                                               </div>                                              
                                             </figcaption>
                                           </figure>
@@ -583,7 +922,9 @@
                                                       data-image="../images/portfolio/portfolio-06-570x420.jpg"
                                                       data-price="28.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=cafe-du-monde">Shop This</a>
+                                                    <button class="btn btn-xs btn-success" onclick="addToCart('Cafe Du Monde', '18&quot; x 24&quot;', '../images/portfolio/portfolio-06-570x420.jpg', '28.00')">
+                                                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                    </button>
                                               </div>                                               
                                             </figcaption>
                                           </figure>
@@ -606,7 +947,9 @@
                                                       data-image="../images/portfolio/portfolio-07-570x420.PNG"
                                                       data-price="28.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=blue-moon-cafe">Shop This</a>
+                                                    <button class="btn btn-xs btn-success" onclick="addToCart('Blue Moon Cafe', '18&quot; x 24&quot;', '../images/portfolio/portfolio-07-570x420.PNG', '28.00')">
+                                                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                    </button>
                                               </div>                                              
                                             </figcaption>
                                           </figure>
@@ -629,7 +972,9 @@
                                                       data-image="../images/portfolio/portfolio-20-570x420.jpg"
                                                       data-price="28.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=buggy">Shop This</a>
+                                                    <button class="btn btn-xs btn-success" onclick="addToCart('Buggy', '18&quot; x 24&quot;', '../images/portfolio/portfolio-20-570x420.jpg', '28.00')">
+                                                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                    </button>
                                               </div> 
                                             </figcaption>
                                           </figure>
@@ -653,7 +998,9 @@
                                                       data-image="../images/portfolio/portfolio-21-570x420.jpg"
                                                       data-price="28.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=general-jackson">Shop This</a>
+                                                    <button class="btn btn-xs btn-success" onclick="addToCart('General Jackson', '18&quot; x 24&quot;', '../images/portfolio/portfolio-21-570x420.jpg', '28.00')">
+                                                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                    </button>
                                               </div>                                             
                                             </figcaption>
                                           </figure>
@@ -678,7 +1025,9 @@
                                                       data-image="../images/portfolio/portfolio-22-570x420.jpg"
                                                       data-price="28.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=katies-house">Shop This</a>
+                                                    <button class="btn btn-xs btn-success" onclick="addToCart('katies House', '18&quot; x 24&quot;', '../images/portfolio/portfolio-22-570x420.jpg', '28.00')">
+                                                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                    </button>
                                               </div>                                               
                                             </figcaption>
                                           </figure>
@@ -702,7 +1051,9 @@
                                                       data-image="../images/portfolio/portfolio-08-570x420.jpg"
                                                       data-price="36.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=royal-street-balconies">Shop This</a>
+                                                    <button class="btn btn-xs btn-success" onclick="addToCart('Royal Street Balconies', '24&quot; x 36&quot;', '../images/portfolio/portfolio-08-570x420.jpg', '36.00')">
+                                                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                    </button>
                                               </div>   
                                             </figcaption>
                                           </figure>
@@ -725,7 +1076,9 @@
                                                       data-image="../images/portfolio/portfolio-09-570x420.jpg"
                                                       data-price="36.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=desire-streetcar">Shop This</a>
+                                                    <button class="btn btn-xs btn-success" onclick="addToCart('Desire Streetcar', '24&quot; x 36&quot;', '../images/portfolio/portfolio-09-570x420.jpg', '36.00')">
+                                                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                    </button>
                                               </div> 
                                             </figcaption>
                                           </figure>
@@ -748,7 +1101,9 @@
                                                       data-image="../images/portfolio/portfolio-10-570x420.jpg"
                                                       data-price="28.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=porte-blue">Shop This</a>
+                                                    <button class="btn btn-xs btn-success" onclick="addToCart('Porte Blue', '15&quot; x 30&quot;', '../images/portfolio/portfolio-10-570x420.jpg', '28.00')">
+                                                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                    </button>
                                               </div> 
                                             </figcaption>
                                           </figure>
@@ -771,7 +1126,9 @@
                                                       data-image="../images/portfolio/portfolio-11-570x420.jpg"
                                                       data-price="28.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=maison-rouge">Shop This</a>
+                                                    <button class="btn btn-xs btn-success" onclick="addToCart('Maison Rouge', '15&quot; x 30&quot;', '../images/portfolio/portfolio-11-570x420.jpg', '28.00')">
+                                                      <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                    </button>
                                               </div> 
                                             </figcaption>
                                           </figure>
@@ -815,7 +1172,9 @@
                                                       data-name="St. Louis Cathedral in Full Color"
                                                       data-dimensions="24&quot; x 30&quot; & 18&quot; x 24&quot;"
                                                       data-image="../images/portfolio/portfolio-13-570x420.jpg"
-                                                      data-price="34.00">detail</a>
+                                                      data-price="34.00"
+                                                      data-dual-price="true"
+                                                      data-price-text="Size 1: $34.00 | Size 2: $28.00">detail</a>
                                               
                                                       <a class="btn btn-xs btn-success" href="/shop.html?product=st-louis-cathedral-full-color">Shop This</a>
                                               </div> 
@@ -953,7 +1312,9 @@
                                                       data-name="Lafittes Blacksmith House Blue Hue"
                                                       data-dimensions="24&quot; x 30&quot; & 18&quot; x 24&quot;"
                                                       data-image="../images/portfolio/portfolio-19-570x420.jpg"
-                                                      data-price="34.00">detail</a>
+                                                      data-price="34.00"
+                                                      data-dual-price="true"
+                                                      data-price-text="Size 1: $34.00 | Size 2: $28.00">detail</a>
                                               
                                                       <a class="btn btn-xs btn-success" href="/shop.html?product=lafittes-blacksmith-blue">Shop This</a>
                                               </div>
@@ -977,7 +1338,9 @@
                                                       data-name="Lafitte_s Blacksmith Shop"
                                                       data-dimensions="24&quot; x 30&quot; & 18&quot; x 24&quot;"
                                                       data-image="../images/portfolio/portfolio-23-570x420.jpg"
-                                                      data-price="34.00">detail</a>
+                                                      data-price="34.00"
+                                                      data-dual-price="true"
+                                                      data-price-text="Size 1: $34.00 | Size 2: $28.00">detail</a>
                                               
                                                       <a class="btn btn-xs btn-success" href="/shop.html?product=lafittes-blacksmith-shop">Shop This</a>
                                               </div>
@@ -1713,7 +2076,29 @@
               modalImage.src = product.image;
               modalProductName.textContent = product.name;
               modalProductDimensions.textContent = `Dimensions: ${product.dimensions}`;
-              modalProductPrice.textContent = `$${parseFloat(product.price).toFixed(2)}`;
+              
+              // Detectar si es un producto con precios duales usando el atributo data-dual-price
+              if (product.dualPrice === 'true' && product.priceText) {
+                  // Mostrar el texto completo de precios duales
+                  modalProductPrice.innerHTML = `<strong>${product.priceText}</strong>`;
+              } else if (product.dimensions.includes('&') || product.dimensions.includes('Two Sizes')) {
+                  // Fallback para productos duales sin el atributo específico
+                  const button = document.querySelector(`[data-name="${product.name}"]`);
+                  if (button) {
+                      const productInfo = button.closest('.product-actions').previousElementSibling;
+                      const priceElement = productInfo.querySelector('.product-price');
+                      if (priceElement && priceElement.textContent.includes('|')) {
+                          modalProductPrice.innerHTML = `<strong>${priceElement.textContent}</strong>`;
+                      } else {
+                          modalProductPrice.textContent = `From $${parseFloat(product.price).toFixed(2)}`;
+                      }
+                  } else {
+                      modalProductPrice.textContent = `From $${parseFloat(product.price).toFixed(2)}`;
+                  }
+              } else {
+                  // Producto con precio único
+                  modalProductPrice.textContent = `$${parseFloat(product.price).toFixed(2)}`;
+              }
 
               productDetailModal.style.display = 'flex'; // Usar flex para centrar
           }
@@ -1730,7 +2115,9 @@
                       name: this.dataset.name,
                       dimensions: this.dataset.dimensions,
                       image: this.dataset.image,
-                      price: this.dataset.price
+                      price: this.dataset.price,
+                      dualPrice: this.dataset.dualPrice || 'false',
+                      priceText: this.dataset.priceText || null
                   };
                   showProductDetailModal(product);
               });
