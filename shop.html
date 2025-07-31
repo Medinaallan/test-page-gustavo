@@ -1,278 +1,22 @@
+
 <!DOCTYPE html>
 <html class="wide wow-animation smoothscroll scrollTo" lang="en">
   <head>
     <!-- Site Title-->
-    <title>Shop - Gustavo Trujillo Art</title>
+    <title>Shop</title>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
-    <!-- RESPONSIVE VIEWPORT - OPTIMIZADO -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="New Orleans art, prints, paintings, Gustavo Trujillo, responsive design">
-    <meta name="description" content="Shop original artwork prints by Gustavo Trujillo. Beautiful New Orleans scenes available in various sizes with responsive design for all devices.">
-    <meta name="date" content="Jul 28">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="keywords" content="Intense web design multipurpose template">
+    <meta name="date" content="Apr 26">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <!-- Stylesheets-->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Dancing+Script:700%7CLato:300,300italic,400,700,900">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <style>
-      /* RESPONSIVE CART SIDEBAR */
-      .cart-sidebar {
-        position: fixed;
-        top: 0;
-        right: -100vw;
-        width: 100vw;
-        max-width: 400px;
-        height: 100vh;
-        background-color: #111;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-        z-index: 1001;
-        overflow-y: auto;
-        transition: right 0.3s ease;
-        padding-top: 60px;
-        color: white;
-        display: flex;
-        flex-direction: column;
-      }
-      
-      .cart-sidebar.open {
-        right: 0;
-      }
-      
-      /* RESPONSIVE CART OVERLAY */
-      .cart-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0,0,0,0.5);
-        z-index: 1000;
-        display: none;
-      }
-      
-      .cart-overlay.active {
-        display: block;
-      }
-      
-      /* RESPONSIVE CART ICON */
-      .cart-icon {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        z-index: 1000;
-        cursor: pointer;
-        background: white;
-        padding: 12px 16px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        border: 2px solid #414e48;
-      }
-      
-      /* PRODUCT CARDS - MOBILE FIRST */
-      .product-card {
-        position: relative;
-        margin-bottom: 20px;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: none;
-      }
-      
-      .product-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      }
-      
-      .product-card .card-img-top {
-        height: 250px;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-      }
-      
-      .product-card:hover .card-img-top {
-        transform: scale(1.05);
-      }
-      
-      .option-card {
-        border: 2px solid #444;
-        border-radius: 8px;
-        padding: 15px;
-        margin-bottom: 10px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      
-      .option-card:hover {
-        border-color: #ffc107;
-        background: rgba(255, 193, 7, 0.1);
-      }
-      
-      .option-card.selected {
-        border-color: #ffc107;
-        background: rgba(255, 193, 7, 0.1);
-      }
-      
-      /* BOTONES MAS GRANDES PARA SHOP Y GALLERY */
-      .btn-choose-options {
-        padding: 18px 30px !important;
-        font-size: 18px !important;
-        font-weight: bold !important;
-        border-radius: 8px !important;
-        transition: all 0.3s ease !important;
-        min-height: 60px !important;
-      }
-      
-      .btn-choose-options:hover {
-        transform: translateY(-2px) !important;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
-      }
-      
-      /* TEXT LEGIBILITY IMPROVEMENTS - SHOP PAGE */
-      /* Main page content text */
-      .page-content h1,
-      .responsive-title {
-        color: #2c3e50 !important;
-        font-size: 3.5rem !important;
-        font-weight: 700 !important;
-        font-style: italic !important;
-        font-family: 'Dancing Script', cursive !important;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.2) !important;
-        margin-bottom: 1.5rem !important;
-      }
-      
-      .responsive-subtitle,
-      .page-content p {
-        color: #2c3e50 !important;
-        font-size: 1.4rem !important;
-        font-weight: 600 !important;
-        line-height: 1.7 !important;
-        font-style: italic !important;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.1) !important;
-        margin-bottom: 1rem !important;
-      }
-      
-      /* Product card text improvements */
-      .product-card .card-title {
-        color: #2c3e50 !important;
-        font-size: 1.5rem !important;
-        font-weight: 700 !important;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.1) !important;
-        margin-bottom: 0.8rem !important;
-      }
-      
-      .product-card .card-text {
-        color: #2c3e50 !important;
-        font-size: 1.2rem !important;
-        font-weight: 600 !important;
-        line-height: 1.6 !important;
-        margin-bottom: 1rem !important;
-      }
-      
-      .product-card .h6 {
-        color: #e67e22 !important;
-        font-size: 1.4rem !important;
-        font-weight: 700 !important;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.1) !important;
-      }
-      
-      .product-card .text-muted {
-        color: #2c3e50 !important;
-        font-size: 1.1rem !important;
-        font-weight: 600 !important;
-      }
-      
-      /* Footer text improvements */
-      .page-footer p,
-      .page-footer .small {
-        color: #ecf0f1 !important;
-        font-size: 1.2rem !important;
-        font-weight: 600 !important;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.4) !important;
-      }
-      
-      .page-footer .list-inline a {
-        color: #ecf0f1 !important;
-        font-size: 1.2rem !important;
-        font-weight: 600 !important;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.4) !important;
-        text-decoration: none !important;
-      }
-      
-      .page-footer .list-inline a:hover {
-        color: #ffc107 !important;
-        text-decoration: underline !important;
-      }
-      
-      /* Navigation and header text */
-      .rd-navbar p {
-        color: #2c3e50 !important;
-        font-size: 1.2rem !important;
-        font-weight: 700 !important;
-      }
-      
-      .rd-navbar a {
-        color: #2c3e50 !important;
-        font-weight: 700 !important;
-        text-decoration: none !important;
-        font-size: 1.1rem !important;
-      }
-      
-      /* Cart text improvements */
-      .cart-icon .text-dark {
-        color: #2c3e50 !important;
-        font-weight: 700 !important;
-        font-size: 1.2rem !important;
-      }
-      
-      /* Responsive text sizing for mobile */
-      @media (max-width: 768px) {
-        .responsive-title {
-          font-size: 2.8rem !important;
-        }
-        
-        .responsive-subtitle,
-        .page-content p {
-          font-size: 1.2rem !important;
-        }
-        
-        .product-card .card-title {
-          font-size: 1.3rem !important;
-        }
-        
-        .product-card .card-text {
-          font-size: 1.1rem !important;
-        }
-      }
-      
-      @media (max-width: 576px) {
-        .responsive-title {
-          font-size: 2.4rem !important;
-        }
-        
-        .responsive-subtitle,
-        .page-content p {
-          font-size: 1.1rem !important;
-        }
-        
-        .product-card .card-title {
-          font-size: 1.2rem !important;
-        }
-        
-        .product-card .card-text {
-          font-size: 1rem !important;
-        }
-      }
-    </style>
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+
 		<!--[if lt IE 10]>
     <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <script src="js/html5shiv.min.js"></script>
@@ -294,20 +38,12 @@
                   </div>
                   <div class="cell-lg-6 text-center">
                     <!--Navbar Brand-->
-                    <div class="rd-navbar-brand"><a href="index.html"><img width='432' height='63' src='images/logo-dark.png' alt=''/></a></div>
+                    <div class="rd-navbar-brand"><a href="/index.html"><img width='432' height='63' src='../images/logo-dark.png' alt=''/></a></div>
                   </div>
                   <div class="cell-lg-3">
                     <p class="veil reveal-lg-block"><a class="text-primary" href="mailto:gustavo54@att.net">gustavo54@att.net</a></p>
                   </div>
                 </div>
-                
-                <!-- Cart Icon - RESPONSIVE -->
-                <div class="cart-icon d-flex align-items-center" onclick="showCartOverlay()">
-                  <i class="fas fa-shopping-cart text-success fs-5"></i>
-                  <span class="fw-bold text-dark ms-2 d-none d-sm-inline">Shop Cart</span>
-                  <span class="badge bg-danger rounded-pill ms-2" id="cartCount">0</span>
-                </div>
-
                 <!-- RD Navbar Panel-->
                 <div class="rd-navbar-panel">
                   <!-- RD Navbar Toggle-->
@@ -321,18 +57,18 @@
                   <div class="rd-navbar-nav-wrap">
                     <div class="rd-navbar-mobile-scroll">
                       <!--Navbar Brand Mobile-->
-                      <div class="rd-navbar-mobile-brand"><a href="index.html"><img width='221' height='32' src='images/logo-dark.png' alt=''/></a></div>
+                      <div class="rd-navbar-mobile-brand"><a href="/index.html"><img width='221' height='32' src='../images/logo-dark.png' alt=''/></a></div>
                       <!-- RD Navbar Nav-->
                       <ul class="rd-navbar-nav">
-                        <li><a href="index.html"><span>Home</span></a>
+                        <li><a href="/index.html"><span>Home</span></a>
                         </li>
-                        <li><a href="about-us.html"><span>About</span></a>
+                        <li><a href="/about-us.html"><span>About</span></a>
                         </li>
-                        <li><a href="gallery.html"><span>Gallery</span></a>
+                        <li><a href="/gallery.html"><span>Gallery</span></a>
                         </li>
-                        <li class="active"><a href="shop.html"><span>Shop Prints</span></a>
+                        <li class="active"><a href="/shop.html"><span>Shop Prints</span></a>
                         </li>
-                        <li><a href="contacts.html"><span>Contact Gustavo</span></a>
+                        <li><a href="/contacts.html"><span>Contact Gustavo</span></a>
                         </li>
                       </ul>
                     </div>
@@ -343,10 +79,9 @@
           </nav>
         </div>
       </header>
-
       <!-- Modern Breadcrumbs-->
       <section>
-        <div class="parallax-container breadcrumb-modern bg-gray-darkest context-dark" data-parallax-img="images/background-1-1920x651.jpg">
+        <div class="parallax-container breadcrumb-modern bg-gray-darkest context-dark" data-parallax-img="../images/background-1-1920x651.jpg">
           <div class="parallax-content">
             <div class="bg-overlay-gray-darkest">
               <div class="shell section-34 section-sm-50 section-md-110">
@@ -356,27 +91,92 @@
           </div>
         </div>
       </section>
-      <!-- Page Content - RESPONSIVE -->
+      <!-- Page Content-->
       <main class="page-content section-top-98 section-sm-124">
-        <div class="container-fluid responsive-padding">
-          <div class="row justify-content-center">
-            <div class="col-12 col-lg-10 col-xl-12">
-              <h1 class="text-center responsive-title mb-4">Shop Prints</h1>
-              <div class="text-center responsive-margin">
-                <p class="responsive-subtitle mb-0">Original artwork prints by Gustavo Trujillo available in various sizes. Each print captures the vibrant colors and unique charm of New Orleans.</p>
+        <div class="shell">
+            <div class="cell-md-9">
+              <h1 class="text-between">Paper Prints for Sale</h1>
+              <div class="cell-sm-10 offset-top-50 offset-md-top-0 cell-md-5 cell-md-pull-6 cell-lg-4 text-sm-left inset-md-right-30">
+                <p>The Paper prints of Gustavo Trujillo's artwork are made from light weight aluminum with a glossy finish.  The Paper prints are size 8"x10" with rounded corners and come with a wall mount attached to the back so they are ready to hang.  The price is $30 each plus shipping.</p>
               </div>
-              
-              <!-- Shop Grid View - RESPONSIVE BOOTSTRAP GRID -->
-              <div class="mt-4">
-                <div class="row g-3 g-md-4" id="productsContainer">
-                  <!-- Products will be dynamically rendered here -->
+              <!-- Shop Grid View-->
+              <div class="range range-xs-center">
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4">
+                  <!-- Product-->
+                  <!-- Product Image-->
+                    <a class="big" href="/bourbon-street.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-01-232x229.png" alt=""/>
+                    </div>
+                    <!-- Product Title-->
+                    <div class="product-title offset-top-4 text-primary">Bourbon Street</a></div>
+                </div>
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4">
+                  <!-- Product-->
+                  <!-- Product Image-->
+                    <a class="big" href="/pirates-alley.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-02-232x229.png" alt=""/>
+                    </div>
+                    <!-- Product Title-->
+                    <div class="product-title offset-top-4 text-primary">Pirates Alley</a></div>
+                </div>
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4">
+                  <!-- Product-->
+                  <!-- Product Image-->
+                    <a class="big" href="/madison-street.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-03-232x229.png" alt=""/>
+                    </div>
+                    <!-- Product Title-->
+                    <div class="product-title offset-top-4 text-primary">Madison Street</a></div>
+                </div>
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <!-- Product-->
+                  <!-- Product Image-->
+                    <a class="big" href="/plantation-stroll.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-04-232x229.png" alt=""/>
+                    </div>
+                    <!-- Product Title-->
+                    <div class="product-title offset-top-4 text-primary">Plantation Stroll</a></div>
+                </div>
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <!-- Product-->
+                  <!-- Product Image-->
+                    <a class="big" href="/lafitte-cool-shades.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-09-315x229.png" alt=""/>
+                    </div>
+                    <!-- Product Title-->
+                    <div class="product-title offset-top-4 text-primary">Lafitte Cool Shades</a></div>
+                </div>
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <!-- Product-->
+                  <!-- Product Image-->
+                    <a class="big" href="/autumn-trees.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-06-232x229.png" alt=""/>
+                    </div>
+                    <!-- Product Title-->
+                    <div class="product-title offset-top-4 text-primary">Autumn Trees</a></div>
+                </div>
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <!-- Product-->
+                  <!-- Product Image-->
+                    <a class="big" href="/julia-street.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-07-232x229.png" alt=""/>
+                    </div>
+                    <!-- Product Title-->
+                    <div class="product-title offset-top-4 text-primary">Julia Street</a></div>
+                </div>
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <!-- Product-->
+                  <!-- Product Image-->
+                    <a class="big" href="/vieux-carre-balconies.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-08-315x229.png" alt=""/>
+                    </div>
+                    <!-- Product Title-->
+                    <div class="product-title offset-top-4 text-primary">Vieux Carré Balconies</a></div>
+                </div>
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <!-- Product-->
+                  <!-- Product Image-->
+                    <a class="big" href="/jackson-square.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-05-232x229.png" alt=""/>
+                    </div>
+                    <!-- Product Title-->
+                    <div class="product-title offset-top-4 text-primary">Jackson Square</a></div>
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </main>
-
       <!-- Page Footers-->
       <!-- Footer variant 4-->
       <footer class="section-relative section-34 page-footer bg-gray-base context-dark">
@@ -387,10 +187,10 @@
                 <div class="cell-xs-12 cell-md-8 cell-md-push-2 text-md-right">
                   <div>
                     <ul class="list-inline list-inline-dashed p text-darker list-inline-md list-inline-dashed-wide">
-                      <li><a href="about-us.html">About Gustavo</a></li>
-                      <li><a href="gallery.html">Gallery</a></li>
-                      <li><a href="shop.html">Shop Prints</a></li>
-                      <li><a href="contacts.html">Contact Gustavo</a></li>
+                      <li><a href="/about-us.html">About Gustavo</a></li>
+                      <li><a href="/gallery.html">Gallery</a></li>
+                      <li><a href="/shop.html">Shop Prints</a></li>
+                      <li><a href="/contacts.html">Contact Gustavo</a></li>
                     </ul>
                   </div>
                   <ul class="list-inline list-inline-white offset-top-10 text-darker text-white">
@@ -400,7 +200,7 @@
                 </div>
                 <div class="cell-xs-12 cell-md-4 cell-md-push-1 offset-top-34 offset-md-top-0">
                   <!-- Footer brand-->
-                  <div class="footer-brand"><a href="index.html"><img width='221' height='32' style='margin-left: -6px;' src='images/logo-light.png' alt=''/></a></div>
+                  <div class="footer-brand"><a href="/index.html"><img width='221' height='32' style='margin-left: -6px;' src='../images/logo-light.png' alt=''/></a></div>
                   <p class="small text-darker offset-top-4 text-white">&copy; <span id="copyright-year"></span> Gustavo Trujillo
                   </p>
                 </div>
@@ -412,635 +212,43 @@
     </div>
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"></div>
-
-    <!-- Scripts -->
-    <script src="js/core.min.js"></script>
-    <script src="js/script.js"></script>
-    
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Note: Disqus comments system removed from shop page as it's not appropriate for e-commerce -->
-    <!-- Comments should only be on blog posts or articles, not product pages -->
-    
-    <!-- Cart System with Options Selector -->
-    <script>
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      let selectedOption = null;
-      let currentProduct = null;
-      
-      // Products with Paper Print and Canvas options
-      const products = [
-        {
-          id: 1,
-          name: 'Autumn Trees',
-          image: 'images/autumn-trees-364x500.png',
-          description: 'Beautiful autumn scene with vibrant fall colors',
-          options: [
-            { material: 'Paper Print', size: '8" x 10"', price: 25 },
-            { material: 'Paper Print', size: '11" x 14"', price: 35 },
-            { material: 'Paper Print', size: '16" x 20"', price: 45 },
-            { material: 'Canvas', size: '8" x 10"', price: 65 },
-            { material: 'Canvas', size: '11" x 14"', price: 85 },
-            { material: 'Canvas', size: '16" x 20"', price: 120 }
-          ]
-        },
-        {
-          id: 2,
-          name: 'Bourbon Street',
-          image: 'images/bourbon-street-364x500.png',
-          description: 'Iconic New Orleans street scene',
-          options: [
-            { material: 'Paper Print', size: '8" x 10"', price: 25 },
-            { material: 'Paper Print', size: '11" x 14"', price: 35 },
-            { material: 'Paper Print', size: '16" x 20"', price: 45 },
-            { material: 'Canvas', size: '8" x 10"', price: 65 },
-            { material: 'Canvas', size: '11" x 14"', price: 85 },
-            { material: 'Canvas', size: '16" x 20"', price: 120 }
-          ]
-        },
-        {
-          id: 3,
-          name: 'Jackson Square',
-          image: 'images/jackson-square-364x500.png',
-          description: 'Historic Jackson Square in New Orleans',
-          options: [
-            { material: 'Paper Print', size: '8" x 10"', price: 25 },
-            { material: 'Paper Print', size: '11" x 14"', price: 35 },
-            { material: 'Paper Print', size: '16" x 20"', price: 45 },
-            { material: 'Canvas', size: '8" x 10"', price: 65 },
-            { material: 'Canvas', size: '11" x 14"', price: 85 },
-            { material: 'Canvas', size: '16" x 20"', price: 120 }
-          ]
-        },
-        {
-          id: 4,
-          name: 'Julia Street',
-          image: 'images/julia-street-364x500.png',
-          description: 'Charming Julia Street artwork',
-          options: [
-            { material: 'Paper Print', size: '8" x 10"', price: 25 },
-            { material: 'Paper Print', size: '11" x 14"', price: 35 },
-            { material: 'Paper Print', size: '16" x 20"', price: 45 },
-            { material: 'Canvas', size: '8" x 10"', price: 65 },
-            { material: 'Canvas', size: '11" x 14"', price: 85 },
-            { material: 'Canvas', size: '16" x 20"', price: 120 }
-          ]
-        },
-        {
-          id: 5,
-          name: 'LaFitte Cool Shades',
-          image: 'images/lafitte-cool-shades-364x500.png',
-          description: 'Cool character from LaFitte area',
-          options: [
-            { material: 'Paper Print', size: '8" x 10"', price: 25 },
-            { material: 'Paper Print', size: '11" x 14"', price: 35 },
-            { material: 'Paper Print', size: '16" x 20"', price: 45 },
-            { material: 'Canvas', size: '8" x 10"', price: 65 },
-            { material: 'Canvas', size: '11" x 14"', price: 85 },
-            { material: 'Canvas', size: '16" x 20"', price: 120 }
-          ]
-        },
-        {
-          id: 6,
-          name: 'Madison Street',
-          image: 'images/madison-street-364x500.png',
-          description: 'Madison Street scene',
-          options: [
-            { material: 'Paper Print', size: '8" x 10"', price: 25 },
-            { material: 'Paper Print', size: '11" x 14"', price: 35 },
-            { material: 'Paper Print', size: '16" x 20"', price: 45 },
-            { material: 'Canvas', size: '8" x 10"', price: 65 },
-            { material: 'Canvas', size: '11" x 14"', price: 85 },
-            { material: 'Canvas', size: '16" x 20"', price: 120 }
-          ]
-        },
-        {
-          id: 7,
-          name: 'Pirates Alley',
-          image: 'images/pirates-alley-373x500.png',
-          description: 'Mysterious Pirates Alley',
-          options: [
-            { material: 'Paper Print', size: '8" x 10"', price: 25 },
-            { material: 'Paper Print', size: '11" x 14"', price: 35 },
-            { material: 'Paper Print', size: '16" x 20"', price: 45 },
-            { material: 'Canvas', size: '8" x 10"', price: 65 },
-            { material: 'Canvas', size: '11" x 14"', price: 85 },
-            { material: 'Canvas', size: '16" x 20"', price: 120 }
-          ]
-        },
-        {
-          id: 8,
-          name: 'Plantation Stroll',
-          image: 'images/plantation-stroll-364x500.png',
-          description: 'Peaceful plantation walkway',
-          options: [
-            { material: 'Paper Print', size: '8" x 10"', price: 25 },
-            { material: 'Paper Print', size: '11" x 14"', price: 35 },
-            { material: 'Paper Print', size: '16" x 20"', price: 45 },
-            { material: 'Canvas', size: '8" x 10"', price: 65 },
-            { material: 'Canvas', size: '11" x 14"', price: 85 },
-            { material: 'Canvas', size: '16" x 20"', price: 120 }
-          ]
-        },
-        {
-          id: 9,
-          name: 'Vieux Carre Balconies',
-          image: 'images/vieux-carre-364x500.png',
-          description: 'Classic French Quarter balconies',
-          options: [
-            { material: 'Paper Print', size: '8" x 10"', price: 25 },
-            { material: 'Paper Print', size: '11" x 14"', price: 35 },
-            { material: 'Paper Print', size: '16" x 20"', price: 45 },
-            { material: 'Canvas', size: '8" x 10"', price: 65 },
-            { material: 'Canvas', size: '11" x 14"', price: 85 },
-            { material: 'Canvas', size: '16" x 20"', price: 120 }
-          ]
-        }
-      ];
-      
-      // Show product options overlay
-      function showProductOptions(productId) {
-        const product = products.find(p => p.id === productId);
-        if (!product) return;
-        
-        currentProduct = product;
-        selectedOption = null;
-        
-        const overlay = document.createElement('div');
-        overlay.id = 'optionsOverlay';
-        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99999;display:flex;align-items:center;justify-content:center';
-        
-        const panel = document.createElement('div');
-        panel.style.cssText = 'background:#222;color:white;border-radius:10px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;padding:0';
-        
-        let html = '<div style="padding:20px;border-bottom:1px solid #444;display:flex;justify-content:space-between;align-items:center">';
-        html += '<h3 style="margin:0;color:#ffc107;font-size:28px;font-weight:700">🎨 Choose Size & Material</h3>';
-        html += '<button onclick="closeOptionsOverlay()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer">&times;</button>';
-        html += '</div>';
-        
-        html += '<div style="padding:20px">';
-        html += '<div style="display:flex;align-items:center;margin-bottom:20px">';
-        html += '<img src="' + product.image + '" style="width:80px;height:80px;object-fit:cover;border-radius:8px;margin-right:15px">';
-        html += '<div><h4 style="margin:0 0 5px 0;font-size:22px;font-weight:700">' + product.name + '</h4>';
-        html += '<p style="margin:0;color:#e8e8e8;font-size:18px;font-weight:600;line-height:1.5">' + product.description + '</p></div>';
-        html += '</div>';
-        
-        html += '<h5 style="color:#ffc107;margin-bottom:15px;font-size:22px;font-weight:700">📐 Select Size & Material:</h5>';
-        html += '<div id="optionsList">';
-        
-        product.options.forEach((option, index) => {
-          html += '<div class="option-card" onclick="selectOption(' + index + ')" id="option-' + index + '">';
-          html += '<div><div style="font-weight:bold;margin-bottom:3px;font-size:18px">' + option.material + '</div>';
-          html += '<div style="color:#e8e8e8;font-size:18px;font-weight:600">' + option.size + '</div></div>';
-          html += '<div style="color:#ffc107;font-weight:bold;font-size:24px">$' + option.price + '.00</div>';
-          html += '</div>';
-        });
-        
-        html += '</div>';
-        html += '<div style="background:#1e5799;padding:15px;border-radius:5px;margin:20px 0;color:#e8e8e8;font-size:18px;font-weight:600">ℹ️ Paper prints are high-quality reproductions. Canvas prints are stretched and ready to hang.</div>';
-        html += '<div style="text-align:center">';
-        html += '<button onclick="closeOptionsOverlay()" style="background:#6c757d;color:white;border:none;padding:15px 30px;border-radius:5px;margin-right:15px;cursor:pointer;font-size:18px;font-weight:700">❌ Cancel</button>';
-        html += '<button onclick="addSelectedOptionToCart()" style="background:#ffc107;color:#000;border:none;padding:15px 30px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:18px" id="addToCartBtn" disabled>� Buy with PayPal</button>';
-        html += '</div>';
-        html += '</div>';
-        
-        panel.innerHTML = html;
-        overlay.appendChild(panel);
-        document.body.appendChild(overlay);
-        document.body.style.overflow = 'hidden';
-      }
-      
-      // Select an option
-      function selectOption(optionIndex) {
-        document.querySelectorAll('.option-card').forEach(card => {
-          card.classList.remove('selected');
-        });
-        
-        const selectedCard = document.getElementById('option-' + optionIndex);
-        selectedCard.classList.add('selected');
-        
-        selectedOption = currentProduct.options[optionIndex];
-        document.getElementById('addToCartBtn').disabled = false;
-        document.getElementById('addToCartBtn').style.opacity = '1';
-      }
-      
-      // Add selected option to cart and redirect to PayPal
-      function addSelectedOptionToCart() {
-        if (!selectedOption || !currentProduct) return;
-        
-        // Crear formulario HTML directo para PayPal (método más confiable)
-        const itemName = `${currentProduct.name} (${selectedOption.material} - ${selectedOption.size})`;
-        const itemPrice = selectedOption.price.toFixed(2);
-        
-        // Crear formulario PayPal dinámico
-        const form = document.createElement('form');
-        form.method = 'post';
-        form.action = 'https://www.paypal.com/cgi-bin/webscr';
-        form.target = '_blank';
-        
-        // Campos ocultos del formulario
-        const fields = {
-          'cmd': '_cart',
-          'upload': '1',
-          'business': 'gustavo54@att.net',
-          'item_name_1': itemName,
-          'amount_1': itemPrice,
-          'quantity_1': '1',
-          'currency_code': 'USD',
-          'shopping_url': window.location.href,
-          'return': window.location.href + '?payment=success'
-        };
-        
-        Object.keys(fields).forEach(key => {
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = key;
-          input.value = fields[key];
-          form.appendChild(input);
-        });
-        
-        // Agregar formulario al DOM y enviarlo
-        document.body.appendChild(form);
-        form.submit();
-        document.body.removeChild(form);
-        
-        // Cerrar overlay
-        closeOptionsOverlay();
-        showMessage('🚀 Redirigiendo a PayPal...');
-      }
-      
-      // Close options overlay
-      function closeOptionsOverlay() {
-        const overlay = document.getElementById('optionsOverlay');
-        if (overlay) {
-          overlay.remove();
-          document.body.style.overflow = '';
-        }
-        currentProduct = null;
-        selectedOption = null;
-      }
-      
-      function removeItem(name, dimensions, material) {
-        cart = cart.filter(item => !(item.name === name && item.dimensions === dimensions && item.material === material));
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
-        updateCartDisplay();
-        showMessage(name + ' removed from cart');
-      }
-      
-      function clearCart() {
-        if (confirm('Clear all items from cart?')) {
-          cart = [];
-          localStorage.setItem('cart', JSON.stringify(cart));
-          updateCartCount();
-          updateCartDisplay();
-          showMessage('Cart cleared');
-        }
-      }
-      
-      function updateCartCount() {
-        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-        const badge = document.getElementById('cartCount');
-        if (badge) badge.textContent = count;
-        
-        // También actualizar el localStorage para sincronización entre páginas
-        localStorage.setItem('cart', JSON.stringify(cart));
-      }
-      
-      function showMessage(text) {
-        const msg = document.createElement('div');
-        msg.textContent = text;
-        msg.style.cssText = 'position:fixed;top:80px;right:10px;background:#28a745;color:white;padding:20px 25px;border-radius:10px;z-index:99999;max-width:400px;font-size:18px;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,0.4);line-height:1.5';
-        document.body.appendChild(msg);
-        setTimeout(() => msg.remove(), 3000);
-      }
-      
-      // Función para enviar correo automático a Gustavo
-      function sendAutomaticEmail() {
-        
-        // Construir el mensaje del correo
-        let emailSubject = encodeURIComponent(`Nuevo Pedido de Arte - $${total.toFixed(2)} USD`);
-        
-        let emailBody = `Buen día Sr. Gustavo,%0A%0A`;
-        emailBody += `Estoy haciendo el pago de $${total.toFixed(2)} USD por las siguientes pinturas:%0A%0A`;
-        
-        // Desglosar los items
-        emailBody += `📋 DETALLES DEL PEDIDO:%0A`;
-        emailBody += `───────────────────────────%0A`;
-        
-        cart.forEach((item, index) => {
-          emailBody += `${index + 1}. ${encodeURIComponent(item.name)}%0A`;
-          emailBody += `   • Material: ${encodeURIComponent(item.material)}%0A`;
-          emailBody += `   • Dimensiones: ${encodeURIComponent(item.dimensions)}%0A`;
-          emailBody += `   • Cantidad: ${item.quantity}%0A`;
-          emailBody += `   • Precio unitario: $${item.price.toFixed(2)}%0A`;
-          emailBody += `   • Subtotal: $${(item.price * item.quantity).toFixed(2)}%0A`;
-          emailBody += `%0A`;
-        });
-        
-        emailBody += `───────────────────────────%0A`;
-        emailBody += `💰 RESUMEN DE PAGO:%0A`;
-        emailBody += `Subtotal productos: $${subtotal.toFixed(2)}%0A`;
-        emailBody += `Envío: $${shipping.toFixed(2)}%0A`;
-        emailBody += `TOTAL A PAGAR: $${total.toFixed(2)} USD%0A%0A`;
-        
-        emailBody += `🏦 MÉTODO DE PAGO:%0A`;
-        emailBody += `Procederé a realizar el pago vía PayPal a: gustavo54@att.net%0A%0A`;
-        
-        emailBody += `📧 Este correo se genera automáticamente al proceder con el checkout.%0A`;
-        emailBody += `Por favor confirme la recepción de este pedido.%0A%0A`;
-        emailBody += `Saludos cordiales`;
-        
-        // Crear y enviar el correo automáticamente
-        const mailtoLink = `mailto:gustavo54@att.net?subject=${emailSubject}&body=${emailBody}`;
-        
-        try {
-          // Abrir cliente de correo
-          window.open(mailtoLink, '_blank');
-          showMessage('📧 Correo de pedido generado automáticamente! Se abrió su cliente de correo.');
-        } catch (error) {
-          console.error('Error opening email client:', error);
-          // Fallback: mostrar el enlace para copiar
-          const fallbackMsg = document.createElement('div');
-          fallbackMsg.innerHTML = `
-            <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;color:black;padding:30px;border-radius:10px;z-index:99999;max-width:500px;box-shadow:0 10px 30px rgba(0,0,0,0.5)">
-              <h3>📧 Copie este enlace de email:</h3>
-              <textarea style="width:100%;height:100px;margin:10px 0" readonly>${mailtoLink}</textarea>
-              <button onclick="this.parentElement.parentElement.remove()" style="background:#007bff;color:white;border:none;padding:10px 20px;border-radius:5px;cursor:pointer">Cerrar</button>
-            </div>
-          `;
-          document.body.appendChild(fallbackMsg);
-        }
-        
-        return { total, emailSubject, emailBody };
-      }
-      
-      function showCartOverlay() {
-        const overlay = document.createElement('div');
-        overlay.id = 'cartOverlay';
-        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99999;display:flex;align-items:center;justify-content:center';
-        
-        const panel = document.createElement('div');
-        panel.style.cssText = 'background:#222;color:white;border-radius:10px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto';
-        
-        let html = '<div style="padding:20px;border-bottom:1px solid #444;display:flex;justify-content:space-between">';
-        html += '<h3 style="margin:0;color:#ffc107;font-size:28px;font-weight:700">🛒 Shopping Cart</h3>';
-        html += '<button onclick="closeCartOverlay()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer">&times;</button>';
-        html += '</div>';
-        html += '<div id="cartItems" style="padding:20px;min-height:200px"></div>';
-        html += '<div style="padding:20px;border-top:1px solid #444;text-align:center">';
-        html += '<button onclick="clearCart()" style="background:#6c757d;color:white;border:none;padding:15px 25px;border-radius:5px;margin-right:10px;cursor:pointer;font-size:18px;font-weight:700">🗑️ Clear</button>';
-        html += '<button onclick="checkout()" style="background:#ffc107;color:#000;border:none;padding:15px 25px;border-radius:5px;font-weight:bold;cursor:pointer;font-size:18px">💳 PayPal + Email</button>';
-        html += '</div>';
-        
-        panel.innerHTML = html;
-        overlay.appendChild(panel);
-        document.body.appendChild(overlay);
-        document.body.style.overflow = 'hidden';
-        
-        updateCartDisplay();
-      }
-      
-      function closeCartOverlay() {
-        const overlay = document.getElementById('cartOverlay');
-        if (overlay) {
-          overlay.remove();
-          document.body.style.overflow = '';
-        }
-      }
-      
-      function updateCartDisplay() {
-        const container = document.getElementById('cartItems');
-        if (!container) return;
-        
-        if (cart.length === 0) {
-          container.innerHTML = '<div style="text-align:center;color:#e8e8e8;font-style:italic;font-size:22px;font-weight:600">🛒 Your cart is empty<br><small style="font-size:18px;color:#d0d0d0">Add some beautiful artwork!</small></div>';
-          return;
-        }
-        
-        let html = '';
-        cart.forEach(item => {
-          html += '<div style="display:flex;align-items:center;padding:15px 0;border-bottom:1px solid #444">';
-          html += '<img src="' + item.image + '" style="width:60px;height:60px;object-fit:cover;border-radius:4px;margin-right:15px">';
-          html += '<div style="flex:1">';
-          html += '<h6 style="margin:0 0 5px 0;color:white;font-size:20px;font-weight:700">' + item.name + '</h6>';
-          html += '<small style="color:#e8e8e8;font-size:18px;font-weight:600">' + item.material + ' - ' + item.dimensions + '</small>';
-          html += '</div>';
-          html += '<div style="text-align:center;margin:0 15px">';
-          html += '<span style="background:#6c757d;color:white;padding:4px 10px;border-radius:12px;font-size:16px;font-weight:700">Qty: ' + item.quantity + '</span>';
-          html += '</div>';
-          html += '<div style="text-align:right;min-width:80px">';
-          html += '<strong style="color:#ffc107;font-size:20px;font-weight:700">$' + (item.price * item.quantity).toFixed(2) + '</strong>';
-          html += '</div>';
-          html += '<button onclick="removeItem(\'' + item.name + '\', \'' + item.dimensions + '\', \'' + item.material + '\')" style="background:#dc3545;color:white;border:none;padding:6px 10px;border-radius:3px;cursor:pointer;font-size:16px;font-weight:700;margin-left:10px">Remove</button>';
-          html += '</div>';
-        });
-        
-        container.innerHTML = html;
-      }
-      
-      function checkout() {
-        if (cart.length === 0) {
-          alert('Cart is empty!');
-          return;
-        }
-        
-        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const shipping = 5.00;
-        const total = subtotal + shipping;
-        
-        // Mostrar resumen simple y proceder directamente con PayPal
-        let summary = 'RESUMEN DEL PEDIDO:\n\n';
-        cart.forEach(item => {
-          summary += '• ' + item.name + ' (' + item.material + ' - ' + item.dimensions + ') (Qty: ' + item.quantity + ') - $' + (item.price * item.quantity).toFixed(2) + '\n';
-        });
-        summary += '\nSubtotal: $' + subtotal.toFixed(2);
-        summary += '\nShipping: $' + shipping.toFixed(2);
-        summary += '\nTOTAL: $' + total.toFixed(2);
-        summary += '\n\n¿Proceder con el pago?';
-        
-        if (confirm(summary)) {
-          proceedToPayPal(total);
-        }
-      }
-      
-      function proceedToPayPal(total) {
-        // Enviar email automático DESPUÉS de la confirmación del usuario
-        let orderSummary = '';
-        cart.forEach(item => {
-          orderSummary += `• ${item.name} (${item.material} - ${item.dimensions}) (Qty: ${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
-        });
-        
-        // Crear la interfaz de pago moderna
-        const paymentInterface = document.createElement('div');
-        paymentInterface.innerHTML = `
-          <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;color:black;padding:0;border-radius:15px;z-index:99999;max-width:500px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.4);overflow:hidden">
-            <!-- Header -->
-            <div style="background:linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);color:white;padding:25px;text-align:center">
-              <h3 style="margin:0;font-size:28px;font-weight:700">💳 Proceso de Pago</h3>
-              <p style="margin:5px 0 0 0;opacity:0.9">Total: $${total.toFixed(2)} USD</p>
-            </div>
-            
-            <!-- Order Summary -->
-            <div style="padding:20px;background:#f8f9fa;border-bottom:1px solid #dee2e6">
-              <h5 style="margin:0 0 15px 0;color:#2c3e50;font-weight:700">📋 Resumen del Pedido:</h5>
-              <div style="font-size:14px;line-height:1.6;color:#495057;white-space:pre-line">${orderSummary}</div>
-              <div style="margin-top:15px;padding-top:15px;border-top:1px solid #dee2e6">
-                <div style="display:flex;justify-content:space-between;margin-bottom:5px">
-                  <span>Subtotal:</span><span>$${subtotal.toFixed(2)}</span>
+    <!-- PhotoSwipe Gallery-->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="pswp__bg"></div>
+      <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+          <div class="pswp__top-bar">
+            <div class="pswp__counter"></div>
+            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+            <button class="pswp__button pswp__button--share" title="Share"></button>
+            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+            <div class="pswp__preloader">
+              <div class="pswp__preloader__icn">
+                <div class="pswp__preloader__cut">
+                  <div class="pswp__preloader__donut"></div>
                 </div>
-                <div style="display:flex;justify-content:space-between;margin-bottom:10px">
-                  <span>Envío:</span><span>$${shipping.toFixed(2)}</span>
-                </div>
-                <div style="display:flex;justify-content:space-between;font-weight:bold;font-size:18px;color:#1e5799">
-                  <span>TOTAL:</span><span>$${total.toFixed(2)} USD</span>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Payment Options -->
-            <div style="padding:25px">
-              <div style="text-align:center;margin-bottom:20px">
-                <button onclick="proceedWithPayPal(${total})" style="background:#ffc107;color:#000;border:none;padding:15px 30px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:18px;margin-right:10px;box-shadow:0 3px 10px rgba(255,193,7,0.3)">
-                  � Pagar con PayPal
-                </button>
-                <button onclick="proceedWithEmailOnly()" style="background:#28a745;color:white;border:none;padding:15px 30px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:18px;box-shadow:0 3px 10px rgba(40,167,69,0.3)">
-                  📧 Solo Enviar Email
-                </button>
-              </div>
-              <div style="text-align:center">
-                <button onclick="closePaymentInterface()" style="background:#6c757d;color:white;border:none;padding:10px 20px;border-radius:5px;cursor:pointer">Cancelar</button>
-              </div>
-              <div style="margin-top:15px;padding:15px;background:#e7f3ff;border-radius:8px;font-size:14px;color:#0066cc">
-                ℹ️ <strong>PayPal:</strong> Pago seguro directo<br>
-                📧 <strong>Email:</strong> Envía detalles para pago directo
               </div>
             </div>
           </div>
-        `;
-        
-        document.body.appendChild(paymentInterface);
-        document.body.style.overflow = 'hidden';
-      }
-      
-      function proceedToPayPal(total) {
-        // Enviar email automático DESPUÉS de la confirmación del usuario
-        sendAutomaticEmail();
-        
-        // Crear formulario PayPal directo para múltiples productos
-        const firstItem = cart[0];
-        let itemName = `${firstItem.name} (${firstItem.material} - ${firstItem.dimensions})`;
-        
-        // Si hay más productos, agregarlos en las notas
-        if (cart.length > 1) {
-          itemName += ` + ${cart.length - 1} more items`;
-        }
-        
-        const totalAmount = total.toFixed(2);
-        
-        // Crear formulario PayPal dinámico
-        const form = document.createElement('form');
-        form.method = 'post';
-        form.action = 'https://www.paypal.com/cgi-bin/webscr';
-        form.target = '_blank';
-        
-        // Campos ocultos del formulario
-        const fields = {
-          'cmd': '_cart',
-          'upload': '1',
-          'business': 'gustavo54@att.net',
-          'item_name_1': itemName,
-          'amount_1': totalAmount,
-          'quantity_1': '1',
-          'currency_code': 'USD',
-          'shopping_url': window.location.href,
-          'return': window.location.href + '?payment=success'
-        };
-        
-        Object.keys(fields).forEach(key => {
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = key;
-          input.value = fields[key];
-          form.appendChild(input);
-        });
-        
-        // Agregar formulario al DOM y enviarlo
-        document.body.appendChild(form);
-        form.submit();
-        document.body.removeChild(form);
-        
-        // Mostrar confirmación y limpiar carrito
-        showMessage('🚀 PayPal abierto! Email enviado a Gustavo automáticamente.');
-        
-        setTimeout(() => {
-          cart = [];
-          localStorage.setItem('cart', JSON.stringify(cart));
-          updateCartCount();
-          closeCartOverlay();
-          showMessage('🎉 Pedido procesado! Carrito limpiado.');
-        }, 2000);
-      }
-      
-      document.addEventListener('DOMContentLoaded', function() {
-        // Check for payment status in URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const paymentStatus = urlParams.get('payment');
-        
-        if (paymentStatus === 'success') {
-          showMessage('🎉 Payment successful! Thank you for your purchase!');
-          // Clear cart after successful payment
-          cart = [];
-          localStorage.setItem('cart', JSON.stringify(cart));
-          updateCartCount();
-        } else if (paymentStatus === 'cancelled') {
-          showMessage('❌ Payment was cancelled. Your items are still in your cart.');
-        }
-        
-        // Update copyright year
-        const currentYear = new Date().getFullYear();
-        const copyrightElement = document.getElementById('copyright-year');
-        if (copyrightElement) {
-          copyrightElement.textContent = currentYear;
-        }
-        
-        updateCartCount();
-        
-        // Render products
-        const container = document.getElementById('productsContainer');
-        if (container) {
-          products.forEach(product => {
-            const lowestPrice = Math.min.apply(Math, product.options.map(opt => opt.price));
-            const highestPrice = Math.max.apply(Math, product.options.map(opt => opt.price));
-            const priceDisplay = lowestPrice === highestPrice ? '$' + lowestPrice : '$' + lowestPrice + ' - $' + highestPrice;
-            
-            const productCard = document.createElement('div');
-            productCard.className = 'col-sm-6 col-md-4 col-lg-3';
-            productCard.innerHTML = 
-              '<div class="card product-card border-0 h-100">' +
-                '<div class="position-relative overflow-hidden">' +
-                  '<img src="' + product.image + '" class="card-img-top" alt="' + product.name + '">' +
-                '</div>' +
-                '<div class="card-body d-flex flex-column bg-white">' +
-                  '<h6 class="card-title text-dark fw-bold">' + product.name + '</h6>' +
-                  '<p class="card-text text-muted small">' + product.description + '</p>' +
-                  '<div class="mt-auto">' +
-                    '<div class="d-flex justify-content-between align-items-center mb-3">' +
-                      '<span class="h6 text-warning mb-0">' + priceDisplay + '</span>' +
-                      '<small class="text-muted">Various sizes</small>' +
-                    '</div>' +
-                    '<button class="btn btn-dark w-100 btn-choose-options" onclick="showProductOptions(' + product.id + ')">' +
-                      '<i class="fas fa-credit-card me-2"></i>Buy with PayPal' +
-                    '</button>' +
-                  '</div>' +
-                '</div>' +
-              '</div>';
-            
-            container.appendChild(productCard);
-          });
-        }
-      });
-    </script>
+          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+            <div class="pswp__share-tooltip"></div>
+          </div>
+          <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+          <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+          <div class="pswp__caption">
+            <div class="pswp__caption__center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Java script-->
+    <script src="/js/core.min.js"></script>
+    <script src="/js/script.js"></script>
   </body>
 </html>
