@@ -16,6 +16,85 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+    
+    <!-- Custom Styles for Shop -->
+    <style>
+      .product-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      }
+      
+      .product-info {
+        padding-top: 15px;
+      }
+      
+      .product-price {
+        font-size: 18px;
+        font-weight: bold;
+        color: #28a745;
+      }
+      
+      .product-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 15px;
+      }
+      
+      .product-buttons a.big {
+        flex: 1;
+        padding: 10px 15px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-align: center;
+      }
+      
+      .product-buttons a.big:first-child {
+        background-color: #007bff;
+        color: white;
+        border: 2px solid #007bff;
+      }
+      
+      .product-buttons a.big:first-child:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+      }
+      
+      .product-buttons a.big:last-child {
+        background-color: #28a745;
+        color: white;
+        border: 2px solid #28a745;
+      }
+      
+      .product-buttons a.big:last-child:hover {
+        background-color: #218838;
+        border-color: #218838;
+      }
+      
+      @media (max-width: 768px) {
+        .product-buttons {
+          flex-direction: column;
+          gap: 8px;
+        }
+        
+        .product-buttons a.big {
+          width: 100%;
+          margin: 0;
+        }
+      }
+    </style>
 
 		<!--[if lt IE 10]>
     <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
@@ -102,76 +181,175 @@
               <!-- Shop Grid View-->
               <div class="range range-xs-center">
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4">
-                  <!-- Product-->
-                  <!-- Product Image-->
-                    <a class="big" href="/bourbon-street.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-01-232x229.png" alt=""/>
+                  <!-- Product Card-->
+                  <div class="product-card">
+                    <!-- Product Image-->
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="../images/product-01-232x229.png" alt="Bourbon Street"/>
                     </div>
-                    <!-- Product Title-->
-                    <div class="product-title offset-top-4 text-primary">Bourbon Street</a></div>
+                    <!-- Product Info-->
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Bourbon Street</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <!-- Product Buttons -->
+                      <div class="product-buttons offset-top-15">
+                        <a class="big" href="/bourbon-street.html">Ver Detalles</a>
+                        <a class="big" href="#" onclick="addToCart('Bourbon Street', 30); return false;">Añadir al Carrito</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4">
-                  <!-- Product-->
-                  <!-- Product Image-->
-                    <a class="big" href="/pirates-alley.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-02-232x229.png" alt=""/>
+                  <!-- Product Card-->
+                  <div class="product-card">
+                    <!-- Product Image-->
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="../images/product-02-232x229.png" alt="Pirates Alley"/>
                     </div>
-                    <!-- Product Title-->
-                    <div class="product-title offset-top-4 text-primary">Pirates Alley</a></div>
+                    <!-- Product Info-->
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Pirates Alley</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <!-- Product Buttons -->
+                      <div class="product-buttons offset-top-15">
+                        <a class="big" href="/pirates-alley.html">Ver Detalles</a>
+                        <a class="big" href="#" onclick="addToCart('Pirates Alley', 30); return false;">Añadir al Carrito</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4">
-                  <!-- Product-->
-                  <!-- Product Image-->
-                    <a class="big" href="/madison-street.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-03-232x229.png" alt=""/>
+                  <!-- Product Card-->
+                  <div class="product-card">
+                    <!-- Product Image-->
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="../images/product-03-232x229.png" alt="Madison Street"/>
                     </div>
-                    <!-- Product Title-->
-                    <div class="product-title offset-top-4 text-primary">Madison Street</a></div>
+                    <!-- Product Info-->
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Madison Street</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <!-- Product Buttons -->
+                      <div class="product-buttons offset-top-15">
+                        <a class="big" href="/madison-street.html">Ver Detalles</a>
+                        <a class="big" href="#" onclick="addToCart('Madison Street', 30); return false;">Añadir al Carrito</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
-                  <!-- Product-->
-                  <!-- Product Image-->
-                    <a class="big" href="/plantation-stroll.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-04-232x229.png" alt=""/>
+                  <!-- Product Card-->
+                  <div class="product-card">
+                    <!-- Product Image-->
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="../images/product-04-232x229.png" alt="Plantation Stroll"/>
                     </div>
-                    <!-- Product Title-->
-                    <div class="product-title offset-top-4 text-primary">Plantation Stroll</a></div>
+                    <!-- Product Info-->
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Plantation Stroll</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <!-- Product Buttons -->
+                      <div class="product-buttons offset-top-15">
+                        <a class="big" href="/plantation-stroll.html">Ver Detalles</a>
+                        <a class="big" href="#" onclick="addToCart('Plantation Stroll', 30); return false;">Añadir al Carrito</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
-                  <!-- Product-->
-                  <!-- Product Image-->
-                    <a class="big" href="/lafitte-cool-shades.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-09-315x229.png" alt=""/>
+                  <!-- Product Card-->
+                  <div class="product-card">
+                    <!-- Product Image-->
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="../images/product-09-315x229.png" alt="Lafitte Cool Shades"/>
                     </div>
-                    <!-- Product Title-->
-                    <div class="product-title offset-top-4 text-primary">Lafitte Cool Shades</a></div>
+                    <!-- Product Info-->
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Lafitte Cool Shades</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <!-- Product Buttons -->
+                      <div class="product-buttons offset-top-15">
+                        <a class="big" href="/lafitte-cool-shades.html">Ver Detalles</a>
+                        <a class="big" href="#" onclick="addToCart('Lafitte Cool Shades', 30); return false;">Añadir al Carrito</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
-                  <!-- Product-->
-                  <!-- Product Image-->
-                    <a class="big" href="/autumn-trees.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-06-232x229.png" alt=""/>
+                  <!-- Product Card-->
+                  <div class="product-card">
+                    <!-- Product Image-->
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="../images/product-06-232x229.png" alt="Autumn Trees"/>
                     </div>
-                    <!-- Product Title-->
-                    <div class="product-title offset-top-4 text-primary">Autumn Trees</a></div>
+                    <!-- Product Info-->
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Autumn Trees</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <!-- Product Buttons -->
+                      <div class="product-buttons offset-top-15">
+                        <a class="big" href="/autumn-trees.html">Ver Detalles</a>
+                        <a class="big" href="#" onclick="addToCart('Autumn Trees', 30); return false;">Añadir al Carrito</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
-                  <!-- Product-->
-                  <!-- Product Image-->
-                    <a class="big" href="/julia-street.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-07-232x229.png" alt=""/>
+                  <!-- Product Card-->
+                  <div class="product-card">
+                    <!-- Product Image-->
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="../images/product-07-232x229.png" alt="Julia Street"/>
                     </div>
-                    <!-- Product Title-->
-                    <div class="product-title offset-top-4 text-primary">Julia Street</a></div>
+                    <!-- Product Info-->
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Julia Street</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <!-- Product Buttons -->
+                      <div class="product-buttons offset-top-15">
+                        <a class="big" href="/julia-street.html">Ver Detalles</a>
+                        <a class="big" href="#" onclick="addToCart('Julia Street', 30); return false;">Añadir al Carrito</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
-                  <!-- Product-->
-                  <!-- Product Image-->
-                    <a class="big" href="/vieux-carre-balconies.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-08-315x229.png" alt=""/>
+                  <!-- Product Card-->
+                  <div class="product-card">
+                    <!-- Product Image-->
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="../images/product-08-315x229.png" alt="Vieux Carré Balconies"/>
                     </div>
-                    <!-- Product Title-->
-                    <div class="product-title offset-top-4 text-primary">Vieux Carré Balconies</a></div>
+                    <!-- Product Info-->
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Vieux Carré Balconies</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <!-- Product Buttons -->
+                      <div class="product-buttons offset-top-15">
+                        <a class="big" href="/vieux-carre-balconies.html">Ver Detalles</a>
+                        <a class="big" href="#" onclick="addToCart('Vieux Carré Balconies', 30); return false;">Añadir al Carrito</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
-                  <!-- Product-->
-                  <!-- Product Image-->
-                    <a class="big" href="/jackson-square.html"><div class="product-image"><img class="img-responsive product-image-area" src="../images/product-05-232x229.png" alt=""/>
+                  <!-- Product Card-->
+                  <div class="product-card">
+                    <!-- Product Image-->
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="../images/product-05-232x229.png" alt="Jackson Square"/>
                     </div>
-                    <!-- Product Title-->
-                    <div class="product-title offset-top-4 text-primary">Jackson Square</a></div>
+                    <!-- Product Info-->
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Jackson Square</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <!-- Product Buttons -->
+                      <div class="product-buttons offset-top-15">
+                        <a class="big" href="/jackson-square.html">Ver Detalles</a>
+                        <a class="big" href="#" onclick="addToCart('Jackson Square', 30); return false;">Añadir al Carrito</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -250,5 +428,150 @@
     <!-- Java script-->
     <script src="/js/core.min.js"></script>
     <script src="/js/script.js"></script>
+    
+    <!-- Shopping Cart System -->
+    <script>
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+      // Add item to cart
+      function addToCart(itemName, price) {
+        const existingItem = cart.find(item => item.name === itemName);
+        
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({
+            name: itemName,
+            price: price,
+            quantity: 1
+          });
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        showMessage(`${itemName} añadido al carrito!`);
+      }
+      
+      // Update cart count
+      function updateCartCount() {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const cartButton = document.getElementById('cartButton');
+        if (cartButton) {
+          cartButton.textContent = `Ver Carrito (${totalItems})`;
+        }
+      }
+      
+      // Show cart
+      function showCart() {
+        if (cart.length === 0) {
+          alert('El carrito está vacío');
+          return;
+        }
+        
+        let cartContents = 'CARRITO DE COMPRAS:\\n\\n';
+        let total = 0;
+        
+        cart.forEach(item => {
+          const itemTotal = item.price * item.quantity;
+          cartContents += `${item.name} - $${item.price} x ${item.quantity} = $${itemTotal}\\n`;
+          total += itemTotal;
+        });
+        
+        cartContents += `\\nSUBTOTAL: $${total}`;
+        cartContents += `\\nENVÍO: $5.00`;
+        cartContents += `\\nTOTAL: $${total + 5}`;
+        cartContents += '\\n\\n¿Proceder al checkout con PayPal?';
+        
+        if (confirm(cartContents)) {
+          proceedToPayPal(total + 5);
+        }
+      }
+      
+      // Clear cart
+      function clearCart() {
+        if (confirm('¿Vaciar el carrito?')) {
+          cart = [];
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          showMessage('Carrito vaciado');
+        }
+      }
+      
+      // Proceed to PayPal
+      function proceedToPayPal(total) {
+        // Create PayPal form
+        const form = document.createElement('form');
+        form.method = 'post';
+        form.action = 'https://www.paypal.com/cgi-bin/webscr';
+        form.target = '_blank';
+        
+        // Create item description
+        let itemDescription = cart.map(item => `${item.name} x${item.quantity}`).join(', ');
+        
+        const fields = {
+          'cmd': '_cart',
+          'upload': '1',
+          'business': 'gustavo54@att.net',
+          'item_name_1': itemDescription,
+          'amount_1': total.toFixed(2),
+          'quantity_1': '1',
+          'currency_code': 'USD',
+          'shopping_url': window.location.href,
+          'return': window.location.href + '?payment=success'
+        };
+        
+        Object.keys(fields).forEach(key => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = fields[key];
+          form.appendChild(input);
+        });
+        
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+        
+        showMessage('Redirigiendo a PayPal...');
+      }
+      
+      // Show message
+      function showMessage(text) {
+        alert(text);
+      }
+      
+      // Initialize on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        updateCartCount();
+        
+        // Add cart button to page
+        const shell = document.querySelector('.shell');
+        if (shell) {
+          const cartControls = document.createElement('div');
+          cartControls.style.cssText = 'position: fixed; top: 20px; right: 20px; z-index: 1000; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);';
+          cartControls.innerHTML = `
+            <button id="cartButton" onclick="showCart()" class="btn btn-primary" style="margin-right: 10px;">Ver Carrito (0)</button>
+            <button onclick="clearCart()" class="btn btn-secondary">Vaciar</button>
+          `;
+          document.body.appendChild(cartControls);
+        }
+        
+        // Update copyright year
+        const currentYear = new Date().getFullYear();
+        const copyrightElement = document.getElementById('copyright-year');
+        if (copyrightElement) {
+          copyrightElement.textContent = currentYear;
+        }
+        
+        // Check for payment success
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('payment') === 'success') {
+          cart = [];
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          alert('¡Pago exitoso! Gracias por tu compra.');
+        }
+      });
+    </script>
   </body>
 </html>
