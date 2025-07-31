@@ -633,8 +633,8 @@
         const itemName = encodeURIComponent(`${currentProduct.name} (${selectedOption.material} - ${selectedOption.size})`);
         const itemPrice = selectedOption.price.toFixed(2);
         
-        // Usar el formato clásico de PayPal "Buy Now" que no requiere login
-        const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=gustavo54@att.net&item_name=${itemName}&amount=${itemPrice}&shipping=5.00&currency_code=USD&return=https://gustavotrujillo.com/shop.html?payment=success&cancel_return=https://gustavotrujillo.com/shop.html?payment=cancelled`;
+        // Usar el formato clásico de PayPal "Buy Now" que no requiere login - SIN URLs de retorno
+        const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=gustavo54@att.net&item_name=${itemName}&amount=${itemPrice}&shipping=5.00&currency_code=USD`;
         
         // Cerrar overlay y redirigir directamente a PayPal
         closeOptionsOverlay();
@@ -916,8 +916,8 @@
         const encodedItemName = encodeURIComponent(itemName);
         const totalAmount = total.toFixed(2);
         
-        // Usar el formato clásico de PayPal "Buy Now" 
-        const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=gustavo54@att.net&item_name=${encodedItemName}&amount=${totalAmount}&currency_code=USD&return=https://gustavotrujillo.com/shop.html?payment=success&cancel_return=https://gustavotrujillo.com/shop.html?payment=cancelled`;
+        // Usar el formato clásico de PayPal "Buy Now" - SIN URLs de retorno
+        const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=gustavo54@att.net&item_name=${encodedItemName}&amount=${totalAmount}&currency_code=USD`;
         
         // Abrir PayPal directamente
         window.open(paypalUrl, '_blank');
