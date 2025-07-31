@@ -629,21 +629,43 @@
       function addSelectedOptionToCart() {
         if (!selectedOption || !currentProduct) return;
         
-        // Crear enlace directo de PayPal tipo "Buy Now" sin necesidad de login
-        const itemName = encodeURIComponent(`${currentProduct.name} (${selectedOption.material} - ${selectedOption.size})`);
+        // Crear formulario HTML directo para PayPal (método más confiable)
+        const itemName = `${currentProduct.name} (${selectedOption.material} - ${selectedOption.size})`;
         const itemPrice = selectedOption.price.toFixed(2);
         
-        // Usar el formato clásico de PayPal "Buy Now" que no requiere login - SIN URLs de retorno
-        const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=gustavo54@att.net&item_name=${itemName}&amount=${itemPrice}&shipping=5.00&currency_code=USD`;
+        // Crear formulario PayPal dinámico
+        const form = document.createElement('form');
+        form.method = 'post';
+        form.action = 'https://www.paypal.com/cgi-bin/webscr';
+        form.target = '_blank';
         
-        // Cerrar overlay y redirigir directamente a PayPal
+        // Campos ocultos del formulario
+        const fields = {
+          'cmd': '_xclick',
+          'business': 'gustavo54@att.net',
+          'item_name': itemName,
+          'amount': itemPrice,
+          'shipping': '5.00',
+          'currency_code': 'USD',
+          'no_shipping': '2'
+        };
+        
+        Object.keys(fields).forEach(key => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = fields[key];
+          form.appendChild(input);
+        });
+        
+        // Agregar formulario al DOM y enviarlo
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+        
+        // Cerrar overlay
         closeOptionsOverlay();
         showMessage('🚀 Redirigiendo a PayPal...');
-        
-        // Redirigir a PayPal inmediatamente
-        setTimeout(() => {
-          window.open(paypalUrl, '_blank');
-        }, 500);
       }
       
       // Close options overlay
@@ -904,7 +926,7 @@
         // Enviar email automático DESPUÉS de la confirmación del usuario
         sendAutomaticEmail();
         
-        // Para múltiples productos, crear un enlace directo con el primer producto y notas adicionales
+        // Crear formulario PayPal directo para múltiples productos
         const firstItem = cart[0];
         let itemName = `${firstItem.name} (${firstItem.material} - ${firstItem.dimensions})`;
         
@@ -913,14 +935,36 @@
           itemName += ` + ${cart.length - 1} more items`;
         }
         
-        const encodedItemName = encodeURIComponent(itemName);
         const totalAmount = total.toFixed(2);
         
-        // Usar el formato clásico de PayPal "Buy Now" - SIN URLs de retorno
-        const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=gustavo54@att.net&item_name=${encodedItemName}&amount=${totalAmount}&currency_code=USD`;
+        // Crear formulario PayPal dinámico
+        const form = document.createElement('form');
+        form.method = 'post';
+        form.action = 'https://www.paypal.com/cgi-bin/webscr';
+        form.target = '_blank';
         
-        // Abrir PayPal directamente
-        window.open(paypalUrl, '_blank');
+        // Campos ocultos del formulario
+        const fields = {
+          'cmd': '_xclick',
+          'business': 'gustavo54@att.net',
+          'item_name': itemName,
+          'amount': totalAmount,
+          'currency_code': 'USD',
+          'no_shipping': '2'
+        };
+        
+        Object.keys(fields).forEach(key => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = fields[key];
+          form.appendChild(input);
+        });
+        
+        // Agregar formulario al DOM y enviarlo
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
         
         // Mostrar confirmación y limpiar carrito
         showMessage('🚀 PayPal abierto! Email enviado a Gustavo automáticamente.');
