@@ -641,12 +641,15 @@
         
         // Campos ocultos del formulario
         const fields = {
-          'cmd': '_donations',
+          'cmd': '_cart',
+          'upload': '1',
           'business': 'gustavo54@att.net',
-          'item_name': itemName,
-          'amount': itemPrice,
+          'item_name_1': itemName,
+          'amount_1': itemPrice,
+          'quantity_1': '1',
           'currency_code': 'USD',
-          'no_note': '0'
+          'shopping_url': window.location.href,
+          'return': window.location.href + '?payment=success'
         };
         
         Object.keys(fields).forEach(key => {
@@ -944,12 +947,15 @@
         
         // Campos ocultos del formulario
         const fields = {
-          'cmd': '_donations',
+          'cmd': '_cart',
+          'upload': '1',
           'business': 'gustavo54@att.net',
-          'item_name': itemName,
-          'amount': totalAmount,
+          'item_name_1': itemName,
+          'amount_1': totalAmount,
+          'quantity_1': '1',
           'currency_code': 'USD',
-          'no_note': '0'
+          'shopping_url': window.location.href,
+          'return': window.location.href + '?payment=success'
         };
         
         Object.keys(fields).forEach(key => {
