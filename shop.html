@@ -50,7 +50,7 @@
         margin-top: 15px;
       }
       
-      .product-buttons a.big {
+      .product-buttons a.big, .product-buttons button.big {
         flex: 1;
         padding: 10px 15px;
         border-radius: 4px;
@@ -59,15 +59,17 @@
         transition: all 0.3s ease;
         display: inline-block;
         text-align: center;
+        border: none;
+        cursor: pointer;
       }
       
-      .product-buttons a.big:first-child {
+      .product-buttons a.big:first-child, .product-buttons button.big:first-child {
         background-color: #007bff;
         color: white;
         border: 2px solid #007bff;
       }
       
-      .product-buttons a.big:first-child:hover {
+      .product-buttons a.big:first-child:hover, .product-buttons button.big:first-child:hover {
         background-color: #0056b3;
         border-color: #0056b3;
       }
@@ -83,15 +85,188 @@
         border-color: #218838;
       }
       
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.8);
+        animation: fadeIn 0.3s ease;
+      }
+      
+      .modal.show {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .modal-content {
+        background-color: #fefefe;
+        margin: 0;
+        padding: 20px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 900px;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        animation: slideIn 0.3s ease;
+      }
+      
+      .close {
+        color: #333;
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        font-size: 22px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        border: 2px solid #ddd;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+        box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        transform: scale(1.05);
+        text-decoration: none;
+      }
+      
+      .modal-product {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+        margin-top: 30px;
+      }
+      
+      .modal-product-image {
+        flex: 0 0 300px;
+      }
+      
+      .modal-product-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+      
+      .modal-product-info {
+        flex: 1;
+        text-align: left;
+      }
+      
+      .modal-product-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+      }
+      
+      .modal-product-price {
+        font-size: 20px;
+        font-weight: bold;
+        color: #28a745;
+        margin-bottom: 20px;
+      }
+      
+      .responsive-tabs-classic {
+        margin-bottom: 20px;
+      }
+      
+      .resp-tabs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        border-bottom: 2px solid #eee;
+      }
+      
+      .resp-tabs-list li {
+        padding: 10px 20px;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease;
+      }
+      
+      .resp-tabs-list li:hover,
+      .resp-tabs-list li.resp-tab-active {
+        border-bottom-color: #007bff;
+        color: #007bff;
+      }
+      
+      .resp-tabs-container > div {
+        display: none;
+        padding: 20px 0;
+        line-height: 1.6;
+      }
+      
+      .resp-tabs-container > div.resp-tab-content-active {
+        display: block;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes slideIn {
+        from { transform: translateY(-50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      
       @media (max-width: 768px) {
         .product-buttons {
           flex-direction: column;
           gap: 8px;
         }
         
-        .product-buttons a.big {
+        .product-buttons a.big, .product-buttons button.big {
           width: 100%;
           margin: 0;
+        }
+        
+        .modal-content {
+          width: 95%;
+          padding: 15px;
+          margin: 0;
+        }
+        
+        .close {
+          width: 26px;
+          height: 26px;
+          font-size: 18px;
+          right: 12px;
+          top: 8px;
+        }
+        
+        .modal-product {
+          flex-direction: column;
+          gap: 20px;
+        }
+        
+        .modal-product-image {
+          flex: none;
+          width: 100%;
+        }
+        
+        .resp-tabs-list {
+          flex-direction: column;
         }
       }
     </style>
@@ -143,9 +318,9 @@
                         </li>
                         <li><a href="/about-us.html"><span>About</span></a>
                         </li>
-                        <li><a href="/gallery.html"><span>Gallery</span></a>
+                        <li><a href="/gallery.html"><span>Canvas Gallery</span></a>
                         </li>
-                        <li class="active"><a href="/shop.html"><span>Shop Prints</span></a>
+                        <li class="active"><a href="/shop.html"><span>Paper Prints</span></a>
                         </li>
                         <li><a href="/contacts.html"><span>Contact Gustavo</span></a>
                         </li>
@@ -193,7 +368,7 @@
                       <div class="product-price offset-top-10">$30.00</div>
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
-                        <a class="big" href="/bourbon-street.html">Ver Detalles</a>
+                        <button class="big" onclick="openModal('bourbon-street-modal')">Details</button>
                         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
                           <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                           <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -222,7 +397,7 @@
                       <div class="product-price offset-top-10">$30.00</div>
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
-                        <a class="big" href="/pirates-alley.html">Ver Detalles</a>
+                        <button class="big" onclick="openModal('pirates-alley-modal')">Details</button>
                         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
                           <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                           <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -251,7 +426,7 @@
                       <div class="product-price offset-top-10">$30.00</div>
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
-                        <a class="big" href="/madison-street.html">Ver Detalles</a>
+                        <button class="big" onclick="openModal('madison-street-modal')">Details</button>
                         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
                           <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                           <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -280,7 +455,7 @@
                       <div class="product-price offset-top-10">$30.00</div>
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
-                        <a class="big" href="/plantation-stroll.html">Ver Detalles</a>
+                        <button class="big" onclick="openModal('plantation-stroll-modal')">Details</button>
                         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
                           <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                           <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -309,7 +484,7 @@
                       <div class="product-price offset-top-10">$30.00</div>
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
-                        <a class="big" href="/lafitte-cool-shades.html">Ver Detalles</a>
+                        <button class="big" onclick="openModal('lafitte-cool-shades-modal')">Details</button>
                         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
                           <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                           <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -338,7 +513,7 @@
                       <div class="product-price offset-top-10">$30.00</div>
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
-                        <a class="big" href="/autumn-trees.html">Ver Detalles</a>
+                        <button class="big" onclick="openModal('autumn-trees-modal')">Details</button>
                         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
                           <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                           <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -367,7 +542,7 @@
                       <div class="product-price offset-top-10">$30.00</div>
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
-                        <a class="big" href="/julia-street.html">Ver Detalles</a>
+                        <button class="big" onclick="openModal('julia-street-modal')">Details</button>
                         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
                           <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                           <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -396,7 +571,7 @@
                       <div class="product-price offset-top-10">$30.00</div>
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
-                        <a class="big" href="/vieux-carre-balconies.html">Ver Detalles</a>
+                        <button class="big" onclick="openModal('vieux-carre-balconies-modal')">Ver Detalles</button>
                         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
                           <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                           <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -425,7 +600,7 @@
                       <div class="product-price offset-top-10">$30.00</div>
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
-                        <a class="big" href="/jackson-square.html">Ver Detalles</a>
+                        <button class="big" onclick="openModal('jackson-square-modal')">Ver Detalles</button>
                         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
                           <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                           <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -518,6 +693,463 @@
     <!-- Java script-->
     <script src="/js/core.min.js"></script>
     <script src="/js/script.js"></script>
+    
+    <!-- Product Modals -->
+    
+    <!-- Bourbon Street Modal -->
+    <div id="bourbon-street-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('bourbon-street-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="../images/bourbon-street-364x500.png" alt="Bourbon Street">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Paper Print: Bourbon Street</h3>
+            <div class="modal-product-price">$30.00</div>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'bourbon-desc')">Description</li>
+                <li onclick="showTab(this, 'bourbon-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'bourbon-delivery')">Delivery & Returns</li>
+              </ul>
+              <div class="resp-tabs-container">
+                <div id="bourbon-desc" class="resp-tab-content-active">The Paper prints of Gustavo Trujillo's artwork are made from light weight aluminum with a glossy finish. The Paper prints are size 8"x10" with rounded corners and come with a wall mount attached to the back so they are ready to hang. The price is $30 each plus shipping.</div>
+                <div id="bourbon-shipping">Our Paper prints are shipped through US Standard Mail or UPS.</div>
+                <div id="bourbon-delivery">Your order will be shipped in a timely manner and handled with the utmost care. If there is any problem with the quality of your purchase, please do not hesitate to contact us.</div>
+              </div>
+            </div>
+            
+            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+              <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+              <input type="hidden" name="add" value="1">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="business" value="gustavo54@att.net">
+              <input type="hidden" name="item_name" value="Paper Print: Bourbon Street">
+              <input type="hidden" name="amount" value="30.00">
+              <input type="hidden" name="shipping" value="5.00">
+              <input type="hidden" name="no_shipping" value="2">
+              <input type="hidden" name="return" value="https://www.gustavotrujillo.com/thankyou.html">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="hidden" name="lc" value="US">
+              <input type="hidden" name="bn" value="PP-ShopCartBF">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pirates Alley Modal -->
+    <div id="pirates-alley-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('pirates-alley-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="../images/pirates-alley-373x500.png" alt="Pirates Alley">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Paper Print: Pirates Alley</h3>
+            <div class="modal-product-price">$30.00</div>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'pirates-desc')">Description</li>
+                <li onclick="showTab(this, 'pirates-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'pirates-delivery')">Delivery & Returns</li>
+              </ul>
+              <div class="resp-tabs-container">
+                <div id="pirates-desc" class="resp-tab-content-active">The Paper prints of Gustavo Trujillo's artwork are made from light weight aluminum with a glossy finish. The Paper prints are size 8"x10" with rounded corners and come with a wall mount attached to the back so they are ready to hang. The price is $30 each plus shipping.</div>
+                <div id="pirates-shipping">Our Paper prints are shipped through US Standard Mail or UPS.</div>
+                <div id="pirates-delivery">Your order will be shipped in a timely manner and handled with the utmost care. If there is any problem with the quality of your purchase, please do not hesitate to contact us.</div>
+              </div>
+            </div>
+            
+            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+              <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+              <input type="hidden" name="add" value="1">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="business" value="gustavo54@att.net">
+              <input type="hidden" name="item_name" value="Paper Print: Pirates Alley">
+              <input type="hidden" name="amount" value="30.00">
+              <input type="hidden" name="shipping" value="5.00">
+              <input type="hidden" name="no_shipping" value="2">
+              <input type="hidden" name="return" value="https://www.gustavotrujillo.com/thankyou.html">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="hidden" name="lc" value="US">
+              <input type="hidden" name="bn" value="PP-ShopCartBF">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Madison Street Modal -->
+    <div id="madison-street-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('madison-street-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="../images/madison-street-364x500.png" alt="Madison Street">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Paper Print: Madison Street</h3>
+            <div class="modal-product-price">$30.00</div>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'madison-desc')">Description</li>
+                <li onclick="showTab(this, 'madison-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'madison-delivery')">Delivery & Returns</li>
+              </ul>
+              <div class="resp-tabs-container">
+                <div id="madison-desc" class="resp-tab-content-active">The Paper prints of Gustavo Trujillo's artwork are made from light weight aluminum with a glossy finish. The Paper prints are size 8"x10" with rounded corners and come with a wall mount attached to the back so they are ready to hang. The price is $30 each plus shipping.</div>
+                <div id="madison-shipping">Our Paper prints are shipped through US Standard Mail or UPS.</div>
+                <div id="madison-delivery">Your order will be shipped in a timely manner and handled with the utmost care. If there is any problem with the quality of your purchase, please do not hesitate to contact us.</div>
+              </div>
+            </div>
+            
+            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+              <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+              <input type="hidden" name="add" value="1">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="business" value="gustavo54@att.net">
+              <input type="hidden" name="item_name" value="Paper Print: Madison Street">
+              <input type="hidden" name="amount" value="30.00">
+              <input type="hidden" name="shipping" value="5.00">
+              <input type="hidden" name="no_shipping" value="2">
+              <input type="hidden" name="return" value="https://www.gustavotrujillo.com/thankyou.html">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="hidden" name="lc" value="US">
+              <input type="hidden" name="bn" value="PP-ShopCartBF">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plantation Stroll Modal -->
+    <div id="plantation-stroll-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('plantation-stroll-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="../images/plantation-stroll-364x500.png" alt="Plantation Stroll">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Paper Print: Plantation Stroll</h3>
+            <div class="modal-product-price">$30.00</div>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'plantation-desc')">Description</li>
+                <li onclick="showTab(this, 'plantation-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'plantation-delivery')">Delivery & Returns</li>
+              </ul>
+              <div class="resp-tabs-container">
+                <div id="plantation-desc" class="resp-tab-content-active">The Paper prints of Gustavo Trujillo's artwork are made from light weight aluminum with a glossy finish. The Paper prints are size 8"x10" with rounded corners and come with a wall mount attached to the back so they are ready to hang. The price is $30 each plus shipping.</div>
+                <div id="plantation-shipping">Our Paper prints are shipped through US Standard Mail or UPS.</div>
+                <div id="plantation-delivery">Your order will be shipped in a timely manner and handled with the utmost care. If there is any problem with the quality of your purchase, please do not hesitate to contact us.</div>
+              </div>
+            </div>
+            
+            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+              <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+              <input type="hidden" name="add" value="1">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="business" value="gustavo54@att.net">
+              <input type="hidden" name="item_name" value="Paper Print: Plantation Stroll">
+              <input type="hidden" name="amount" value="30.00">
+              <input type="hidden" name="shipping" value="5.00">
+              <input type="hidden" name="no_shipping" value="2">
+              <input type="hidden" name="return" value="https://www.gustavotrujillo.com/thankyou.html">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="hidden" name="lc" value="US">
+              <input type="hidden" name="bn" value="PP-ShopCartBF">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lafitte Cool Shades Modal -->
+    <div id="lafitte-cool-shades-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('lafitte-cool-shades-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="../images/lafitte-cool-shades-364x500.png" alt="Lafitte Cool Shades">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Paper Print: Lafitte Cool Shades</h3>
+            <div class="modal-product-price">$30.00</div>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'lafitte-desc')">Description</li>
+                <li onclick="showTab(this, 'lafitte-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'lafitte-delivery')">Delivery & Returns</li>
+              </ul>
+              <div class="resp-tabs-container">
+                <div id="lafitte-desc" class="resp-tab-content-active">The Paper prints of Gustavo Trujillo's artwork are made from light weight aluminum with a glossy finish. The Paper prints are size 8"x10" with rounded corners and come with a wall mount attached to the back so they are ready to hang. The price is $30 each plus shipping.</div>
+                <div id="lafitte-shipping">Our Paper prints are shipped through US Standard Mail or UPS.</div>
+                <div id="lafitte-delivery">Your order will be shipped in a timely manner and handled with the utmost care. If there is any problem with the quality of your purchase, please do not hesitate to contact us.</div>
+              </div>
+            </div>
+            
+            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+              <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+              <input type="hidden" name="add" value="1">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="business" value="gustavo54@att.net">
+              <input type="hidden" name="item_name" value="Paper Print: Lafitte Cool Shades">
+              <input type="hidden" name="amount" value="30.00">
+              <input type="hidden" name="shipping" value="5.00">
+              <input type="hidden" name="no_shipping" value="2">
+              <input type="hidden" name="return" value="https://www.gustavotrujillo.com/thankyou.html">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="hidden" name="lc" value="US">
+              <input type="hidden" name="bn" value="PP-ShopCartBF">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Autumn Trees Modal -->
+    <div id="autumn-trees-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('autumn-trees-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="../images/autumn-trees-364x500.png" alt="Autumn Trees">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Paper Print: Autumn Trees</h3>
+            <div class="modal-product-price">$30.00</div>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'autumn-desc')">Description</li>
+                <li onclick="showTab(this, 'autumn-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'autumn-delivery')">Delivery & Returns</li>
+              </ul>
+              <div class="resp-tabs-container">
+                <div id="autumn-desc" class="resp-tab-content-active">The Paper prints of Gustavo Trujillo's artwork are made from light weight aluminum with a glossy finish. The Paper prints are size 8"x10" with rounded corners and come with a wall mount attached to the back so they are ready to hang. The price is $30 each plus shipping.</div>
+                <div id="autumn-shipping">Our Paper prints are shipped through US Standard Mail or UPS.</div>
+                <div id="autumn-delivery">Your order will be shipped in a timely manner and handled with the utmost care. If there is any problem with the quality of your purchase, please do not hesitate to contact us.</div>
+              </div>
+            </div>
+            
+            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+              <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+              <input type="hidden" name="add" value="1">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="business" value="gustavo54@att.net">
+              <input type="hidden" name="item_name" value="Paper Print: Autumn Trees">
+              <input type="hidden" name="amount" value="30.00">
+              <input type="hidden" name="shipping" value="5.00">
+              <input type="hidden" name="no_shipping" value="2">
+              <input type="hidden" name="return" value="https://www.gustavotrujillo.com/thankyou.html">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="hidden" name="lc" value="US">
+              <input type="hidden" name="bn" value="PP-ShopCartBF">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Julia Street Modal -->
+    <div id="julia-street-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('julia-street-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="../images/julia-street-364x500.png" alt="Julia Street">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Paper Print: Julia Street</h3>
+            <div class="modal-product-price">$30.00</div>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'julia-desc')">Description</li>
+                <li onclick="showTab(this, 'julia-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'julia-delivery')">Delivery & Returns</li>
+              </ul>
+              <div class="resp-tabs-container">
+                <div id="julia-desc" class="resp-tab-content-active">The Paper prints of Gustavo Trujillo's artwork are made from light weight aluminum with a glossy finish. The Paper prints are size 8"x10" with rounded corners and come with a wall mount attached to the back so they are ready to hang. The price is $30 each plus shipping.</div>
+                <div id="julia-shipping">Our Paper prints are shipped through US Standard Mail or UPS.</div>
+                <div id="julia-delivery">Your order will be shipped in a timely manner and handled with the utmost care. If there is any problem with the quality of your purchase, please do not hesitate to contact us.</div>
+              </div>
+            </div>
+            
+            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+              <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+              <input type="hidden" name="add" value="1">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="business" value="gustavo54@att.net">
+              <input type="hidden" name="item_name" value="Paper Print: Julia Street">
+              <input type="hidden" name="amount" value="30.00">
+              <input type="hidden" name="shipping" value="5.00">
+              <input type="hidden" name="no_shipping" value="2">
+              <input type="hidden" name="return" value="https://www.gustavotrujillo.com/thankyou.html">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="hidden" name="lc" value="US">
+              <input type="hidden" name="bn" value="PP-ShopCartBF">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vieux Carré Balconies Modal -->
+    <div id="vieux-carre-balconies-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('vieux-carre-balconies-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="../images/vieux-carre-364x500.png" alt="Vieux Carré Balconies">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Paper Print: Vieux Carré Balconies</h3>
+            <div class="modal-product-price">$30.00</div>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'vieux-desc')">Description</li>
+                <li onclick="showTab(this, 'vieux-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'vieux-delivery')">Delivery & Returns</li>
+              </ul>
+              <div class="resp-tabs-container">
+                <div id="vieux-desc" class="resp-tab-content-active">The Paper prints of Gustavo Trujillo's artwork are made from light weight aluminum with a glossy finish. The Paper prints are size 8"x10" with rounded corners and come with a wall mount attached to the back so they are ready to hang. The price is $30 each plus shipping.</div>
+                <div id="vieux-shipping">Our Paper prints are shipped through US Standard Mail or UPS.</div>
+                <div id="vieux-delivery">Your order will be shipped in a timely manner and handled with the utmost care. If there is any problem with the quality of your purchase, please do not hesitate to contact us.</div>
+              </div>
+            </div>
+            
+            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+              <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+              <input type="hidden" name="add" value="1">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="business" value="gustavo54@att.net">
+              <input type="hidden" name="item_name" value="Paper Print: Vieux Carré Balconies">
+              <input type="hidden" name="amount" value="30.00">
+              <input type="hidden" name="shipping" value="5.00">
+              <input type="hidden" name="no_shipping" value="2">
+              <input type="hidden" name="return" value="https://www.gustavotrujillo.com/thankyou.html">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="hidden" name="lc" value="US">
+              <input type="hidden" name="bn" value="PP-ShopCartBF">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jackson Square Modal -->
+    <div id="jackson-square-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('jackson-square-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="../images/jackson-square-364x500.png" alt="Jackson Square">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Paper Print: Jackson Square</h3>
+            <div class="modal-product-price">$30.00</div>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'jackson-desc')">Description</li>
+                <li onclick="showTab(this, 'jackson-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'jackson-delivery')">Delivery & Returns</li>
+              </ul>
+              <div class="resp-tabs-container">
+                <div id="jackson-desc" class="resp-tab-content-active">The Paper prints of Gustavo Trujillo's artwork are made from light weight aluminum with a glossy finish. The Paper prints are size 8"x10" with rounded corners and come with a wall mount attached to the back so they are ready to hang. The price is $30 each plus shipping.</div>
+                <div id="jackson-shipping">Our Paper prints are shipped through US Standard Mail or UPS.</div>
+                <div id="jackson-delivery">Your order will be shipped in a timely manner and handled with the utmost care. If there is any problem with the quality of your purchase, please do not hesitate to contact us.</div>
+              </div>
+            </div>
+            
+            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+              <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+              <input type="hidden" name="add" value="1">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="business" value="gustavo54@att.net">
+              <input type="hidden" name="item_name" value="Paper Print: Jackson Square">
+              <input type="hidden" name="amount" value="30.00">
+              <input type="hidden" name="shipping" value="5.00">
+              <input type="hidden" name="no_shipping" value="2">
+              <input type="hidden" name="return" value="https://www.gustavotrujillo.com/thankyou.html">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="hidden" name="lc" value="US">
+              <input type="hidden" name="bn" value="PP-ShopCartBF">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal JavaScript -->
+    <script>
+      function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+      }
+
+      function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.remove('show');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      }
+
+      function showTab(element, tabId) {
+        // Remove active class from all tabs
+        const tabButtons = element.parentElement.querySelectorAll('li');
+        tabButtons.forEach(tab => tab.classList.remove('resp-tab-active'));
+        
+        // Add active class to clicked tab
+        element.classList.add('resp-tab-active');
+        
+        // Hide all tab contents
+        const tabContents = element.parentElement.nextElementSibling.querySelectorAll('div');
+        tabContents.forEach(content => content.classList.remove('resp-tab-content-active'));
+        
+        // Show selected tab content
+        document.getElementById(tabId).classList.add('resp-tab-content-active');
+      }
+
+      // Close modal when clicking outside of it
+      window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+          event.target.classList.remove('show');
+          document.body.style.overflow = 'auto';
+        }
+      }
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          const modals = document.querySelectorAll('.modal.show');
+          modals.forEach(modal => {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+          });
+        }
+      });
+    </script>
     
     <!-- Update copyright year -->
     <script>
