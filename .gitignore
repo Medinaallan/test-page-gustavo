@@ -13,9 +13,6 @@ Thumbs.db
 # Cache
 .cache/
 
-# Node modules (si usas Node.js en el futuro)
-node_modules/
-
 # Editor files
 .vscode/settings.json
 .idea/

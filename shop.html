@@ -52,7 +52,7 @@
       
       .product-buttons a.big, .product-buttons button.big {
         flex: 1;
-        padding: 10px 15px;
+        padding: 12px 20px;
         border-radius: 4px;
         text-decoration: none;
         font-weight: bold;
@@ -61,6 +61,10 @@
         text-align: center;
         border: none;
         cursor: pointer;
+        font-size: 18px;
+        min-height: 44px;
+        box-sizing: border-box;
+        line-height: 1.2;
       }
       
       .product-buttons a.big:first-child, .product-buttons button.big:first-child {
@@ -83,6 +87,58 @@
       .product-buttons a.big:last-child:hover {
         background-color: #218838;
         border-color: #218838;
+      }
+      
+      /* Custom PayPal Button Styles */
+      .paypal-button {
+        background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%);
+        border: 2px solid #e6a800;
+        color: #003087;
+        font-weight: bold;
+        font-size: 17px;
+        padding: 12px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        text-decoration: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        min-height: 44px;
+        flex: 1;
+        box-sizing: border-box;
+        line-height: 1.2;
+      }
+      
+      .paypal-button:hover {
+        background: linear-gradient(135deg, #ffb700 0%, #ff9500 100%);
+        border-color: #cc8800;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        color: #002c5f;
+        text-decoration: none;
+      }
+      
+      .paypal-button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      
+      .paypal-button i {
+        font-size: 16px;
+      }
+      
+      .paypal-form {
+        display: inline-block;
+        margin: 0;
+        flex: 1;
+      }
+      
+      /* Hide the default PayPal image button */
+      .paypal-form input[type="image"] {
+        display: none;
       }
       
       /* Modal Styles */
@@ -369,9 +425,11 @@
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
                         <button class="big" onclick="openModal('bourbon-street-modal')">Details</button>
-                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
-                          <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
@@ -398,9 +456,11 @@
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
                         <button class="big" onclick="openModal('pirates-alley-modal')">Details</button>
-                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
-                          <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
@@ -427,9 +487,11 @@
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
                         <button class="big" onclick="openModal('madison-street-modal')">Details</button>
-                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
-                          <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
@@ -456,9 +518,11 @@
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
                         <button class="big" onclick="openModal('plantation-stroll-modal')">Details</button>
-                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
-                          <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
@@ -485,9 +549,11 @@
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
                         <button class="big" onclick="openModal('lafitte-cool-shades-modal')">Details</button>
-                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
-                          <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
@@ -514,9 +580,11 @@
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
                         <button class="big" onclick="openModal('autumn-trees-modal')">Details</button>
-                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
-                          <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
@@ -543,9 +611,11 @@
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
                         <button class="big" onclick="openModal('julia-street-modal')">Details</button>
-                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
-                          <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
@@ -572,9 +642,11 @@
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
                         <button class="big" onclick="openModal('vieux-carre-balconies-modal')">Details</button>
-                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
-                          <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
@@ -601,9 +673,11 @@
                       <!-- Product Buttons -->
                       <div class="product-buttons offset-top-15">
                         <button class="big" onclick="openModal('jackson-square-modal')">Details</button>
-                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: inline-block;">
-                          <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
