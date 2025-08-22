@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html class="wide wow-animation smoothscroll scrollTo" lang="en">
   <head>
@@ -95,6 +95,42 @@
         border-color: #218838;
       }
       
+      /* Sort Filter Styles */
+      .sort-filter-container {
+        margin-bottom: 30px;
+        text-align: right;
+        padding: 20px 0;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      
+      .sort-filter-label {
+        margin-right: 10px;
+        font-weight: 600;
+        color: #333;
+      }
+      
+      .sort-filter-select {
+        padding: 8px 15px;
+        border: 2px solid #007bff;
+        border-radius: 4px;
+        background-color: white;
+        color: #333;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        outline: none;
+      }
+      
+      .sort-filter-select:hover {
+        border-color: #0056b3;
+        background-color: #f8f9fa;
+      }
+      
+      .sort-filter-select:focus {
+        border-color: #0056b3;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+      }
+
       /* Custom PayPal Button Styles */
       .paypal-button {
         background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%);
@@ -417,16 +453,30 @@
               <div class="cell-sm-10 offset-top-50 offset-md-top-0 cell-md-5 cell-md-pull-6 cell-lg-4 text-sm-left inset-md-right-30">
                 <p>The Paper prints of Gustavo Trujillo's artwork are made from light weight aluminum with a glossy finish. The Paper prints are size 8"x10" with rounded corners and come with a wall mount attached to the back so they are ready to hang. The price is $30 each plus shipping.</p>
               </div>
+              
+              <!-- Sort Filter -->
+              <div class="sort-filter-container">
+                <label for="sortSelect" class="sort-filter-label">Sort by:</label>
+                <select id="sortSelect" class="sort-filter-select" onchange="sortProducts()">
+                  <option value="default">Default Order</option>
+                  <option value="az">Name (A-Z)</option>
+                  <option value="za">Name (Z-A)</option>
+                  <option value="price-low">Price (Low to High)</option>
+                  <option value="price-high">Price (High to Low)</option>
+                </select>
+              </div>
+              
               <!-- Shop Grid View-->
-              <div class="range range-xs-center">
+              <div id="products-container" class="range range-xs-center">                
                 <!-- Nouvelle Bleu -->
-                <div class="cell-xs-8 cell-sm-6 cell-lg-4">
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
                     <div class="product-image">
                       <img class="img-responsive product-image-area" src="images/portfolio/portfolio-02-570x420.jpg" alt="Nouvelle Bleu"/>
                     </div>
                     <div class="product-info">
                       <div class="product-title offset-top-4 text-primary">Nouvelle Bleu</div>
+                      <div class="product-dimensions offset-top-4">24" x 36"</div>
                       <div class="product-price offset-top-10">$36.00</div>
                       <div class="product-buttons offset-top-15">
                         <button class="big" onclick="openModal('nouvelle-bleu-modal')">Details</button>
@@ -438,7 +488,7 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Nouvelle Bleu (24&quot; x 36&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Nouvelle Bleu (24" x 36")">
                           <input type="hidden" name="amount" value="36.00">
                           <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
@@ -446,16 +496,16 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Jazzy Balaconies -->
-                <div class="cell-xs-8 cell-sm-6 cell-lg-4">
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
                     <div class="product-image">
                       <img class="img-responsive product-image-area" src="images/portfolio/portfolio-03-570x420.jpg" alt="Jazzy Balaconies"/>
                     </div>
                     <div class="product-info">
                       <div class="product-title offset-top-4 text-primary">Jazzy Balaconies</div>
+                      <div class="product-dimensions offset-top-4">24" x 36"</div>
                       <div class="product-price offset-top-10">$36.00</div>
                       <div class="product-buttons offset-top-15">
                         <button class="big" onclick="openModal('jazzy-balaconies-modal')">Details</button>
@@ -467,7 +517,7 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Jazzy Balaconies (24&quot; x 36&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Jazzy Balaconies (24" x 36")">
                           <input type="hidden" name="amount" value="36.00">
                           <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
@@ -475,28 +525,27 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Orleans Street -->
-                <div class="cell-xs-8 cell-sm-6 cell-lg-4">
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
                     <div class="product-image">
                       <img class="img-responsive product-image-area" src="images/portfolio/portfolio-04-570x420.jpg" alt="Orleans Street"/>
                     </div>
                     <div class="product-info">
                       <div class="product-title offset-top-4 text-primary">Orleans Street</div>
+                      <div class="product-dimensions offset-top-4">24" x 30" & 18" x 24"</div>
                       <div class="product-price offset-top-10">Size 1: $34.00 | Size 2: $28.00</div>
                       <div class="product-buttons offset-top-15">
                         <button class="big" onclick="openModal('orleans-street-modal')">Details</button>
-                        <button class="big" onclick="showDualPriceOptions('Orleans Street', '24&quot; x 30&quot; & 18&quot; x 24&quot;', 'images/portfolio/portfolio-04-570x420.jpg', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')" style="background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%); border: 2px solid #e6a800; color: #003087; flex: 1;">
+                        <button class="big" onclick="showDualPriceOptions('Orleans Street', '24&amp;quot; x 30&amp;quot; &amp; 18&amp;quot; x 24&amp;quot;', 'images/portfolio/portfolio-04-570x420.jpg', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')" style="background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%); border: 2px solid #e6a800; color: #003087; flex: 1;">
                           <i class="fab fa-paypal"></i>
                           Choose Size
                         </button>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Pirate's Alley -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -505,19 +554,18 @@
                     </div>
                     <div class="product-info">
                       <div class="product-title offset-top-4 text-primary">Pirate's Alley</div>
-                      <div class="product-dimensions offset-top-4">Two Sizes: 24" x 30" & 18" x 24"</div>
+                      <div class="product-dimensions offset-top-4">24" x 30" & 18" x 24"</div>
                       <div class="product-price offset-top-10">Size 1: $34.00 | Size 2: $28.00</div>
                       <div class="product-buttons offset-top-15">
-                        <button class="big" onclick="openModal('pirates-alley-modal')">Details</button>
-                        <button class="big" onclick="showDualPriceOptions('Pirate\'s Alley', '24&quot; x 30&quot; & 18&quot; x 24&quot;', 'images/portfolio/portfolio-26-570x420.JPG', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')" style="background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%); border: 2px solid #e6a800; color: #003087; flex: 1;">
+                        <button class="big" onclick="openModal('pirate-s-alley-modal')">Details</button>
+                        <button class="big" onclick="showDualPriceOptions('Pirates Alley', '24&amp;quot; x 30&amp;quot; &amp; 18&amp;quot; x 24&amp;quot;', 'images/portfolio/portfolio-26-570x420.JPG', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')" style="background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%); border: 2px solid #e6a800; color: #003087; flex: 1;">
                           <i class="fab fa-paypal"></i>
                           Choose Size
                         </button>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Cafe Du Monde -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -538,16 +586,15 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Cafe Du Monde (18&quot; x 24&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Cafe Du Monde (18" x 24")">
                           <input type="hidden" name="amount" value="28.00">
-                          <input type="hidden" name="shipping" value="6.00">
+                          <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
                         </form>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Blue Moon Cafe -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -568,16 +615,15 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Blue Moon Cafe (18&quot; x 24&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Blue Moon Cafe (18" x 24")">
                           <input type="hidden" name="amount" value="28.00">
-                          <input type="hidden" name="shipping" value="6.00">
+                          <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
                         </form>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- General Jackson -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -598,16 +644,15 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: General Jackson (18&quot; x 24&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: General Jackson (18" x 24")">
                           <input type="hidden" name="amount" value="28.00">
-                          <input type="hidden" name="shipping" value="6.00">
+                          <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
                         </form>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- katies House -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -628,16 +673,15 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: katies House (18&quot; x 24&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: katies House (18" x 24")">
                           <input type="hidden" name="amount" value="28.00">
-                          <input type="hidden" name="shipping" value="6.00">
+                          <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
                         </form>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Royal Street Balconies -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -658,7 +702,7 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Royal Street Balconies (24&quot; x 36&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Royal Street Balconies (24" x 36")">
                           <input type="hidden" name="amount" value="36.00">
                           <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
@@ -666,8 +710,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Desire Streetcar -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -688,7 +731,7 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Desire Streetcar (24&quot; x 36&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Desire Streetcar (24" x 36")">
                           <input type="hidden" name="amount" value="36.00">
                           <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
@@ -696,8 +739,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Porte Blue -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -718,16 +760,15 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Porte Blue (15&quot; x 30&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Porte Blue (15" x 30")">
                           <input type="hidden" name="amount" value="28.00">
-                          <input type="hidden" name="shipping" value="6.00">
+                          <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
                         </form>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Maison Rouge -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -737,7 +778,7 @@
                     <div class="product-info">
                       <div class="product-title offset-top-4 text-primary">Maison Rouge</div>
                       <div class="product-dimensions offset-top-4">15" x 30"</div>
-                      <div class="product-price offset-top-10">$28.00</div>
+                      <div class="product-price offset-top-10">$36.00</div>
                       <div class="product-buttons offset-top-15">
                         <button class="big" onclick="openModal('maison-rouge-modal')">Details</button>
                         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
@@ -748,16 +789,15 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Maison Rouge (15&quot; x 30&quot;)">
-                          <input type="hidden" name="amount" value="28.00">
-                          <input type="hidden" name="shipping" value="6.00">
+                          <input type="hidden" name="item_name" value="Canvas Print: Maison Rouge (15" x 30")">
+                          <input type="hidden" name="amount" value="36.00">
+                          <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
                         </form>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Red House -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -778,16 +818,15 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Red House (15&quot; x 30&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Red House (15" x 30")">
                           <input type="hidden" name="amount" value="28.00">
-                          <input type="hidden" name="shipping" value="6.00">
+                          <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
                         </form>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- St. Louis Cathedral in Full Color -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -796,19 +835,18 @@
                     </div>
                     <div class="product-info">
                       <div class="product-title offset-top-4 text-primary">St. Louis Cathedral in Full Color</div>
-                      <div class="product-dimensions offset-top-4">Two Sizes: 24" x 30" & 18" x 24"</div>
+                      <div class="product-dimensions offset-top-4">24" x 30" & 18" x 24"</div>
                       <div class="product-price offset-top-10">Size 1: $34.00 | Size 2: $28.00</div>
                       <div class="product-buttons offset-top-15">
-                        <button class="big" onclick="openModal('st-louis-cathedral-modal')">Details</button>
-                        <button class="big" onclick="showDualPriceOptions('St. Louis Cathedral in Full Color', '24&quot; x 30&quot; & 18&quot; x 24&quot;', 'images/portfolio/portfolio-13-570x420.jpg', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')" style="background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%); border: 2px solid #e6a800; color: #003087; flex: 1;">
+                        <button class="big" onclick="openModal('st-louis-cathedral-in-full-color-modal')">Details</button>
+                        <button class="big" onclick="showDualPriceOptions('St. Louis Cathedral in Full Color', '24&amp;quot; x 30&amp;quot; &amp; 18&amp;quot; x 24&amp;quot;', 'images/portfolio/portfolio-13-570x420.jpg', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')" style="background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%); border: 2px solid #e6a800; color: #003087; flex: 1;">
                           <i class="fab fa-paypal"></i>
                           Choose Size
                         </button>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Curve Appeal -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -829,16 +867,15 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Curve Appeal (18&quot; x 24&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Curve Appeal (18" x 24")">
                           <input type="hidden" name="amount" value="28.00">
-                          <input type="hidden" name="shipping" value="6.00">
+                          <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
                         </form>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Quartet -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -859,7 +896,7 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Quartet (24&quot; x 36&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Quartet (24" x 36")">
                           <input type="hidden" name="amount" value="36.00">
                           <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
@@ -867,8 +904,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Canary -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -889,16 +925,15 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Canary (15&quot; x 30&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Canary (15" x 30")">
                           <input type="hidden" name="amount" value="28.00">
-                          <input type="hidden" name="shipping" value="6.00">
+                          <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
                         </form>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Vieux Carré Balconies -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -910,7 +945,7 @@
                       <div class="product-dimensions offset-top-4">15" x 30"</div>
                       <div class="product-price offset-top-10">$28.00</div>
                       <div class="product-buttons offset-top-15">
-                        <button class="big" onclick="openModal('vieux-carre-balconies-modal')">Details</button>
+                        <button class="big" onclick="openModal('vieux-carr-balconies-modal')">Details</button>
                         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
                           <button type="submit" class="paypal-button">
                             <i class="fab fa-paypal"></i>
@@ -919,16 +954,15 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Vieux Carré Balconies (15&quot; x 30&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Vieux Carré Balconies (15" x 30")">
                           <input type="hidden" name="amount" value="28.00">
-                          <input type="hidden" name="shipping" value="6.00">
+                          <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
                         </form>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Edifice Bleu -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -949,16 +983,15 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Edifice Bleu (15&quot; x 30&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Edifice Bleu (15" x 30")">
                           <input type="hidden" name="amount" value="28.00">
-                          <input type="hidden" name="shipping" value="6.00">
+                          <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
                         </form>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Lafittes Blacksmith House Blue Hue -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -967,40 +1000,38 @@
                     </div>
                     <div class="product-info">
                       <div class="product-title offset-top-4 text-primary">Lafittes Blacksmith House Blue Hue</div>
-                      <div class="product-dimensions offset-top-4">Two Sizes: 24" x 30" & 18" x 24"</div>
+                      <div class="product-dimensions offset-top-4">24" x 30" & 18" x 24"</div>
                       <div class="product-price offset-top-10">Size 1: $34.00 | Size 2: $28.00</div>
                       <div class="product-buttons offset-top-15">
-                        <button class="big" onclick="openModal('lafittes-blacksmith-blue-modal')">Details</button>
-                        <button class="big" onclick="showDualPriceOptions('Lafittes Blacksmith House Blue Hue', '24&quot; x 30&quot; & 18&quot; x 24&quot;', 'images/portfolio/portfolio-19-570x420.jpg', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')" style="background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%); border: 2px solid #e6a800; color: #003087; flex: 1;">
+                        <button class="big" onclick="openModal('lafittes-blacksmith-house-blue-hue-modal')">Details</button>
+                        <button class="big" onclick="showDualPriceOptions('Lafittes Blacksmith House Blue Hue', '24&amp;quot; x 30&amp;quot; &amp; 18&amp;quot; x 24&amp;quot;', 'images/portfolio/portfolio-19-570x420.jpg', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')" style="background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%); border: 2px solid #e6a800; color: #003087; flex: 1;">
                           <i class="fab fa-paypal"></i>
                           Choose Size
                         </button>
                       </div>
                     </div>
                   </div>
-                </div>
-                
-                <!-- Lafitte's Blacksmith Shop -->
+                </div>                
+                <!-- Lafitte_s Blacksmith Shop -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
                     <div class="product-image">
-                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-23-570x420.jpg" alt="Lafitte's Blacksmith Shop"/>
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-23-570x420.jpg" alt="Lafitte_s Blacksmith Shop"/>
                     </div>
                     <div class="product-info">
-                      <div class="product-title offset-top-4 text-primary">Lafitte's Blacksmith Shop</div>
-                      <div class="product-dimensions offset-top-4">Two Sizes: 24" x 30" & 18" x 24"</div>
+                      <div class="product-title offset-top-4 text-primary">Lafitte_s Blacksmith Shop</div>
+                      <div class="product-dimensions offset-top-4">24" x 30" & 18" x 24"</div>
                       <div class="product-price offset-top-10">Size 1: $34.00 | Size 2: $28.00</div>
                       <div class="product-buttons offset-top-15">
-                        <button class="big" onclick="openModal('lafittes-blacksmith-shop-modal')">Details</button>
-                        <button class="big" onclick="showDualPriceOptions('Lafitte\'s Blacksmith Shop', '24&quot; x 30&quot; & 18&quot; x 24&quot;', 'images/portfolio/portfolio-23-570x420.jpg', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')" style="background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%); border: 2px solid #e6a800; color: #003087; flex: 1;">
+                        <button class="big" onclick="openModal('lafitte-s-blacksmith-shop-modal')">Details</button>
+                        <button class="big" onclick="showDualPriceOptions('Lafitte_s Blacksmith Shop', '24&amp;quot; x 30&amp;quot; &amp; 18&amp;quot; x 24&amp;quot;', 'images/portfolio/portfolio-23-570x420.jpg', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')" style="background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%); border: 2px solid #e6a800; color: #003087; flex: 1;">
                           <i class="fab fa-paypal"></i>
                           Choose Size
                         </button>
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Mardi Gras -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -1021,7 +1052,7 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Mardi Gras (24&quot; x 36&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Mardi Gras (24" x 36")">
                           <input type="hidden" name="amount" value="36.00">
                           <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
@@ -1029,8 +1060,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                
+                </div>                
                 <!-- Maya's House -->
                 <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
                   <div class="product-card">
@@ -1042,7 +1072,7 @@
                       <div class="product-dimensions offset-top-4">24" x 30"</div>
                       <div class="product-price offset-top-10">$34.00</div>
                       <div class="product-buttons offset-top-15">
-                        <button class="big" onclick="openModal('mayas-house-modal')">Details</button>
+                        <button class="big" onclick="openModal('maya-s-house-modal')">Details</button>
                         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
                           <button type="submit" class="paypal-button">
                             <i class="fab fa-paypal"></i>
@@ -1051,15 +1081,618 @@
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
-                          <input type="hidden" name="item_name" value="Canvas Print: Maya's House (24&quot; x 30&quot;)">
+                          <input type="hidden" name="item_name" value="Canvas Print: Mayas House (24" x 30")">
                           <input type="hidden" name="amount" value="34.00">
-                          <input type="hidden" name="shipping" value="7.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Red & Yellow Houses -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-28-570x420.jpg" alt="Red & Yellow Houses"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Red & Yellow Houses</div>
+                      <div class="product-dimensions offset-top-4">24" x 36"</div>
+                      <div class="product-price offset-top-10">$36.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('red-yellow-houses-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Red & Yellow Houses (24" x 36")">
+                          <input type="hidden" name="amount" value="36.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Blue Showers -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-29-570x420.jpg" alt="Blue Showers"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Blue Showers</div>
+                      <div class="product-dimensions offset-top-4">24" x 30" & 18" x 24"</div>
+                      <div class="product-price offset-top-10">Size 1: $34.00 | Size 2: $28.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('blue-showers-modal')">Details</button>
+                        <button class="big" onclick="showDualPriceOptions('Blue Showers', '24&amp;quot; x 30&amp;quot; &amp; 18&amp;quot; x 24&amp;quot;', 'images/portfolio/portfolio-29-570x420.jpg', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')" style="background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%); border: 2px solid #e6a800; color: #003087; flex: 1;">
+                          <i class="fab fa-paypal"></i>
+                          Choose Size
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- St. Louis Cathedral Lite Sky -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-30-570x420.jpg" alt="St. Louis Cathedral Lite Sky"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">St. Louis Cathedral Lite Sky</div>
+                      <div class="product-dimensions offset-top-4">24" x 30" & 18" x 24"</div>
+                      <div class="product-price offset-top-10">Size 1: $34.00 | Size 2: $28.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('st-louis-cathedral-lite-sky-modal')">Details</button>
+                        <button class="big" onclick="showDualPriceOptions('St. Louis Cathedral Lite Sky', '24&amp;quot; x 30&amp;quot; &amp; 18&amp;quot; x 24&amp;quot;', 'images/portfolio/portfolio-30-570x420.jpg', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')" style="background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%); border: 2px solid #e6a800; color: #003087; flex: 1;">
+                          <i class="fab fa-paypal"></i>
+                          Choose Size
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- St. Louis in Full Color -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-31-570x420.jpg" alt="St. Louis in Full Color"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">St. Louis in Full Color</div>
+                      <div class="product-dimensions offset-top-4">24" x 30" & 18" x 24"</div>
+                      <div class="product-price offset-top-10">Size 1: $34.00 | Size 2: $28.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('st-louis-in-full-color-modal')">Details</button>
+                        <button class="big" onclick="showDualPriceOptions('St. Louis in Full Color', '24&amp;quot; x 30&amp;quot; &amp; 18&amp;quot; x 24&amp;quot;', 'images/portfolio/portfolio-31-570x420.jpg', '34.00', '28.00', 'Size 1: $34.00 | Size 2: $28.00')" style="background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%); border: 2px solid #e6a800; color: #003087; flex: 1;">
+                          <i class="fab fa-paypal"></i>
+                          Choose Size
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Tree House 1 -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-32-570x420.jpg" alt="Tree House 1"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Tree House 1</div>
+                      <div class="product-dimensions offset-top-4">24" x 30"</div>
+                      <div class="product-price offset-top-10">$34.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('tree-house-1-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Tree House 1 (24" x 30")">
+                          <input type="hidden" name="amount" value="34.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Tree House 2 -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-33-570x420.jpg" alt="Tree House 2"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Tree House 2</div>
+                      <div class="product-dimensions offset-top-4">24" x 30"</div>
+                      <div class="product-price offset-top-10">$34.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('tree-house-2-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Tree House 2 (24" x 30")">
+                          <input type="hidden" name="amount" value="34.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Yellow Shotgun -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-34-570x420.jpg" alt="Yellow Shotgun"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Yellow Shotgun</div>
+                      <div class="product-dimensions offset-top-4">24" x 30"</div>
+                      <div class="product-price offset-top-10">$34.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('yellow-shotgun-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Yellow Shotgun (24" x 30")">
+                          <input type="hidden" name="amount" value="34.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Autumn Trees -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-01a-570x420.jpg" alt="Autumn Trees"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Autumn Trees</div>
+                      <div class="product-dimensions offset-top-4">27" x 37" & 24" x 36"</div>
+                      <div class="product-price offset-top-10">Size 1: $30.00 | Size 2: $28.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('autumn-trees-modal')">Details</button>
+                        <button class="big" onclick="showDualPriceOptions('Autumn Trees', '27&amp;quot; x 37&amp;quot; &amp; 24&amp;quot; x 36&amp;quot;', 'images/portfolio/portfolio-01a-570x420.jpg', '30.00', '28.00', 'Size 1: $30.00 | Size 2: $28.00')" style="background: linear-gradient(135deg, #ffc439 0%, #ffb700 100%); border: 2px solid #e6a800; color: #003087; flex: 1;">
+                          <i class="fab fa-paypal"></i>
+                          Choose Size
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Julia Street -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-02a-570x420.jpg" alt="Julia Street"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Julia Street</div>
+                      <div class="product-dimensions offset-top-4">27" x 37"</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('julia-street-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Julia Street (27" x 37")">
+                          <input type="hidden" name="amount" value="30.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Plantation Stroll -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-03a-570x420.jpg" alt="Plantation Stroll"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Plantation Stroll</div>
+                      <div class="product-dimensions offset-top-4">27" x 37"</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('plantation-stroll-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Plantation Stroll (27" x 37")">
+                          <input type="hidden" name="amount" value="30.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Bourbon Street -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-04a-570x420.jpg" alt="Bourbon Street"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Bourbon Street</div>
+                      <div class="product-dimensions offset-top-4">27" x 37"</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('bourbon-street-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Bourbon Street (27" x 37")">
+                          <input type="hidden" name="amount" value="30.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Esplanade Street -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-05a-570x420.jpg" alt="Esplanade Street"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Esplanade Street</div>
+                      <div class="product-dimensions offset-top-4">27" x 37"</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('esplanade-street-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Esplanade Street (27" x 37")">
+                          <input type="hidden" name="amount" value="30.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Madison Street -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-06a-570x420.jpg" alt="Madison Street"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Madison Street</div>
+                      <div class="product-dimensions offset-top-4">27" x 37"</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('madison-street-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Madison Street (27" x 37")">
+                          <input type="hidden" name="amount" value="30.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- French Quarter -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-07a-570x420.jpg" alt="French Quarter"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">French Quarter</div>
+                      <div class="product-dimensions offset-top-4">27" x 37"</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('french-quarter-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: French Quarter (27" x 37")">
+                          <input type="hidden" name="amount" value="30.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Orleans -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-08a-570x420.jpg" alt="Orleans"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Orleans</div>
+                      <div class="product-dimensions offset-top-4">27" x 37"</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('orleans-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Orleans (27" x 37")">
+                          <input type="hidden" name="amount" value="30.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Jackson Square -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-09a-570x420.jpg" alt="Jackson Square"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Jackson Square</div>
+                      <div class="product-dimensions offset-top-4">27" x 37"</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('jackson-square-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Jackson Square (27" x 37")">
+                          <input type="hidden" name="amount" value="30.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- St. Louis Cathedral -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-10a-570x420.jpg" alt="St. Louis Cathedral"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">St. Louis Cathedral</div>
+                      <div class="product-dimensions offset-top-4">27" x 37"</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('st-louis-cathedral-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: St. Louis Cathedral (27" x 37")">
+                          <input type="hidden" name="amount" value="30.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Side Walk Stroll -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-11a-570x420.jpg" alt="Side Walk Stroll"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Side Walk Stroll</div>
+                      <div class="product-dimensions offset-top-4">27" x 37"</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('side-walk-stroll-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Side Walk Stroll (27" x 37")">
+                          <input type="hidden" name="amount" value="30.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Blue Showers -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-35a-570x420.JPG" alt="Blue Showers"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Blue Showers</div>
+                      <div class="product-dimensions offset-top-4">27" x 37"</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('blue-showers-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Blue Showers (27" x 37")">
+                          <input type="hidden" name="amount" value="30.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Elisa's House -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-36a-570x420.jpg" alt="Elisa's House"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Elisa's House</div>
+                      <div class="product-dimensions offset-top-4">27" x 37"</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('elisa-s-house-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Elisas House (27" x 37")">
+                          <input type="hidden" name="amount" value="30.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Rainy Day -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-37a-570x420.jpg" alt="Rainy Day"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Rainy Day</div>
+                      <div class="product-dimensions offset-top-4">27" x 37"</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('rainy-day-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Rainy Day (27" x 37")">
+                          <input type="hidden" name="amount" value="30.00">
+                          <input type="hidden" name="shipping" value="8.00">
+                          <input type="hidden" name="no_shipping" value="2">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <!-- Woods -->
+                <div class="cell-xs-8 cell-sm-6 cell-lg-4 offset-top-41 offset-md-top-50">
+                  <div class="product-card">
+                    <div class="product-image">
+                      <img class="img-responsive product-image-area" src="images/portfolio/portfolio-38a-570x420.JPG" alt="Woods"/>
+                    </div>
+                    <div class="product-info">
+                      <div class="product-title offset-top-4 text-primary">Woods</div>
+                      <div class="product-dimensions offset-top-4">27" x 37"</div>
+                      <div class="product-price offset-top-10">$30.00</div>
+                      <div class="product-buttons offset-top-15">
+                        <button class="big" onclick="openModal('woods-modal')">Details</button>
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
+                          <button type="submit" class="paypal-button">
+                            <i class="fab fa-paypal"></i>
+                            Add to Cart
+                          </button>
+                          <input type="hidden" name="add" value="1">
+                          <input type="hidden" name="cmd" value="_cart">
+                          <input type="hidden" name="business" value="gustavo54@att.net">
+                          <input type="hidden" name="item_name" value="Canvas Print: Woods (27" x 37")">
+                          <input type="hidden" name="amount" value="30.00">
+                          <input type="hidden" name="shipping" value="8.00">
                           <input type="hidden" name="no_shipping" value="2">
                         </form>
                       </div>
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
         </div>
@@ -1448,16 +2081,16 @@
       </div>
     </div>
 
-    <!-- Vieux Carré Balconies Modal -->
+    <!-- Vieux CarrÃ© Balconies Modal -->
     <div id="vieux-carre-balconies-modal" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeModal('vieux-carre-balconies-modal')">&times;</span>
         <div class="modal-product">
           <div class="modal-product-image">
-            <img src="../images/vieux-carre-364x500.png" alt="Vieux Carré Balconies">
+            <img src="../images/vieux-carre-364x500.png" alt="Vieux CarrÃ© Balconies">
           </div>
           <div class="modal-product-info">
-            <h3 class="modal-product-title">Paper Print: Vieux Carré Balconies</h3>
+            <h3 class="modal-product-title">Paper Print: Vieux CarrÃ© Balconies</h3>
             <div class="modal-product-price">$30.00</div>
             
             <div class="responsive-tabs-classic">
@@ -1478,7 +2111,7 @@
               <input type="hidden" name="add" value="1">
               <input type="hidden" name="cmd" value="_cart">
               <input type="hidden" name="business" value="gustavo54@att.net">
-              <input type="hidden" name="item_name" value="Paper Print: Vieux Carré Balconies">
+              <input type="hidden" name="item_name" value="Paper Print: Vieux CarrÃ© Balconies">
               <input type="hidden" name="amount" value="30.00">
               <input type="hidden" name="shipping" value="5.00">
               <input type="hidden" name="no_shipping" value="2">
@@ -1584,6 +2217,77 @@
           });
         }
       });
+
+      // Product Sorting Function
+      function sortProducts() {
+        const sortSelect = document.getElementById('sortSelect');
+        const sortValue = sortSelect.value;
+        const container = document.getElementById('products-container');
+        const products = Array.from(container.children);
+
+        // Store original order for default sorting
+        if (!window.originalOrder) {
+          window.originalOrder = products.slice();
+        }
+
+        let sortedProducts;
+
+        switch (sortValue) {
+          case 'az':
+            sortedProducts = products.sort((a, b) => {
+              const titleA = a.querySelector('.product-title').textContent.trim().toLowerCase();
+              const titleB = b.querySelector('.product-title').textContent.trim().toLowerCase();
+              return titleA.localeCompare(titleB);
+            });
+            break;
+
+          case 'za':
+            sortedProducts = products.sort((a, b) => {
+              const titleA = a.querySelector('.product-title').textContent.trim().toLowerCase();
+              const titleB = b.querySelector('.product-title').textContent.trim().toLowerCase();
+              return titleB.localeCompare(titleA);
+            });
+            break;
+
+          case 'price-low':
+            sortedProducts = products.sort((a, b) => {
+              const priceA = parseFloat(a.querySelector('.product-price').textContent.replace('$', ''));
+              const priceB = parseFloat(b.querySelector('.product-price').textContent.replace('$', ''));
+              return priceA - priceB;
+            });
+            break;
+
+          case 'price-high':
+            sortedProducts = products.sort((a, b) => {
+              const priceA = parseFloat(a.querySelector('.product-price').textContent.replace('$', ''));
+              const priceB = parseFloat(b.querySelector('.product-price').textContent.replace('$', ''));
+              return priceB - priceA;
+            });
+            break;
+
+          default: // 'default'
+            sortedProducts = window.originalOrder.slice();
+            break;
+        }
+
+        // Clear container and add sorted products with animation
+        container.innerHTML = '';
+        
+        sortedProducts.forEach((product, index) => {
+          setTimeout(() => {
+            product.style.opacity = '0';
+            product.style.transform = 'translateY(20px)';
+            container.appendChild(product);
+            
+            // Animate in
+            setTimeout(() => {
+              product.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+              product.style.opacity = '1';
+              product.style.transform = 'translateY(0)';
+            }, 50);
+          }, index * 50);
+        });
+      }
     </script>
     
     <!-- Cart System Script -->
@@ -1592,7 +2296,7 @@
       let selectedOption = null;
       let currentProduct = null;
       
-      // Función para mostrar overlay de opciones para productos con precios duales
+      // FunciÃ³n para mostrar overlay de opciones para productos con precios duales
       function showDualPriceOptions(productName, dimensions, image, price1, price2, priceText) {
         currentProduct = {
           name: productName,
@@ -1612,7 +2316,7 @@
         panel.style.cssText = 'background:#222;color:white;border-radius:10px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;padding:0';
         
         let html = '<div style="padding:20px;border-bottom:1px solid #444;display:flex;justify-content:space-between;align-items:center">';
-        html += '<h3 style="margin:0;color:#ffc107;font-size:24px;font-weight:700">🎨 Choose Size</h3>';
+        html += '<h3 style="margin:0;color:#ffc107;font-size:24px;font-weight:700">ðŸŽ¨ Choose Size</h3>';
         html += '<button onclick="closeDualPriceOverlay()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer">&times;</button>';
         html += '</div>';
         
@@ -1623,7 +2327,7 @@
         html += '<p style="margin:0;color:#e8e8e8;font-size:16px;font-weight:500;line-height:1.5">Oil painting on canvas</p></div>';
         html += '</div>';
         
-        html += '<h5 style="color:#ffc107;margin-bottom:15px;font-size:18px;font-weight:700">📐 Select Size:</h5>';
+        html += '<h5 style="color:#ffc107;margin-bottom:15px;font-size:18px;font-weight:700">ðŸ“ Select Size:</h5>';
         html += '<div id="optionsList">';
         
         currentProduct.options.forEach((option, index) => {
@@ -1636,8 +2340,8 @@
         
         html += '</div>';
         html += '<div style="text-align:center;margin-top:20px">';
-        html += '<button onclick="closeDualPriceOverlay()" style="background:#6c757d;color:white;border:none;padding:12px 25px;border-radius:5px;margin-right:15px;cursor:pointer;font-size:16px;font-weight:600">❌ Cancel</button>';
-        html += '<button onclick="addDualOptionToCart()" style="background:#28a745;color:white;border:none;padding:12px 25px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:16px" id="addDualToCartBtn" disabled>🛒 Add to Cart</button>';
+        html += '<button onclick="closeDualPriceOverlay()" style="background:#6c757d;color:white;border:none;padding:12px 25px;border-radius:5px;margin-right:15px;cursor:pointer;font-size:16px;font-weight:600">âŒ Cancel</button>';
+        html += '<button onclick="addDualOptionToCart()" style="background:#28a745;color:white;border:none;padding:12px 25px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:16px" id="addDualToCartBtn" disabled>ðŸ›’ Add to Cart</button>';
         html += '</div>';
         html += '</div>';
         
@@ -1647,7 +2351,7 @@
         document.body.style.overflow = 'hidden';
       }
       
-      // Seleccionar opción dual
+      // Seleccionar opciÃ³n dual
       function selectDualOption(optionIndex) {
         document.querySelectorAll('#dualPriceOverlay .option-card').forEach(card => {
           card.style.borderColor = '#444';
@@ -1663,7 +2367,7 @@
         document.getElementById('addDualToCartBtn').style.opacity = '1';
       }
       
-      // Agregar opción dual al carrito
+      // Agregar opciÃ³n dual al carrito
       function addDualOptionToCart() {
         if (!selectedOption || !currentProduct) return;
         
@@ -1751,13 +2455,13 @@
         panel.style.cssText = 'background:#222;color:white;border-radius:10px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto';
         
         let html = '<div style="padding:20px;border-bottom:1px solid #444;display:flex;justify-content:space-between">';
-        html += '<h3 style="margin:0;color:#ffc107;font-size:28px;font-weight:700">🛒 Shopping Cart</h3>';
+        html += '<h3 style="margin:0;color:#ffc107;font-size:28px;font-weight:700">ðŸ›’ Shopping Cart</h3>';
         html += '<button onclick="closeCartOverlay()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer">&times;</button>';
         html += '</div>';
         html += '<div id="cartItems" style="padding:20px;min-height:200px"></div>';
         html += '<div style="padding:20px;border-top:1px solid #444;text-align:center">';
-        html += '<button onclick="clearCart()" style="background:#6c757d;color:white;border:none;padding:15px 25px;border-radius:5px;margin-right:10px;cursor:pointer;font-size:18px;font-weight:700">🗑️ Clear</button>';
-        html += '<button onclick="checkout()" style="background:#ffc107;color:#000;border:none;padding:15px 25px;border-radius:5px;font-weight:bold;cursor:pointer;font-size:18px">💳 PayPal</button>';
+        html += '<button onclick="clearCart()" style="background:#6c757d;color:white;border:none;padding:15px 25px;border-radius:5px;margin-right:10px;cursor:pointer;font-size:18px;font-weight:700">ðŸ—‘ï¸ Clear</button>';
+        html += '<button onclick="checkout()" style="background:#ffc107;color:#000;border:none;padding:15px 25px;border-radius:5px;font-weight:bold;cursor:pointer;font-size:18px">ðŸ’³ PayPal</button>';
         html += '</div>';
         
         panel.innerHTML = html;
@@ -1781,7 +2485,7 @@
         if (!container) return;
         
         if (cart.length === 0) {
-          container.innerHTML = '<div style="text-align:center;color:#e8e8e8;font-style:italic;font-size:22px;font-weight:600">🛒 Your cart is empty<br><small style="font-size:18px;color:#d0d0d0">Add some beautiful artwork!</small></div>';
+          container.innerHTML = '<div style="text-align:center;color:#e8e8e8;font-style:italic;font-size:22px;font-weight:600">ðŸ›’ Your cart is empty<br><small style="font-size:18px;color:#d0d0d0">Add some beautiful artwork!</small></div>';
           return;
         }
         
@@ -1839,11 +2543,11 @@
       }
       
       function proceedToPayPal(total) {
-        // Para múltiples productos, crear un enlace directo con el primer producto y notas adicionales
+        // Para mÃºltiples productos, crear un enlace directo con el primer producto y notas adicionales
         const firstItem = cart[0];
         let itemName = `${firstItem.name} (${firstItem.material} - ${firstItem.dimensions})`;
         
-        // Si hay más productos, agregarlos en las notas
+        // Si hay mÃ¡s productos, agregarlos en las notas
         if (cart.length > 1) {
           itemName += ` + ${cart.length - 1} more items`;
         }
@@ -1851,21 +2555,21 @@
         const encodedItemName = encodeURIComponent(itemName);
         const totalAmount = total.toFixed(2);
         
-        // Usar el formato clásico de PayPal "Buy Now" - SIN URLs de retorno
+        // Usar el formato clÃ¡sico de PayPal "Buy Now" - SIN URLs de retorno
         const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=gustavo54@att.net&item_name=${encodedItemName}&amount=${totalAmount}&currency_code=USD`;
         
         // Abrir PayPal directamente
         window.open(paypalUrl, '_blank');
         
-        // Mostrar confirmación y limpiar carrito
-        showMessage('🚀 PayPal abierto con carrito completo!');
+        // Mostrar confirmaciÃ³n y limpiar carrito
+        showMessage('ðŸš€ PayPal abierto con carrito completo!');
         
         setTimeout(() => {
           cart = [];
           localStorage.setItem('cart', JSON.stringify(cart));
           updateCartCount();
           closeCartOverlay();
-          showMessage('🎉 Pedido procesado! Carrito limpiado.');
+          showMessage('ðŸŽ‰ Pedido procesado! Carrito limpiado.');
         }, 2000);
       }
       
@@ -1875,29 +2579,29 @@
         const badge = document.getElementById('cartCount');
         if (badge) badge.textContent = count;
         
-        // También actualizar el localStorage para sincronización entre páginas
+        // TambiÃ©n actualizar el localStorage para sincronizaciÃ³n entre pÃ¡ginas
         localStorage.setItem('cart', JSON.stringify(cart));
       }
       
-      // Ir a la página de shop
+      // Ir a la pÃ¡gina de shop
       function goToShop() {
         window.location.href = '/shop.html';
       }
       
-      // Inicializar carrito al cargar la página
+      // Inicializar carrito al cargar la pÃ¡gina
       document.addEventListener('DOMContentLoaded', function() {
         // Check for payment status in URL
         const urlParams = new URLSearchParams(window.location.search);
         const paymentStatus = urlParams.get('payment');
         
         if (paymentStatus === 'success') {
-          showMessage('🎉 Payment successful! Thank you for your purchase!');
+          showMessage('ðŸŽ‰ Payment successful! Thank you for your purchase!');
           // Clear cart after successful payment
           cart = [];
           localStorage.setItem('cart', JSON.stringify(cart));
           updateCartCount();
         } else if (paymentStatus === 'cancelled') {
-          showMessage('❌ Payment was cancelled. Your items are still in your cart.');
+          showMessage('âŒ Payment was cancelled. Your items are still in your cart.');
         }
         
         updateCartCount();
@@ -1915,5 +2619,1300 @@
         }
       });
     </script>
+  
+    <!-- Nouvelle Bleu Modal -->
+    <div id="nouvelle-bleu-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('nouvelle-bleu-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Nouvelle Bleu">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Nouvelle Bleu</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'nouvelle-bleu-desc')">Description</li>
+                <li onclick="showTab(this, 'nouvelle-bleu-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'nouvelle-bleu-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="nouvelle-bleu-desc" class="resp-tab-content-active">High-quality canvas print of Nouvelle Bleu artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="nouvelle-bleu-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="nouvelle-bleu-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Jazzy Balaconies Modal -->
+    <div id="jazzy-balaconies-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('jazzy-balaconies-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Jazzy Balaconies">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Jazzy Balaconies</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'jazzy-balaconies-desc')">Description</li>
+                <li onclick="showTab(this, 'jazzy-balaconies-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'jazzy-balaconies-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="jazzy-balaconies-desc" class="resp-tab-content-active">High-quality canvas print of Jazzy Balaconies artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="jazzy-balaconies-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="jazzy-balaconies-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Orleans Street Modal -->
+    <div id="orleans-street-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('orleans-street-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Orleans Street">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Orleans Street</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'orleans-street-desc')">Description</li>
+                <li onclick="showTab(this, 'orleans-street-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'orleans-street-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="orleans-street-desc" class="resp-tab-content-active">High-quality canvas print of Orleans Street artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="orleans-street-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="orleans-street-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Pirate S Alley Modal -->
+    <div id="pirate-s-alley-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('pirate-s-alley-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Pirate S Alley">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Pirate S Alley</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'pirate-s-alley-desc')">Description</li>
+                <li onclick="showTab(this, 'pirate-s-alley-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'pirate-s-alley-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="pirate-s-alley-desc" class="resp-tab-content-active">High-quality canvas print of Pirate S Alley artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="pirate-s-alley-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="pirate-s-alley-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Cafe Du Monde Modal -->
+    <div id="cafe-du-monde-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('cafe-du-monde-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Cafe Du Monde">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Cafe Du Monde</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'cafe-du-monde-desc')">Description</li>
+                <li onclick="showTab(this, 'cafe-du-monde-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'cafe-du-monde-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="cafe-du-monde-desc" class="resp-tab-content-active">High-quality canvas print of Cafe Du Monde artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="cafe-du-monde-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="cafe-du-monde-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Blue Moon Cafe Modal -->
+    <div id="blue-moon-cafe-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('blue-moon-cafe-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Blue Moon Cafe">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Blue Moon Cafe</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'blue-moon-cafe-desc')">Description</li>
+                <li onclick="showTab(this, 'blue-moon-cafe-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'blue-moon-cafe-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="blue-moon-cafe-desc" class="resp-tab-content-active">High-quality canvas print of Blue Moon Cafe artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="blue-moon-cafe-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="blue-moon-cafe-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- General Jackson Modal -->
+    <div id="general-jackson-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('general-jackson-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="General Jackson">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">General Jackson</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'general-jackson-desc')">Description</li>
+                <li onclick="showTab(this, 'general-jackson-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'general-jackson-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="general-jackson-desc" class="resp-tab-content-active">High-quality canvas print of General Jackson artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="general-jackson-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="general-jackson-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Katies House Modal -->
+    <div id="katies-house-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('katies-house-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Katies House">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Katies House</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'katies-house-desc')">Description</li>
+                <li onclick="showTab(this, 'katies-house-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'katies-house-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="katies-house-desc" class="resp-tab-content-active">High-quality canvas print of Katies House artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="katies-house-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="katies-house-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Royal Street Balconies Modal -->
+    <div id="royal-street-balconies-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('royal-street-balconies-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Royal Street Balconies">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Royal Street Balconies</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'royal-street-balconies-desc')">Description</li>
+                <li onclick="showTab(this, 'royal-street-balconies-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'royal-street-balconies-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="royal-street-balconies-desc" class="resp-tab-content-active">High-quality canvas print of Royal Street Balconies artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="royal-street-balconies-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="royal-street-balconies-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Desire Streetcar Modal -->
+    <div id="desire-streetcar-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('desire-streetcar-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Desire Streetcar">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Desire Streetcar</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'desire-streetcar-desc')">Description</li>
+                <li onclick="showTab(this, 'desire-streetcar-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'desire-streetcar-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="desire-streetcar-desc" class="resp-tab-content-active">High-quality canvas print of Desire Streetcar artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="desire-streetcar-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="desire-streetcar-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Porte Blue Modal -->
+    <div id="porte-blue-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('porte-blue-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Porte Blue">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Porte Blue</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'porte-blue-desc')">Description</li>
+                <li onclick="showTab(this, 'porte-blue-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'porte-blue-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="porte-blue-desc" class="resp-tab-content-active">High-quality canvas print of Porte Blue artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="porte-blue-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="porte-blue-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Maison Rouge Modal -->
+    <div id="maison-rouge-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('maison-rouge-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Maison Rouge">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Maison Rouge</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'maison-rouge-desc')">Description</li>
+                <li onclick="showTab(this, 'maison-rouge-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'maison-rouge-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="maison-rouge-desc" class="resp-tab-content-active">High-quality canvas print of Maison Rouge artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="maison-rouge-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="maison-rouge-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Red House Modal -->
+    <div id="red-house-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('red-house-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Red House">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Red House</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'red-house-desc')">Description</li>
+                <li onclick="showTab(this, 'red-house-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'red-house-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="red-house-desc" class="resp-tab-content-active">High-quality canvas print of Red House artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="red-house-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="red-house-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- St Louis Cathedral In Full Color Modal -->
+    <div id="st-louis-cathedral-in-full-color-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('st-louis-cathedral-in-full-color-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="St Louis Cathedral In Full Color">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">St Louis Cathedral In Full Color</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'st-louis-cathedral-in-full-color-desc')">Description</li>
+                <li onclick="showTab(this, 'st-louis-cathedral-in-full-color-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'st-louis-cathedral-in-full-color-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="st-louis-cathedral-in-full-color-desc" class="resp-tab-content-active">High-quality canvas print of St Louis Cathedral In Full Color artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="st-louis-cathedral-in-full-color-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="st-louis-cathedral-in-full-color-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Curve Appeal Modal -->
+    <div id="curve-appeal-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('curve-appeal-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Curve Appeal">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Curve Appeal</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'curve-appeal-desc')">Description</li>
+                <li onclick="showTab(this, 'curve-appeal-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'curve-appeal-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="curve-appeal-desc" class="resp-tab-content-active">High-quality canvas print of Curve Appeal artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="curve-appeal-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="curve-appeal-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Quartet Modal -->
+    <div id="quartet-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('quartet-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Quartet">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Quartet</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'quartet-desc')">Description</li>
+                <li onclick="showTab(this, 'quartet-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'quartet-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="quartet-desc" class="resp-tab-content-active">High-quality canvas print of Quartet artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="quartet-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="quartet-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Canary Modal -->
+    <div id="canary-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('canary-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Canary">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Canary</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'canary-desc')">Description</li>
+                <li onclick="showTab(this, 'canary-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'canary-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="canary-desc" class="resp-tab-content-active">High-quality canvas print of Canary artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="canary-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="canary-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Vieux Carr Balconies Modal -->
+    <div id="vieux-carr-balconies-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('vieux-carr-balconies-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Vieux Carr Balconies">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Vieux Carr Balconies</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'vieux-carr-balconies-desc')">Description</li>
+                <li onclick="showTab(this, 'vieux-carr-balconies-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'vieux-carr-balconies-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="vieux-carr-balconies-desc" class="resp-tab-content-active">High-quality canvas print of Vieux Carr Balconies artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="vieux-carr-balconies-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="vieux-carr-balconies-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Edifice Bleu Modal -->
+    <div id="edifice-bleu-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('edifice-bleu-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Edifice Bleu">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Edifice Bleu</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'edifice-bleu-desc')">Description</li>
+                <li onclick="showTab(this, 'edifice-bleu-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'edifice-bleu-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="edifice-bleu-desc" class="resp-tab-content-active">High-quality canvas print of Edifice Bleu artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="edifice-bleu-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="edifice-bleu-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Lafittes Blacksmith House Blue Hue Modal -->
+    <div id="lafittes-blacksmith-house-blue-hue-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('lafittes-blacksmith-house-blue-hue-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Lafittes Blacksmith House Blue Hue">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Lafittes Blacksmith House Blue Hue</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'lafittes-blacksmith-house-blue-hue-desc')">Description</li>
+                <li onclick="showTab(this, 'lafittes-blacksmith-house-blue-hue-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'lafittes-blacksmith-house-blue-hue-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="lafittes-blacksmith-house-blue-hue-desc" class="resp-tab-content-active">High-quality canvas print of Lafittes Blacksmith House Blue Hue artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="lafittes-blacksmith-house-blue-hue-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="lafittes-blacksmith-house-blue-hue-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Lafitte S Blacksmith Shop Modal -->
+    <div id="lafitte-s-blacksmith-shop-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('lafitte-s-blacksmith-shop-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Lafitte S Blacksmith Shop">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Lafitte S Blacksmith Shop</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'lafitte-s-blacksmith-shop-desc')">Description</li>
+                <li onclick="showTab(this, 'lafitte-s-blacksmith-shop-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'lafitte-s-blacksmith-shop-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="lafitte-s-blacksmith-shop-desc" class="resp-tab-content-active">High-quality canvas print of Lafitte S Blacksmith Shop artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="lafitte-s-blacksmith-shop-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="lafitte-s-blacksmith-shop-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Mardi Gras Modal -->
+    <div id="mardi-gras-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('mardi-gras-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Mardi Gras">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Mardi Gras</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'mardi-gras-desc')">Description</li>
+                <li onclick="showTab(this, 'mardi-gras-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'mardi-gras-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="mardi-gras-desc" class="resp-tab-content-active">High-quality canvas print of Mardi Gras artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="mardi-gras-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="mardi-gras-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Maya S House Modal -->
+    <div id="maya-s-house-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('maya-s-house-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Maya S House">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Maya S House</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'maya-s-house-desc')">Description</li>
+                <li onclick="showTab(this, 'maya-s-house-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'maya-s-house-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="maya-s-house-desc" class="resp-tab-content-active">High-quality canvas print of Maya S House artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="maya-s-house-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="maya-s-house-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Red Yellow Houses Modal -->
+    <div id="red-yellow-houses-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('red-yellow-houses-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Red Yellow Houses">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Red Yellow Houses</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'red-yellow-houses-desc')">Description</li>
+                <li onclick="showTab(this, 'red-yellow-houses-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'red-yellow-houses-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="red-yellow-houses-desc" class="resp-tab-content-active">High-quality canvas print of Red Yellow Houses artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="red-yellow-houses-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="red-yellow-houses-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Blue Showers Modal -->
+    <div id="blue-showers-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('blue-showers-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Blue Showers">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Blue Showers</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'blue-showers-desc')">Description</li>
+                <li onclick="showTab(this, 'blue-showers-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'blue-showers-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="blue-showers-desc" class="resp-tab-content-active">High-quality canvas print of Blue Showers artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="blue-showers-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="blue-showers-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- St Louis Cathedral Lite Sky Modal -->
+    <div id="st-louis-cathedral-lite-sky-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('st-louis-cathedral-lite-sky-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="St Louis Cathedral Lite Sky">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">St Louis Cathedral Lite Sky</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'st-louis-cathedral-lite-sky-desc')">Description</li>
+                <li onclick="showTab(this, 'st-louis-cathedral-lite-sky-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'st-louis-cathedral-lite-sky-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="st-louis-cathedral-lite-sky-desc" class="resp-tab-content-active">High-quality canvas print of St Louis Cathedral Lite Sky artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="st-louis-cathedral-lite-sky-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="st-louis-cathedral-lite-sky-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- St Louis In Full Color Modal -->
+    <div id="st-louis-in-full-color-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('st-louis-in-full-color-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="St Louis In Full Color">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">St Louis In Full Color</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'st-louis-in-full-color-desc')">Description</li>
+                <li onclick="showTab(this, 'st-louis-in-full-color-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'st-louis-in-full-color-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="st-louis-in-full-color-desc" class="resp-tab-content-active">High-quality canvas print of St Louis In Full Color artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="st-louis-in-full-color-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="st-louis-in-full-color-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Tree House 1 Modal -->
+    <div id="tree-house-1-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('tree-house-1-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Tree House 1">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Tree House 1</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'tree-house-1-desc')">Description</li>
+                <li onclick="showTab(this, 'tree-house-1-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'tree-house-1-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="tree-house-1-desc" class="resp-tab-content-active">High-quality canvas print of Tree House 1 artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="tree-house-1-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="tree-house-1-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Tree House 2 Modal -->
+    <div id="tree-house-2-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('tree-house-2-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Tree House 2">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Tree House 2</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'tree-house-2-desc')">Description</li>
+                <li onclick="showTab(this, 'tree-house-2-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'tree-house-2-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="tree-house-2-desc" class="resp-tab-content-active">High-quality canvas print of Tree House 2 artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="tree-house-2-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="tree-house-2-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Yellow Shotgun Modal -->
+    <div id="yellow-shotgun-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('yellow-shotgun-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Yellow Shotgun">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Yellow Shotgun</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'yellow-shotgun-desc')">Description</li>
+                <li onclick="showTab(this, 'yellow-shotgun-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'yellow-shotgun-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="yellow-shotgun-desc" class="resp-tab-content-active">High-quality canvas print of Yellow Shotgun artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="yellow-shotgun-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="yellow-shotgun-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Esplanade Street Modal -->
+    <div id="esplanade-street-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('esplanade-street-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Esplanade Street">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Esplanade Street</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'esplanade-street-desc')">Description</li>
+                <li onclick="showTab(this, 'esplanade-street-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'esplanade-street-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="esplanade-street-desc" class="resp-tab-content-active">High-quality canvas print of Esplanade Street artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="esplanade-street-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="esplanade-street-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- French Quarter Modal -->
+    <div id="french-quarter-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('french-quarter-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="French Quarter">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">French Quarter</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'french-quarter-desc')">Description</li>
+                <li onclick="showTab(this, 'french-quarter-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'french-quarter-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="french-quarter-desc" class="resp-tab-content-active">High-quality canvas print of French Quarter artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="french-quarter-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="french-quarter-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Orleans Modal -->
+    <div id="orleans-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('orleans-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Orleans">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Orleans</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'orleans-desc')">Description</li>
+                <li onclick="showTab(this, 'orleans-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'orleans-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="orleans-desc" class="resp-tab-content-active">High-quality canvas print of Orleans artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="orleans-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="orleans-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- St Louis Cathedral Modal -->
+    <div id="st-louis-cathedral-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('st-louis-cathedral-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="St Louis Cathedral">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">St Louis Cathedral</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'st-louis-cathedral-desc')">Description</li>
+                <li onclick="showTab(this, 'st-louis-cathedral-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'st-louis-cathedral-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="st-louis-cathedral-desc" class="resp-tab-content-active">High-quality canvas print of St Louis Cathedral artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="st-louis-cathedral-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="st-louis-cathedral-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Side Walk Stroll Modal -->
+    <div id="side-walk-stroll-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('side-walk-stroll-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Side Walk Stroll">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Side Walk Stroll</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'side-walk-stroll-desc')">Description</li>
+                <li onclick="showTab(this, 'side-walk-stroll-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'side-walk-stroll-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="side-walk-stroll-desc" class="resp-tab-content-active">High-quality canvas print of Side Walk Stroll artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="side-walk-stroll-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="side-walk-stroll-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Elisa S House Modal -->
+    <div id="elisa-s-house-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('elisa-s-house-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Elisa S House">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Elisa S House</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'elisa-s-house-desc')">Description</li>
+                <li onclick="showTab(this, 'elisa-s-house-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'elisa-s-house-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="elisa-s-house-desc" class="resp-tab-content-active">High-quality canvas print of Elisa S House artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="elisa-s-house-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="elisa-s-house-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Rainy Day Modal -->
+    <div id="rainy-day-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('rainy-day-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Rainy Day">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Rainy Day</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'rainy-day-desc')">Description</li>
+                <li onclick="showTab(this, 'rainy-day-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'rainy-day-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="rainy-day-desc" class="resp-tab-content-active">High-quality canvas print of Rainy Day artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="rainy-day-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="rainy-day-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Woods Modal -->
+    <div id="woods-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('woods-modal')">&times;</span>
+        <div class="modal-product">
+          <div class="modal-product-image">
+            <img src="images/placeholder.jpg" alt="Woods">
+          </div>
+          <div class="modal-product-info">
+            <h3 class="modal-product-title">Woods</h3>
+            
+            <div class="responsive-tabs-classic">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-active" onclick="showTab(this, 'woods-desc')">Description</li>
+                <li onclick="showTab(this, 'woods-shipping')">Shipping Options</li>
+                <li onclick="showTab(this, 'woods-delivery')">Delivery & Returns</li>
+              </ul>
+              
+              <div class="resp-tabs-container">
+                <div id="woods-desc" class="resp-tab-content-active">High-quality canvas print of Woods artwork. Professional grade printing with vibrant colors and sharp details.</div>
+                <div id="woods-shipping" class="resp-tab-content">
+                  <p><strong>Standard Shipping:</strong> 5-7 business days - $8.00</p>
+                  <p><strong>Express Shipping:</strong> 2-3 business days - $15.00</p>
+                </div>
+                <div id="woods-delivery" class="resp-tab-content">
+                  <p><strong>Returns:</strong> 30-day return policy</p>
+                  <p><strong>Delivery:</strong> Carefully packaged to prevent damage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
+
+
