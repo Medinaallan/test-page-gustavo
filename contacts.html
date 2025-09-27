@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html class="wide wow-animation smoothscroll scrollTo" lang="en">
   <head>
@@ -73,7 +73,7 @@
         font-weight: 700;
       }
       
-      /* Estilos específicos para textarea */
+      /* Estilos especÃ­ficos para textarea */
       .form-floating textarea.form-control {
         min-height: 120px;
         resize: vertical;
@@ -265,7 +265,7 @@
         }
       }
       
-      /* Extra responsive para móviles muy pequeños */
+      /* Extra responsive para mÃ³viles muy pequeÃ±os */
       @media (max-width: 480px) {
         .contact-form {
           padding: 25px 15px;
@@ -287,7 +287,7 @@
         }
       }
       
-      /* Estilos específicos para dispositivos táctiles */
+      /* Estilos especÃ­ficos para dispositivos tÃ¡ctiles */
       .touch-device .form-floating > .form-control {
         -webkit-appearance: none;
         appearance: none;
@@ -313,7 +313,7 @@
         border-color: #28a745;
       }
       
-      /* Animación suave para transitions */
+      /* AnimaciÃ³n suave para transitions */
       * {
         -webkit-transition: all 0.3s ease;
         transition: all 0.3s ease;
@@ -448,7 +448,7 @@
                     </div>
                   </div>
                   
-                  <!-- Información de Contacto -->
+                  <!-- InformaciÃ³n de Contacto -->
                   <div class="col-lg-4">
                     <div class="contact-info">
                       <h3><i class="fas fa-info-circle me-2"></i>Get in Touch</h3>
@@ -582,7 +582,7 @@
     <script src="/js/script.js"></script>
     
     <script>
-      // Agregar efectos de interacción adicionales
+      // Agregar efectos de interacciÃ³n adicionales
       document.addEventListener('DOMContentLoaded', function() {
         // Efecto de hover en los campos del formulario
         const formControls = document.querySelectorAll('.form-control');
@@ -598,7 +598,7 @@
           });
         });
         
-        // Validación visual en tiempo real con mejores colores
+        // ValidaciÃ³n visual en tiempo real con mejores colores
         const requiredFields = document.querySelectorAll('input[required], textarea[required]');
         requiredFields.forEach(field => {
           field.addEventListener('input', function() {
@@ -613,7 +613,7 @@
             }
           });
           
-          // Mejorar experiencia en móvil
+          // Mejorar experiencia en mÃ³vil
           field.addEventListener('touchstart', function() {
             this.style.transform = 'scale(1.02)';
           });
@@ -623,11 +623,11 @@
           });
         });
         
-        // Efecto de loading en el botón de envío mejorado
+        // Efecto de loading en el botÃ³n de envÃ­o mejorado
         const submitBtn = document.querySelector('.btn-submit');
         const form = document.querySelector('form');
         
-        // Mejorar experiencia táctil del botón
+        // Mejorar experiencia tÃ¡ctil del botÃ³n
         submitBtn.addEventListener('touchstart', function() {
           this.style.transform = 'translateY(-1px) scale(0.98)';
         });
@@ -641,14 +641,14 @@
           submitBtn.disabled = true;
           submitBtn.style.background = 'linear-gradient(135deg, #6c757d 0%, #495057 100%)';
           
-          // Simular tiempo de envío para mejor UX
+          // Simular tiempo de envÃ­o para mejor UX
           setTimeout(() => {
-            // Aquí normalmente se procesaría el formulario
-            // Por ahora solo restauramos el botón después de un momento
+            // AquÃ­ normalmente se procesarÃ­a el formulario
+            // Por ahora solo restauramos el botÃ³n despuÃ©s de un momento
           }, 2000);
         });
         
-        // Mejorar accesibilidad en móvil
+        // Mejorar accesibilidad en mÃ³vil
         if ('ontouchstart' in window) {
           document.body.classList.add('touch-device');
         }
