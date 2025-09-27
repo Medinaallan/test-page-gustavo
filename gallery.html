@@ -161,36 +161,135 @@
           align-items: center;
       }
 
+      .modal.show {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+      }
+
       .modal-content {
-          background-color: #fefefe;
-          margin: auto; /* Centrar el contenido */
-          padding: 30px;
-          border: 1px solid #888;
-          width: 80%; /* Ancho del contenido del modal */
-          max-width: 700px;
-          position: relative;
-          text-align: center;
-          border-radius: 8px;
-          box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-          color: #333;
+        background-color: #fefefe;
+        margin: 0;
+        padding: 20px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 900px;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        animation: slideIn 0.3s ease;
       }
 
-      .modal-content img {
-          max-width: 100%;
-          height: auto;
-          margin-bottom: 20px;
-          border-radius: 5px;
+      .close {
+        color: #333;
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        font-size: 22px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        border: 2px solid #ddd;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
       }
 
-      .modal-content h3 {
-          margin-top: 0;
-          font-size: 24px;
-          color: #000;
+      .close:hover,
+      .close:focus {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+        box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        transform: scale(1.05);
+        text-decoration: none;
       }
 
-      .modal-content p {
-          font-size: 16px;
-          margin-bottom: 10px;
+      .modal-product {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+        margin-top: 30px;
+      }
+
+      .modal-product-image {
+        flex: 0 0 300px;
+      }
+
+      .modal-product-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .modal-product-info {
+        flex: 1;
+        text-align: left;
+      }
+
+      .modal-product-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .modal-product-price {
+        font-size: 20px;
+        font-weight: bold;
+        color: #28a745;
+        margin-bottom: 20px;
+      }
+
+      .responsive-tabs-classic {
+        margin-bottom: 20px;
+      }
+
+      .resp-tabs-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        border-bottom: 2px solid #eee;
+      }
+
+      .resp-tabs-list li {
+        padding: 10px 20px;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .resp-tabs-list li:hover,
+      .resp-tabs-list li.resp-tab-active {
+        border-bottom-color: #007bff;
+        color: #007bff;
+      }
+
+      .resp-tabs-container > div {
+        display: none;
+        padding: 20px 0;
+        line-height: 1.6;
+      }
+
+      .resp-tabs-container > div.resp-tab-content-active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @keyframes slideIn {
+        from { transform: translateY(-50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
       }
 
       /* Estilo especial para precios duales */
@@ -203,24 +302,6 @@
           background: rgba(212, 175, 55, 0.1);
           border-radius: 5px;
           border-left: 3px solid #d4af37;
-      }
-
-      .close-button {
-          color: #aaa;
-          float: right;
-          font-size: 28px;
-          font-weight: bold;
-          position: absolute;
-          top: 10px;
-          right: 20px;
-          cursor: pointer;
-      }
-
-      .close-button:hover,
-      .close-button:focus {
-          color: #000;
-          text-decoration: none;
-          cursor: pointer;
       }
 
       #modalAddToCartButton {
@@ -891,12 +972,12 @@
                                   <button class="category-tab active" data-isotope-filter="Page 1" data-isotope-group="gallery">
                                     <i class="fas fa-paint-brush"></i>
                                     <span>Oil Paintings</span>
-                                    <small>Stretch Canvas</small>
+                                    <span>on Stretch Canvas</span>
                                   </button>
                                   <button class="category-tab" data-isotope-filter="Page 2" data-isotope-group="gallery">
                                     <i class="fas fa-palette"></i>
                                     <span>Acrylic Paintings</span>
-                                    <small>Canvas</small>
+                                    <span>on Loose Canvas</span>
                                   </button>
                                 </div>
                               </div>
@@ -2159,10 +2240,9 @@
       document.addEventListener('DOMContentLoaded', function() {
           // Modal de detalle de producto
           const productDetailModal = document.getElementById('productDetailModal');
-          const closeDetailModalBtn = productDetailModal.querySelector('.close-button');
+          const closeDetailModalBtn = productDetailModal.querySelector('.close');
           const modalImage = document.getElementById('modalImage');
           const modalProductName = document.getElementById('modalProductName');
-          const modalProductDimensions = document.getElementById('modalProductDimensions');
           const modalProductPrice = document.getElementById('modalProductPrice');
 
           // --- Funcionalidad del Modal de Detalle ---
@@ -2170,7 +2250,18 @@
           function showProductDetailModal(product) {
               modalImage.src = product.image;
               modalProductName.textContent = product.name;
-              modalProductDimensions.textContent = `Dimensions: ${product.dimensions}`;
+              
+              // Mostrar dimensiones en la pestaña de descripción
+              const dimensionsElement = document.querySelector('#gallery-desc p:first-child');
+              dimensionsElement.textContent = `Dimensions: ${product.dimensions}`;
+              
+              // Reinicializar pestañas - mostrar solo la primera
+              document.querySelectorAll('.resp-tabs-list li').forEach(tab => tab.classList.remove('resp-tab-active'));
+              document.querySelectorAll('.resp-tabs-container > div').forEach(content => content.classList.remove('resp-tab-content-active'));
+              
+              // Activar la primera pestaña
+              document.querySelector('.resp-tabs-list li:first-child').classList.add('resp-tab-active');
+              document.getElementById('gallery-desc').classList.add('resp-tab-content-active');
               
               // Detectar si es un producto con precios duales usando el atributo data-dual-price
               if (product.dualPrice === 'true' && product.priceText) {
@@ -2185,21 +2276,56 @@
                       if (priceElement && priceElement.textContent.includes('|')) {
                           modalProductPrice.innerHTML = `<strong>${priceElement.textContent}</strong>`;
                       } else {
-                          modalProductPrice.textContent = `From $${parseFloat(product.price).toFixed(2)}`;
+                          modalProductPrice.textContent = `Contact for pricing`;
                       }
                   } else {
-                      modalProductPrice.textContent = `From $${parseFloat(product.price).toFixed(2)}`;
+                      modalProductPrice.textContent = `Contact for pricing`;
                   }
               } else {
                   // Producto con precio único
-                  modalProductPrice.textContent = `$${parseFloat(product.price).toFixed(2)}`;
+                  modalProductPrice.textContent = `Contact for pricing`;
               }
 
               productDetailModal.style.display = 'flex'; // Usar flex para centrar
+              productDetailModal.classList.add('show');
+              document.body.style.overflow = 'hidden'; // Prevent scrolling
           }
 
           function hideProductDetailModal() {
               productDetailModal.style.display = 'none';
+              productDetailModal.classList.remove('show');
+              document.body.style.overflow = 'auto'; // Restore scrolling
+          }
+
+          function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+          }
+
+          function showTab(element, tabId) {
+            console.log('Switching to tab:', tabId); // Debug
+            
+            // Remove active class from all tabs
+            const tabButtons = element.parentElement.querySelectorAll('li');
+            tabButtons.forEach(tab => tab.classList.remove('resp-tab-active'));
+            
+            // Add active class to clicked tab
+            element.classList.add('resp-tab-active');
+            
+            // Hide all tab contents
+            const tabContents = element.parentElement.nextElementSibling.querySelectorAll('div');
+            tabContents.forEach(content => content.classList.remove('resp-tab-content-active'));
+            
+            // Show selected tab content
+            const targetTab = document.getElementById(tabId);
+            if (targetTab) {
+                targetTab.classList.add('resp-tab-content-active');
+                console.log('Tab content shown successfully'); // Debug
+            } else {
+                console.error('Tab content not found:', tabId); // Debug
+            }
           }
 
           // Abrir modal de detalle
@@ -2226,6 +2352,16 @@
               if (event.target == productDetailModal) {
                   hideProductDetailModal();
               }
+          });
+
+          // Close modal with Escape key
+          document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+              const modals = document.querySelectorAll('.modal.show');
+              modals.forEach(modal => {
+                hideProductDetailModal();
+              });
+            }
           });
 
           // --- Funcionalidad de los Botones de Categoría para Móvil ---
@@ -2273,13 +2409,41 @@
       });
       </script>
 
+      <!-- Product Detail Modal -->
       <div id="productDetailModal" class="modal">
         <div class="modal-content">
-          <span class="close-button">&times;</span>
-          <img id="modalImage" src="" alt="Product Image">
-          <h3 id="modalProductName"></h3>
-          <p id="modalProductDimensions"></p>
-          <p id="modalProductPrice"></p>
+          <span class="close">&times;</span>
+          <div class="modal-product">
+            <div class="modal-product-image">
+              <img id="modalImage" src="" alt="Product Image">
+            </div>
+            <div class="modal-product-info">
+              <h3 id="modalProductName" class="modal-product-title"></h3>
+              <div id="modalProductPrice" class="modal-product-price"></div>
+              
+              <div class="responsive-tabs-classic">
+                <ul class="resp-tabs-list">
+                  <li class="resp-tab-active" onclick="showTab(this, 'gallery-desc')">Description</li>
+                  <li onclick="showTab(this, 'gallery-shipping')">Shipping Options</li>
+                  <li onclick="showTab(this, 'gallery-delivery')">Delivery & Returns</li>
+                </ul>
+                <div class="resp-tabs-container">
+                  <div id="gallery-desc" class="resp-tab-content-active">
+                    <p id="modalProductDimensions"></p>
+                    <p>Original oil paintings and acrylic paintings by Gustavo Trujillo featuring scenes of New Orleans architecture and landscapes. Each painting is unique and captures the essence of the French Quarter and surrounding areas.</p>
+                  </div>
+                  <div id="gallery-shipping">Our original paintings are carefully packaged and shipped through specialized art shipping services to ensure safe delivery.</div>
+                  <div id="gallery-delivery">Your order will be shipped in a timely manner and handled with the utmost care. Each original painting comes with a certificate of authenticity. If there is any problem with the quality of your purchase, please do not hesitate to contact us.</div>
+                </div>
+              </div>
+              
+              <div style="margin-top: 20px;">
+                <p><strong>Interested in purchasing this original piece?</strong></p>
+                <p>Contact Gustavo directly for pricing and availability.</p>
+                <a href="/contacts.html" class="btn btn-primary" style="margin-top: 10px;">Contact Gustavo</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
   </body>
