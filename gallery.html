@@ -281,6 +281,16 @@
       .resp-tabs-container > div.resp-tab-content-active {
         display: block;
       }
+      
+      /* Asegurar que las pestañas sean clickeables */
+      .resp-tabs-list li {
+        cursor: pointer;
+        user-select: none;
+      }
+      
+      .resp-tabs-list li:hover {
+        background-color: rgba(0, 123, 255, 0.1);
+      }
 
       @keyframes fadeIn {
         from { opacity: 0; }
@@ -1704,7 +1714,7 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Tree House 1</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 24" x 30"</p>
-                                                    <p class="product-price">$34.00</p>
+                                                    <p class="product-price">$400.00</p>
                                               </div>
 
                                               <div class="product-actions">
@@ -1712,9 +1722,11 @@
                                                       data-name="Tree House 1"
                                                       data-dimensions="24&quot; x 30&quot;"
                                                       data-image="../images/portfolio/portfolio-32-570x420.jpg"
-                                                      data-price="34.00">detail</a>
+                                                      data-price="400.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=tree-house-1">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Tree House 1', '24&quot; x 30&quot;', '../images/portfolio/portfolio-32-570x420.jpg', '400.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -1728,17 +1740,19 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Tree House 2</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 24" x 36"</p>
-                                                    <p class="product-price">$36.00</p>
+                                                    <p class="product-price">$400.00</p>
                                               </div>
 
                                               <div class="product-actions">
                                                     <a class="btn btn-xs btn-primary detail-button"
                                                       data-name="Tree House 2"
-                                                      data-dimensions="24&quot; x 30&quot;"
+                                                      data-dimensions="24&quot; x 36&quot;"
                                                       data-image="../images/portfolio/portfolio-33-570x420.jpg"
-                                                      data-price="34.00">detail</a>
+                                                      data-price="400.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=tree-house-2">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Tree House 2', '24&quot; x 36&quot;', '../images/portfolio/portfolio-33-570x420.jpg', '400.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -1779,18 +1793,20 @@
                                             <figcaption>
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Autumn Trees</h6>
-                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Two Sizes: 27" x 37" & 24" x 36"</p>
-                                                    <p class="product-price">Size 1: $30.00 | Size 2: $36.00</p>
+                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
+                                                    <p class="product-price">$300.00</p>
                                               </div>
 
                                               <div class="product-actions">
                                                     <a class="btn btn-xs btn-primary detail-button"
                                                       data-name="Autumn Trees"
-                                                      data-dimensions="27&quot; x 37&quot; & 24&quot; x 36&quot;"
+                                                      data-dimensions="27&quot; x 37&quot;"
                                                       data-image="../images/portfolio/portfolio-01a-570x420.jpg"
-                                                      data-price="30.00">detail</a>
+                                                      data-price="300.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=autumn-trees">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Autumn Trees', '27&quot; x 37&quot;', '../images/portfolio/portfolio-01a-570x420.jpg', '300.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -1803,7 +1819,7 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Julia Street</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
-                                                    <p class="product-price">$30.00</p>
+                                                    <p class="product-price">$300.00</p>
                                               </div>
 
                                               <div class="product-actions">
@@ -1811,9 +1827,11 @@
                                                       data-name="Julia Street"
                                                       data-dimensions="27&quot; x 37&quot;"
                                                       data-image="../images/portfolio/portfolio-02a-570x420.jpg"
-                                                      data-price="30.00">detail</a>
+                                                      data-price="300.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=julia-street">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Julia Street', '27&quot; x 37&quot;', '../images/portfolio/portfolio-02a-570x420.jpg', '300.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -1826,7 +1844,7 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Plantation Stroll</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
-                                                    <p class="product-price">$30.00</p>
+                                                    <p class="product-price">$300.00</p>
                                               </div>
 
                                               <div class="product-actions">
@@ -1834,9 +1852,11 @@
                                                       data-name="Plantation Stroll"
                                                       data-dimensions="27&quot; x 37&quot;"
                                                       data-image="../images/portfolio/portfolio-03a-570x420.jpg"
-                                                      data-price="30.00">detail</a>
+                                                      data-price="300.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=plantation-stroll">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Plantation Stroll', '27&quot; x 37&quot;', '../images/portfolio/portfolio-03a-570x420.jpg', '300.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -1849,7 +1869,7 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Bourbon Street</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
-                                                    <p class="product-price">$30.00</p>
+                                                    <p class="product-price">$300.00</p>
                                               </div>
 
                                               <div class="product-actions">
@@ -1857,9 +1877,11 @@
                                                       data-name="Bourbon Street"
                                                       data-dimensions="27&quot; x 37&quot;"
                                                       data-image="../images/portfolio/portfolio-04a-570x420.jpg"
-                                                      data-price="30.00">detail</a>
+                                                      data-price="300.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=bourbon-street">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Bourbon Street', '27&quot; x 37&quot;', '../images/portfolio/portfolio-04a-570x420.jpg', '300.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -1872,7 +1894,7 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Esplanade Street</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
-                                                    <p class="product-price">$30.00</p>
+                                                    <p class="product-price">$300.00</p>
                                               </div>
 
                                               <div class="product-actions">
@@ -1880,9 +1902,11 @@
                                                       data-name="Esplanade Street"
                                                       data-dimensions="27&quot; x 37&quot;"
                                                       data-image="../images/portfolio/portfolio-05a-570x420.jpg"
-                                                      data-price="30.00">detail</a>
+                                                      data-price="300.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=esplanade-street">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Esplanade Street', '27&quot; x 37&quot;', '../images/portfolio/portfolio-05a-570x420.jpg', '300.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -1895,7 +1919,7 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Madison Street</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
-                                                    <p class="product-price">$30.00</p>
+                                                    <p class="product-price">$300.00</p>
                                               </div>
 
                                               <div class="product-actions">
@@ -1903,9 +1927,11 @@
                                                       data-name="Madison Street"
                                                       data-dimensions="27&quot; x 37&quot;"
                                                       data-image="../images/portfolio/portfolio-06a-570x420.jpg"
-                                                      data-price="30.00">detail</a>
+                                                      data-price="300.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=madison-street">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Madison Street', '27&quot; x 37&quot;', '../images/portfolio/portfolio-06a-570x420.jpg', '300.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -1918,7 +1944,7 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">French Quarter</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
-                                                    <p class="product-price">$30.00</p>
+                                                    <p class="product-price">$600.00</p>
                                               </div>
 
                                               <div class="product-actions">
@@ -1926,9 +1952,11 @@
                                                       data-name="French Quarter"
                                                       data-dimensions="27&quot; x 37&quot;"
                                                       data-image="../images/portfolio/portfolio-07a-570x420.jpg"
-                                                      data-price="30.00">detail</a>
+                                                      data-price="600.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=french-quarter">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('French Quarter', '27&quot; x 37&quot;', '../images/portfolio/portfolio-07a-570x420.jpg', '600.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -1941,7 +1969,7 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Orleans</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
-                                                    <p class="product-price">$30.00</p>
+                                                    <p class="product-price">$300.00</p>
                                               </div>
 
                                               <div class="product-actions">
@@ -1949,9 +1977,11 @@
                                                       data-name="Orleans"
                                                       data-dimensions="27&quot; x 37&quot;"
                                                       data-image="../images/portfolio/portfolio-08a-570x420.jpg"
-                                                      data-price="30.00">detail</a>
+                                                      data-price="300.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=orleans">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Orleans', '27&quot; x 37&quot;', '../images/portfolio/portfolio-08a-570x420.jpg', '300.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -1964,7 +1994,7 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Jackson Square</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
-                                                    <p class="product-price">$30.00</p>
+                                                    <p class="product-price">$300.00</p>
                                               </div>
 
                                               <div class="product-actions">
@@ -1972,36 +2002,16 @@
                                                       data-name="Jackson Square"
                                                       data-dimensions="27&quot; x 37&quot;"
                                                       data-image="../images/portfolio/portfolio-09a-570x420.jpg"
-                                                      data-price="30.00">detail</a>
+                                                      data-price="300.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=jackson-square">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Jackson Square', '27&quot; x 37&quot;', '../images/portfolio/portfolio-09a-570x420.jpg', '300.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
                                 </div>
-                                <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 1">
-                                          <!-- Thumbnail Josip-->
-                                          <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="500x748" href="../images/portfolio/portfolio-10a-500x748.jpg">
-                                            <img width="570" height="420" src="../images/portfolio/portfolio-10a-570x420.jpg" alt=""></a>
-                                            <figcaption>
-                                              <div class="product-info">
-                                                    <h6 class="thumbnail-josip-title product-name">St. Louis Cathedral</h6>
-                                                    <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
-                                                    <p class="product-price">$30.00</p>
-                                              </div>
-
-                                              <div class="product-actions">
-                                                    <a class="btn btn-xs btn-primary detail-button"
-                                                      data-name="St. Louis Cathedral"
-                                                      data-dimensions="27&quot; x 37&quot;"
-                                                      data-image="../images/portfolio/portfolio-10a-570x420.jpg"
-                                                      data-price="30.00">detail</a>
-                                              
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=st-louis-cathedral">Shop This</a>
-                                              </div>
-                                            </figcaption>
-                                          </figure>
-                                </div>
+                              
                                 <div class="col-xs-12 col-sm-6 col-md-4 isotope-item" data-filter="Page 2">
                                           <!-- Thumbnail Josip-->
                                           <figure class="thumbnail-josip"><a data-photo-swipe-item="" data-size="703x500" href="../images/portfolio/portfolio-11a-703x500.jpg">
@@ -2010,7 +2020,7 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Side Walk Stroll</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
-                                                    <p class="product-price">$30.00</p>
+                                                    <p class="product-price">$300.00</p>
                                               </div>
 
                                               <div class="product-actions">
@@ -2018,9 +2028,11 @@
                                                       data-name="Side Walk Stroll"
                                                       data-dimensions="27&quot; x 37&quot;"
                                                       data-image="../images/portfolio/portfolio-11a-570x420.jpg"
-                                                      data-price="30.00">detail</a>
+                                                      data-price="300.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=side-walk-stroll">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Side Walk Stroll', '27&quot; x 37&quot;', '../images/portfolio/portfolio-11a-570x420.jpg', '300.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -2034,7 +2046,7 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Blue Showers</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
-                                                    <p class="product-price">$30.00</p>
+                                                    <p class="product-price">$300.00</p>
                                               </div>
 
                                               <div class="product-actions">
@@ -2042,9 +2054,11 @@
                                                       data-name="Blue Showers"
                                                       data-dimensions="27&quot; x 37&quot;"
                                                       data-image="../images/portfolio/portfolio-35a-570x420.JPG"
-                                                      data-price="30.00">detail</a>
+                                                      data-price="300.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=blue-showers">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Blue Showers', '27&quot; x 37&quot;', '../images/portfolio/portfolio-35a-570x420.JPG', '300.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -2058,7 +2072,7 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Elisa's House</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
-                                                    <p class="product-price">$30.00</p>
+                                                    <p class="product-price">$300.00</p>
                                               </div>
 
                                               <div class="product-actions">
@@ -2066,9 +2080,11 @@
                                                       data-name="Elisa's House"
                                                       data-dimensions="27&quot; x 37&quot;"
                                                       data-image="../images/portfolio/portfolio-36a-570x420.jpg"
-                                                      data-price="30.00">detail</a>
+                                                      data-price="300.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=elisas-house">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Elisa\'s House', '27&quot; x 37&quot;', '../images/portfolio/portfolio-36a-570x420.jpg', '300.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -2082,7 +2098,7 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Rainy Day</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
-                                                    <p class="product-price">$30.00</p>
+                                                    <p class="product-price">$400.00</p>
                                               </div>
 
                                               <div class="product-actions">
@@ -2090,9 +2106,11 @@
                                                       data-name="Rainy Day"
                                                       data-dimensions="27&quot; x 37&quot;"
                                                       data-image="../images/portfolio/portfolio-37a-570x420.jpg"
-                                                      data-price="30.00">detail</a>
+                                                      data-price="400.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=rainy-day">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Rainy Day', '27&quot; x 37&quot;', '../images/portfolio/portfolio-37a-570x420.jpg', '400.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -2106,7 +2124,7 @@
                                               <div class="product-info">
                                                     <h6 class="thumbnail-josip-title product-name">Woods</h6>
                                                     <p class="veil reveal-md-block offset-top-0 product-dimensions">Dimensions: 27" x 37"</p>
-                                                    <p class="product-price">$30.00</p>
+                                                    <p class="product-price">$300.00</p>
                                               </div>
 
                                               <div class="product-actions">
@@ -2114,9 +2132,11 @@
                                                       data-name="Woods"
                                                       data-dimensions="27&quot; x 37&quot;"
                                                       data-image="../images/portfolio/portfolio-38a-570x420.JPG"
-                                                      data-price="30.00">detail</a>
+                                                      data-price="300.00">detail</a>
                                               
-                                                      <a class="btn btn-xs btn-success" href="/shop.html?product=woods">Shop This</a>
+                                                      <button class="btn btn-xs btn-success" onclick="addToCart('Woods', '27&quot; x 37&quot;', '../images/portfolio/portfolio-38a-570x420.JPG', '300.00')">
+                                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                                      </button>
                                               </div>
                                             </figcaption>
                                           </figure>
@@ -2274,12 +2294,14 @@
               dimensionsElement.textContent = `Dimensions: ${product.dimensions}`;
               
               // Reinicializar pestañas - mostrar solo la primera
-              document.querySelectorAll('.resp-tabs-list li').forEach(tab => tab.classList.remove('resp-tab-active'));
-              document.querySelectorAll('.resp-tabs-container > div').forEach(content => content.classList.remove('resp-tab-content-active'));
-              
-              // Activar la primera pestaña
-              document.querySelector('.resp-tabs-list li:first-child').classList.add('resp-tab-active');
-              document.getElementById('gallery-desc').classList.add('resp-tab-content-active');
+              setTimeout(() => {
+                document.querySelectorAll('.resp-tabs-list li').forEach(tab => tab.classList.remove('resp-tab-active'));
+                document.querySelectorAll('.resp-tabs-container > div').forEach(content => content.classList.remove('resp-tab-content-active'));
+                
+                // Activar la primera pestaña
+                document.querySelector('.resp-tabs-list li:first-child').classList.add('resp-tab-active');
+                document.getElementById('gallery-desc').classList.add('resp-tab-content-active');
+              }, 100);
               
               // Detectar si es un producto con precios duales usando el atributo data-dual-price
               if (product.dualPrice === 'true' && product.priceText) {
@@ -2307,6 +2329,9 @@
               productDetailModal.style.display = 'flex'; // Usar flex para centrar
               productDetailModal.classList.add('show');
               document.body.style.overflow = 'hidden'; // Prevent scrolling
+              
+              // Configurar las pestañas del modal
+              handleModalTabs();
           }
 
           function hideProductDetailModal() {
@@ -2322,8 +2347,48 @@
             document.body.style.overflow = 'auto'; // Restore scrolling
           }
 
-          function showTab(element, tabId) {
-            console.log('Switching to tab:', tabId); // Debug
+          // Función para manejar las pestañas del modal
+          function handleModalTabs() {
+            // Remover event listeners previos para evitar duplicados
+            const tabButtons = document.querySelectorAll('.resp-tabs-list li');
+            
+            tabButtons.forEach(button => {
+              // Clonar el elemento para remover todos los event listeners
+              const newButton = button.cloneNode(true);
+              button.parentNode.replaceChild(newButton, button);
+            });
+            
+            // Agregar nuevos event listeners
+            const newTabButtons = document.querySelectorAll('.resp-tabs-list li');
+            newTabButtons.forEach(button => {
+              button.addEventListener('click', function() {
+                const tabTarget = this.getAttribute('data-tab-target');
+                if (!tabTarget) return;
+                
+                // Remove active class from all tabs
+                const allTabButtons = this.parentElement.querySelectorAll('li');
+                allTabButtons.forEach(tab => tab.classList.remove('resp-tab-active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('resp-tab-active');
+                
+                // Hide all tab contents
+                const tabContainer = this.parentElement.nextElementSibling;
+                const tabContents = tabContainer.querySelectorAll('div');
+                tabContents.forEach(content => content.classList.remove('resp-tab-content-active'));
+                
+                // Show selected tab content
+                const targetTab = document.getElementById(tabTarget);
+                if (targetTab) {
+                    targetTab.classList.add('resp-tab-content-active');
+                }
+              });
+            });
+          }
+          
+          // Función global para compatibilidad con onclick (fallback)
+          window.showTab = function(element, tabId) {
+            console.log('showTab called with:', element, tabId);
             
             // Remove active class from all tabs
             const tabButtons = element.parentElement.querySelectorAll('li');
@@ -2333,16 +2398,17 @@
             element.classList.add('resp-tab-active');
             
             // Hide all tab contents
-            const tabContents = element.parentElement.nextElementSibling.querySelectorAll('div');
+            const tabContainer = element.parentElement.nextElementSibling;
+            const tabContents = tabContainer.querySelectorAll('div');
             tabContents.forEach(content => content.classList.remove('resp-tab-content-active'));
             
             // Show selected tab content
             const targetTab = document.getElementById(tabId);
             if (targetTab) {
                 targetTab.classList.add('resp-tab-content-active');
-                console.log('Tab content shown successfully'); // Debug
+                console.log('Tab switched successfully to:', tabId);
             } else {
-                console.error('Tab content not found:', tabId); // Debug
+                console.error('Tab content not found:', tabId);
             }
           }
 
@@ -2441,16 +2507,16 @@
               
               <div class="responsive-tabs-classic">
                 <ul class="resp-tabs-list">
-                  <li class="resp-tab-active" onclick="showTab(this, 'gallery-desc')">Description</li>
-                  <li onclick="showTab(this, 'gallery-shipping')">Shipping Options</li>
-                  <li onclick="showTab(this, 'gallery-delivery')">Delivery & Returns</li>
+                  <li class="resp-tab-active" data-tab-target="gallery-desc">Description</li>
+                  <li data-tab-target="gallery-shipping">Shipping Options</li>
+                  <li data-tab-target="gallery-delivery">Delivery & Returns</li>
                 </ul>
                 <div class="resp-tabs-container">
                   <div id="gallery-desc" class="resp-tab-content-active">
                     <p id="modalProductDimensions"></p>
                     <p>Original oil paintings and acrylic paintings by Gustavo Trujillo featuring scenes of New Orleans architecture and landscapes. Each painting is unique and captures the essence of the French Quarter and surrounding areas.</p>
                   </div>
-                  <div id="gallery-shipping">Our original paintings are carefully packaged and shipped through specialized art shipping services to ensure safe delivery.</div>
+                  <div id="gallery-shipping">Our original paintings are carefully packaged and shipped via FedEx to ensure safe and reliable delivery.</div>
                   <div id="gallery-delivery">Your order will be shipped in a timely manner and handled with the utmost care. Each original painting comes with a certificate of authenticity. If there is any problem with the quality of your purchase, please do not hesitate to contact us.</div>
                 </div>
               </div>
