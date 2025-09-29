@@ -418,7 +418,7 @@
                         </li>
                         <li><a href="/about-us.html"><span>About</span></a>
                         </li>
-                        <li><a href="/gallery.html"><span>Canvas Gallery</span></a>
+                        <li><a href="/gallery.html"><span>Shop Gallery</span></a>
                         </li>
                         <li class="active"><a href="/shop.html"><span>Paper Prints</span></a>
                         </li>
@@ -579,10 +579,7 @@
                       <div class="product-buttons offset-top-15">
                         <button class="big" onclick="openModal('cafe-du-monde-modal')">Details</button>
                         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="paypal-form">
-                          <button type="submit" class="paypal-button">
-                            <i class="fab fa-paypal"></i>
-                            Add to Cart
-                          </button>
+                          <button type="submit" class="paypal-button"><i class="fab fa-paypal"></i>Add to Cart</button>
                           <input type="hidden" name="add" value="1">
                           <input type="hidden" name="cmd" value="_cart">
                           <input type="hidden" name="business" value="gustavo54@att.net">
@@ -2583,19 +2580,19 @@
         localStorage.setItem('cart', JSON.stringify(cart));
       }
       
-      // Ir a la pÃ¡gina de shop
+      // Ir a la pagina de shop
       function goToShop() {
         window.location.href = '/shop.html';
       }
       
-      // Inicializar carrito al cargar la pÃ¡gina
+      // Inicializar carrito al cargar la pagina
       document.addEventListener('DOMContentLoaded', function() {
         // Check for payment status in URL
         const urlParams = new URLSearchParams(window.location.search);
         const paymentStatus = urlParams.get('payment');
         
         if (paymentStatus === 'success') {
-          showMessage('ðŸŽ‰ Payment successful! Thank you for your purchase!');
+          showMessage('Payment successful! Thank you for your purchase!');
           // Clear cart after successful payment
           cart = [];
           localStorage.setItem('cart', JSON.stringify(cart));
