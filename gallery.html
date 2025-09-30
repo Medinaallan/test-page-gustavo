@@ -399,13 +399,13 @@
       }
 
       .category-tab span {
-          font-size: 10px;
+          font-size: 12px;
           font-weight: 600;
           line-height: 1.1;
       }
 
       .category-tab small {
-          font-size: 8px;
+          font-size: 15px;
           opacity: 0.6;
           font-weight: 300;
           line-height: 1.0;
@@ -418,7 +418,7 @@
       /* Ajustes para desktop */
       @media (min-width: 768px) {
           .category-tabs {
-              max-width: 500px;
+              max-width: 750px;
               margin: 0 auto;
           }
           
@@ -432,11 +432,11 @@
           }
           
           .category-tab span {
-              font-size: 11px;
+              font-size: 13px;
           }
           
           .category-tab small {
-              font-size: 9px;
+              font-size: 11px;
           }
 
           /* Ajustes para desktop en la galería */
@@ -497,11 +497,11 @@
           }
           
           .category-tab span {
-              font-size: 11px;
+              font-size: 13px;
           }
           
           .category-tab small {
-              font-size: 9px;
+              font-size: 11px;
           }
 
           .category-tab.active::after {
@@ -577,14 +577,15 @@
       let selectedOption = null;
       let currentProduct = null;
       
-      // Función para mostrar overlay de opciones para productos con precios duales
-      function showDualPriceOptions(productName, dimensions, image, price1, price2, priceText) {
+      // Función para mostrar selector de formato para productos simples (2 opciones)
+      function showSimpleFormatSelector(productName, dimensions, image, originalPrice) {
         currentProduct = {
           name: productName,
           image: image,
+          originalDimensions: dimensions,
           options: [
-            { material: 'Oil Painting', size: '24" x 30"', price: parseFloat(price1) },
-            { material: 'Oil Painting', size: '18" x 24"', price: parseFloat(price2) }
+            { material: 'Oil Painting', size: dimensions, price: parseFloat(originalPrice) },
+            { material: 'Paper Print', size: '8" x 10"', price: 30.00 }
           ]
         };
         selectedOption = null;
@@ -597,7 +598,7 @@
         panel.style.cssText = 'background:#222;color:white;border-radius:10px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;padding:0';
         
         let html = '<div style="padding:20px;border-bottom:1px solid #444;display:flex;justify-content:space-between;align-items:center">';
-        html += '<h3 style="margin:0;color:#ffc107;font-size:24px;font-weight:700">🎨 Choose Size</h3>';
+        html += '<h3 style="margin:0;color:#ffc107;font-size:24px;font-weight:700">🎨 Choose Format</h3>';
         html += '<button onclick="closeDualPriceOverlay()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer">&times;</button>';
         html += '</div>';
         
@@ -605,21 +606,91 @@
         html += '<div style="display:flex;align-items:center;margin-bottom:20px">';
         html += '<img src="' + image + '" style="width:80px;height:80px;object-fit:cover;border-radius:8px;margin-right:15px">';
         html += '<div><h4 style="margin:0 0 5px 0;font-size:20px;font-weight:700">' + productName + '</h4>';
-        html += '<p style="margin:0;color:#e8e8e8;font-size:16px;font-weight:500;line-height:1.5">Oil painting on canvas</p></div>';
+        html += '<p style="margin:0;color:#e8e8e8;font-size:16px;font-weight:500;line-height:1.5">Available in multiple formats</p></div>';
         html += '</div>';
         
-        html += '<h5 style="color:#ffc107;margin-bottom:15px;font-size:18px;font-weight:700">📐 Select Size:</h5>';
+        html += '<h5 style="color:#ffc107;margin-bottom:15px;font-size:18px;font-weight:700">📐 Select Format:</h5>';
         html += '<div id="optionsList">';
         
         currentProduct.options.forEach((option, index) => {
           html += '<div class="option-card" onclick="selectDualOption(' + index + ')" id="dual-option-' + index + '" style="border:2px solid #444;border-radius:8px;padding:15px;margin-bottom:10px;cursor:pointer;transition:all 0.3s ease;display:flex;justify-content:space-between;align-items:center">';
-          html += '<div><div style="font-weight:bold;margin-bottom:3px;font-size:16px">' + option.size + '</div>';
-          html += '<div style="color:#e8e8e8;font-size:14px;font-weight:500">Oil on Canvas</div></div>';
+          html += '<div><div style="font-weight:bold;margin-bottom:3px;font-size:16px">' + option.material + '</div>';
+          html += '<div style="color:#e8e8e8;font-size:14px;font-weight:500">' + option.size + '</div></div>';
           html += '<div style="color:#ffc107;font-weight:bold;font-size:20px">$' + option.price.toFixed(2) + '</div>';
           html += '</div>';
         });
         
         html += '</div>';
+        
+        // Agregar información sobre Paper Prints
+        html += '<div style="background:rgba(255,193,7,0.1);border:1px solid rgba(255,193,7,0.3);border-radius:8px;padding:15px;margin-top:15px;">';
+        html += '<div style="color:#ffc107;font-size:14px;font-weight:600;margin-bottom:8px;"><i class="fas fa-info-circle" style="margin-right:6px;"></i>About Paper Prints:</div>';
+        html += '<div style="color:#e8e8e8;font-size:13px;line-height:1.5;">The Paper prints of Gustavo Trujillo\'s artwork are made from light weight aluminum with a glossy finish. The Paper prints are size 8"x10" with rounded corners and come with a wall mount attached to the back so they are ready to hang. The price is $30 each plus shipping.</div>';
+        html += '</div>';
+        
+        html += '<div style="text-align:center;margin-top:20px">';
+        html += '<button onclick="closeDualPriceOverlay()" style="background:#6c757d;color:white;border:none;padding:12px 25px;border-radius:5px;margin-right:15px;cursor:pointer;font-size:16px;font-weight:600">❌ Cancel</button>';
+        html += '<button onclick="addDualOptionToCart()" style="background:#28a745;color:white;border:none;padding:12px 25px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:16px" id="addDualToCartBtn" disabled>🛒 Add to Cart</button>';
+        html += '</div>';
+        html += '</div>';
+        
+        panel.innerHTML = html;
+        overlay.appendChild(panel);
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+      }
+      
+      // Función para mostrar overlay de opciones para productos con precios duales (3 opciones)
+      function showDualPriceOptions(productName, dimensions, image, price1, price2, priceText) {
+        currentProduct = {
+          name: productName,
+          image: image,
+          options: [
+            { material: 'Oil Painting', size: '24" x 30"', price: parseFloat(price1) },
+            { material: 'Oil Painting', size: '18" x 24"', price: parseFloat(price2) },
+            { material: 'Paper Print', size: '8" x 10"', price: 30.00 }
+          ]
+        };
+        selectedOption = null;
+        
+        const overlay = document.createElement('div');
+        overlay.id = 'dualPriceOverlay';
+        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99999;display:flex;align-items:center;justify-content:center';
+        
+        const panel = document.createElement('div');
+        panel.style.cssText = 'background:#222;color:white;border-radius:10px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;padding:0';
+        
+        let html = '<div style="padding:20px;border-bottom:1px solid #444;display:flex;justify-content:space-between;align-items:center">';
+        html += '<h3 style="margin:0;color:#ffc107;font-size:24px;font-weight:700">🎨 Choose Format</h3>';
+        html += '<button onclick="closeDualPriceOverlay()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer">&times;</button>';
+        html += '</div>';
+        
+        html += '<div style="padding:20px">';
+        html += '<div style="display:flex;align-items:center;margin-bottom:20px">';
+        html += '<img src="' + image + '" style="width:80px;height:80px;object-fit:cover;border-radius:8px;margin-right:15px">';
+        html += '<div><h4 style="margin:0 0 5px 0;font-size:20px;font-weight:700">' + productName + '</h4>';
+        html += '<p style="margin:0;color:#e8e8e8;font-size:16px;font-weight:500;line-height:1.5">Available in multiple formats</p></div>';
+        html += '</div>';
+        
+        html += '<h5 style="color:#ffc107;margin-bottom:15px;font-size:18px;font-weight:700">📐 Select Format & Size:</h5>';
+        html += '<div id="optionsList">';
+        
+        currentProduct.options.forEach((option, index) => {
+          html += '<div class="option-card" onclick="selectDualOption(' + index + ')" id="dual-option-' + index + '" style="border:2px solid #444;border-radius:8px;padding:15px;margin-bottom:10px;cursor:pointer;transition:all 0.3s ease;display:flex;justify-content:space-between;align-items:center">';
+          html += '<div><div style="font-weight:bold;margin-bottom:3px;font-size:16px">' + option.material + '</div>';
+          html += '<div style="color:#e8e8e8;font-size:14px;font-weight:500">' + option.size + '</div></div>';
+          html += '<div style="color:#ffc107;font-weight:bold;font-size:20px">$' + option.price.toFixed(2) + '</div>';
+          html += '</div>';
+        });
+        
+        html += '</div>';
+        
+        // Agregar información sobre Paper Prints
+        html += '<div style="background:rgba(255,193,7,0.1);border:1px solid rgba(255,193,7,0.3);border-radius:8px;padding:15px;margin-top:15px;">';
+        html += '<div style="color:#ffc107;font-size:14px;font-weight:600;margin-bottom:8px;"><i class="fas fa-info-circle" style="margin-right:6px;"></i>About Paper Prints:</div>';
+        html += '<div style="color:#e8e8e8;font-size:13px;line-height:1.5;">The Paper prints of Gustavo Trujillo\'s artwork are made from light weight aluminum with a glossy finish. The Paper prints are size 8"x10" with rounded corners and come with a wall mount attached to the back so they are ready to hang. The price is $30 each plus shipping.</div>';
+        html += '</div>';
+        
         html += '<div style="text-align:center;margin-top:20px">';
         html += '<button onclick="closeDualPriceOverlay()" style="background:#6c757d;color:white;border:none;padding:12px 25px;border-radius:5px;margin-right:15px;cursor:pointer;font-size:16px;font-weight:600">❌ Cancel</button>';
         html += '<button onclick="addDualOptionToCart()" style="background:#28a745;color:white;border:none;padding:12px 25px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:16px" id="addDualToCartBtn" disabled>🛒 Add to Cart</button>';
@@ -690,32 +761,10 @@
         selectedOption = null;
       }
       
-      // Agregar producto simple al carrito
+      // Agregar producto al carrito - ahora muestra selector de formato
       function addToCart(productName, dimensions, image, price) {
-        const cartItem = {
-          name: productName,
-          price: parseFloat(price),
-          dimensions: dimensions,
-          material: 'Oil Painting',
-          image: image,
-          quantity: 1
-        };
-        
-        const existing = cart.find(item => 
-          item.name === cartItem.name && 
-          item.dimensions === cartItem.dimensions && 
-          item.material === cartItem.material
-        );
-        
-        if (existing) {
-          existing.quantity += 1;
-        } else {
-          cart.push(cartItem);
-        }
-        
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
-        showMessage(cartItem.name + ' (' + cartItem.dimensions + ') added to cart!');
+        // En lugar de agregar directamente, mostrar selector de formato para productos simples
+        showSimpleFormatSelector(productName, dimensions, image, price);
       }
       
       // Mostrar mensaje
@@ -982,13 +1031,14 @@
                                   <button class="category-tab active" data-isotope-filter="Page 1" data-isotope-group="gallery">
                                     <i class="fas fa-paint-brush"></i>
                                     <span>Oil Paintings</span>
-                                    <span>on Stretch Canvas</span>
+                                    <small>on Stretch Canvas</small>
                                   </button>
                                   <button class="category-tab" data-isotope-filter="Page 2" data-isotope-group="gallery">
                                     <i class="fas fa-palette"></i>
                                     <span>Acrylic Paintings</span>
-                                    <span>on Loose Canvas</span>
+                                    <small>on Loose Canvas</small>
                                   </button>
+                              
                                 </div>
                               </div>
                               
@@ -2326,6 +2376,37 @@
                   modalProductPrice.textContent = `Contact for pricing`;
               }
 
+              // Configurar el botón "Add to Cart" del modal
+              const modalAddToCartBtn = document.getElementById('modalAddToCartButton');
+              if (modalAddToCartBtn) {
+                  // Remover event listeners previos
+                  const newBtn = modalAddToCartBtn.cloneNode(true);
+                  modalAddToCartBtn.parentNode.replaceChild(newBtn, modalAddToCartBtn);
+                  
+                  // Agregar nuevo event listener
+                  document.getElementById('modalAddToCartButton').addEventListener('click', function() {
+                      // Cerrar el modal primero
+                      hideProductDetailModal();
+                      
+                      // Determinar si es un producto dual o simple y llamar la función apropiada
+                      if (product.dualPrice === 'true') {
+                          // Extraer precios de productos duales
+                          const priceText = product.priceText || '';
+                          const prices = priceText.match(/\$(\d+\.?\d*)/g);
+                          if (prices && prices.length >= 2) {
+                              const price1 = prices[0].replace('$', '');
+                              const price2 = prices[1].replace('$', '');
+                              showDualPriceOptions(product.name, product.dimensions, product.image, price1, price2, priceText);
+                          } else {
+                              showSimpleFormatSelector(product.name, product.dimensions, product.image, product.price);
+                          }
+                      } else {
+                          // Producto simple
+                          showSimpleFormatSelector(product.name, product.dimensions, product.image, product.price);
+                      }
+                  });
+              }
+
               productDetailModal.style.display = 'flex'; // Usar flex para centrar
               productDetailModal.classList.add('show');
               document.body.style.overflow = 'hidden'; // Prevent scrolling
@@ -2523,8 +2604,10 @@
               
               <div style="margin-top: 20px;">
                 <p><strong>Interested in purchasing this original piece?</strong></p>
-                <p>Contact Gustavo directly for pricing and availability.</p>
-                <a href="/contacts.html" class="btn btn-primary" style="margin-top: 10px;">Contact Gustavo</a>
+                <p>Choose your preferred format and add to cart.</p>
+                <button id="modalAddToCartButton" class="btn btn-success" style="margin-top: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer;">
+                  <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
               </div>
             </div>
           </div>
