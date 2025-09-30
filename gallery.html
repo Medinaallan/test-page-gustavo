@@ -618,7 +618,7 @@
       let selectedOption = null;
       let currentProduct = null;
       
-      // Función para mostrar selector de formato para productos simples (2 opciones) - Va directo a PayPal
+      // Función para mostrar selector de formato para productos simples (3 opciones) - Va directo a PayPal
       function showSimpleFormatSelector(productName, dimensions, image, originalPrice) {
         currentProduct = {
           name: productName,
@@ -626,6 +626,7 @@
           originalDimensions: dimensions,
           options: [
             { material: 'Oil Painting', size: dimensions, price: parseFloat(originalPrice) },
+            { material: 'Acrylic Painting', size: dimensions, price: parseFloat(originalPrice) },
             { material: 'Paper Print', size: '8" x 10"', price: 30.00 }
           ]
         };
@@ -681,7 +682,7 @@
         document.body.style.overflow = 'hidden';
       }
       
-      // Función para mostrar overlay de opciones para productos con precios duales (3 opciones)
+      // Función para mostrar overlay de opciones para productos con precios duales (5 opciones)
       function showDualPriceOptions(productName, dimensions, image, price1, price2, priceText) {
         currentProduct = {
           name: productName,
@@ -689,6 +690,8 @@
           options: [
             { material: 'Oil Painting', size: '24" x 30"', price: parseFloat(price1) },
             { material: 'Oil Painting', size: '18" x 24"', price: parseFloat(price2) },
+            { material: 'Acrylic Painting', size: '24" x 30"', price: parseFloat(price1) },
+            { material: 'Acrylic Painting', size: '18" x 24"', price: parseFloat(price2) },
             { material: 'Paper Print', size: '8" x 10"', price: 30.00 }
           ]
         };
@@ -817,6 +820,26 @@
         form.method = 'post';
         form.style.display = 'none';
         
+        // Calcular tarifa de envío según el tipo de producto y tamaño
+        let shippingCost = '15.00'; // Default
+        
+        if (material === 'Paper Print') {
+          shippingCost = '8.00';
+        } else if (material === 'Oil Painting') {
+          // Tarifas específicas para Oil Paintings según el tamaño
+          if (dimensions === '18" x 24"') {
+            shippingCost = '28.00';
+          } else if (dimensions === '24" x 30"') {
+            shippingCost = '24.00';
+          } else if (dimensions === '24" x 36"') {
+            shippingCost = '36.00';
+          } else {
+            shippingCost = '28.00'; // Default para otros tamaños de oil painting
+          }
+        } else if (material === 'Acrylic Painting') {
+          shippingCost = '30.00';
+        }
+        
         // Crear los campos ocultos del formulario
         const fields = {
           'add': '1',
@@ -824,11 +847,12 @@
           'business': 'gustavo54@att.net',
           'item_name': `${material}: ${productName} (${dimensions})`,
           'amount': price.toFixed(2),
-          'shipping': material === 'Paper Print' ? '8.00' : '15.00', // Envío más barato para prints
+          'shipping': shippingCost,
           'no_shipping': '2'
         };
         
         console.log('PayPal form fields:', fields);
+        console.log('Shipping cost calculated:', shippingCost, 'for', material, 'size:', dimensions);
         
         // Agregar cada campo al formulario
         Object.keys(fields).forEach(key => {
