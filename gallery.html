@@ -569,6 +569,47 @@
         border-color: #ffc107 !important;
         background: rgba(255, 193, 7, 0.1) !important;
       }
+      
+      /* Custom PayPal Button Styles */
+      .paypal-button {
+        background: linear-gradient(135deg, #0070ba 0%, #003087 100%);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 112, 186, 0.3);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      .paypal-button:hover {
+        background: linear-gradient(135deg, #005ea6 0%, #002970 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 112, 186, 0.4);
+        color: white;
+      }
+      
+      .paypal-button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 112, 186, 0.3);
+      }
+      
+      .paypal-button i {
+        font-size: 18px;
+      }
+      
+      .paypal-form {
+        display: inline-block;
+        margin: 0;
+      }
     </style>
     
     <!-- Cart System Script -->
@@ -577,7 +618,7 @@
       let selectedOption = null;
       let currentProduct = null;
       
-      // Función para mostrar selector de formato para productos simples (2 opciones)
+      // Función para mostrar selector de formato para productos simples (2 opciones) - Va directo a PayPal
       function showSimpleFormatSelector(productName, dimensions, image, originalPrice) {
         currentProduct = {
           name: productName,
@@ -630,7 +671,7 @@
         
         html += '<div style="text-align:center;margin-top:20px">';
         html += '<button onclick="closeDualPriceOverlay()" style="background:#6c757d;color:white;border:none;padding:12px 25px;border-radius:5px;margin-right:15px;cursor:pointer;font-size:16px;font-weight:600">❌ Cancel</button>';
-        html += '<button onclick="addDualOptionToCart()" style="background:#28a745;color:white;border:none;padding:12px 25px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:16px" id="addDualToCartBtn" disabled>🛒 Add to Cart</button>';
+        html += '<button onclick="addDualOptionToCart()" class="paypal-button" id="addDualToCartBtn" disabled><i class="fab fa-paypal"></i>Add to PayPal Cart</button>';
         html += '</div>';
         html += '</div>';
         
@@ -693,7 +734,7 @@
         
         html += '<div style="text-align:center;margin-top:20px">';
         html += '<button onclick="closeDualPriceOverlay()" style="background:#6c757d;color:white;border:none;padding:12px 25px;border-radius:5px;margin-right:15px;cursor:pointer;font-size:16px;font-weight:600">❌ Cancel</button>';
-        html += '<button onclick="addDualOptionToCart()" style="background:#28a745;color:white;border:none;padding:12px 25px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:16px" id="addDualToCartBtn" disabled>🛒 Add to Cart</button>';
+        html += '<button onclick="addDualOptionToCart()" class="paypal-button" id="addDualToCartBtn" disabled><i class="fab fa-paypal"></i>Add to PayPal Cart</button>';
         html += '</div>';
         html += '</div>';
         
@@ -715,39 +756,43 @@
         selectedCard.style.background = 'rgba(255, 193, 7, 0.1)';
         
         selectedOption = currentProduct.options[optionIndex];
-        document.getElementById('addDualToCartBtn').disabled = false;
-        document.getElementById('addDualToCartBtn').style.opacity = '1';
+        const btn = document.getElementById('addDualToCartBtn');
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btn.style.cursor = 'pointer';
       }
       
-      // Agregar opción dual al carrito
+      // Agregar opción dual al carrito - Ahora va directo a PayPal
       function addDualOptionToCart() {
-        if (!selectedOption || !currentProduct) return;
+        console.log('addDualOptionToCart called');
+        console.log('selectedOption:', selectedOption);
+        console.log('currentProduct:', currentProduct);
         
-        const cartItem = {
-          name: currentProduct.name,
-          price: selectedOption.price,
-          dimensions: selectedOption.size,
-          material: selectedOption.material,
-          image: currentProduct.image,
-          quantity: 1
-        };
-        
-        const existing = cart.find(item => 
-          item.name === cartItem.name && 
-          item.dimensions === cartItem.dimensions && 
-          item.material === cartItem.material
-        );
-        
-        if (existing) {
-          existing.quantity += 1;
-        } else {
-          cart.push(cartItem);
+        if (!selectedOption || !currentProduct) {
+          console.error('Missing selectedOption or currentProduct');
+          return;
         }
         
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
+        // Guardar los valores antes de cerrar el overlay
+        const productName = currentProduct.name;
+        const material = selectedOption.material;
+        const size = selectedOption.size;
+        const price = selectedOption.price;
+        
+        // Cerrar el overlay
         closeDualPriceOverlay();
-        showMessage(cartItem.name + ' (' + cartItem.dimensions + ') added to cart!');
+        
+        // Crear el formulario de PayPal dinámicamente
+        console.log('Calling addToPayPalCart with:', {
+          name: productName,
+          material: material,
+          size: size,
+          price: price
+        });
+        
+        addToPayPalCart(productName, material, size, price);
+        
+        showMessage('Redirecting to PayPal cart...');
       }
       
       // Cerrar overlay dual
@@ -759,6 +804,49 @@
         }
         currentProduct = null;
         selectedOption = null;
+      }
+      
+      // Función para agregar directamente al carrito de PayPal
+      function addToPayPalCart(productName, material, dimensions, price) {
+        console.log('addToPayPalCart called with:', { productName, material, dimensions, price });
+        
+        // Crear un formulario temporal de PayPal
+        const form = document.createElement('form');
+        form.target = 'paypal';
+        form.action = 'https://www.paypal.com/cgi-bin/webscr';
+        form.method = 'post';
+        form.style.display = 'none';
+        
+        // Crear los campos ocultos del formulario
+        const fields = {
+          'add': '1',
+          'cmd': '_cart',
+          'business': 'gustavo54@att.net',
+          'item_name': `${material}: ${productName} (${dimensions})`,
+          'amount': price.toFixed(2),
+          'shipping': material === 'Paper Print' ? '8.00' : '15.00', // Envío más barato para prints
+          'no_shipping': '2'
+        };
+        
+        console.log('PayPal form fields:', fields);
+        
+        // Agregar cada campo al formulario
+        Object.keys(fields).forEach(key => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = fields[key];
+          form.appendChild(input);
+        });
+        
+        console.log('Form created, submitting to PayPal...');
+        
+        // Agregar el formulario al DOM, enviarlo y luego removerlo
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+        
+        console.log('Form submitted and removed');
       }
       
       // Agregar producto al carrito - ahora muestra selector de formato
@@ -916,6 +1004,19 @@
       // Ir a la página de shop
       function goToShop() {
         window.location.href = '/shop.html';
+      }
+      
+      // Función para actualizar el HTML del botón de PayPal en los modales
+      function updatePayPalButton() {
+        // Buscar y reemplazar todos los botones con el ID addDualToCartBtn
+        setTimeout(() => {
+          const btn = document.getElementById('addDualToCartBtn');
+          if (btn && btn.innerHTML.includes('🛒 Add to Cart')) {
+            btn.className = 'paypal-button';
+            btn.innerHTML = '<i class="fab fa-paypal"></i>Add to PayPal Cart';
+            btn.style.opacity = btn.disabled ? '0.5' : '1';
+          }
+        }, 100);
       }
       
       // Inicializar carrito al cargar la página
