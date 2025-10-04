@@ -150,7 +150,7 @@
       .modal {
           display: none; /* Oculto por defecto */
           position: fixed; /* Permanece en su lugar */
-          z-index: 1001; /* Z-index más alto que el carrito */
+          z-index: 9999; /* Z-index muy alto para estar por encima del header */
           left: 0;
           top: 0;
           width: 100%; /* Ancho completo */
@@ -177,6 +177,7 @@
         max-height: 90vh;
         overflow-y: auto;
         position: relative;
+        z-index: 10001; /* Asegurar que esté por encima del modal backdrop */
         animation: slideIn 0.3s ease;
       }
 
@@ -215,6 +216,16 @@
           width: 30px;
           height: 30px;
           font-size: 18px;
+          z-index: 10001 !important; /* Forzar z-index alto en móvil */
+        }
+
+        /* Forzar modal por encima del header en móvil */
+        .modal {
+          z-index: 10000 !important;
+        }
+
+        .modal-content {
+          z-index: 10001 !important;
         }
       }
 
@@ -226,7 +237,7 @@
         font-size: 22px;
         font-weight: bold;
         cursor: pointer;
-        z-index: 10;
+        z-index: 10000; /* Z-index muy alto para asegurar que esté por encima del header */
         width: 30px;
         height: 30px;
         border-radius: 50%;
@@ -926,6 +937,22 @@
 
         .category-tab {
           min-height: 48px !important;
+        }
+
+        /* Asegurar que los modales estén por encima del header en móvil */
+        .modal, 
+        #dualPriceOverlay,
+        #cartOverlay {
+          z-index: 10000 !important;
+        }
+
+        .modal-content {
+          z-index: 10001 !important;
+        }
+
+        /* Forzar el botón de cerrar por encima de todo */
+        .close {
+          z-index: 10002 !important;
         }
       }
 
