@@ -149,14 +149,14 @@
       /* Estilos del Modal de Detalle de Producto */
       .modal {
           display: none; /* Oculto por defecto */
-          position: fixed; /* Permanece en su lugar */
-          z-index: 9999; /* Z-index muy alto para estar por encima del header */
-          left: 0;
-          top: 0;
-          width: 100%; /* Ancho completo */
-          height: 100%; /* Altura completa */
+          position: fixed !important; /* Permanece en su lugar */
+          z-index: 999999 !important; /* Z-index extremadamente alto */
+          left: 0 !important;
+          top: 0 !important;
+          width: 100% !important; /* Ancho completo */
+          height: 100% !important; /* Altura completa */
           overflow: auto; /* Habilita el scroll si es necesario */
-          background-color: rgba(0,0,0,0.7); /* Fondo oscuro con transparencia */
+          background-color: rgba(0,0,0,0.8) !important; /* Fondo oscuro con transparencia */
           justify-content: center;
           align-items: center;
       }
@@ -168,16 +168,16 @@
       }
 
       .modal-content {
-        background-color: #fefefe;
-        margin: 0;
-        padding: 20px;
-        border-radius: 10px;
-        width: 90%;
-        max-width: 900px;
-        max-height: 90vh;
-        overflow-y: auto;
-        position: relative;
-        z-index: 10001; /* Asegurar que esté por encima del modal backdrop */
+        background-color: #fefefe !important;
+        margin: 0 !important;
+        padding: 20px !important;
+        border-radius: 10px !important;
+        width: 90% !important;
+        max-width: 900px !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+        position: relative !important;
+        z-index: 1000000 !important; /* Z-index extremadamente alto */
         animation: slideIn 0.3s ease;
       }
 
@@ -230,24 +230,24 @@
       }
 
       .close {
-        color: #333;
-        position: absolute;
-        right: 15px;
-        top: 10px;
-        font-size: 22px;
-        font-weight: bold;
-        cursor: pointer;
-        z-index: 10000; /* Z-index muy alto para asegurar que esté por encima del header */
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background-color: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        border: 2px solid #ddd;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        color: #333 !important;
+        position: absolute !important;
+        right: 15px !important;
+        top: 10px !important;
+        font-size: 22px !important;
+        font-weight: bold !important;
+        cursor: pointer !important;
+        z-index: 1000001 !important; /* Z-index extremadamente alto */
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50% !important;
+        background-color: #ffffff !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: all 0.3s ease !important;
+        border: 2px solid #ddd !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
       }
 
       .close:hover,
@@ -943,16 +943,19 @@
         .modal, 
         #dualPriceOverlay,
         #cartOverlay {
-          z-index: 10000 !important;
+          z-index: 999999 !important;
+          position: fixed !important;
         }
 
         .modal-content {
-          z-index: 10001 !important;
+          z-index: 1000000 !important;
+          position: relative !important;
         }
 
         /* Forzar el botón de cerrar por encima de todo */
         .close {
-          z-index: 10002 !important;
+          z-index: 1000001 !important;
+          position: absolute !important;
         }
       }
 
@@ -970,6 +973,50 @@
       .page {
         overflow-x: hidden;
       }
+
+      /* SOLUCIÓN DEFINITIVA PARA Z-INDEX DE MODALES */
+      /* Forzar todos los modales y overlays por encima del header */
+      .modal, 
+      div[id*="Overlay"],
+      div[id*="Modal"],
+      #dualPriceOverlay,
+      #cartOverlay,
+      #productDetailModal {
+        z-index: 999999 !important;
+        position: fixed !important;
+      }
+
+      .modal-content,
+      .modal div,
+      div[id*="Overlay"] > div {
+        z-index: 1000000 !important;
+        position: relative !important;
+      }
+
+      .close,
+      button.close,
+      span.close,
+      [onclick*="close"] {
+        z-index: 1000001 !important;
+        position: absolute !important;
+      }
+
+      /* Forzar header a tener z-index bajo */
+      header,
+      .page-head,
+      .rd-navbar,
+      .rd-navbar-wrap,
+      nav {
+        z-index: 100 !important;
+      }
+
+      /* Asegurar que ningún elemento del header interfiera */
+      @media (max-width: 991px) {
+        .rd-navbar-fixed,
+        .rd-navbar-static {
+          z-index: 100 !important;
+        }
+      }
     </style>
     
     <!-- Cart System Script -->
@@ -980,6 +1027,8 @@
       
       // Función para mostrar selector de formato para productos simples (2 opciones) - Va directo a PayPal
       function showSimpleFormatSelector(productName, dimensions, image, originalPrice, materialType = 'Oil') {
+        // Forzar z-index antes de crear el modal
+        forceModalZIndex();
         // Determinar el tipo de material basado en el parámetro
         const mainMaterial = materialType === 'Acrylic' ? 'Acrylic Painting' : 'Oil Painting';
         
@@ -1046,6 +1095,8 @@
       
       // Función para mostrar overlay de opciones para productos con precios duales (3 opciones)
       function showDualPriceOptions(productName, dimensions, image, price1, price2, priceText, materialType = 'Oil') {
+        // Forzar z-index antes de crear el modal
+        forceModalZIndex();
         // Determinar el tipo de material basado en el parámetro
         const mainMaterial = materialType === 'Acrylic' ? 'Acrylic Painting' : 'Oil Painting';
         
@@ -1252,6 +1303,9 @@
       }
       
       function showCartOverlay() {
+        // Forzar z-index antes de crear el modal
+        forceModalZIndex();
+        
         const overlay = document.createElement('div');
         overlay.id = 'cartOverlay';
         overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99999;display:flex;align-items:center;justify-content:center';
@@ -1406,8 +1460,39 @@
         }, 100);
       }
       
+      // Función para forzar z-index correcto en modales
+      function forceModalZIndex() {
+        // Forzar z-index en todos los modales y overlays
+        const modals = document.querySelectorAll('.modal, [id*="Overlay"], [id*="Modal"]');
+        modals.forEach(modal => {
+          modal.style.zIndex = '999999';
+          modal.style.position = 'fixed';
+        });
+        
+        const contents = document.querySelectorAll('.modal-content, .modal div, [id*="Overlay"] > div');
+        contents.forEach(content => {
+          content.style.zIndex = '1000000';
+          content.style.position = 'relative';
+        });
+        
+        const closeButtons = document.querySelectorAll('.close, button.close, span.close, [onclick*="close"]');
+        closeButtons.forEach(btn => {
+          btn.style.zIndex = '1000001';
+          btn.style.position = 'absolute';
+        });
+      }
+
       // Inicializar carrito al cargar la página
       document.addEventListener('DOMContentLoaded', function() {
+        // Aplicar z-index correcto
+        forceModalZIndex();
+        
+        // Observar cambios en el DOM para aplicar z-index a nuevos modales
+        const observer = new MutationObserver(() => {
+          forceModalZIndex();
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+        
         // Check for payment status in URL
         const urlParams = new URLSearchParams(window.location.search);
         const paymentStatus = urlParams.get('payment');
