@@ -181,7 +181,7 @@
         animation: slideIn 0.3s ease;
       }
 
-      /* Responsive design for mobile devices */
+      /* DISEÑO RESPONSIVE PARA MOVILES Y TABLETS */
       @media (max-width: 768px) {
         .modal-content {
           width: 95%;
@@ -394,37 +394,122 @@
       /* Responsive tabs for modal */
       @media (max-width: 768px) {
         .resp-tabs-list {
-          flex-direction: column;
-          border-bottom: none;
+          flex-direction: row !important; /* Mantener horizontal en tablet */
+          border-bottom: 3px solid #e9ecef;
+          background: #f8f9fa;
+          border-radius: 8px 8px 0 0;
+          margin: 0 -20px 20px -20px; /* Extender hasta los bordes del modal */
+          padding: 0;
+          overflow: hidden;
         }
 
         .resp-tabs-list li {
-          padding: 15px;
-          border-bottom: 1px solid #eee;
-          border-right: none;
+          flex: 1;
+          padding: 16px 12px;
+          border-bottom: none;
+          border-right: 1px solid #dee2e6;
           text-align: center;
+          background: #f8f9fa;
+          color: #6c757d;
+          font-weight: 600;
+          font-size: 15px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          position: relative;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
         }
 
-        .resp-tabs-list li:hover,
+        .resp-tabs-list li:last-child {
+          border-right: none;
+        }
+
+        .resp-tabs-list li:hover {
+          background-color: #e9ecef !important;
+          color: #495057 !important;
+          transform: translateY(-1px);
+        }
+
         .resp-tabs-list li.resp-tab-active {
-          border-bottom-color: #007bff;
-          background-color: rgba(0, 123, 255, 0.1);
+          background: #007bff !important;
+          color: white !important;
+          border-bottom: none !important;
+          box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+          transform: translateY(-2px);
+        }
+
+        .resp-tabs-list li.resp-tab-active::after {
+          content: '';
+          position: absolute;
+          bottom: -3px;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: #007bff;
         }
 
         .resp-tabs-container > div {
-          padding: 15px 0;
+          padding: 20px 0;
+          background: white;
+          border-radius: 0 0 8px 8px;
+          margin: 0 -20px;
+          padding: 20px;
         }
       }
 
       @media (max-width: 480px) {
+        .resp-tabs-list {
+          flex-direction: column !important; /* Solo en móvil cambiar a vertical */
+          border-bottom: none;
+          border-right: 3px solid #e9ecef;
+          margin: 0 -10px 15px -10px;
+        }
+
         .resp-tabs-list li {
-          padding: 12px;
-          font-size: 14px;
+          flex: none;
+          padding: 18px 15px;
+          border-bottom: 1px solid #dee2e6;
+          border-right: none;
+          font-size: 16px;
+          font-weight: 700;
+          background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .resp-tabs-list li:last-child {
+          border-bottom: none;
+        }
+
+        .resp-tabs-list li:hover {
+          background: linear-gradient(90deg, #e9ecef 0%, #dee2e6 100%) !important;
+          padding-left: 20px;
+        }
+
+        .resp-tabs-list li.resp-tab-active {
+          background: linear-gradient(90deg, #007bff 0%, #0056b3 100%) !important;
+          border-left: 4px solid #004085;
+          padding-left: 20px;
+          box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 123, 255, 0.3);
+        }
+
+        .resp-tabs-list li.resp-tab-active::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: -3px;
+          width: 3px;
+          background: #007bff;
         }
 
         .resp-tabs-container > div {
-          padding: 12px 0;
-          font-size: 14px;
+          padding: 15px 0;
+          font-size: 15px;
+          line-height: 1.6;
+          margin: 0 -10px;
+          padding: 15px;
+          background: white;
+          border-radius: 0 0 8px 8px;
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
         }
       }
 
