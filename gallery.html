@@ -881,50 +881,136 @@
       @media (max-width: 480px) {
         #dualPriceOverlay {
           padding: 5px !important;
+          align-items: flex-start !important;
+          padding-top: 15px !important;
         }
         
         #dualPriceOverlay > div {
           width: 98% !important;
-          margin: 5px !important;
+          margin: 0 !important;
+          max-height: 90vh !important;
+          overflow-y: auto !important;
+          border-radius: 8px !important;
         }
         
+        /* Header más compacto */
         #dualPriceOverlay > div > div:first-child {
-          padding: 15px !important;
+          padding: 8px 12px !important;
+          border-bottom: 1px solid #444 !important;
         }
         
+        /* Contenido principal más compacto */
+        #dualPriceOverlay > div > div:nth-child(2) {
+          padding: 8px 12px !important;
+        }
+        
+        /* Footer de botones más compacto */
         #dualPriceOverlay > div > div:last-child {
-          padding: 15px !important;
+          padding: 8px 12px !important;
         }
         
+        /* Opciones mucho más compactas */
         #dualPriceOverlay .option-card {
-          padding: 10px !important;
-          margin-bottom: 6px !important;
-        }
-        
-        #dualPriceOverlay button {
-          padding: 10px 16px !important;
+          padding: 6px 8px !important;
+          margin-bottom: 4px !important;
           font-size: 13px !important;
-          margin: 3px !important;
-          display: block !important;
-          width: 100% !important;
+          min-height: 40px !important;
+        }
+
+        #dualPriceOverlay .option-card > div:first-child > div:first-child {
+          font-size: 13px !important;
+          margin-bottom: 1px !important;
+        }
+
+        #dualPriceOverlay .option-card > div:first-child > div:last-child {
+          font-size: 11px !important;
+        }
+
+        #dualPriceOverlay .option-card > div:last-child {
+          font-size: 16px !important;
+        }
+
+        /* Área de información horizontal y compacta */
+        #dualPriceOverlay > div > div:nth-child(2) > div:first-child {
+          flex-direction: row !important;
+          align-items: center !important;
+          text-align: left !important;
           margin-bottom: 8px !important;
         }
-        
-        #dualPriceOverlay button:last-child {
-          margin-bottom: 0 !important;
-        }
-        
+
+        /* Imagen más grande y visible */
         #dualPriceOverlay img {
-          width: 60px !important;
-          height: 60px !important;
+          width: 70px !important;
+          height: 70px !important;
+          margin: 0 10px 0 0 !important;
+          flex-shrink: 0 !important;
         }
-        
+
+        /* Títulos muy compactos */
         #dualPriceOverlay h3 {
-          font-size: 18px !important;
+          font-size: 14px !important;
+          margin: 0 !important;
         }
         
         #dualPriceOverlay h4 {
-          font-size: 16px !important;
+          font-size: 13px !important;
+          margin: 0 0 2px 0 !important;
+        }
+
+        #dualPriceOverlay h4 + p {
+          font-size: 11px !important;
+          margin: 0 !important;
+          line-height: 1.3 !important;
+        }
+        
+        #dualPriceOverlay h5 {
+          font-size: 12px !important;
+          margin: 8px 0 6px 0 !important;
+        }
+
+        /* Información sobre Paper Prints muy compacta */
+        #dualPriceOverlay > div > div:nth-child(2) > div:nth-last-child(2) {
+          padding: 6px 8px !important;
+          margin-top: 6px !important;
+          font-size: 10px !important;
+          line-height: 1.3 !important;
+        }
+
+        #dualPriceOverlay > div > div:nth-child(2) > div:nth-last-child(2) > div:first-child {
+          font-size: 11px !important;
+          margin-bottom: 4px !important;
+        }
+        
+        /* Área de botones en columna para evitar superposición */
+        #dualPriceOverlay > div > div:last-child {
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 15px !important;
+          margin-top: 15px !important;
+          width: 100% !important;
+        }
+        
+        /* Botones responsivos sin superposición */
+        #dualPriceOverlay button {
+          width: 100% !important;
+          margin: 0 !important;
+          box-sizing: border-box !important;
+          display: block !important;
+        }
+
+        /* Botón PayPal mantiene sus estilos originales pero responsivo */
+        #dualPriceOverlay .paypal-button {
+          padding: 14px 20px !important;
+          font-size: 15px !important;
+          justify-content: center !important;
+          min-height: 50px !important;
+        }
+
+        /* Botón Cancel responsivo */
+        #dualPriceOverlay button:not(.paypal-button) {
+          padding: 12px 20px !important;
+          font-size: 14px !important;
+          min-height: 45px !important;
         }
         
         #dualPriceOverlay h5 {
@@ -1133,42 +1219,43 @@
         overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99999;display:flex;align-items:center;justify-content:center';
         
         const panel = document.createElement('div');
-        panel.style.cssText = 'background:#222;color:white;border-radius:10px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;padding:0';
+        panel.style.cssText = 'background:#222;color:white;border-radius:8px;max-width:400px;width:95%;max-height:90vh;overflow-y:auto;padding:0;box-shadow:0 8px 32px rgba(0,0,0,0.8)';
         
-        let html = '<div style="padding:20px;border-bottom:1px solid #444;display:flex;justify-content:space-between;align-items:center">';
-        html += '<h3 style="margin:0;color:#ffc107;font-size:24px;font-weight:700">🎨 Choose Format</h3>';
-        html += '<button onclick="closeDualPriceOverlay()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer">&times;</button>';
+        let html = '<div style="padding:10px 12px;border-bottom:1px solid #444;display:flex;justify-content:space-between;align-items:center">';
+        html += '<h3 style="margin:0;color:#ffc107;font-size:16px;font-weight:700">🎨 Choose Format</h3>';
+        html += '<button onclick="closeDualPriceOverlay()" style="background:none;border:none;color:white;font-size:18px;cursor:pointer;padding:0;width:20px;height:20px;display:flex;align-items:center;justify-content:center">&times;</button>';
         html += '</div>';
         
-        html += '<div style="padding:20px">';
-        html += '<div style="display:flex;align-items:center;margin-bottom:20px">';
-        html += '<img src="' + image + '" style="width:80px;height:80px;object-fit:cover;border-radius:8px;margin-right:15px">';
-        html += '<div><h4 style="margin:0 0 5px 0;font-size:20px;font-weight:700">' + productName + '</h4>';
-        html += '<p style="margin:0;color:#e8e8e8;font-size:16px;font-weight:500;line-height:1.5">Available in multiple formats</p></div>';
+        html += '<div style="padding:10px 12px">';
+        html += '<div style="display:flex;align-items:center;margin-bottom:10px">';
+        html += '<img src="' + image + '" style="width:60px;height:60px;object-fit:cover;border-radius:6px;margin-right:10px;flex-shrink:0">';
+        html += '<div><h4 style="margin:0 0 2px 0;font-size:14px;font-weight:700">' + productName + '</h4>';
+        html += '<p style="margin:0;color:#e8e8e8;font-size:11px;font-weight:500;line-height:1.2">Available formats</p></div>';
         html += '</div>';
         
-        html += '<h5 style="color:#ffc107;margin-bottom:15px;font-size:18px;font-weight:700">📐 Select Format:</h5>';
+        html += '<h5 style="color:#ffc107;margin-bottom:8px;font-size:13px;font-weight:700">📐 Select Format:</h5>';
         html += '<div id="optionsList">';
         
         currentProduct.options.forEach((option, index) => {
-          html += '<div class="option-card" onclick="selectDualOption(' + index + ')" id="dual-option-' + index + '" style="border:2px solid #444;border-radius:8px;padding:15px;margin-bottom:10px;cursor:pointer;transition:all 0.3s ease;display:flex;justify-content:space-between;align-items:center">';
-          html += '<div><div style="font-weight:bold;margin-bottom:3px;font-size:16px">' + option.material + '</div>';
-          html += '<div style="color:#e8e8e8;font-size:14px;font-weight:500">' + option.size + '</div></div>';
-          html += '<div style="color:#ffc107;font-weight:bold;font-size:20px">$' + option.price.toFixed(2) + '</div>';
+          html += '<div class="option-card" onclick="selectDualOption(' + index + ')" id="dual-option-' + index + '" style="border:1px solid #444;border-radius:6px;padding:8px 10px;margin-bottom:6px;cursor:pointer;transition:all 0.3s ease;display:flex;justify-content:space-between;align-items:center;min-height:40px">';
+          html += '<div><div style="font-weight:bold;margin-bottom:1px;font-size:13px">' + option.material + '</div>';
+          html += '<div style="color:#e8e8e8;font-size:11px;font-weight:500">' + option.size + '</div></div>';
+          html += '<div style="color:#ffc107;font-weight:bold;font-size:16px">$' + option.price.toFixed(2) + '</div>';
           html += '</div>';
         });
         
         html += '</div>';
         
         // Agregar información sobre Paper Prints
-        html += '<div style="background:rgba(255,193,7,0.1);border:1px solid rgba(255,193,7,0.3);border-radius:8px;padding:15px;margin-top:15px;">';
-        html += '<div style="color:#ffc107;font-size:14px;font-weight:600;margin-bottom:8px;"><i class="fas fa-info-circle" style="margin-right:6px;"></i>About Paper Prints:</div>';
-        html += '<div style="color:#e8e8e8;font-size:13px;line-height:1.5;">Paper prints are also available of each hand painted artwork. The prints come in size 8.5"x11", attached to a 9"x12" black backing board, and are bagged in a crystal clear bag. The prints are $30 dollars each.</div>';
+        html += '<div style="background:rgba(255,193,7,0.1);border:1px solid rgba(255,193,7,0.3);border-radius:6px;padding:8px 10px;margin-top:8px;">';
+        html += '<div style="color:#ffc107;font-size:11px;font-weight:600;margin-bottom:4px;"><i class="fas fa-info-circle" style="margin-right:4px;"></i>About Paper Prints:</div>';
+        html += '<div style="color:#e8e8e8;font-size:10px;line-height:1.3;">Paper prints available: 8.5"x11" on 9"x12" black backing, bagged. $30 each.</div>';
         html += '</div>';
         
-        html += '<div style="text-align:center;margin-top:20px">';
-        html += '<button onclick="closeDualPriceOverlay()" style="background:#6c757d;color:white;border:none;padding:12px 25px;border-radius:5px;margin-right:15px;cursor:pointer;font-size:16px;font-weight:600">❌ Cancel</button>';
-        html += '<button onclick="addDualOptionToCart()" class="paypal-button" id="addDualToCartBtn" disabled><i class="fab fa-paypal"></i>Add to PayPal Cart</button>';
+        html += '<div style="margin-top:20px;width:100%">';
+        html += '<button onclick="addDualOptionToCart()" class="paypal-button" id="addDualToCartBtn" disabled style="width:100%;display:block;margin-bottom:0"><i class="fab fa-paypal"></i>Add to PayPal Cart</button>';
+        html += '<div style="height:30px;width:100%"></div>';
+        html += '<button onclick="closeDualPriceOverlay()" style="background:#6c757d;color:white;border:none;padding:12px 20px;border-radius:5px;cursor:pointer;font-size:16px;font-weight:600;width:100%;display:block;position:relative">❌ Cancel</button>';
         html += '</div>';
         html += '</div>';
         
@@ -1201,42 +1288,43 @@
         overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99999;display:flex;align-items:center;justify-content:center';
         
         const panel = document.createElement('div');
-        panel.style.cssText = 'background:#222;color:white;border-radius:10px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;padding:0';
+        panel.style.cssText = 'background:#222;color:white;border-radius:8px;max-width:400px;width:95%;max-height:90vh;overflow-y:auto;padding:0;box-shadow:0 8px 32px rgba(0,0,0,0.8)';
         
-        let html = '<div style="padding:20px;border-bottom:1px solid #444;display:flex;justify-content:space-between;align-items:center">';
-        html += '<h3 style="margin:0;color:#ffc107;font-size:24px;font-weight:700">🎨 Choose Format</h3>';
-        html += '<button onclick="closeDualPriceOverlay()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer">&times;</button>';
+        let html = '<div style="padding:10px 12px;border-bottom:1px solid #444;display:flex;justify-content:space-between;align-items:center">';
+        html += '<h3 style="margin:0;color:#ffc107;font-size:16px;font-weight:700">🎨 Choose Format</h3>';
+        html += '<button onclick="closeDualPriceOverlay()" style="background:none;border:none;color:white;font-size:18px;cursor:pointer;padding:0;width:20px;height:20px;display:flex;align-items:center;justify-content:center">&times;</button>';
         html += '</div>';
         
-        html += '<div style="padding:20px">';
-        html += '<div style="display:flex;align-items:center;margin-bottom:20px">';
-        html += '<img src="' + image + '" style="width:80px;height:80px;object-fit:cover;border-radius:8px;margin-right:15px">';
-        html += '<div><h4 style="margin:0 0 5px 0;font-size:20px;font-weight:700">' + productName + '</h4>';
-        html += '<p style="margin:0;color:#e8e8e8;font-size:16px;font-weight:500;line-height:1.5">Available in multiple formats</p></div>';
+        html += '<div style="padding:10px 12px">';
+        html += '<div style="display:flex;align-items:center;margin-bottom:10px">';
+        html += '<img src="' + image + '" style="width:60px;height:60px;object-fit:cover;border-radius:6px;margin-right:10px;flex-shrink:0">';
+        html += '<div><h4 style="margin:0 0 2px 0;font-size:14px;font-weight:700">' + productName + '</h4>';
+        html += '<p style="margin:0;color:#e8e8e8;font-size:11px;font-weight:500;line-height:1.2">Available formats</p></div>';
         html += '</div>';
         
-        html += '<h5 style="color:#ffc107;margin-bottom:15px;font-size:18px;font-weight:700">📐 Select Format & Size:</h5>';
+        html += '<h5 style="color:#ffc107;margin-bottom:8px;font-size:13px;font-weight:700">📐 Select Format & Size:</h5>';
         html += '<div id="optionsList">';
         
         currentProduct.options.forEach((option, index) => {
-          html += '<div class="option-card" onclick="selectDualOption(' + index + ')" id="dual-option-' + index + '" style="border:2px solid #444;border-radius:8px;padding:15px;margin-bottom:10px;cursor:pointer;transition:all 0.3s ease;display:flex;justify-content:space-between;align-items:center">';
-          html += '<div><div style="font-weight:bold;margin-bottom:3px;font-size:16px">' + option.material + '</div>';
-          html += '<div style="color:#e8e8e8;font-size:14px;font-weight:500">' + option.size + '</div></div>';
-          html += '<div style="color:#ffc107;font-weight:bold;font-size:20px">$' + option.price.toFixed(2) + '</div>';
+          html += '<div class="option-card" onclick="selectDualOption(' + index + ')" id="dual-option-' + index + '" style="border:1px solid #444;border-radius:6px;padding:8px 10px;margin-bottom:6px;cursor:pointer;transition:all 0.3s ease;display:flex;justify-content:space-between;align-items:center;min-height:40px">';
+          html += '<div><div style="font-weight:bold;margin-bottom:1px;font-size:13px">' + option.material + '</div>';
+          html += '<div style="color:#e8e8e8;font-size:11px;font-weight:500">' + option.size + '</div></div>';
+          html += '<div style="color:#ffc107;font-weight:bold;font-size:16px">$' + option.price.toFixed(2) + '</div>';
           html += '</div>';
         });
         
         html += '</div>';
         
         // Agregar información sobre Paper Prints
-        html += '<div style="background:rgba(255,193,7,0.1);border:1px solid rgba(255,193,7,0.3);border-radius:8px;padding:15px;margin-top:15px;">';
-        html += '<div style="color:#ffc107;font-size:14px;font-weight:600;margin-bottom:8px;"><i class="fas fa-info-circle" style="margin-right:6px;"></i>About Paper Prints:</div>';
-        html += '<div style="color:#e8e8e8;font-size:13px;line-height:1.5;">Paper prints are also available of each hand painted artwork. The prints come in size 8.5"x11", attached to a 9"x12" black backing board, and are bagged in a crystal clear bag. The prints are $30 dollars each.</div>';
+        html += '<div style="background:rgba(255,193,7,0.1);border:1px solid rgba(255,193,7,0.3);border-radius:6px;padding:8px 10px;margin-top:8px;">';
+        html += '<div style="color:#ffc107;font-size:11px;font-weight:600;margin-bottom:4px;"><i class="fas fa-info-circle" style="margin-right:4px;"></i>About Paper Prints:</div>';
+        html += '<div style="color:#e8e8e8;font-size:10px;line-height:1.3;">Paper prints available: 8.5"x11" on 9"x12" black backing, bagged. $30 each.</div>';
         html += '</div>';
         
-        html += '<div style="text-align:center;margin-top:20px">';
-        html += '<button onclick="closeDualPriceOverlay()" style="background:#6c757d;color:white;border:none;padding:12px 25px;border-radius:5px;margin-right:15px;cursor:pointer;font-size:16px;font-weight:600">❌ Cancel</button>';
-        html += '<button onclick="addDualOptionToCart()" class="paypal-button" id="addDualToCartBtn" disabled><i class="fab fa-paypal"></i>Add to PayPal Cart</button>';
+        html += '<div style="margin-top:20px;width:100%">';
+        html += '<button onclick="addDualOptionToCart()" class="paypal-button" id="addDualToCartBtn" disabled style="width:100%;display:block;margin-bottom:0"><i class="fab fa-paypal"></i>Add to PayPal Cart</button>';
+        html += '<div style="height:30px;width:100%"></div>';
+        html += '<button onclick="closeDualPriceOverlay()" style="background:#6c757d;color:white;border:none;padding:12px 20px;border-radius:5px;cursor:pointer;font-size:16px;font-weight:600;width:100%;display:block;position:relative">❌ Cancel</button>';
         html += '</div>';
         html += '</div>';
         
