@@ -16,6 +16,3 @@ Thumbs.db
 # Editor files
 .vscode/settings.json
 .idea/
-
-# Archivos de backup
-shop_backup.html
